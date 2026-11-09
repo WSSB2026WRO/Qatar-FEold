@@ -1,44 +1,57 @@
-# Additive Manufacturing — Design and Inspection Guidelines
+# Additive Manufacturing Design Guidelines
 
-## Purpose
+## 1. Purpose
 
-Custom printed components can provide geometry that is not available in the standard EV3 element set, including adapters, compact links, spacers, and special connection pieces. Their use should be supported by dimensioned drawings and fit checks.
+Custom 3D-printed components extend the EV3 mechanical element set with adapters, compact links, spacers, and dedicated connection features. Their design must account for geometry, print orientation, material behaviour, fit, and load direction.
 
-## Design considerations
+## 2. Geometry design
 
-- Orient layer lines to avoid placing peak tensile stress across layer interfaces.
-- Use generous fillets at transitions and around pin holes.
 - Maintain adequate wall thickness around holes and narrow necks.
-- Avoid sharp internal corners that concentrate stress.
-- Allow for printer-specific hole shrinkage and dimensional compensation.
-- Avoid excessive press-fit interference on brittle printed features.
-- Provide tool access for assembly and disassembly.
-- Keep the part envelope clear of moving steering and drive components.
+- Use generous fillets at transitions that carry repeated loads.
+- Avoid abrupt section changes where stress concentration is likely.
+- Provide suitable clearance for pins, axles, and mating elements.
+- Account for printer dimensional accuracy and material shrinkage.
+- Orient layer lines to support the dominant mechanical load.
 
-## Print record
+## 3. Material selection
 
-For each production print, record:
-- Printer and nozzle diameter
-- Filament manufacturer and material grade
-- Nozzle and bed temperatures
-- Layer height and line width
-- Wall/perimeter count
-- Infill pattern and density
-- Print orientation and support strategy
-- Part mass
-- Critical dimensions after printing
-- Fit inspection and failure observations
+Material selection should consider:
+- stiffness and tensile strength;
+- impact resistance;
+- fatigue behaviour;
+- operating temperature;
+- layer adhesion;
+- print repeatability.
 
-## Mechanical verification
+For highly loaded joints, evaluate the printed part in its actual load direction rather than relying only on nominal filament strength.
 
-A printed part should be checked for:
-1. Dimensional accuracy.
-2. Hole and pin alignment.
-3. Fit without forcing mating parts.
-4. Interference through full mechanism travel.
-5. Crack initiation around holes and thin sections.
-6. Layer separation after repeated loading.
+## 4. Print process definition
 
-## STL release requirements
+A manufacturing record should specify:
+- material and filament grade;
+- nozzle diameter;
+- layer height;
+- wall/perimeter count;
+- infill pattern and density;
+- print orientation;
+- bed and nozzle temperature;
+- post-processing method.
 
-STL files should be accompanied by a native CAD source, a dimensioned drawing, declared units, revision, and a mesh integrity report. Original supplied files must be preserved when repairs or redesigns are made.
+## 5. Dimensional and mesh inspection
+
+Inspect:
+- overall dimensions;
+- pin and axle interface geometry;
+- hole diameter and spacing;
+- wall thickness;
+- connected mesh components;
+- watertightness and normal orientation;
+- mating fit and moving clearances.
+
+## 6. Mechanical verification
+
+Evaluate the component under representative loading. Inspect for deformation, cracking, layer separation, excessive clearance, and wear after repeated operation.
+
+## 7. CAD and file management
+
+Maintain the STL export together with its native CAD model, dimensioned drawing, declared units, revision identifier, and mesh inspection record. Preserve original geometry when producing a modified design revision.
