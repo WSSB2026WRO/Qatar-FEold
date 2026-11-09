@@ -1,51 +1,50 @@
-# Verification and Validation Plan
+# Verification and Validation
 
 ## Purpose
 
-This plan defines repeatable checks for the Open Challenge and Obstacle Challenge programs. It is a proposed validation framework; no test is marked as passed until a dated record and supporting evidence are added.
+This plan defines the verification activities for the Qatar FE autonomous vehicle and its two challenge programs.
 
 ## Test matrix
 
-| ID | Subsystem | Test | Evidence |
+| ID | Subsystem | Verification method | Acceptance criterion |
 |---|---|---|---|
-| V-01 | Drive | Compare encoder distance with a measured straight run | Raw distance table |
-| V-02 | Steering | Verify zero, left/right sign, and repeatability | Angle readings and video |
-| V-03 | Gyro | Measure stationary drift over the configured interval | Drift log |
-| V-04 | Ultrasonic | Compare readings with known distances and wall angles | Range table |
-| V-05 | Open navigation | Test centering at low, medium, and high speeds | CSV logs |
-| V-06 | Corner control | Repeat left and right 90-degree turns | Heading traces |
-| V-07 | Start return | Compare calculated stop position with start reference | Position error |
-| V-08 | Pixy2 | Confirm red/green signatures and stable acquisition | Image/frame record |
-| V-09 | Pillar ranging | Compare image-based range estimate with measured range | Calibration dataset |
-| V-10 | Obstacle passing | Test red-right and green-left passing separately | Video and clearance record |
-| V-11 | Parking | Repeat unpark and reverse-replay parking | Final pose measurements |
-| V-12 | Endurance | Run repeated missions under controlled battery conditions | Run summary and logs |
+| V-01 | Drive | Compare encoder distance with a measured straight run | Error remains within the project-defined distance tolerance |
+| V-02 | Steering | Measure wheel angle at commanded positions | Monotonic response and repeatable left/right travel |
+| V-03 | Gyro | Record stationary drift over the calibration interval | Drift remains within the configured acceptance threshold |
+| V-04 | Ultrasonic | Compare readings with known target distances | Readings remain within the defined sensor tolerance |
+| V-05 | Corridor control | Run repeated straight corridor trials | Vehicle remains inside the permitted corridor envelope |
+| V-06 | Corner control | Execute left and right corner trials | Target heading reached without timeout |
+| V-07 | Pixy2 | Verify red and green signature detection | Correct signature classification across repeated observations |
+| V-08 | Obstacle avoidance | Run pillar-passing trials | Required passing side and clearance are maintained |
+| V-09 | Parking | Repeat final parking manoeuvre | Vehicle stops within the defined parking region |
+| V-10 | Logging | Inspect generated CSV records | Required fields and event records are present |
 
-## Test record template
+## Test procedure
 
-For every test, record:
-- Test ID and objective
-- Software version and source hash
-- Hardware configuration
-- Date and venue
-- Battery condition
-- Surface and environmental conditions
-- Parameter values
-- Procedure
-- Raw observations
-- Acceptance criterion
-- Result: Pass / Fail / Inconclusive
-- Deviations and corrective action
+Each test should define:
+- test identifier and objective;
+- software version;
+- hardware configuration;
+- environmental conditions;
+- procedure and number of repetitions;
+- acceptance criteria;
+- recorded observations;
+- final result and corrective actions.
 
 ## Safety
 
 - Raise or support driven wheels during initial polarity checks.
 - Keep hands clear of steering linkages and rotating wheels.
-- Begin tuning at reduced speed.
-- Keep a clear emergency-stop path.
-- Stop testing if a cable, sensor, or printed part becomes loose or damaged.
-- Do not run autonomous tests near people or fragile objects.
+- Start at reduced speed after mechanical or software changes.
+- Stop the run if sensor data become implausible or communication is lost.
+- Inspect printed components and fasteners after impact or abnormal loading.
 
-## Data handling
+## Result classification
 
-Keep raw CSV logs unchanged. Derived plots and analysis should be stored separately and identify the source log, script version, and processing assumptions.
+- **Pass:** all acceptance criteria are satisfied.
+- **Fail:** one or more acceptance criteria are not satisfied.
+- **Inconclusive:** the test conditions or observations do not support a decision.
+
+## Regression testing
+
+Changes to steering geometry, sensor placement, control gains, corner thresholds, camera calibration, or parking logic should trigger the corresponding subsystem tests and a full mission regression run.
