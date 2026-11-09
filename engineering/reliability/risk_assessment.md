@@ -47,6 +47,4 @@ Priority controls address uncontrolled motion, steering lock, loss of obstacle d
 - review motor and sensor behaviour;
 - update the maintenance record.
 
-## 5. Change control
 
-Changes to steering geometry, sensor mounting, drive ratio, camera position, or controller gains require a targeted regression test. Preserve the previous working configuration and document the engineering reason for the revision.
