@@ -20,5 +20,5 @@
 <rect x="1035" y="480" width="270" height="80" class="sub"/><text x="1170" y="528" text-anchor="middle" class="s">Steering Motor C</text>
 <path d="M405 375 H505" class="arr"/><path d="M885 375 H985" class="arr"/>
 <text x="700" y="665" text-anchor="middle" class="s">Shared EV3 platform • Pixy2 perception is used by the Obstacle Challenge program only</text>
-<text x="700" y="705" text-anchor="middle" class="s">Schematic — confirm wiring and installed hardware against the physical build</text>
+<text x="700" y="705" text-anchor="middle" class="s">Functional system architecture</text>
 </svg>
