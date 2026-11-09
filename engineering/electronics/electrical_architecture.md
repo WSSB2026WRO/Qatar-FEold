@@ -48,6 +48,4 @@ Do not connect an auxiliary lamp, servo, or external load to an EV3 motor output
 | Low battery | Voltage observation | Abort run below validated threshold |
 | Loose sensor cable | Missing or implausible data | Stop autonomous operation |
 
-## 6. Wiring release documentation
 
-The final wiring diagram should include exact cable types, connector orientations, port labels, power domains, and any external power conversion. Add a photograph of the actual wiring only after it has been inspected against the diagram.
