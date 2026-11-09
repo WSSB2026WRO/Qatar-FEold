@@ -71,12 +71,14 @@ The project is organized around traceable engineering decisions:
 
 ## Quick navigation
 
-- [Open Challenge documentation](software/open_challenge/README.md)
-- [Obstacle Challenge documentation](software/obstacle_challenge/README.md)
-- [Hardware architecture](hardware/README.md)
-- [Custom 3D-printed parts](hardware/custom_3d_printed_parts/README.md)
-- [Engineering studies](engineering/README.md)
-- [Validation plan](validation/README.md)
+- [Software overview](software/README.md)
+- [Open Challenge documentation](software/open_challenge/README.md) · [Algorithm notes](software/open_challenge/algorithm_notes.md)
+- [Obstacle Challenge documentation](software/obstacle_challenge/README.md) · [Algorithm notes](software/obstacle_challenge/algorithm_notes.md)
+- [Hardware architecture](hardware/README.md) · [Sensor calibration](hardware/sensor_calibration.md)
+- [Custom 3D-printed parts](hardware/custom_3d_printed_parts/README.md) · [Mesh inspection](hardware/custom_3d_printed_parts/mesh_inspection_report.md)
+- [Engineering studies](engineering/README.md) · [Mass distribution](engineering/mechanical_design/mass_distribution_and_vehicle_dynamics.md) · [Steering geometry](engineering/mechanical_design/steering_geometry.md)
+- [3D printing guidelines](engineering/mechanical_design/3d_printing_design_guidelines.md) · [Risk assessment](engineering/risk_assessment.md)
+- [Validation plan](validation/README.md) · [Test report template](validation/test_report_template.md)
 
 ## Development status
 
