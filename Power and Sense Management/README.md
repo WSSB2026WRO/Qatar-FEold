@@ -2,7 +2,7 @@
 
 ## System overview
 
-This section documents the EV3 power, actuator, sensor, and communication interfaces used by the supplied challenge programs. Electrical ratings not present in the source files must be taken from the component datasheets and verified on the actual assembly.
+This section defines the EV3 power, actuator, sensor, and communication architecture used by the two challenge programs.
 
 ## Device and port allocation
 
@@ -16,46 +16,39 @@ This section documents the EV3 power, actuator, sensor, and communication interf
 | S3 | Ultrasonic sensor | Right range | Right range |
 | S4 | Pixy2 camera | Not used | I²C vision |
 
-## Power management principles
+## Power management
 
-1. Use a battery pack approved for the EV3 system.
-2. Inspect battery contacts and cable condition before each run.
-3. Record battery condition when comparing run performance.
-4. Avoid adding external loads to motor ports without verifying electrical compatibility.
-5. Keep power and sensor cables away from moving steering and drive components.
-6. Stop testing if the controller resets or sensor communication becomes unstable.
+- Use the EV3-approved battery system and inspect contacts before operation.
+- Keep motor and sensor wiring secured and clear of moving linkages.
+- Check battery condition when comparing runs.
+- Do not connect an external load to an EV3 motor output without verifying electrical compatibility.
+- Stop operation if the controller resets or sensor communication becomes unstable.
 
 ## Sensor management
 
 ### Gyro
-The programs measure gyro drift while the vehicle is stationary. The vehicle must remain still during calibration.
+Both programs perform stationary drift measurement and calibration. The vehicle must remain motionless during this process.
 
 ### Ultrasonic sensors
-The two sensors provide left and right wall-distance observations. Their alignment and mounting positions influence corridor-position estimates.
+S2 and S3 provide left and right wall-distance observations. Sensor alignment and mounting geometry affect lateral-position estimates.
 
 ### Pixy2
-The Obstacle Challenge program communicates with Pixy2 over I²C. The configured address is 0x54. Signature 1 is mapped to red and signature 2 to green.
+The Obstacle Challenge program communicates with Pixy2 over I²C at configured address 0x54. Signature 1 is mapped to red and signature 2 to green.
 
-## Commissioning checklist
+## Electrical integration record
 
-- [ ] Confirm the EV3 battery and connector condition.
-- [ ] Confirm motor and sensor ports against the software configuration.
-- [ ] Check cable retention and strain relief.
-- [ ] Verify gyro calibration with the vehicle stationary.
-- [ ] Compare ultrasonic readings against known distances.
-- [ ] Confirm Pixy2 I²C communication before obstacle testing.
-- [ ] Record any resets, communication errors, or intermittent readings.
+The software interface allocation is defined above. Component-specific electrical ratings are governed by the manufacturer's datasheets. The EV3 program sources do not encode battery chemistry, current limits, fuse ratings, or external lamp specifications; these must not be inferred from software port assignments.
 
-## Electrical data register
+## Commissioning procedure
 
-| Item | Required record | Status |
-|---|---|---|
-| EV3 battery | Type, rated voltage, measured voltage | To be recorded |
-| Drive motors | Exact model and datasheet | To be recorded |
-| Steering motor | Exact model and datasheet | To be recorded |
-| External loads | Voltage/current requirements | Verify before connection |
-| Pixy2 | Firmware, mode, address | Configured in software; verify on device |
-| Wiring | Port map and photographs | To be added |
+1. Inspect battery contacts, cables, and connectors.
+2. Confirm motor and sensor ports against the device map.
+3. Verify drive motor polarity with the wheels safely raised.
+4. Confirm steering zero with the road wheels straight.
+5. Run stationary gyro calibration.
+6. Compare ultrasonic readings against known reference distances.
+7. Confirm Pixy2 communication and signature mapping before obstacle operation.
+8. Record abnormal readings, resets, or communication errors in the test log.
 
 ## Fault response
 
