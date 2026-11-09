@@ -75,10 +75,47 @@ A detection should be accepted only when:
 
 A median or trimmed-mean filter can reduce single-frame jitter. Do not average detections across different pillar identities.
 
-## 8. Calibration report template
+## 8. Calibration report — illustrative analytical dataset
+
+The following table is a **synthetic calculation example** generated from the empirical model configured in the supplied program:
+
+\[
+d_{estimated}=\frac{K}{v-v_0},\qquad K=20100,\quad v_0=63
+\]
+
+For this example, the reference distances are hypothetical inputs. The image feature coordinate is rounded to the nearest pixel, and the estimated range is recalculated from that rounded coordinate.
 
 | Known range (mm) | Image feature (px) | Estimated range (mm) | Error (mm) |
 |---:|---:|---:|---:|
-|  |  |  |  |
+| 200 | 164 | 199.0 | -1.0 |
+| 250 | 143 | 251.2 | +1.2 |
+| 300 | 130 | 300.0 | 0.0 |
+| 400 | 113 | 402.0 | +2.0 |
+| 500 | 103 | 502.5 | +2.5 |
+| 600 | 96 | 609.1 | +9.1 |
+| 700 | 92 | 693.1 | -6.9 |
+| 800 | 88 | 804.0 | +4.0 |
 
-The calibration table must be populated from real measurements before the model is used as a validated range sensor.
+### Calculation method
+
+\[
+Error=d_{estimated}-d_{known}
+\]
+
+\[
+d_{estimated}=\frac{20100}{v-63}
+\]
+
+For example, at the hypothetical 600 mm reference distance, the rounded image feature is 96 px:
+
+\[
+d_{estimated}=\frac{20100}{96-63}=609.1\text{ mm}
+\]
+
+The resulting illustrative error is +9.1 mm.
+
+### Interpretation
+
+The example shows how pixel quantization affects range estimation. As the detected feature approaches the offset (v_0), a one-pixel change can produce a larger distance error. Calibration should therefore use repeated measurements across the full operating range and report mean absolute error, maximum absolute error, and residual distribution.
+
+**Data status:** Every row above is synthetic and calculated from the configured model. It is not a real Pixy2 measurement and must not be presented as experimental validation. Replace this table with recorded camera observations before declaring the range model calibrated.
