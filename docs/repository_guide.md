@@ -43,4 +43,4 @@ Every significant change should include:
 - test evidence;
 - rollback path.
 
-Preserve reference programs and original CAD exports. Experimental variants should use separate files or branches.
+
