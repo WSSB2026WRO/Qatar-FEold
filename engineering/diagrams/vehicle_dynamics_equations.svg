@@ -18,5 +18,5 @@
 <path d="M1000 350 H1190" class="line"/><text x="1120" y="330" class="l">Lateral acceleration</text>
 <text x="1000" y="555" text-anchor="middle" class="l">Track width T</text>
 <text x="700" y="645" text-anchor="middle" class="l">ΔFₓ = M aₓ hCG / L     •     ΔFᵧ = M aᵧ hCG / T</text>
-<text x="700" y="690" text-anchor="middle" class="l">Conceptual equations — not measured results for the current vehicle</text>
+<text x="700" y="690" text-anchor="middle" class="l">Analytical vehicle-dynamics model</text>
 </svg>
