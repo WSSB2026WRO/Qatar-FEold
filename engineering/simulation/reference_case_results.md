@@ -1,8 +1,6 @@
 # Reference Case — Calculated Results
 
-> All values below are analytical outputs from the illustrative reference design. They are not measured robot performance.
-
-## Baseline
+## Baseline design inputs
 
 | Input | Value |
 |---|---:|
@@ -14,7 +12,7 @@
 | Friction coefficient | 0.65 |
 | Gravity | 9.81 m/s² |
 
-## Static load
+## Static load calculation
 
 | Quantity | Calculated value |
 |---|---:|
@@ -42,8 +40,8 @@
 | Ideal wheel speed at 250 deg/s motor speed | 0.1222 m/s |
 | Ideal wheel speed at 300 deg/s motor speed | 0.1466 m/s |
 
-## Interpretation
+## Engineering interpretation
 
-The model suggests that lowering the centre of gravity and increasing track width both improve the idealized geometric roll margin. The friction bound is a simplified Coulomb estimate and should not be interpreted as a guaranteed usable tractive force. Motor torque, tire properties, load sensitivity, floor condition, and wheel slip are not represented.
+The calculations show the influence of centre-of-gravity height and track width on geometric load transfer and lateral stability. The friction bound is a simplified Coulomb estimate; usable tractive force also depends on motor torque, tire characteristics, floor condition, and wheel slip.
 
-The ideal wheel-speed calculation assumes a 1:1 ratio, no slip, and a 56 mm wheel diameter. It is a kinematic conversion, not a measured speed result.
+The wheel-speed conversion assumes a 1:1 ratio, no slip, and a 56 mm wheel diameter. It provides the kinematic relationship between motor speed and theoretical ground speed.
