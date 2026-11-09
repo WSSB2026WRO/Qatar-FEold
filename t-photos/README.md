@@ -1,20 +1,11 @@
-# Team Photographs
+# Qatar FE — Team
 
-This directory is the visual record for the Qatar FE team.
+The Qatar FE team brings together programming, mechanical design, and project leadership for the WRO Future Engineers challenge.
 
-## Recommended catalogue
-
-| File name | Description |
+| Team member | Role |
 |---|---|
-| `team_official.jpg` | Official team portrait |
-| `team_workshop.jpg` | Team mechanical development session |
-| `team_programming.jpg` | Software development session |
-| `team_competition.jpg` | Competition or event photograph |
+| Omar | Lead Programmer |
+| Eissa | Team Leader / Chief of Team |
+| Mohammed | Lead Designer |
 
-## Publication standard
-
-Use original team photographs approved for public release. Preserve the original aspect ratio and use high-resolution images. Check that personal information on badges, screens, and documents is not unintentionally exposed.
-
-## Caption format
-
-For each image, include a short caption, event or activity, and capture date. Keep original photographs unchanged; create compressed web copies separately when required.
+The team develops autonomous navigation software, vehicle mechanisms, sensor integration, and engineering documentation as a coordinated project.
