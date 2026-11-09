@@ -1,37 +1,51 @@
 # Sensor Calibration Procedures
 
-## Gyro sensor
+## 1. Gyroscope calibration
 
-1. Place the vehicle on a stable, level surface.
-2. Ensure the chassis is stationary and steering is not being moved.
+The vehicle must remain stationary during gyro calibration.
+
+1. Place the vehicle on a level, vibration-free surface.
+2. Ensure the steering and drive motors are idle.
 3. Run the program's stationary drift measurement.
-4. Record raw drift, accepted drift, calibration duration, and temperature if available.
-5. Rotate the vehicle clockwise and counter-clockwise by a known angle to confirm sign and scale.
-6. Repeat the test after remounting the sensor.
+4. Complete the configured calibration sequence.
+5. Confirm that the reported heading remains stable while the vehicle is stationary.
+6. Repeat the check after any sensor remount or chassis modification.
 
-Acceptance criteria must be defined from measured repeatability and the steering error budget.
+## 2. Ultrasonic range calibration
 
-## Ultrasonic sensors
+1. Align the sensor face perpendicular to a flat target.
+2. Place the target at known distances across the operating range.
+3. Record the sensor reading at each position.
+4. Repeat each point to evaluate repeatability.
+5. Compare the reading against the reference distance.
+6. Inspect mounting angle and nearby reflective surfaces if the error is inconsistent.
 
-1. Measure sensor-face separation and mounting height.
-2. Place a flat target at known distances.
-3. Record at least ten samples per distance and orientation.
-4. Repeat with oblique target angles and near wall edges.
-5. Calculate median error, spread, and invalid-reading rate.
-6. Confirm left/right orientation and sensor-to-wall geometry.
+## 3. Encoder distance calibration
 
-Do not assume the ultrasonic sensor reports perpendicular distance when the vehicle is angled relative to the wall.
+For wheel diameter (D), motor rotation (	heta) in degrees, and gear ratio (G):
 
-## Pixy2 camera
+\[
+s=\frac{\theta}{360^\circ}\,\pi D\,G
+\]
 
-1. Confirm firmware mode and I²C output.
-2. Confirm the configured I²C address.
-3. Set and verify red/green signatures using the competition lighting.
-4. Record bounding-box coordinates at multiple known ranges.
-5. Fit the vertical image-to-distance model and report residual error.
-6. Calibrate horizontal field of view and optical-axis alignment.
-7. Recheck after any camera mount or lighting change.
+Measure a straight-line travel distance on the intended surface and compare it with the encoder-derived distance. Repeat in both directions and evaluate the influence of wheel slip and drivetrain compliance.
 
-## Encoder distance
+## 4. Pixy2 range calibration
 
-Measure a straight-line travel distance on the intended surface. Compare it with encoder-derived distance and repeat in both directions. Record wheel diameter, gear ratio, and any scale correction separately.
+The Obstacle Challenge program uses the empirical vertical-image model:
+
+\[
+d=\frac{20100}{Y-63}
+\]
+
+where (Y) is the selected vertical image feature in pixels and (d) is the estimated range in millimetres. The calibration procedure and numerical model analysis are documented in [Pixy2 Calibration and Geometry](../engineering/perception/pixy2_calibration_and_geometry.md).
+
+## 5. Calibration record format
+
+| Sensor | Reference condition | Observed value | Error | Notes |
+|---|---|---|---|---|
+| Gyro | Stationary | Drift rate | — | Heading stability |
+| Ultrasonic left | Known target distance | Sensor reading | Reading − reference | Repeatability |
+| Ultrasonic right | Known target distance | Sensor reading | Reading − reference | Repeatability |
+| Drive encoder | Known travel distance | Calculated distance | Calculated − reference | Wheel slip |
+| Pixy2 | Known pillar range | Image coordinate | Range-model residual | Camera geometry |
