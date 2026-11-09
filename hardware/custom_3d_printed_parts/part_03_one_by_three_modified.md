@@ -1,29 +1,39 @@
-# Part 03 — 1×3 Modified Component
+# C3DP-03 — Modified 1×3 Connector
 
-## Source file
-`1x3 modified.stl`
+## Component overview
 
-## Mesh inspection
-| Property | Result |
+This STL defines a compact, narrow 1×3-style connector element designed for the team's modified EV3 mechanical system.
+
+## Mesh characteristics
+
+| Property | Inspection result |
 |---|---:|
 | Vertices | 1,504 |
-| Triangles | 3,024 |
+| Triangular faces | 3,024 |
 | Connected components | 1 |
 | Watertight | Yes |
-| Winding consistency | Yes |
-| Bounding box X | 2.3989 STL units |
-| Bounding box Y | 0.7200 STL units |
-| Bounding box Z | 0.8000 STL units |
+| Bounding box X | 23.99 native units |
+| Bounding box Y | 7.20 native units |
+| Bounding box Z | 8.00 native units |
 
-## Engineering interpretation
-The bounding-box proportions are consistent with a narrow, elongated 1×3-style LEGO-compatible component. The geometry appears to be a modified small connector/link element. The exact modification and mechanical purpose should be confirmed against the physical printed part and its mating components.
+## Geometric description
 
-## Manufacturing review
-- Confirm unit scale and nominal hole spacing.
-- Measure all pin/axle interfaces after printing.
-- Inspect thin walls and the transition around modified features.
-- Verify that the part does not bind throughout the mechanism's travel.
-- Record print material, orientation, and settings.
+The component has a narrow rectangular envelope and a single connected, closed mesh. Its proportions are consistent with a compact 1×3-style mechanical connector.
 
-## Release status
-One connected watertight mesh with consistent face winding. This does not establish material strength or fit tolerance.
+## Mechanical role
+
+The part is catalogued as a modified small connector/link element for the EV3 assembly. It provides a compact connection geometry within the custom mechanical interface set.
+
+## Manufacturing considerations
+
+- Preserve the orientation of the principal connection axis.
+- Inspect the mating-hole and pin geometry after printing.
+- Check fit against the corresponding EV3 connection elements.
+- Verify that the part does not interfere with adjacent moving components.
+- Inspect layer adhesion around narrow sections.
+
+## File
+
+Original mesh: `1x3 modified.stl`
+
+STL coordinates do not carry unit metadata. The reported bounding box uses native mesh units.
