@@ -36,15 +36,4 @@ The programs target LEGO EV3 using Pybricks MicroPython. The Obstacle Challenge 
 6. Perform low-speed hardware tests after any control change.
 7. Archive logs and compare them against the previous reference.
 
-## Validation
 
-A GitHub Actions workflow checks Python syntax and runs the analytical parameter-sweep script. This does not replace testing on the EV3 hardware.
-
-## File naming
-
-Use descriptive names and explicit revisions, for example:
-- `open_challenge_v02.py`
-- `obstacle_challenge_camera_test.py`
-- `steering_calibration.py`
-
-Do not overwrite a known reference version with an experimental build.
