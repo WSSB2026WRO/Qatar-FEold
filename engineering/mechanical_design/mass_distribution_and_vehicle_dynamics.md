@@ -41,7 +41,7 @@ Represent the vehicle as a collection of rigid components. For each component (i
 |---|---|
 | (m_i) | Component mass |
 | (x_i,y_i,z_i) | Component centre coordinates |
-| (I_{xx,i},I_{yy,i},I_{zz,i}) | Principal moments of inertia, when available |
+| (I_{xx,i},I_{yy,i},I_{zz,i}) | Principal moments of inertia |
 | (R_i) | Component envelope and clearance volume |
 | (S_i) | Structural mounting interface |
 
@@ -171,7 +171,7 @@ cot(delta_o)-cot(delta_i)=rac{T}{L}
 
 where (delta_i) and (delta_o) are the inner and outer wheel angles.
 
-The relation assumes pure rolling and a common instantaneous centre of rotation. Real steering linkages may use approximate Ackermann geometry because of packaging, compliance, and actuator constraints.
+The relation assumes pure rolling and a common instantaneous centre of rotation. Practical linkages approximate this condition within packaging and compliance constraints.
 
 A complete steering study should include:
 - steering pivot coordinates;
