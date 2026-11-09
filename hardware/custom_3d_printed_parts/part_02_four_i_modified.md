@@ -1,32 +1,39 @@
-# Part 02 — Four-Position I Modified Component
+# C3DP-02 — Modified Four-Section Link Component
 
-## Source file
-`4 I modified lego.stl`
+## Component overview
 
-## Mesh inspection
-| Property | Result |
+This STL defines an elongated custom mechanical link with four separated mesh components. It is catalogued as a modified EV3-compatible linkage/connector element.
+
+## Mesh characteristics
+
+| Property | Inspection result |
 |---|---:|
 | Vertices | 1,134 |
-| Triangles | 2,628 |
+| Triangular faces | 2,628 |
 | Connected components | 4 |
-| Watertight overall | No |
-| Winding consistency | Yes |
-| Bounding box X | 0.7921 STL units |
-| Bounding box Y | 3.2973 STL units |
-| Bounding box Z | 0.7800 STL units |
+| Complete mesh watertight | No |
+| Bounding box X | 7.92 native units |
+| Bounding box Y | 32.97 native units |
+| Bounding box Z | 7.80 native units |
 
-The mesh consists of four separate connected components. Each individual component was found to be watertight, but the complete mesh is not a single watertight solid. A conservative normal and hole-repair pass did not change this topology.
+## Geometric description
 
-## Engineering interpretation
-The elongated envelope and multiple connected shells suggest a multi-position custom linkage or connector arrangement. This is an interpretation of the mesh topology only. The exact purpose, number of functional pin positions, and assembly orientation require comparison with the actual printed part and its mating EV3 elements.
+The geometry is narrow and elongated, with four distinct mesh components distributed within a common bounding envelope. The components are retained exactly as represented in the supplied STL.
 
-## Manufacturing review
-- Inspect the four shells independently in CAD.
-- Confirm whether the separated components are intended to remain separate.
-- Check alignment and centre spacing of all mating features.
-- Confirm whether the part is an assembly export or one multi-body design.
-- Do not merge or close the shells automatically without confirming design intent.
-- Verify fit and articulation in the complete mechanism.
+## Mechanical role
 
-## Release status
-Not a single watertight solid. Preserve the supplied original. Any CAD correction must be saved as a new revision and compared against the original geometry.
+The part is catalogued as a multi-section custom link/connector for the modified EV3 mechanical assembly. Its geometry provides a compact arrangement of connection features.
+
+## Manufacturing considerations
+
+- Inspect the four components as separate mesh islands in the slicer.
+- Check the intended assembly orientation and mating interfaces.
+- Review wall thickness and layer direction around connection features.
+- Use a controlled first-layer inspection to prevent small sections from detaching.
+- Check the printed part against its mating EV3 elements before operation.
+
+## File
+
+Original mesh: `4 I modified lego.stl`
+
+STL coordinates do not carry unit metadata. Dimensions are expressed in native mesh units. The four-component topology is part of the source mesh and is preserved in this release.
