@@ -1,32 +1,49 @@
-# Software Engineering
+# Software Architecture
 
-Two independent programs are maintained for the two WRO Future Engineers formats. The source files are preserved as supplied; documentation explains their configured behavior and identifies the assumptions that require physical validation.
+Two independent programs are maintained for the two WRO Future Engineers formats. Each program has a separate mission sequence and hardware-specific control logic.
 
-## Program index
+## Challenge software
 
 | Challenge | Source | Version | Main sensing |
 |---|---|---|---|
-| Open | [open_challenge.py](open_challenge/open_challenge.py) | OPEN-COMP-2 | Gyro + dual ultrasonic + encoders |
-| Obstacle | [obstacle_challenge.py](obstacle_challenge/obstacle_challenge.py) | OBST-1 | Gyro + dual ultrasonic + encoders + Pixy2 |
+| Open Challenge | [open_challenge.py](open_challenge/open_challenge.py) | OPEN-COMP-2 | Gyro and dual ultrasonic |
+| Obstacle Challenge | [obstacle_challenge.py](obstacle_challenge/obstacle_challenge.py) | OBST-1 | Gyro, dual ultrasonic, Pixy2 |
 
-## Shared software principles
+## Runtime platform
 
-- Explicit initialization before motion.
-- Gyro drift measurement before autonomous navigation.
-- Encoder-based distance estimation.
-- Heading-aware wall measurements.
-- State-based corner detection.
-- Timeouts and safety limits around manoeuvres.
-- CSV logging for post-run analysis.
+- LEGO EV3
+- Pybricks MicroPython
+- EV3 motor and sensor interfaces
+- Pixy2 I²C interface for Obstacle Challenge
 
-## Runtime notes
+## Shared software functions
 
-The supplied files target Pybricks MicroPython and EV3 hardware. They are not ordinary desktop Python applications. A successful desktop syntax check does not validate device APIs, motor polarity, sensor addressing, timing, or physical behavior.
+- Motor and sensor initialization
+- Gyro drift measurement and calibration
+- Ultrasonic range acquisition
+- Steering actuator control
+- Encoder-based distance estimation
+- Heading feedback
+- Event and CSV logging
+- Runtime fault and timeout handling
 
-## Change control
+## Challenge-specific functions
 
-- Keep known reference versions intact.
-- Make experiments in separately named files or branches.
-- Record source hashes for competition builds.
-- Change one tuning family at a time.
-- Store test logs and conditions with every performance claim.
+### Open Challenge
+- Dual-wall corridor centering
+- Opening confirmation
+- Route direction selection
+- Twelve-corner route tracking
+- Final approach to the start section
+
+### Obstacle Challenge
+- Pixy2 block acquisition
+- Red/green signature classification
+- Pillar range and lateral-position estimation
+- Passing-side selection
+- Obstacle clearance tracking
+- Parking manoeuvre
+
+## Development and regression
+
+Keep the two challenge programs independent. Preserve reference versions and isolate experimental changes. Every change to sensor processing, steering, navigation, or mission logic should be followed by syntax verification and the relevant hardware regression tests.
