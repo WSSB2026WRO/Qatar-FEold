@@ -1,100 +1,55 @@
-# Engineering Studies
+# Engineering Overview
 
-This section is the technical design record for the Qatar FE vehicle. It separates source-derived facts, conceptual models, and future validation requirements.
+This section documents the mechanical, electrical, software, and analytical engineering of the Qatar FE autonomous vehicle.
 
-## Study areas
+## Engineering disciplines
 
-### 1. Mechanical architecture
-- Chassis packaging and component placement
-- Steering linkage geometry
-- Drive-train layout and gear ratio
-- Wheelbase, track width, ground clearance, and body envelope
-- Fasteners, interfaces, and service access
+- Vehicle packaging and structural layout
+- Drive-train and steering architecture
+- Mass properties and vehicle dynamics
+- Sensor integration and perception geometry
+- Embedded control and navigation algorithms
+- Additive manufacturing and custom mechanical interfaces
+- Reliability analysis and verification planning
 
-### 2. Mass properties and vehicle dynamics
-- Component mass inventory
-- Three-dimensional centre of gravity
-- Static axle and wheel loads
-- Longitudinal load transfer under acceleration and braking
-- Lateral load transfer during cornering
-- Rollover margin and stability
-- Traction limits and wheel-load sensitivity
+## Mechanical design
 
-### 3. Steering geometry
-- Steering axis and tie-link geometry
-- Ackermann condition
-- Inner and outer wheel angles
-- Steering travel and mechanical stops
-- Backlash, compliance, and repeatability
+The mechanical design is organized around a compact chassis, independently documented drive and steering functions, protected sensor mounting, and serviceable electrical packaging.
 
-### 4. Sensor placement and perception
-- Ultrasonic field of view and mounting angle
-- Gyro alignment and drift
-- Camera field of view and optical axis
-- Camera offset relative to vehicle reference point
-- Image calibration and pillar range estimation
+Mass distribution is evaluated using a component-based model:
 
-### 5. System integration
-- EV3 port map
-- Electrical and mechanical interfaces
-- Cable management and vibration isolation
-- Access for battery changes and maintenance
-
-## Fundamental equations
-
-### Centre of gravity
-
-For discrete components with masses (m_i) located at ((x_i,y_i,z_i)):
-
-`x_{CG}=\frac{\sum m_i x_i}{\sum m_i},\quad
+\[
+x_{CG}=\frac{\sum m_i x_i}{\sum m_i},\quad
 y_{CG}=\frac{\sum m_i y_i}{\sum m_i},\quad
-z_{CG}=\frac{\sum m_i z_i}{\sum m_i}`
+z_{CG}=\frac{\sum m_i z_i}{\sum m_i}
+\]
 
-The calculation requires measured component masses and coordinates. Without these inputs, a numerical centre of gravity must not be claimed.
+The equations define the calculation method. Numerical examples are provided in the reference design case.
 
-### Longitudinal load transfer
+## Vehicle dynamics
 
-A simplified quasi-static estimate is:
+The engineering model considers longitudinal and lateral load transfer, traction limits, yaw inertia, steering geometry, and geometric rollover margin. These relationships support design comparison and control-system reasoning.
 
-`\Delta F_x=\frac{M a_x h_{CG}}{L}`
+## Electrical and sensing architecture
 
-where (M) is total mass, (a_x) is longitudinal acceleration, (h_{CG}) is centre-of-gravity height, and (L) is wheelbase.
+The EV3 port map is documented in [Hardware Architecture](../hardware/README.md). The control programs use a gyro, two ultrasonic sensors, drive motors, and a steering motor. The Obstacle Challenge program additionally interfaces with Pixy2 over I²C.
 
-### Lateral load transfer
+## Software architecture
 
-A simplified quasi-static estimate is:
+The software is separated into two independent challenge programs. Each program has its own mission state sequence, sensor processing, steering control, corner handling, and logging structure.
 
-`\Delta F_y=\frac{M a_y h_{CG}}{T}`
+## Analytical design basis
 
-where (a_y) is lateral acceleration and (T) is track width. Actual load transfer depends on suspension and chassis compliance, which must be represented if the model is refined.
+The reference vehicle design case provides a consistent numerical framework for evaluating mass properties and vehicle dynamics. All calculations are reproducible from the stated equations and input parameters.
 
-### Ideal Ackermann relation
+## Engineering terminology
 
-For wheelbase (L), track width (T), inner steering angle (delta_i), and outer steering angle (delta_o):
-
-`\cot(\delta_o)-\cot(\delta_i)=\frac{T}{L}`
-
-This is a geometric idealization. The actual steering linkage must be measured before comparing its performance with ideal Ackermann geometry.
-
-## Engineering evidence levels
-
-| Label | Meaning |
+| Term | Meaning |
 |---|---|
-| Source-derived | Explicitly present in the supplied source code or uploaded design file |
-| Configured | A parameter value set in software |
-| Measured | Obtained through a documented physical measurement |
-| Calculated | Derived from stated inputs and an explicit equation |
-| Conceptual | A proposed design or theoretical model, not a claim of implementation |
-| Validated | Supported by a repeatable test record and acceptance criterion |
+| Configured | A value defined in the source program |
+| Assumed | A design input selected for analytical study |
+| Calculated | A value derived mathematically from stated inputs |
+| Measured | A value obtained from an instrumented physical observation |
+| Validated | A result supported by repeatable tests and acceptance criteria |
 
-## Required technical records
-
-- Dimensioned chassis drawing
-- Component mass and coordinate register
-- Steering geometry drawing
-- Wheel and motor specifications
-- Electrical wiring diagram
-- Sensor mounting drawings
-- CAD source files for printed parts
-- Test conditions and raw measurements
-- Revision history and engineering change notes
+This terminology keeps design calculations, software settings, and physical observations technically distinct.
