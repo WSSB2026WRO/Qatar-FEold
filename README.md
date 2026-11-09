@@ -5,18 +5,7 @@
   <em>Mechanical Design · Embedded Control · Perception · Vehicle Dynamics · Additive Manufacturing</em>
 </p>
 
----
-
-## Project overview
-
-Qatar FE is a student engineering team developing an autonomous vehicle for the **World Robot Olympiad (WRO) Future Engineers** challenge. This repository is the team's technical record: it documents the system architecture, mechanical concepts, embedded software, sensing strategy, control methods, custom components, engineering calculations, and validation work for both competition formats.
-
-The repository separates the two challenge programs:
-
-- **Open Challenge** — autonomous corridor following, wall-based centering, corner detection, heading control, lap tracking, and return to the start section.
-- **Obstacle Challenge** — the Open Challenge navigation foundation extended with visual pillar classification, colour-dependent passing strategy, obstacle tracking, lane repositioning, and a parking sequence.
-
-The software supplied for documentation targets a LEGO EV3 platform running Pybricks MicroPython. The Obstacle Challenge program also uses a Pixy2 camera through the `pixycamev3` library.
+Qatar FE is a student engineering team developing an autonomous vehicle for the **World Robot Olympiad (WRO) Future Engineers** challenge. This repository is the team's technical record for the Open Challenge and Obstacle Challenge programs, hardware architecture, mechanical design studies, analytical models, and verification planning.
 
 ## Team
 
@@ -26,63 +15,55 @@ The software supplied for documentation targets a LEGO EV3 platform running Pybr
 | Eissa | Team Leader / Chief of Team |
 | Mohammed | Lead Designer |
 
-## Repository map
+## Challenge programs
 
-| Area | Contents |
-|---|---|
-| [Software](software/) | Challenge source code, program notes, algorithm documentation |
-| [Hardware](hardware/) | EV3 configuration, sensors, actuators, custom 3D-printed parts |
-| [Engineering](engineering/) | Mechanical design, vehicle dynamics, system architecture, calculations |
-| [Validation](validation/) | Test procedures, calibration records, data-log interpretation |
-| [Media](media/) | Team-approved photographs, diagrams, and technical illustrations |
-
-## System at a glance
-
-| Subsystem | Open Challenge | Obstacle Challenge |
+| Program | Mission | Documentation |
 |---|---|---|
-| Controller | LEGO EV3 | LEGO EV3 |
-| Drive | Two medium motors, ports A and B | Two medium motors, ports A and B |
-| Steering | Medium motor, port C | Medium motor, port C |
-| Heading | Gyro, port S1 | Gyro, port S1 |
-| Left/right ranging | Ultrasonic sensors, S2 and S3 | Ultrasonic sensors, S2 and S3 |
-| Vision | Not used by the supplied program | Pixy2 on S4, I²C address 0x54 |
-| Main navigation reference | Wall geometry + gyro + encoders | Wall geometry + gyro + encoders |
-| Additional task | Three-lap route and start return | Pillar passing, three-lap route and parking |
+| Open Challenge | Corridor following, wall-based centering, corner detection, heading control, lap tracking, and return to the start section | [Program and technical notes](software/open_challenge/README.md) |
+| Obstacle Challenge | Visual pillar classification, colour-dependent passing, lane repositioning, corner navigation, and parking | [Program and technical notes](software/obstacle_challenge/README.md) |
 
-## Engineering approach
+The supplied source programs target LEGO EV3 with Pybricks MicroPython. The Obstacle Challenge program also uses a Pixy2 camera over I²C.
 
-The project is organized around traceable engineering decisions:
+## Engineering library
 
-1. **Define the operating task** and the constraints of each challenge.
-2. **Map the hardware** and document each device's role and interface.
-3. **Explain the control architecture** from sensor acquisition to actuator commands.
-4. **Expose tunable parameters** with units, purpose, and calibration method.
-5. **Separate measured values from assumptions** and conceptual design studies.
-6. **Validate incrementally** using repeatable tests and recorded data.
-7. **Preserve source history** so experimental changes do not overwrite known reference programs.
+- [Mechanical design — chassis and packaging](engineering/mechanical_design/chassis_and_packaging.md)
+- [Mass distribution and vehicle dynamics](engineering/mechanical_design/mass_distribution_and_vehicle_dynamics.md)
+- [Steering geometry](engineering/mechanical_design/steering_geometry.md)
+- [Electrical architecture](engineering/electronics/electrical_architecture.md)
+- [Control system design](engineering/software/control_system_design.md)
+- [Pixy2 calibration and geometry](engineering/perception/pixy2_calibration_and_geometry.md)
+- [Reliability and FMEA](engineering/reliability/risk_assessment.md)
+- [Reference design case and calculations](engineering/design_basis/reference_vehicle_design_case.md)
+- [Analytical simulation and parameter sweeps](engineering/simulation/README.md)
 
-## Important interpretation notes
+## Technical diagrams
 
-- The checked-in source programs are the reference versions supplied for this repository. Their presence does not, by itself, prove a particular competition result or physical test outcome.
-- Values copied from source code are identified as **configured parameters**, not as independently verified measurements.
-- Conceptual engineering studies may explore designs beyond the currently documented physical build. They are labelled accordingly.
-- The STL files are retained as supplied design artifacts. Their mesh dimensions are not assigned physical units unless the CAD/export convention is confirmed.
-- No performance claim should be made without a corresponding test record.
+- [System architecture](engineering/diagrams/system_architecture.svg)
+- [Vehicle dynamics model](engineering/diagrams/vehicle_dynamics_equations.svg)
+- [Ackermann steering geometry](engineering/diagrams/steering_ackermann.svg)
+- [Obstacle Challenge state machine](engineering/diagrams/obstacle_state_machine.svg)
 
-## Quick navigation
+## Hardware
 
-- [Software overview](software/README.md)
-- [Open Challenge documentation](software/open_challenge/README.md) · [Algorithm notes](software/open_challenge/algorithm_notes.md)
-- [Obstacle Challenge documentation](software/obstacle_challenge/README.md) · [Algorithm notes](software/obstacle_challenge/algorithm_notes.md)
-- [Hardware architecture](hardware/README.md) · [Sensor calibration](hardware/sensor_calibration.md)
-- [Custom 3D-printed parts](hardware/custom_3d_printed_parts/README.md) · [Mesh inspection](hardware/custom_3d_printed_parts/mesh_inspection_report.md)
-- [Engineering studies](engineering/README.md) · [Mass distribution](engineering/mechanical_design/mass_distribution_and_vehicle_dynamics.md) · [Steering geometry](engineering/mechanical_design/steering_geometry.md)
-- [3D printing guidelines](engineering/mechanical_design/3d_printing_design_guidelines.md) · [Risk assessment](engineering/risk_assessment.md)
-- [Validation plan](validation/README.md) · [Test report template](validation/test_report_template.md)
+The documented EV3 port map is available in [Hardware Architecture](hardware/README.md). Custom EV3-compatible printed parts are catalogued in [Custom 3D-Printed Components](hardware/custom_3d_printed_parts/README.md).
 
-## Development status
+## Verification
 
-The repository is being populated from the team's supplied source programs and CAD exports. Test logs, verified dimensions, material specifications, CAD source files, and approved team photographs should be added as they become available.
+- [Verification and validation plan](validation/README.md)
+- [Engineering release checklist](docs/engineering_release_checklist.md)
+- [Repository guide and evidence classification](docs/repository_guide.md)
+
+A GitHub Actions workflow performs Python syntax validation and runs the analytical parameter sweep when changes are pushed to `main` or submitted through a pull request.
+
+## Engineering evidence and design assumptions
+
+This repository distinguishes source-derived information, configured software parameters, conceptual design assumptions, calculated values, simulated outputs, measured data, and validated test results. The reference vehicle design case is an illustrative analytical model; it is not a claim that those assumed dimensions or calculated scenarios have been measured on the physical robot.
+
+The source programs are preserved as supplied reference versions. Any future experimental variant should be maintained separately with a clear revision history.
+
+## Project status
+
+The repository contains the two supplied challenge programs and a growing engineering documentation set. Physical test records, confirmed CAD dimensions, native CAD source files, approved team photographs, and final manufacturing release data should be added when available.
 
 ---
 
