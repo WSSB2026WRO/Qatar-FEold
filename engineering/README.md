@@ -52,4 +52,4 @@ The reference vehicle design case provides a consistent numerical framework for 
 | Measured | A value obtained from an instrumented physical observation |
 | Validated | A result supported by repeatable tests and acceptance criteria |
 
-This terminology keeps design calculations, software settings, and physical observations technically distinct.
+
