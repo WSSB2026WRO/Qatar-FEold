@@ -1,56 +1,58 @@
-# Test Report Template
+# Engineering Test Report
 
-## Identification
+## Test identification
 
-- Test ID:
-- Test title:
-- Date and time:
-- Location:
-- Operator:
-- Challenge program and version:
-- Source file SHA-256:
-- Hardware revision:
-- Battery condition:
+| Field | Entry |
+|---|---|
+| Test ID | |
+| Test title | |
+| Date and time | |
+| Software version | |
+| Hardware configuration | |
+| Test operator | |
 
 ## Objective
 
-Describe the specific behavior being verified.
+Describe the engineering question being evaluated and the expected behaviour.
 
-## Setup
+## Test conditions
 
-- Surface and track configuration:
-- Robot configuration:
-- Sensor calibration:
-- Software parameters:
-- Measurement instruments:
+| Parameter | Value |
+|---|---|
+| Test surface | |
+| Battery condition | |
+| Vehicle mass | |
+| Sensor configuration | |
+| Environmental conditions | |
+| Number of trials | |
 
 ## Procedure
 
-Write numbered steps so another team member can repeat the test.
-
-## Acceptance criteria
-
-Define numerical thresholds before testing.
+1. Describe the initial vehicle state.
+2. Identify the command or stimulus applied.
+3. Describe the measurement method.
+4. Define the number of repetitions.
+5. State the safety conditions.
 
 ## Results
 
-| Trial | Measured value | Target | Pass / Fail | Notes |
-|---|---:|---:|---|---|
+| Trial | Measured value | Target | Error | Result |
+|---|---:|---:|---:|---|
 | 1 | | | | |
 | 2 | | | | |
 | 3 | | | | |
 
-## Evidence
+## Analysis
 
-- CSV log:
-- Photograph / video:
-- Plot:
-- Additional notes:
+Summarize repeatability, deviations, possible error sources, and the relationship between the results and the acceptance criteria.
 
 ## Conclusion
 
 - Result: Pass / Fail / Inconclusive
-- Observed limitations:
+- Main observation:
 - Corrective action:
-- Retest required:
-- Reviewer:
+- Regression test:
+
+## Supporting records
+
+List the related source version, CSV log, measurement sheet, and relevant photographs or diagrams.
