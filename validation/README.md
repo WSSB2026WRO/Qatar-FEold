@@ -45,6 +45,4 @@ Each test should define:
 - **Fail:** one or more acceptance criteria are not satisfied.
 - **Inconclusive:** the test conditions or observations do not support a decision.
 
-## Regression testing
 
-Changes to steering geometry, sensor placement, control gains, corner thresholds, camera calibration, or parking logic should trigger the corresponding subsystem tests and a full mission regression run.
