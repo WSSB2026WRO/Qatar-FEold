@@ -5,7 +5,7 @@
   <em>Mechanical Design · Embedded Control · Perception · Vehicle Dynamics · Additive Manufacturing</em>
 </p>
 
-Qatar FE is a student engineering team developing an autonomous vehicle for the **World Robot Olympiad (WRO) Future Engineers** challenge. This repository organizes the team's challenge software, hardware interfaces, mechanical studies, analytical models, engineering diagrams, and technical records.
+Qatar FE is a student engineering team developing an autonomous vehicle for the **World Robot Olympiad (WRO) Future Engineers** challenge. This repository presents the team's software, mechanical engineering, electronics, perception systems, analytical studies, and technical documentation.
 
 ## Team
 
@@ -58,9 +58,6 @@ Both programs target LEGO EV3 with Pybricks MicroPython. The Obstacle Challenge 
 | [Obstacle Management](Obstacle%20Management/README.md) | Vision-based obstacle detection and avoidance |
 | [Power and Sense Management](Power%20and%20Sense%20Management/README.md) | Electrical interfaces, power, and sensors |
 | [src](src/README.md) | Software source index |
-| [t-photos](t-photos/README.md) | Team photography catalogue |
-| [v-photos](v-photos/README.md) | Vehicle photography catalogue |
-| [video](video/README.md) | Test and demonstration video catalogue |
 
 ## Verification
 
@@ -75,4 +72,4 @@ GitHub Actions checks Python syntax and executes the analytical parameter-sweep 
 
 Software settings, theoretical design inputs, calculated outputs, and physical observations are treated as separate engineering data classes. Numerical examples are accompanied by their governing assumptions and equations. Physical performance claims are based on recorded test evidence.
 
-The two challenge source programs are retained as separate reference implementations. Experimental revisions should be versioned independently.
+The two challenge source programs are maintained as separate reference implementations. Experimental revisions should be versioned independently.
