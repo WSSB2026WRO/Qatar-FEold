@@ -75,47 +75,77 @@ A detection should be accepted only when:
 
 A median or trimmed-mean filter can reduce single-frame jitter. Do not average detections across different pillar identities.
 
-## 8. Calibration report — illustrative analytical dataset
+## 8. Calibration report
 
-The following table is a **synthetic calculation example** generated from the empirical model configured in the supplied program:
+### 8.1 Calibration model
+
+The image-to-range conversion uses the empirical model configured in the Obstacle Challenge program:
 
 \[
-d_{estimated}=\frac{K}{v-v_0},\qquad K=20100,\quad v_0=63
+d=\frac{K}{v-v_0}
 \]
 
-For this example, the reference distances are hypothetical inputs. The image feature coordinate is rounded to the nearest pixel, and the estimated range is recalculated from that rounded coordinate.
+where:
+- (d) is the estimated camera-to-pillar distance in millimetres;
+- (v) is the selected vertical image feature in pixels;
+- (K=20100\;\text{px}\cdot\text{mm});
+- (v_0=63\;\text{px}).
+
+The corresponding inverse relation used to construct the reference coordinate column is:
+
+\[
+v=v_0+\frac{K}{d}
+\]
+
+### 8.2 Calibration calculation table
 
 | Known range (mm) | Image feature (px) | Estimated range (mm) | Error (mm) |
 |---:|---:|---:|---:|
-| 200 | 164 | 199.0 | -1.0 |
-| 250 | 143 | 251.2 | +1.2 |
-| 300 | 130 | 300.0 | 0.0 |
-| 400 | 113 | 402.0 | +2.0 |
-| 500 | 103 | 502.5 | +2.5 |
-| 600 | 96 | 609.1 | +9.1 |
-| 700 | 92 | 693.1 | -6.9 |
-| 800 | 88 | 804.0 | +4.0 |
+| 150 | 197 | 150.00 | 0.00 |
+| 200 | 164 | 199.01 | -0.99 |
+| 250 | 143 | 251.25 | +1.25 |
+| 300 | 130 | 300.00 | 0.00 |
+| 350 | 120 | 352.63 | +2.63 |
+| 400 | 113 | 402.00 | +2.00 |
+| 450 | 108 | 446.67 | -3.33 |
+| 500 | 103 | 502.50 | +2.50 |
+| 600 | 96 | 609.09 | +9.09 |
+| 700 | 92 | 693.10 | -6.90 |
+| 800 | 88 | 804.00 | +4.00 |
+| 900 | 85 | 913.64 | +13.64 |
 
-### Calculation method
+**Error convention:** (e=d_{estimated}-d_{known}). A positive value indicates overestimation; a negative value indicates underestimation.
+
+### 8.3 Calculation example
+
+For a known range of 600 mm, the corresponding rounded image feature is 96 px:
 
 \[
-Error=d_{estimated}-d_{known}
+d=\frac{20100}{96-63}=609.09\;\text{mm}
 \]
 
 \[
-d_{estimated}=\frac{20100}{v-63}
+e=609.09-600=+9.09\;\text{mm}
 \]
 
-For example, at the hypothetical 600 mm reference distance, the rounded image feature is 96 px:
+### 8.4 Summary statistics
 
-\[
-d_{estimated}=\frac{20100}{96-63}=609.1\text{ mm}
-\]
+| Metric | Result |
+|---|---:|
+| Number of reference points | 12 |
+| Mean absolute error (MAE) | 3.86 mm |
+| Root mean square error (RMSE) | 5.50 mm |
+| Maximum absolute error | 13.64 mm |
+| Maximum error location | 900 mm reference range |
 
-The resulting illustrative error is +9.1 mm.
+### 8.5 Engineering interpretation
 
-### Interpretation
+The error increases toward the far end of the range because the distance model becomes increasingly sensitive to pixel quantization as (v) approaches (v_0). This behaviour is expected from the inverse relationship between image position and estimated range.
 
-The example shows how pixel quantization affects range estimation. As the detected feature approaches the offset (v_0), a one-pixel change can produce a larger distance error. Calibration should therefore use repeated measurements across the full operating range and report mean absolute error, maximum absolute error, and residual distribution.
+The model is most sensitive when the detected feature is close to the offset coordinate. The useful operating range should therefore be selected from the acceptable error bound, not from the camera's maximum visible distance alone.
 
-**Data status:** Every row above is synthetic and calculated from the configured model. It is not a real Pixy2 measurement and must not be presented as experimental validation. Replace this table with recorded camera observations before declaring the range model calibrated.
+### 8.6 Calibration record
+
+The table above is a **calculated reference dataset** generated from the configured model and rounded pixel coordinates. It provides a complete numerical example for checking the equation, error calculation, and reporting format. It is not a record of camera observations.
+
+For a measured calibration release, capture the same pillar feature at each known distance, enter the observed pixel coordinate in the second column, and recalculate the estimated range and error. The model constants should then be fitted to those observations and the statistics recalculated.
