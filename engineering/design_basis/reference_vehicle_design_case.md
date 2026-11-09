@@ -110,6 +110,4 @@ These are ideal no-slip kinematic estimates. Actual speed depends on load, motor
 5. Use mechanical steering stops and calibrate the actuator-to-wheel mapping.
 6. Validate every assumed parameter before using this model for a physical design decision.
 
-## Traceability
 
-This model is intended to support comparative calculations and parameter sweeps. The values are design assumptions, not claims of measured vehicle properties.
