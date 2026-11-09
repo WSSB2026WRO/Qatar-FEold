@@ -49,6 +49,6 @@ A validation record contains:
 - pass, fail, or inconclusive result;
 - corrective actions and regression outcome.
 
-## Evidence management
+## Verification evidence
 
-Retain original logs and measurement records. Store derived plots and calculations separately with the source record, processing method, and software revision identified.
+See [Verification Evidence](verification_evidence.md) for the recorded automated validation run, reproducible analytical calculations, and the physical test records still required. Software checks and calculated results must not be presented as physical vehicle-test results.
