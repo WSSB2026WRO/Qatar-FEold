@@ -53,6 +53,4 @@ Summarize repeatability, deviations, possible error sources, and the relationshi
 - Corrective action:
 - Regression test:
 
-## Supporting records
 
-List the related source version, CSV log, measurement sheet, and relevant photographs or diagrams.
