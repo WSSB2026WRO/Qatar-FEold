@@ -68,4 +68,4 @@ where (Y) is the selected vertical image coordinate in pixels. This is an empiri
 - [ ] Test obstacle detection near corridor openings.
 - [ ] Record missed detections and false detections.
 
-Do not classify a perception model as calibrated until the image coordinates have been recorded from the installed camera at known distances.
+
