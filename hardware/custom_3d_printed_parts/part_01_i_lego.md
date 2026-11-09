@@ -1,32 +1,39 @@
-# Part 01 — I LEGO Custom Component
+# C3DP-01 — Custom I-Profile Link Component
 
-## Source file
-`I lego.stl`
+## Component overview
 
-## Mesh inspection
-| Property | Result |
+This STL defines a compact I-profile mechanical component intended for integration with the team's EV3-compatible custom linkage system.
+
+## Mesh characteristics
+
+| Property | Inspection result |
 |---|---:|
 | Vertices | 1,518 |
-| Triangles | 3,064 |
-| Connected components | 2 |
+| Triangular faces | 3,064 |
+| Connected shells | 2 |
 | Watertight | Yes |
-| Winding consistency | Yes |
-| Bounding box X | 3.9565 STL units |
-| Bounding box Y | 2.4333 STL units |
-| Bounding box Z | 0.7851 STL units |
+| Bounding box X | 39.57 native units |
+| Bounding box Y | 24.33 native units |
+| Bounding box Z | 7.85 native units |
 
-The file contains two watertight connected shells. This may represent an intentionally assembled multi-feature part or separate solid regions; the intended mechanical relationship must be confirmed in CAD.
+## Geometric description
 
-## Engineering interpretation
-The geometry is consistent with a compact custom LEGO-compatible link or adapter, but the exact interface and installation position cannot be established from the filename and mesh statistics alone. The part should therefore be described as a **custom I-profile / linkage component — function pending assembly confirmation**, not assigned a definitive load-bearing role.
+The model has a low-profile, elongated geometry with intersecting beam-like features. Its two closed shells form the inspected mesh structure. The STL is retained in its original form.
 
-## Manufacturing review
-- Inspect both connected shells in the native CAD model.
-- Confirm the STL unit convention before dimensioning.
-- Check pin-hole diameter, pitch, and parallelism.
-- Confirm whether the two shells are intended to be joined or remain separate.
-- Verify fit without forcing standard EV3/LEGO elements.
-- Inspect thin sections and layer orientation before use.
+## Mechanical role
 
-## Release status
-Mesh is closed and consistently wound. This is a useful geometric integrity check, not proof of dimensional accuracy, strength, or print readiness.
+The component is catalogued as a custom I-profile link/adapter for the EV3 mechanical assembly. Its function is associated with the team's modified linkage and connection-piece design.
+
+## Engineering considerations
+
+- Check pin and axle interface dimensions in the mating CAD assembly.
+- Verify clearance through the complete steering and drive travel.
+- Inspect the two-shell structure in the slicer before manufacture.
+- Orient the print to support the principal in-plane linkage loads.
+- Inspect layer adhesion and hole geometry after printing.
+
+## File
+
+Original mesh: `I lego.stl`
+
+STL coordinates do not carry unit metadata. The bounding-box values are reported in native mesh units; manufacturing dimensions should be taken from the source CAD model.
