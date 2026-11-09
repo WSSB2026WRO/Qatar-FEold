@@ -1,24 +1,13 @@
-# Vehicle Photographs
+# Qatar FE — Vehicle
 
-This directory documents the actual Qatar FE vehicle and its assemblies.
+The Qatar FE vehicle is developed for autonomous navigation in the WRO Future Engineers challenge.
 
-## Recommended image catalogue
+## Main systems
 
-| File name | View |
-|---|---|
-| `vehicle_overview.jpg` | Three-quarter vehicle view |
-| `vehicle_top_view.jpg` | Component arrangement |
-| `vehicle_front_view.jpg` | Front axle and steering |
-| `vehicle_rear_view.jpg` | Rear drive assembly |
-| `steering_linkage.jpg` | Steering mechanism close-up |
-| `sensor_mounting.jpg` | Gyro and ultrasonic sensor mounting |
-| `pixy2_mounting.jpg` | Pixy2 mounting and field of view |
-| `printed_parts_installed.jpg` | Custom printed parts in the assembly |
+- EV3-based propulsion and steering
+- Gyroscopic heading measurement
+- Dual ultrasonic wall-distance sensing
+- Pixy2 visual perception for obstacle identification
+- Custom mechanical interfaces and 3D-printed components
 
-## Photography standard
-
-Use even lighting and a neutral background. Capture orthogonal views for geometry review and close-ups for joints, fasteners, cable routing, and sensor mounts. Include a scale reference only when documenting a specific dimension. Perspective photographs are not dimensional drawings.
-
-## Image captions
-
-Each published image should include the view, subsystem, and revision context. Preserve original photographs and keep edited or compressed copies separately.
+The vehicle's mechanical and electronic systems are documented in the [Hardware Architecture](../hardware/README.md) and [Engineering Studies](../engineering/README.md) sections.
