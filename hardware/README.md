@@ -1,72 +1,61 @@
 # Hardware Architecture
 
-## Document scope
+## System overview
 
-This page describes the hardware interfaces explicitly declared by the supplied Open Challenge and Obstacle Challenge programs. It does not claim that unlisted components are installed or connected.
+The vehicle control platform is based on LEGO EV3 and the device interfaces declared by the two challenge programs.
 
-## Shared EV3 platform
+## Port allocation
 
-| Port | Device | Open Challenge use | Obstacle Challenge use |
-|---|---|---|---|
-| A | Medium motor | Drive | Drive |
-| B | Medium motor | Drive | Drive |
-| C | Medium motor | Steering | Steering |
-| S1 | Gyro sensor | Heading feedback | Heading feedback |
-| S2 | Ultrasonic sensor | Left wall range | Left wall range |
-| S3 | Ultrasonic sensor | Right wall range | Right wall range |
-| S4 | Pixy2 | Not used | Pillar vision |
+| EV3 port | Device | Function |
+|---|---|---|
+| A | Medium motor | Propulsion |
+| B | Medium motor | Propulsion |
+| C | Medium motor | Steering |
+| S1 | Gyro sensor | Heading feedback |
+| S2 | Ultrasonic sensor | Left-side distance |
+| S3 | Ultrasonic sensor | Right-side distance |
+| S4 | Pixy2 camera | I²C vision interface in Obstacle Challenge |
 
 ## Functional architecture
 
 ```mermaid
 flowchart LR
-    subgraph Inputs
-      G[Gyro S1]
-      UL[Left ultrasonic S2]
-      UR[Right ultrasonic S3]
-      PX[Pixy2 S4 - Obstacle only]
-      EA[Drive encoders A/B]
-    end
-    subgraph Controller
-      EV3[LEGO EV3 / Pybricks]
-      EST[State estimation]
-      CTRL[Navigation and steering logic]
-    end
-    subgraph Outputs
-      MA[Drive motor A]
-      MB[Drive motor B]
-      MC[Steering motor C]
-    end
-    G --> EV3
-    UL --> EV3
-    UR --> EV3
-    PX --> EV3
-    EA --> EV3
-    EV3 --> EST --> CTRL
-    CTRL --> MA
-    CTRL --> MB
-    CTRL --> MC
+  G[Gyro S1] --> C[EV3 Controller]
+  U1[Ultrasonic S2] --> C
+  U2[Ultrasonic S3] --> C
+  P[Pixy2 S4 — Obstacle Challenge] --> C
+  C --> A[Drive Motor A]
+  C --> B[Drive Motor B]
+  C --> S[Steering Motor C]
 ```
 
-## Interfaces and responsibilities
+## Actuation
 
-- **Drive motors A and B:** commanded together by the supplied programs. Encoder angles contribute to distance estimation.
-- **Steering motor C:** position-controlled using non-blocking target commands in the main steering routines.
-- **Gyro S1:** supplies heading. Both programs measure drift at startup and compensate for the measured rate.
-- **Ultrasonic S2 and S3:** provide left and right wall ranges. Their readings support corridor centering and opening detection.
-- **Pixy2 S4:** used only by the supplied Obstacle Challenge source to identify red and green signatures.
+- Drive motors A and B provide propulsion through encoder-controlled movement.
+- Steering motor C positions the steering mechanism using target-angle commands.
+- The software applies bounded drive and steering commands and uses encoder feedback for distance estimation.
 
-## Electrical and integration documentation still required
+## Sensor integration
 
-The source files do not specify motor current, supply voltage under load, wiring diagrams, connector pinouts, battery chemistry, fuse ratings, or the electrical specifications of the front lamp or other optional hardware. These details must be added from the actual component datasheets and the team's wiring inspection.
+### Gyroscope
+The gyro provides heading feedback. Both programs perform a stationary drift check and calibration before autonomous movement.
 
-## Commissioning checklist
+### Ultrasonic sensors
+The left and right ultrasonic sensors provide wall-distance observations used for corridor centering, wall-opening detection, and obstacle manoeuvre positioning.
 
-- [ ] Confirm each port against the program's device map.
-- [ ] Confirm drive motor polarity and equal forward response.
-- [ ] Confirm steering zero with wheels physically straight.
-- [ ] Confirm gyro sign convention by rotating the vehicle by hand.
-- [ ] Confirm ultrasonic left/right orientation.
-- [ ] For Obstacle Challenge, confirm Pixy2 address, firmware, I²C output mode, and signature IDs.
-- [ ] Record battery and cable routing photographs.
-- [ ] Record component model numbers and datasheet links.
+### Pixy2 camera
+The Obstacle Challenge program uses Pixy2 over I²C at configured address 0x54. Signature 1 is assigned to red and signature 2 to green.
+
+## Electrical integration principles
+
+Maintain secure connectors, strain relief, and separation between wiring and moving steering components. Battery, motor, and auxiliary-load ratings are governed by the relevant component specifications and the EV3 operating limits.
+
+## Commissioning
+
+1. Confirm the port allocation.
+2. Verify drive motor direction with the vehicle safely supported.
+3. Verify steering zero and travel.
+4. Calibrate the gyro while stationary.
+5. Compare ultrasonic readings with known distances.
+6. Confirm Pixy2 communication and signature mapping.
+7. Run low-speed functional checks before autonomous operation.
