@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1300" height="900" viewBox="0 0 1300 900">
+<defs><marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 L0 6 L9 3 z" fill="#315a7d"/></marker><style>.t{font:700 30px Arial;fill:#162b40}.n{fill:#f0f5fa;stroke:#315a7d;stroke-width:3;rx:16}.s{font:20px Arial;fill:#26384a}.a{stroke:#315a7d;stroke-width:3;fill:none;marker-end:url(#ar)}.d{fill:#fff5e8;stroke:#a46b2a;stroke-width:3}</style></defs>
+<rect width="1300" height="900" fill="white"/>
+<text x="650" y="55" text-anchor="middle" class="t">Obstacle Challenge — Mission State Machine</text>
+<rect x="490" y="100" width="320" height="65" class="n"/><text x="650" y="142" text-anchor="middle" class="s">Initialize and calibrate</text>
+<rect x="490" y="220" width="320" height="65" class="n"/><text x="650" y="262" text-anchor="middle" class="s">Unpark</text>
+<rect x="490" y="340" width="320" height="65" class="n"/><text x="650" y="382" text-anchor="middle" class="s">Follow corridor</text>
+<path d="M650 165 V220 M650 285 V340" class="a"/>
+<path d="M810 372 H1000" class="a"/><path d="M1000 372 V270" class="a"/>
+<rect x="900" y="205" width="300" height="65" class="d"/><text x="1050" y="247" text-anchor="middle" class="s">Pillar confirmed?</text>
+<path d="M900 238 H820 V455 H810" class="a"/>
+<rect x="490" y="455" width="320" height="65" class="n"/><text x="650" y="497" text-anchor="middle" class="s">Select passing side</text>
+<rect x="490" y="575" width="320" height="65" class="n"/><text x="650" y="617" text-anchor="middle" class="s">Track clearance and return</text>
+<path d="M650 520 V575" class="a"/>
+<path d="M490 608 H300 V372 H490" class="a"/>
+<rect x="70" y="340" width="230" height="65" class="d"/><text x="185" y="382" text-anchor="middle" class="s">Corner confirmed?</text>
+<path d="M185 405 V710 H490" class="a"/>
+<rect x="490" y="710" width="320" height="65" class="n"/><text x="650" y="752" text-anchor="middle" class="s">Execute corner / count lap</text>
+<rect x="900" y="710" width="300" height="65" class="n"/><text x="1050" y="752" text-anchor="middle" class="s">Parking approach and align</text>
+<path d="M810 742 H900" class="a"/>
+<rect x="490" y="815" width="320" height="60" class="n"/><text x="650" y="853" text-anchor="middle" class="s">Park, stop, log</text>
+<path d="M1050 775 V845 H810" class="a"/>
+<text x="835" y="315" class="s">No</text><text x="835" y="445" class="s">Yes</text><text x="205" y="690" class="s">Yes</text>
+</svg>
