@@ -1,27 +1,25 @@
-# Conceptual Steering Geometry Study
+# Steering Geometry and Linkage Design
 
-> Conceptual design note. This is not a claim that the current physical steering linkage has been measured or matches the model.
+## 1. Design objective
 
-## 1. Purpose
-
-Steering geometry determines the relationship between actuator rotation and road-wheel angle. It affects turning radius, tire scrub, corner tracking, actuator load, and repeatability.
+Steering geometry determines the relationship between actuator rotation and road-wheel angle. It influences turning radius, tire scrub, corner tracking, actuator load, and repeatability.
 
 ## 2. Ideal low-speed geometry
 
 For wheelbase (L), track (T), and turn radius measured to the rear-axle midpoint (R):
 
-[
-	an(delta_i)=rac{L}{R-T/2},quad
-	an(delta_o)=rac{L}{R+T/2}
-]
+\[
+\tan(\delta_i)=\frac{L}{R-T/2},\quad
+\tan(\delta_o)=\frac{L}{R+T/2}
+\]
 
-The inner wheel angle (delta_i) is greater than the outer wheel angle (delta_o).
+The inner wheel angle \(\delta_i\) is greater than the outer wheel angle \(\delta_o\).
 
 Equivalent Ackermann relation:
 
-[
-cot(delta_o)-cot(delta_i)=rac{T}{L}
-]
+\[
+\cot(\delta_o)-\cot(\delta_i)=\frac{T}{L}
+\]
 
 ## 3. Linkage design variables
 
@@ -36,7 +34,7 @@ cot(delta_o)-cot(delta_i)=rac{T}{L}
 
 ## 4. Actuator-to-wheel mapping
 
-A robust control system should calibrate the mapping from steering motor encoder angle (	heta_m) to road-wheel angle (delta_w). For a nonlinear linkage, a lookup table or fitted polynomial may be more accurate than a constant ratio.
+A control system should map steering motor encoder angle \(\theta_m\) to road-wheel angle \(\delta_w\). For a nonlinear linkage, a lookup table or fitted polynomial can represent the actuator relationship more accurately than a constant ratio.
 
 Calibration procedure:
 1. Place the vehicle on a level surface.
@@ -55,6 +53,6 @@ Calibration procedure:
 | Flexible steering arms | Angle error under load | Increase stiffness or reduce lever arm |
 | Loose printed joint | Sudden geometry change | Retention features and inspection |
 
-## 6. Required drawings and measurements
+## 6. Drawing definition
 
-A released steering study requires a top-view dimensioned drawing, pivot coordinates, tie-rod length, steering arm dimensions, left/right road-wheel angle table, and a record of mechanical stop positions.
+A steering assembly drawing should show the top-view geometry, pivot coordinates, tie-rod length, steering arm dimensions, actuator travel, left/right road-wheel angle relationship, and mechanical stop positions.
