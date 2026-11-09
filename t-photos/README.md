@@ -1,28 +1,20 @@
 # Team Photographs
 
-This directory is reserved for approved photographs of the Qatar FE team.
+This directory is the visual record for the Qatar FE team.
 
-## Recommended photo set
+## Recommended catalogue
 
 | File name | Description |
 |---|---|
-| `team_official.jpg` | Full team portrait |
-| `team_workshop.jpg` | Team working on the vehicle |
+| `team_official.jpg` | Official team portrait |
+| `team_workshop.jpg` | Team mechanical development session |
 | `team_programming.jpg` | Software development session |
 | `team_competition.jpg` | Competition or event photograph |
 
-## Image requirements
+## Publication standard
 
-- Use original photographs approved for public release.
-- Keep the original image aspect ratio.
-- Prefer high-resolution images with clear subjects.
-- Avoid publishing personal information visible on screens, badges, or documents.
-- Add a short caption and date in the image index.
+Use original team photographs approved for public release. Preserve the original aspect ratio and use high-resolution images. Check that personal information on badges, screens, and documents is not unintentionally exposed.
 
-## Image index
+## Caption format
 
-| Image | Caption | Date | Permission checked |
-|---|---|---|---|
-| Pending | Team portrait | Pending | Pending |
-
-No placeholder image is presented as an actual team photograph.
+For each image, include a short caption, event or activity, and capture date. Keep original photographs unchanged; create compressed web copies separately when required.
