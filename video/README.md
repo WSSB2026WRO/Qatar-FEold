@@ -10,4 +10,3 @@ Video demonstrations are organized by challenge and subsystem:
 - Parking manoeuvres
 - Sensor and system integration
 
-Each published demonstration is accompanied by its challenge program version and a concise description of the demonstrated operation.
