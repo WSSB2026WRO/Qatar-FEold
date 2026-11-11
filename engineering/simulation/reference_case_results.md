@@ -44,4 +44,4 @@
 
 The calculations show the influence of centre-of-gravity height and track width on geometric load transfer and lateral stability. The friction bound is a simplified Coulomb estimate; usable tractive force also depends on motor torque, tire characteristics, floor condition, and wheel slip.
 
-The wheel-speed conversion assumes a 1:1 ratio, no slip, and a 56 mm wheel diameter. It provides the kinematic relationship between motor speed and theoretical ground speed.
+The wheel-speed conversion assumes a 1:1 ratio, no slip, and a 56 mm wheel diameter. It provides the kinematic relationship between motor speed and theoretical ground speed. The parameter-sweep CSV now includes both 250 deg/s and 300 deg/s reference-speed columns.
