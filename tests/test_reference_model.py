@@ -63,9 +63,8 @@ class ReferenceVehicleModelTests(unittest.TestCase):
     def test_reference_outputs_are_finite_and_nonnegative(self):
         result = parameter_sweep.calculate(0.8, 1.2)
         for key, value in result.items():
-            if key.endswith("_N") or key.endswith("_m_s2"):
-                self.assertTrue(math.isfinite(value), key)
-                self.assertGreaterEqual(value, 0.0, key)
+            self.assertTrue(math.isfinite(value), key)
+            self.assertGreaterEqual(value, 0.0, key)
 
 
 if __name__ == "__main__":
