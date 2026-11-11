@@ -2,6 +2,7 @@
 
 These tests validate calculations only. They do not represent physical robot tests.
 """
+import csv
 import math
 import sys
 import unittest
@@ -45,6 +46,19 @@ class ReferenceVehicleModelTests(unittest.TestCase):
             3.0 * low["lateral_transfer_N"],
             places=12,
         )
+
+    def test_parameter_sweep_writes_thirty_cases_and_speed_columns(self):
+        output = SIMULATION_DIR / 'reference_design_sweep.csv'
+        try:
+            parameter_sweep.main()
+            with output.open(newline='', encoding='utf-8') as handle:
+                rows = list(csv.DictReader(handle))
+            self.assertEqual(len(rows), 30)
+            self.assertIn('ideal_speed_250_deg_s_m_s', rows[0])
+            self.assertIn('ideal_speed_300_deg_s_m_s', rows[0])
+        finally:
+            if output.exists():
+                output.unlink()
 
     def test_reference_outputs_are_finite_and_nonnegative(self):
         result = parameter_sweep.calculate(0.8, 1.2)
