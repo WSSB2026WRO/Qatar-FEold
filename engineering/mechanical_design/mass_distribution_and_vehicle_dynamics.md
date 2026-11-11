@@ -51,15 +51,15 @@ The component register should include the chassis, drive motors, steering actuat
 
 For discrete component masses:
 
-[
+\[
 M=sum_{i=1}^{n}m_i
-]
+\]
 
-[
-x_{CG}=rac{sum m_i x_i}{M},quad
-y_{CG}=rac{sum m_i y_i}{M},quad
-z_{CG}=rac{sum m_i z_i}{M}
-]
+\[
+x_{CG}=\frac{\sum_{i=1}^{n}m_i x_i}{M},\quad
+y_{CG}=\frac{\sum_{i=1}^{n}m_i y_i}{M},\quad
+z_{CG}=\frac{\sum_{i=1}^{n}m_i z_i}{M}
+\]
 
 The centre of gravity is therefore a mass-weighted position, not the geometric centre of the chassis.
 
@@ -75,13 +75,13 @@ The centre of gravity is therefore a mass-weighted position, not the geometric c
 
 For a vehicle on level ground with total weight (W=Mg), wheelbase (L), and longitudinal centre-of-gravity coordinate (x_{CG}):
 
-[
-F_{z,front}=Wrac{x_{CG}}{L}
-]
+\[
+F_{z,front}=W\frac{x_{CG}}{L}
+\]
 
-[
-F_{z,rear}=Wleft(1-rac{x_{CG}}{L}ight)
-]
+\[
+F_{z,rear}=W\left(1-\frac{x_{CG}}{L}\right)
+\]
 
 These equations assume static equilibrium, a rigid support plane, and no external longitudinal force.
 
@@ -91,13 +91,13 @@ A forward centre of gravity increases front axle load and reduces rear axle load
 
 For equal front and rear track (T), a simplified lateral equilibrium gives:
 
-[
-F_{z,left}=Wleft(rac{1}{2}+rac{y_{CG}}{T}ight)
-]
+\[
+F_{z,left}=W\left(\frac{1}{2}+\frac{y_{CG}}{T}\right)
+\]
 
-[
-F_{z,right}=Wleft(rac{1}{2}-rac{y_{CG}}{T}ight)
-]
+\[
+F_{z,right}=W\left(\frac{1}{2}-\frac{y_{CG}}{T}\right)
+\]
 
 This simplified expression assumes a symmetric support geometry and a centred longitudinal distribution. For unequal tracks, four separate wheel reactions should be solved using force and moment equilibrium.
 
@@ -111,13 +111,13 @@ Let the four tire contact points be at:
 
 The vertical reactions (N_{FL},N_{FR},N_{RL},N_{RR}) must satisfy:
 
-[
+\[
 N_{FL}+N_{FR}+N_{RL}+N_{RR}=W
-]
+\]
 
-[
-sum M_y=0,qquad sum M_x=0
-]
+\[
+\sum M_y=0,\qquad \sum M_x=0
+\]
 
 A unique four-contact solution requires additional assumptions about chassis rigidity, suspension compliance, or measured support deflection. For a rigid four-wheel chassis on an imperfect surface, the load distribution can be statically indeterminate.
 
@@ -125,9 +125,9 @@ A unique four-contact solution requires additional assumptions about chassis rig
 
 Under longitudinal acceleration (a_x), a simplified quasi-static load-transfer magnitude is:
 
-[
-Delta F_x=rac{M a_x h_{CG}}{L}
-]
+\[
+Delta F_x=\frac{M a_x h_{CG}}{L}
+\]
 
 During acceleration, normal load transfers toward the rear. During braking, it transfers toward the front.
 
@@ -137,17 +137,17 @@ The expression assumes a rigid body, level ground, negligible aerodynamic forces
 
 For lateral acceleration (a_y), a simplified total lateral load-transfer magnitude is:
 
-[
-Delta F_y=rac{M a_y h_{CG}}{T}
-]
+\[
+Delta F_y=\frac{M a_y h_{CG}}{T}
+\]
 
 Increasing track width reduces the load-transfer magnitude for the same mass, acceleration, and centre-of-gravity height. Reducing centre-of-gravity height has the same qualitative effect.
 
 For an ideal rigid vehicle with symmetric track, a geometric static tip threshold is:
 
-[
-a_{y,tip}approx grac{T}{2h_{CG}}
-]
+\[
+a_{y,tip}\approx g\frac{T}{2h_{CG}}
+\]
 
 This is a theoretical threshold, not a safe operating limit. Tire grip, transient motion, structural flexibility, floor friction, and wheel lift dynamics can cause loss of control before this idealized condition.
 
@@ -155,9 +155,9 @@ This is a theoretical threshold, not a safe operating limit. Tire grip, transien
 
 The yaw moment of inertia about the vertical axis is:
 
-[
-I_z=sum_ileft(I_{z,i}+m_i[(x_i-x_{CG})^2+(y_i-y_{CG})^2]ight)
-]
+\[
+I_z=\sum_i\left(I_{z,i}+m_i[(x_i-x_{CG})^2+(y_i-y_{CG})^2]\right)
+\]
 
 Mass placed far from the centre of gravity increases yaw inertia. A compact central arrangement can improve rotational response, but component placement must also respect cooling, wiring, sensor field of view, and mechanical access.
 
@@ -165,9 +165,9 @@ Mass placed far from the centre of gravity increases yaw inertia. A compact cent
 
 For a low-speed vehicle following a circular path, ideal Ackermann geometry requires the inner wheel to steer more sharply than the outer wheel.
 
-[
-cot(delta_o)-cot(delta_i)=rac{T}{L}
-]
+\[
+\cot(\delta_o)-\cot(\delta_i)=\f\frac{T}{L}
+\]
 
 where (delta_i) and (delta_o) are the inner and outer wheel angles.
 
@@ -186,17 +186,17 @@ A complete steering study should include:
 
 A simplified tire friction bound is:
 
-[
-|F_x|leq mu N
-]
+\[
+|F_x|\leq \mu N
+\]
 
 where (mu) is the effective tire-floor friction coefficient and (N) is the wheel normal load.
 
 For driven wheels, the maximum theoretical tractive force is limited by both motor torque and available tire friction:
 
-[
-F_{drive}leq minleft(rac{	au_{wheel}}{r},mu N_{driven}ight)
-]
+\[
+F_{drive}\leq \min\left(\frac{\t\tau_{wheel}}{r},\mu N_{driven}\right)
+\]
 
 This equation highlights why motor torque alone does not determine acceleration. If the driven axle is lightly loaded, additional motor torque can cause wheel slip rather than useful acceleration.
 
