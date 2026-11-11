@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+<defs><style>.title{font:700 28px Arial;fill:#172b3d}.label{font:18px Arial;fill:#26384a}.note{font:15px Arial;fill:#586879}.dim{font:16px Arial;fill:#8b3d58}.frame{fill:#eef3f8;stroke:#315a7d;stroke-width:3}.link{stroke:#a34d63;stroke-width:8;stroke-linecap:round;fill:none}.pivot{fill:#fff;stroke:#315a7d;stroke-width:4}.wheel{fill:#293847;stroke:#15283d;stroke-width:2}.guide{stroke:#8b9bab;stroke-width:1.5;stroke-dasharray:7 6}</style></defs>
+<rect width="1200" height="760" fill="#fff"/>
+<text x="600" y="45" text-anchor="middle" class="title">MEC-002 — Steering Linkage Reference</text>
+<text x="600" y="75" text-anchor="middle" class="note">Conceptual top-view mechanism schematic • Not a dimensioned fabrication drawing</text>
+<rect x="340" y="150" width="520" height="450" rx="20" class="frame"/>
+<text x="600" y="180" text-anchor="middle" class="label">Chassis reference envelope</text>
+<!-- front wheels and pivots -->
+<rect x="280" y="190" width="48" height="135" rx="8" class="wheel"/>
+<rect x="872" y="190" width="48" height="135" rx="8" class="wheel"/>
+<circle cx="330" cy="260" r="11" class="pivot"/><circle cx="870" cy="260" r="11" class="pivot"/>
+<line x1="330" y1="260" x2="870" y2="260" class="guide"/>
+<!-- steering arms and tie rod -->
+<path d="M330 260 L405 335 L795 335 L870 260" class="link"/>
+<circle cx="405" cy="335" r="10" class="pivot"/><circle cx="795" cy="335" r="10" class="pivot"/>
+<text x="600" y="320" text-anchor="middle" class="label">Tie-rod / steering connection (schematic)</text>
+<!-- actuator -->
+<rect x="525" y="420" width="150" height="75" rx="10" fill="#fff" stroke="#38766d" stroke-width="3"/>
+<text x="600" y="452" text-anchor="middle" class="label">Motor C</text><text x="600" y="475" text-anchor="middle" class="note">Steering actuator</text>
+<path d="M600 420 L600 365 L795 335" class="link"/>
+<circle cx="600" cy="365" r="9" class="pivot"/>
+<text x="720" y="400" class="note">Actuator crank path</text>
+<!-- dimensions -->
+<line x1="330" y1="130" x2="870" y2="130" class="guide"/>
+<text x="600" y="120" text-anchor="middle" class="dim">Front track reference: 100 mm</text>
+<line x1="250" y1="260" x2="250" y2="520" class="guide"/>
+<text x="235" y="390" text-anchor="middle" class="dim" transform="rotate(-90 235 390)">Steering arm reference length: 20 mm</text>
+<text x="600" y="650" text-anchor="middle" class="note">Project geometry record: wheelbase 100 mm; front track 100 mm; steering arm 20 mm.</text>
+<text x="600" y="678" text-anchor="middle" class="note">Pivot coordinates, tie-rod length, crank radius, and exact linkage topology require confirmation from the final CAD assembly.</text>
+<text x="600" y="710" text-anchor="middle" class="note">Do not use this schematic alone to manufacture or set mechanical steering stops.</text>
+</svg>
