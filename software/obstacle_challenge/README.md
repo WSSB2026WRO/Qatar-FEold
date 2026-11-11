@@ -1,5 +1,11 @@
 # Obstacle Challenge — Visual Perception and Autonomous Navigation
 
+## Engineering drawings
+
+![OBS-001 — Obstacle Challenge state machine](../../docs/drawings/OBS-001_obstacle_state_machine.svg)
+
+Camera geometry and the electrical interface are documented in [CAM-001](../../docs/drawings/CAM-001_pixy2_camera_geometry.svg) and [ELE-001](../../docs/drawings/ELE-001_ev3_wiring.svg).
+
 ## Program identity
 
 | Field | Source value |
