@@ -29,6 +29,7 @@ Both programs target LEGO EV3 with Pybricks MicroPython. The Obstacle Challenge 
 - [Consolidated engineering portfolio](docs/engineering_portfolio.md) — project overview, hardware interfaces, software architecture, reference calculations, drawing register, verification evidence, and physical validation plan.
 - [Repository completion status and remaining release gates](docs/repository_completion_status.md)
 - [Verification evidence](docs/verification_evidence.md)
+- [Automated tests](tests/test_reference_model.py) and [documentation integrity tests](tests/test_documentation_integrity.py)
 - [Engineering release checklist](docs/engineering_release_checklist.md)
 - [Repository guide](docs/repository_guide.md)
 
