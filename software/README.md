@@ -1,69 +1,84 @@
-# Software Architecture
+# Software Architecture — Team 6038
 
-Team **6038** maintains two independent mission programs and two programming implementations for the LEGO EV3 robot. Python/Pybricks MicroPython and graphical LEGO EV3 block programming are both represented for the Open and Obstacle Challenges.
+Team **6038** developed two mission programs for the LEGO MINDSTORMS EV3 robot and implemented each mission using two programming approaches:
 
-## Challenge implementations
+1. **Python / Pybricks MicroPython** — text-based source programs.
+2. **LEGO MINDSTORMS EV3 blocks** — native graphical EV3 project files.
 
-| Challenge | Python source | LEGO EV3 block project | Main sensing |
-|---|---|---|---|
-| Open Challenge | [open_challenge.py](open_challenge/open_challenge.py) | `OpenChallenge.ev3` (native LEGO EV3 block project supplied with this delivery) | Gyro and dual ultrasonic |
-| Obstacle Challenge | [obstacle_challenge.py](obstacle_challenge/obstacle_challenge.py) | `ObstacleChallenge.ev3` (native LEGO EV3 block project supplied with this delivery) | Gyro, dual ultrasonic, Pixy2 |
+This structure allows the team to compare the two approaches on the same robot platform and evaluate which is better suited to the competition missions.
 
-## Comparative engineering objective
+## Software directory map
 
-The two implementations are maintained to compare:
+```text
+software/
+├── README.md
+├── implementation_comparison.md
+├── open_challenge/
+│   ├── README.md
+│   ├── algorithm_notes.md
+│   └── open_challenge.py
+├── obstacle_challenge/
+│   ├── README.md
+│   ├── algorithm_notes.md
+│   └── obstacle_challenge.py
+└── ev3_blocks/
+    ├── open_challenge/
+    │   ├── README.md
+    │   └── OpenChallenge.ev3
+    └── obstacle_challenge/
+        ├── README.md
+        └── ObstacleChallenge.ev3
+```
+
+## Mission implementation files
+
+| Mission | Python / Pybricks MicroPython | Native EV3 block project |
+|---|---|---|
+| Open Challenge | [`open_challenge.py`](open_challenge/open_challenge.py) | [`OpenChallenge.ev3`](ev3_blocks/open_challenge/OpenChallenge.ev3) |
+| Obstacle Challenge | [`obstacle_challenge.py`](obstacle_challenge/obstacle_challenge.py) | [`ObstacleChallenge.ev3`](ev3_blocks/obstacle_challenge/ObstacleChallenge.ev3) |
+
+Each challenge folder contains its own README describing the corresponding implementation. The EV3 project folders also document the native project archive and the modules stored inside it.
+
+## Why two programming approaches?
+
+The team implemented both approaches to make a practical, evidence-based comparison rather than assuming that one programming language or environment is automatically superior.
+
+The comparison includes:
+
 - program construction and modification;
 - build, compilation or project-preparation duration;
-- startup latency;
-- sensing/decision/actuation cycle time;
+- startup latency from the start command to the first program action;
+- sensing, decision and actuation cycle duration;
 - mission execution time and repeatability;
-- debugging, maintainability and reliability.
+- debugging, readability and maintainability.
 
-Team 6038 places particular emphasis on timing comparisons at fractions-of-a-second scale. Sub-second values are best represented in milliseconds or at a clearly stated decimal precision. Python upload or bytecode preparation is distinguished from native compilation, so that unlike stages are not compared as if they were identical.
+## Sub-second timing: a Team 6038 strength
 
-The repository includes the comparison methodology, but no paired timing dataset is currently recorded. Accordingly, no measured performance advantage is attributed to either implementation.
+A distinctive strength of Team 6038 is its focus on comparing program preparation and robot response times at **fractions-of-a-second scale**. Sub-second measurements are best recorded in milliseconds or at a stated decimal precision.
 
-See [Dual-Implementation Technical Comparison](implementation_comparison.md) for the full technical comparison.
+The timing quantities are kept distinct:
 
-## Python runtime platform
+- **Build / compilation / project preparation:** time required by the relevant software environment to prepare the program for execution.
+- **Startup latency:** time from the start command to the first confirmed program action.
+- **Control-cycle duration:** time for an equivalent sensing, decision and actuation cycle.
+- **Mission execution time:** time to complete the same defined mission.
 
-- LEGO EV3
-- Pybricks MicroPython
-- EV3 motor and sensor interfaces
-- Pixy2 I²C interface for the Python Obstacle Challenge
+Python upload or bytecode preparation is not automatically equivalent to native compilation by the EV3 graphical environment. A fair comparison therefore uses clearly defined and equivalent timing boundaries.
 
-## Shared software functions in the Python programs
+The repository documents the comparison method and contains both implementations. It does not currently include a paired sub-second timing dataset, so no numerical speed advantage is claimed for either approach.
 
-- Motor and sensor initialization
-- Gyro drift measurement and calibration
-- Ultrasonic range acquisition
-- Steering actuator control
-- Encoder-based distance estimation
-- Heading feedback
-- Event and CSV logging
-- Runtime fault and timeout handling
+## Technical comparison
 
-## Challenge-specific functions
+See [Dual-Implementation Technical Comparison](implementation_comparison.md) for the detailed comparison of programming models, workflow, runtime, debugging, timing methodology and evidence scope.
 
-### Open Challenge
-- Dual-wall corridor centering
-- Opening confirmation
-- Route direction selection
-- Twelve-corner route tracking
-- Final approach to the start section
+## Python software functions
 
-### Obstacle Challenge
-- Pixy2 block acquisition
-- Red/green signature classification
-- Pillar range and lateral-position estimation
-- Passing-side selection
-- Obstacle clearance tracking
-- Parking manoeuvre
+The Python mission programs include EV3 device initialization, sensor acquisition, heading feedback, steering and drive control, mission-state logic, and run logging. Mission-specific details are documented in each Python challenge README.
 
-## Automated Python repository tests
+## Hardware interface context
 
-The repository includes unit tests for the analytical reference model and integrity checks for Markdown links, text encoding, and SVG XML structure. Run all tests from the repository root with `python -m unittest discover -s tests -v`.
+For the Obstacle Challenge, the Pixy2 camera assembly with its integrated illumination is connected through EV3 sensor port S4 using I²C. The illumination is part of the camera assembly, not a separate device on motor port D. Motor port D is unused by the challenge programs.
 
-## Software architecture
+## Automated software checks
 
-The two challenge programs remain independent because their mission logic and sensing requirements differ. The Python and block-program versions provide alternative implementations of these mission behaviours for comparative evaluation.
+The repository's automated Python checks validate source parsing and analytical/documentation integrity. These checks are not a substitute for executing the native EV3 block projects on the physical robot.
