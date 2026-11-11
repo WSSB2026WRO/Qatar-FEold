@@ -1,5 +1,8 @@
 # Conceptual Study — Mass Distribution and Vehicle Dynamics
 
+![DYN-001 — Vehicle dynamics model](../../docs/drawings/DYN-001_vehicle_dynamics.svg)
+
+
 > **Study classification:** Conceptual engineering analysis. This document explores a theoretical vehicle architecture and does not assert that the described configuration has been manufactured, measured, or validated on the team's current robot.
 
 ## 1. Objectives
