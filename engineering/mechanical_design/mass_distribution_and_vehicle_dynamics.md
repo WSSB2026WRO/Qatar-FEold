@@ -221,7 +221,7 @@ The battery is often one of the heaviest movable components. A conceptual packag
 - access for replacement;
 - protection from impact and cable strain.
 
-The final placement should be selected using measured mass properties and repeatable driving tests, not aesthetic symmetry alone.
+The reference model treats mass placement as a vehicle-dynamics variable; the illustrative centre-of-gravity assumptions are not represented as measured mass properties.
 
 ## 14. Measurement and validation protocol
 
