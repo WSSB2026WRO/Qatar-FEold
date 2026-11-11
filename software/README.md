@@ -5,7 +5,7 @@ Team **6038** developed two mission programs for the LEGO MINDSTORMS EV3 robot a
 1. **Python / Pybricks MicroPython** — text-based source programs.
 2. **LEGO MINDSTORMS EV3 blocks** — native graphical EV3 project files.
 
-This structure allows the team to compare the two approaches on the same robot platform and evaluate which is better suited to the competition missions.
+This setup lets us compare both approaches on the same robot and decide which one suits each competition mission.
 
 ## Software directory map
 
@@ -45,7 +45,7 @@ Each challenge folder contains its own README describing the corresponding imple
 
 ## Why two programming approaches?
 
-The team implemented both approaches to make a practical, evidence-based comparison rather than assuming that one programming language or environment is automatically superior.
+We implemented both approaches so we could compare them on the same robot instead of assuming that one programming environment would perform better.
 
 The comparison includes:
 
@@ -58,7 +58,7 @@ The comparison includes:
 
 ## Sub-second timing: a Team 6038 strength
 
-A distinctive strength of Team 6038 is its focus on comparing program preparation and robot response times at **fractions-of-a-second scale**. Sub-second measurements are best recorded in milliseconds or at a stated decimal precision.
+One area we wanted to examine closely was how long each program takes to start and respond. We therefore focus on timings measured in milliseconds or fractions of a second. Sub-second measurements are best recorded in milliseconds or at a stated decimal precision.
 
 The timing quantities are kept distinct:
 
@@ -69,7 +69,7 @@ The timing quantities are kept distinct:
 
 Python upload or bytecode preparation is not automatically equivalent to native compilation by the EV3 graphical environment. A fair comparison therefore uses clearly defined and equivalent timing boundaries.
 
-The repository documents the comparison method and contains both implementations. It does not currently include a paired sub-second timing dataset, so no numerical speed advantage is claimed for either approach.
+We have documented the comparison method and included both implementations here. It does not currently include a paired sub-second timing dataset, so no numerical speed advantage is claimed for either approach.
 
 ## Technical comparison
 
@@ -85,4 +85,4 @@ For the Obstacle Challenge, the Pixy2 camera assembly with its integrated illumi
 
 ## Automated software checks
 
-The repository's automated Python checks validate source parsing and analytical/documentation integrity. These checks are not a substitute for executing the native EV3 block projects on the physical robot.
+Our automated Python checks verify that the source files can be parsed and that the analytical and documentation checks pass. These checks are not a substitute for executing the native EV3 block projects on the physical robot.
