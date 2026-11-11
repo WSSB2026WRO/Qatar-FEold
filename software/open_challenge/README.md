@@ -70,4 +70,4 @@ The program writes `log_open.csv`. The log records phase, route progress, sensor
 
 ## Software evidence scope
 
-This document describes the supplied source configuration and control logic. The repository's automated source checks establish Python syntax and documentation integrity; they do not represent a physical EV3 route test. No completed physical mission log is included in this repository snapshot.
+Here we describe the program settings and the control logic used in this version. Our automated checks verify Python syntax and documentation consistency. They do not replace a route test with the physical EV3 robot. No completed physical mission log is included in this repository snapshot.
