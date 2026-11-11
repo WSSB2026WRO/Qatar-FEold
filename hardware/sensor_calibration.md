@@ -43,13 +43,13 @@ Measure a straight-line travel distance on the intended surface and compare it w
 
 ## 4. Pixy2 range calibration
 
-The Obstacle Challenge program uses the configured empirical vertical-image model:
+The Obstacle Challenge program uses the Pixy2 camera assembly, including its integrated illumination, through sensor port S4 and applies the configured empirical vertical-image model:
 
 `d = 20100 / (Y - 63)`
 
 where `Y` is the selected vertical image feature in pixels and `d` is the estimated range in millimetres. The constants 20100 and 63 are configured model parameters, not proof of a completed physical calibration.
 
-To validate the model, collect multiple observations at known target distances, retain the raw image coordinate for each observation, calculate predicted range and residual, and evaluate the error across the intended operating range. Document target dimensions, camera mounting position, image resolution, lighting, and the method used to identify the image feature.
+The model-validation protocol consists of multiple observations at known target distances, retention of raw image coordinates, calculation of predicted range and residual, and evaluation of error across the intended operating range. Document target dimensions, camera mounting position, image resolution, lighting, and the method used to identify the image feature.
 
 The model and its geometric limitations are discussed in [Pixy2 Calibration and Geometry](../engineering/perception/pixy2_calibration_and_geometry.md).
 
