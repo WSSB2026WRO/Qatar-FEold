@@ -8,7 +8,7 @@ Use a 1–10 scale for severity (S), occurrence (O), and detectability (D). The 
 RPN=S\times O\times D
 \]
 
-The ratings in this register are engineering review scores used to prioritize design controls.
+No numeric S/O/D ratings are assigned in this baseline register because physical occurrence and detectability evidence has not been recorded. Apply the scale during a documented risk review; RPN is a prioritization aid and does not replace severity-based safety controls.
 
 ## 2. Failure mode and effects analysis
 
