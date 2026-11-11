@@ -1,13 +1,13 @@
-# Software Architecture — Team 6038
+# Software — Team 6038
 
-Team **6038** developed two mission programs for the LEGO MINDSTORMS EV3 robot and implemented each mission using two programming approaches:
+We have made two mission programs for our LEGO MINDSTORMS EV3 robot. Each mission is represented in two programming formats:
 
-1. **Python / Pybricks MicroPython** — text-based source programs.
+1. **Python / Pybricks MicroPython** — programs written as text-based source code.
 2. **LEGO MINDSTORMS EV3 blocks** — native graphical EV3 project files.
 
-This setup lets us compare both approaches on the same robot and decide which one suits each competition mission.
+This lets us compare both approaches on the same robot instead of guessing which one will work better for each mission.
 
-## Software directory map
+## Folder map
 
 ```text
 software/
@@ -30,59 +30,56 @@ software/
         └── ObstacleChallenge.ev3
 ```
 
-## Engineering diagrams
+## Engineering drawings
 
-The mission software is documented alongside its hardware and control context. See the [complete eight-sheet engineering drawing set](../docs/drawings/README.md), including the [system architecture](../docs/drawings/SYS-001_autonomous_vehicle_architecture.svg), [Obstacle Challenge state machine](../docs/drawings/OBS-001_obstacle_state_machine.svg), [EV3 wiring](../docs/drawings/ELE-001_ev3_wiring.svg) and [Pixy2 camera geometry](../docs/drawings/CAM-001_pixy2_camera_geometry.svg).
+We explain the programs together with the hardware and control design. See the [eight-sheet drawing set](../docs/drawings/README.md), including the [system architecture](../docs/drawings/SYS-001_autonomous_vehicle_architecture.svg), [Obstacle Challenge state machine](../docs/drawings/OBS-001_obstacle_state_machine.svg), [EV3 wiring](../docs/drawings/ELE-001_ev3_wiring.svg), and [Pixy2 camera geometry](../docs/drawings/CAM-001_pixy2_camera_geometry.svg).
 
-## Mission implementation files
+## Program files
 
 | Mission | Python / Pybricks MicroPython | Native EV3 block project |
 |---|---|---|
 | Open Challenge | [`open_challenge.py`](open_challenge/open_challenge.py) | [`OpenChallenge.ev3`](ev3_blocks/open_challenge/OpenChallenge.ev3) |
 | Obstacle Challenge | [`obstacle_challenge.py`](obstacle_challenge/obstacle_challenge.py) | [`ObstacleChallenge.ev3`](ev3_blocks/obstacle_challenge/ObstacleChallenge.ev3) |
 
-Each challenge folder contains its own README describing the corresponding implementation. The EV3 project folders also document the native project archive and the modules stored inside it.
+Each challenge folder has its own README. The EV3 project folders also explain the native project archive and list the modules stored in it.
 
-## Why two programming approaches?
+## Why we kept both programming approaches
 
-We implemented both approaches so we could compare them on the same robot instead of assuming that one programming environment would perform better.
+We wanted to compare a text-based program with a visual block program on the same EV3 robot. We look at:
+- How long it takes to create and change a program.
+- Build, compilation, or project-preparation time.
+- Time from pressing start to the first program action.
+- Time for sensing, deciding, and moving.
+- Mission time and repeatability.
+- How easy the program is to debug, read, and maintain.
 
-The comparison includes:
+## Looking at timings smaller than one second
 
-- program construction and modification;
-- build, compilation or project-preparation duration;
-- startup latency from the start command to the first program action;
-- sensing, decision and actuation cycle duration;
-- mission execution time and repeatability;
-- debugging, readability and maintainability.
+We are especially interested in how quickly each program starts and responds. We therefore pay attention to timings in milliseconds and fractions of a second.
 
-## Sub-second timing: a Team 6038 strength
+We keep these measurements separate:
 
-One area we wanted to examine closely was how long each program takes to start and respond. We therefore focus on timings measured in milliseconds or fractions of a second. Sub-second measurements are best recorded in milliseconds or at a stated decimal precision.
-
-The timing quantities are kept distinct:
-
-- **Build / compilation / project preparation:** time required by the relevant software environment to prepare the program for execution.
+- **Build / compilation / project preparation:** time the software environment needs to prepare the program.
 - **Startup latency:** time from the start command to the first confirmed program action.
-- **Control-cycle duration:** time for an equivalent sensing, decision and actuation cycle.
+- **Control-cycle duration:** time for an equivalent sensor, decision, and motor-command cycle.
 - **Mission execution time:** time to complete the same defined mission.
 
-Python upload or bytecode preparation is not automatically equivalent to native compilation by the EV3 graphical environment. A fair comparison therefore uses clearly defined and equivalent timing boundaries.
+Uploading Python code or preparing bytecode is not automatically the same as compiling a native EV3 graphical project. A fair comparison needs clear and equivalent timing boundaries.
 
-We have documented the comparison method and included both implementations here. It does not currently include a paired sub-second timing dataset, so no numerical speed advantage is claimed for either approach.
+We have documented the method and included both implementations, but we do not yet have a paired timing dataset. We therefore do not claim that either approach is faster.
 
-## Technical comparison
+## More detailed comparison
 
-See [Dual-Implementation Technical Comparison](implementation_comparison.md) for the detailed comparison of programming models, workflow, runtime, debugging, timing methodology and evidence scope.
+See [Dual-Implementation Technical Comparison](implementation_comparison.md) for the programming models, workflow, timing method, debugging, and evidence limits.
 
-## Python software functions
+## What the Python programs do
 
-The Python mission programs include EV3 device initialization, sensor acquisition, heading feedback, steering and drive control, mission-state logic, and run logging. Mission-specific details are documented in each Python challenge README.
+The Python mission programs initialize the EV3 devices, read the sensors, use heading feedback, control the drive and steering motors, manage mission states, and record run information. The separate challenge READMEs explain the mission-specific behaviour.
 
-## Hardware interface context
+## Hardware connection note
 
-For the Obstacle Challenge, the Pixy2 camera assembly with its integrated illumination is connected through EV3 sensor port S4 using I²C. The illumination is part of the camera assembly, not a separate device on motor port D. Motor port D is unused by the challenge programs.
+For the Obstacle Challenge, the Pixy2 camera and its integrated illumination connect through EV3 sensor port S4 using I²C. The light is part of the camera assembly, not a separate device on motor port D. Motor port D is unused by the challenge programs.
 
-## Automated software checks
+## Automated checks
 
-Our automated Python checks verify that the source files can be parsed and that the analytical and documentation checks pass. These checks are not a substitute for executing the native EV3 block projects on the physical robot.
+Our automated checks confirm that the Python files can be compiled and that the analytical and documentation tests pass. They do not replace running the native EV3 block projects on the physical robot.
