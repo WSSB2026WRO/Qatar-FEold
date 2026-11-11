@@ -24,13 +24,9 @@ The geometry is narrow and elongated, with four distinct mesh components distrib
 
 The part is catalogued as a multi-section custom link/connector for the modified EV3 mechanical assembly. Its geometry provides a compact arrangement of connection features.
 
-## Manufacturing considerations
+## Design record
 
-- Inspect the four components as separate mesh islands in the slicer.
-- Check the intended assembly orientation and mating interfaces.
-- Review wall thickness and layer direction around connection features.
-- Use a controlled first-layer inspection to prevent small sections from detaching.
-- Check the printed part against its mating EV3 elements before operation.
+The mesh contains four distinct connected components within one bounding envelope. Each component is individually watertight, while the complete mesh is not one watertight solid. This topology is part of the retained inspection record.
 
 ## File
 
