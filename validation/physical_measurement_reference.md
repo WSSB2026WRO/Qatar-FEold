@@ -11,7 +11,7 @@ The comparison covers program preparation, startup, control-cycle timing, missio
 
 ## 2. Python / EV3 comparison values
 
-The tables below are populated with illustrative working values so the comparison can be read without empty cells. These figures are provisional examples, not verified physical measurements. Replace them with results from paired robot trials before presenting them as experimental findings.
+We filled the tables with example values to show how the comparison can be presented. These figures are not measurements from our robot. Before using them as test results, we must replace them with data from paired trials.
 
 ### 2.1 Open Challenge
 
@@ -45,7 +45,7 @@ The Python program explicitly configures a 20 ms main loop and a 10 ms corner/ma
 
 ## 3. Physical performance comparison
 
-The following tables use the same illustrative working dataset as Section 2. Values are examples for completing the report layout; they are not verified physical test results.
+The tables below use the same example values as Section 2. They show the report layout only and are not physical test results.
 
 ### 3.1 Open Challenge
 
@@ -82,7 +82,7 @@ Pybricks transfer/bytecode preparation and the EV3 graphical environment's proje
 
 ## 5. Raw trial record — illustrative dataset
 
-The run-by-run values below are example entries designed to demonstrate a fully populated results table. They are not actual robot test logs. The obstacle success percentages in Section 3 are based on a separate illustrative set of ten attempts.
+The run-by-run values below are sample entries to show how we can record each trial. They are not logs from actual robot runs. The obstacle success percentages in Section 3 also come from an example set of ten attempts.
 
 | Challenge | Implementation | Run | Control cycle (ms) | Mission (s) | Distance error (cm) | Heading error (°) | Result / notes |
 |---|---|---:|---:|---:|---:|---:|---|
@@ -115,9 +115,9 @@ Sub-second timing differences are expressed in milliseconds. A comparison of ave
 
 ## 7. Interpretation
 
-The loop periods configured in the Python programs provide a code-derived timing reference: 20 ms on straight/main control and 10 ms during corners or maneuvers. The EV3 block timing ranges are engineering estimates for comparison planning. Measured values determine the actual performance comparison.
+Our Python programs are configured for a 20 ms straight/main loop and a 10 ms loop during corners or manoeuvres. These are program settings, not measured cycle times. The EV3 block timing figures are estimates for planning the comparison; actual tests are needed to establish the results.
 
-Mission duration, accuracy, preparation time, and startup latency are reported from paired trials rather than inferred from source code. This separates implementation timing from physical robot performance and supports a fair comparison between the two software approaches.
+We will report mission time, accuracy, preparation time, and startup delay from paired trials rather than estimating them from the source code. This will help us keep software timing separate from the robot's physical performance.
 
 ## 8. Illustrative comparison layout
 
