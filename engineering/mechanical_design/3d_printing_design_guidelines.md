@@ -1,57 +1,43 @@
-# Additive Manufacturing Design Guidelines
+# 3D-Printing Design Notes
 
-## 1. Purpose
+## 1. Why we use custom printed parts
 
-Custom 3D-printed components extend the EV3 mechanical element set with adapters, compact links, spacers, and dedicated connection features. Their design must account for geometry, print orientation, material behaviour, fit, and load direction.
+We use custom 3D-printed parts when the standard EV3 pieces do not give us the adapter, short link, spacer, or connection shape we need. When we design one, we have to think about its shape, print direction, material, fit, and the direction of the force it will carry.
 
-## 2. Geometry design
+## 2. Shape and strength
 
-- Maintain adequate wall thickness around holes and narrow necks.
-- Use generous fillets at transitions that carry repeated loads.
-- Avoid abrupt section changes where stress concentration is likely.
-- Provide suitable clearance for pins, axles, and mating elements.
-- Account for printer dimensional accuracy and material shrinkage.
-- Orient layer lines to support the dominant mechanical load.
+When we prepare a part for printing, we should:
+- Leave enough material around holes and narrow sections.
+- Use rounded transitions where the part will carry repeated loads.
+- Avoid sudden changes in thickness where stress may build up.
+- Leave suitable clearance for pins, axles, and connected parts.
+- Remember that printer accuracy and material shrinkage can change the final size.
+- Choose the print direction so the layer lines support the main load.
 
-## 3. Material selection
+## 3. Choosing a material
 
-Material selection should consider:
-- stiffness and tensile strength;
-- impact resistance;
-- fatigue behaviour;
-- operating temperature;
-- layer adhesion;
-- print repeatability.
+We compare materials by looking at:
+- Stiffness and tensile strength.
+- Resistance to impacts.
+- Fatigue behaviour after repeated loading.
+- Operating temperature.
+- Layer bonding.
+- How consistently the printer produces the part.
 
-For highly loaded joints, evaluate the printed part in its actual load direction rather than relying only on nominal filament strength.
+For a joint that carries a large load, we should check the printed part in the direction it will actually be used. A filament datasheet alone does not tell us how a printed part will behave.
 
-## 4. Print process definition
+## 4. What to record for each print
 
-A manufacturing record should specify:
-- material and filament grade;
-- nozzle diameter;
-- layer height;
-- wall/perimeter count;
-- infill pattern and density;
-- print orientation;
-- bed and nozzle temperature;
-- post-processing method.
+A useful manufacturing note includes the material and filament grade, nozzle diameter, layer height, number of walls, infill pattern and density, print orientation, bed and nozzle temperatures, and any post-processing.
 
-## 5. Dimensional and mesh inspection
+## 5. Checking the printed part
 
-Inspect:
-- overall dimensions;
-- pin and axle interface geometry;
-- hole diameter and spacing;
-- wall thickness;
-- connected mesh components;
-- watertightness and normal orientation;
-- mating fit and moving clearances.
+After printing, we inspect the overall size, pin and axle interfaces, hole diameter and spacing, wall thickness, mesh connections, watertightness, and surface normals. We also check the fit with the parts that will connect to it and make sure moving parts have enough clearance.
 
-## 6. Mechanical verification
+## 6. Checking it under load
 
-Evaluate the component under representative loading. Inspect for deformation, cracking, layer separation, excessive clearance, and wear after repeated operation.
+We should test the part under a load similar to the one it will carry on the robot. After repeated use, we look for bending, cracks, layer separation, loose fits, and wear.
 
-## 7. CAD and file management
+## 7. Keeping design files together
 
-Maintain the STL export together with its native CAD model, dimensioned drawing, declared units, revision identifier, and mesh inspection record. Preserve original geometry when producing a modified design revision.
+For each part, we should keep the STL export with its original CAD model, dimensioned drawing, units, revision name, and mesh inspection note. When we make a new version, we keep the earlier geometry so we can compare the changes.
