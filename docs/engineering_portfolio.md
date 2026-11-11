@@ -177,3 +177,18 @@ Numerical values in this portfolio are classified as follows:
 Primary references are the repository README, verification evidence, engineering release criteria, reference vehicle design case, analytical simulation, Python challenge source programs, native EV3 block projects, sensor calibration procedure and schemes register.
 
 **Repository:** https://github.com/WSSB2026WRO/Qatar-FE
+
+## Revision control
+
+Every significant engineering change should record:
+
+- purpose of the change;
+- affected subsystem;
+- source version;
+- parameter changes;
+- test evidence;
+- rollback path.
+
+Use the same record for software, mechanical, electrical, perception and validation changes. Distinguish source-derived, configured, assumed, calculated, simulated and measured values; a documentation or source review is not physical test evidence.
+
+A revision record should identify the changed files and the Git commit that contains the change. For a hardware or calibration change, record the robot configuration and test conditions so that the result can be reproduced. The rollback path should identify the previous known-good commit or released revision.
