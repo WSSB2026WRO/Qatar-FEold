@@ -80,7 +80,7 @@ F_{z,front}=W\frac{x_{CG}}{L}
 \]
 
 \[
-F_{z,rear}=W\left(1-\frac{x_{CG}}{L}\right)
+F_{z,rear}=W\left(1-\frac{x_{CG}}{L}\right)
 \]
 
 These equations assume static equilibrium, a rigid support plane, and no external longitudinal force.
@@ -92,11 +92,11 @@ A forward centre of gravity increases front axle load and reduces rear axle load
 For equal front and rear track (T), a simplified lateral equilibrium gives:
 
 \[
-F_{z,left}=W\left(\frac{1}{2}+\frac{y_{CG}}{T}\right)
+F_{z,left}=W\left(\frac{1}{2}+\frac{y_{CG}}{T}\right)
 \]
 
 \[
-F_{z,right}=W\left(\frac{1}{2}-\frac{y_{CG}}{T}\right)
+F_{z,right}=W\left(\frac{1}{2}-\frac{y_{CG}}{T}\right)
 \]
 
 This simplified expression assumes a symmetric support geometry and a centred longitudinal distribution. For unequal tracks, four separate wheel reactions should be solved using force and moment equilibrium.
@@ -156,7 +156,7 @@ This is a theoretical threshold, not a safe operating limit. Tire grip, transien
 The yaw moment of inertia about the vertical axis is:
 
 \[
-I_z=\sum_i\left(I_{z,i}+m_i[(x_i-x_{CG})^2+(y_i-y_{CG})^2]\right)
+I_z=\sum_i\left(I_{z,i}+m_i[(x_i-x_{CG})^2+(y_i-y_{CG})^2]\right)
 \]
 
 Mass placed far from the centre of gravity increases yaw inertia. A compact central arrangement can improve rotational response, but component placement must also respect cooling, wiring, sensor field of view, and mechanical access.
@@ -166,7 +166,7 @@ Mass placed far from the centre of gravity increases yaw inertia. A compact cent
 For a low-speed vehicle following a circular path, ideal Ackermann geometry requires the inner wheel to steer more sharply than the outer wheel.
 
 \[
-\cot(\delta_o)-\cot(\delta_i)=\f\frac{T}{L}
+\cot(\delta_o)-\cot(\delta_i)=\frac{T}{L}
 \]
 
 where (delta_i) and (delta_o) are the inner and outer wheel angles.
@@ -195,7 +195,7 @@ where (mu) is the effective tire-floor friction coefficient and (N) is the wheel
 For driven wheels, the maximum theoretical tractive force is limited by both motor torque and available tire friction:
 
 \[
-F_{drive}\leq \min\left(\frac{\t\tau_{wheel}}{r},\mu N_{driven}\right)
+F_{drive}\leq \min\left(\frac{\tau_{wheel}}{r},\mu N_{driven}\right)
 \]
 
 This equation highlights why motor torque alone does not determine acceleration. If the driven axle is lightly loaded, additional motor torque can cause wheel slip rather than useful acceleration.
