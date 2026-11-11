@@ -8,7 +8,7 @@ The implementation comparison is supported by the [system architecture](../docs/
 
 **WRO Future Engineers team number: 6038**
 
-The team developed two software implementations for the LEGO MINDSTORMS EV3 robot: a Python implementation using Pybricks MicroPython and a graphical implementation using LEGO EV3 block programming. The two implementations represent alternative ways of controlling the same mission platform and form part of the team's comparative engineering approach.
+We developed two ways to program our LEGO MINDSTORMS EV3 robot: Python with Pybricks MicroPython and the graphical LEGO EV3 block environment. Both versions control the same robot platform, which lets us compare the two approaches directly.
 
 ## Mission program archive
 
@@ -23,7 +23,7 @@ The EV3 files are native LEGO MINDSTORMS project containers. They preserve the g
 
 ## Why two implementations were developed
 
-The team intentionally implemented the robot in both Python and EV3 block programming. This creates a direct engineering comparison between a text-based programming workflow and a visual, block-based workflow. The purpose is not simply to maintain two code styles: it is to evaluate which approach gives the best overall result for the team's robot and competition missions.
+We chose to build both Python and EV3 block versions so that we could compare a text-based workflow with a visual one. Our aim is to find out which approach works better for our robot and the competition missions.
 
 The comparison considers:
 - program construction and modification time;
@@ -49,7 +49,7 @@ The comparison considers:
 | Maintainability | Strong for modular, parameterized and code-reviewed systems | Strong for visual communication of simpler sequences; complex logic may occupy many blocks |
 | Best comparative use | Complex perception, geometry, custom calculations and explicit state-machine logic | Clear visual mission sequences and rapid inspection of the control flow |
 
-Neither implementation is declared faster or superior solely from its programming language. The preferred solution is the one supported by equivalent measurements on the same robot configuration and mission conditions.
+We do not assume that either version is faster just because of the programming language. We will base that decision on tests carried out with the same robot setup and mission conditions.
 
 ## Compilation and timing performance as a team strength
 
@@ -66,7 +66,7 @@ Sub-second results should be recorded in milliseconds or to a stated decimal pre
 
 ## Comparative measurement record
 
-The repository contains both native EV3 block projects and both Python source programs, but no paired timing dataset or controlled side-by-side measurement log is currently included. Therefore, this portfolio does not assign numerical compilation or runtime advantages to either implementation. The team's focus on sub-second build and response measurement is documented as a deliberate engineering strength; quantitative winner selection is kept distinct from the existence of both implementations.
+We have included both EV3 block projects and both Python programs, but we have not yet added a set of paired timing measurements or a controlled side-by-side test log. For that reason, we do not claim a numerical advantage for either version. The team's focus on sub-second build and response measurement is documented as a deliberate engineering strength; quantitative winner selection is kept distinct from the existence of both implementations.
 
 ## Hardware equivalence
 
@@ -74,4 +74,4 @@ The comparison concerns software approaches for the team's LEGO EV3 robot. Hardw
 
 ## Engineering conclusion
 
-Maintaining both Python and EV3 block implementations gives Team 6038 a practical basis for evaluating software architecture, development workflow and measured robot performance. The team's distinguishing approach is the deliberate use of comparative testing—including timing at fractions-of-a-second scale—to choose the implementation that best meets the mission's requirements, rather than assuming in advance that one programming method is always faster.
+Keeping both versions gives us a practical way to compare the programming process and the robot's performance. We plan to use the results, including timings measured in milliseconds, to choose the approach that best meets each mission's requirements.
