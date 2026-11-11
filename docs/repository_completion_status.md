@@ -1,55 +1,55 @@
-# Qatar FE — Engineering Repository Status
+# Qatar FE — Repository Status
 
 **Repository:** [WSSB2026WRO/Qatar-FE](https://github.com/WSSB2026WRO/Qatar-FE)  
 **WRO team number:** **6038**  
 **Branch:** `main`  
 **Portfolio date:** 11 November 2026
 
-## Project record
+## What this repository contains
 
-The repository documents Team 6038's WRO Future Engineers autonomous robot. It contains the Python/Pybricks programs for the Open and Obstacle Challenges, native LEGO EV3 block-project counterparts, hardware interface records, mechanical and electrical engineering studies, Pixy2 perception documentation, vehicle-dynamics calculations, SVG engineering diagrams, reliability records, validation framework, and automated software checks.
+We use this repository to keep the work for Team 6038's WRO Future Engineers robot in one place. It includes our Python/Pybricks programs for the Open and Obstacle Challenges, the matching LEGO EV3 block projects, hardware and port information, mechanical and electrical notes, Pixy2 documentation, vehicle-dynamics calculations, engineering diagrams, reliability notes, validation files, and automated software checks.
 
-## Dual implementation record
+## Two ways of programming the EV3
 
-Two software approaches were developed for the robot:
+We have included two versions of the challenge programs:
 
-- **Python:** Pybricks MicroPython challenge programs.
-- **LEGO EV3 blocks:** native graphical project files for the Open and Obstacle Challenges.
+- **Python:** our Pybricks MicroPython programs.
+- **LEGO EV3 blocks:** the native graphical projects for both challenges.
 
-This dual implementation is intentional. It allows Team 6038 to compare programming workflow, program preparation/build duration, startup latency, control-cycle timing, mission time, debugging and reliability on the EV3 platform. The comparison criteria are documented in [implementation_comparison.md](../software/implementation_comparison.md).
+Keeping both versions lets us compare the programming workflow, preparation and build time, startup delay, control-cycle timing, mission time, debugging, and reliability on the EV3. The comparison criteria are explained in [Implementation Comparison](../software/implementation_comparison.md).
 
-A particular engineering strength is the team's focus on timing differences at fractions-of-a-second scale. Build/compilation time, startup delay and control-cycle duration are treated as separate measurements. The repository does not currently contain a paired timing dataset, so no numerical performance winner is claimed.
+We are interested in timing differences, including differences smaller than one second. Build time, startup delay, and control-cycle duration are different things, so we keep them separate. At the moment, this repository does not contain a paired timing dataset for both implementations. We therefore do not claim that one version is faster.
 
-## Corrected camera illumination definition
+## Pixy2 illumination note
 
-The front illumination is integrated with the Pixy2 camera assembly. The camera is connected to EV3 sensor port S4 through I²C. The illumination is part of that camera assembly and is not a separate device connected to motor port D. Port D is unused by both challenge programs.
+The front illumination is part of the Pixy2 camera assembly. The camera connects to EV3 sensor port S4 through I²C. It is not a separate lamp on motor port D. Port D is unused by both challenge programs.
 
-## Automated verification record
+## Automated checks recorded here
 
-The repository records a successful GitHub Actions validation run on 11 November 2026:
+The repository records a successful GitHub Actions run on 11 November 2026:
 
 - [Python Validation — run #216, successful](https://github.com/WSSB2026WRO/Qatar-FE/actions/runs/43079056309)
-- Verified commit: `a9530e7c626da46464fa999080a308a67cd770dd`
+- Commit checked: `a9530e7c626da46464fa999080a308a67cd770dd`
 - Both Python challenge programs and the analytical script passed Python compilation.
 - Eight analytical and documentation-integrity tests passed.
-- The 30-case analytical parameter sweep completed and generated its CSV artifact.
+- The 30-case analytical parameter sweep finished and generated its CSV artifact.
 
-These results describe automated Python source and analytical verification. They are not physical robot test results and do not validate the EV3 block programs.
+These checks tell us that the Python files compile and that the listed automated tests and calculations ran. They do not prove that the robot completed a physical run, and they do not test the EV3 block projects.
 
-## Engineering evidence represented in the repository
+## How we label the evidence
 
-- **Configured:** software constants and declared device interfaces.
-- **Assumed:** provisional inputs used in the reference design case.
-- **Calculated:** outputs derived from the documented equations and inputs.
-- **Simulated:** results generated by the analytical parameter sweep.
-- **Measured:** physical observations supported by dated measurement records.
+We use these labels in the engineering notes:
 
-The vehicle-dynamics results are analytical reference calculations. The Pixy2 range relationship is a configured empirical model; the repository does not contain a physical camera-calibration dataset. The validation directory contains the test framework and record format; it does not contain completed physical mission logs or comparative sub-second timing logs.
+- **Configured:** a value set in the program or device configuration.
+- **Assumed:** an input chosen for a reference calculation.
+- **Calculated:** a result worked out from an equation and stated inputs.
+- **Simulated:** a result produced by the analytical parameter sweep.
+- **Measured:** an observation taken from the physical robot and supported by a measurement record.
 
-## Engineering asset inventory
+The vehicle-dynamics results are calculations based on a reference case. The Pixy2 distance equation is a configured empirical model; a physical camera-calibration dataset is not included. The validation folder contains a test framework and record template, but no completed physical mission logs or paired sub-second timing logs.
 
-The custom-part directory contains inspection records for three named STL models. The original STL files and native CAD models are not included in the current repository snapshot. The video directory is an index and contains no committed demonstration video files. These are repository inventory facts, not statements that unrecorded assets or tests exist.
+## Other project files
 
-## Repository organization
+The custom-parts folder contains inspection notes for three named STL models, but the original STL and native CAD files are not in this repository snapshot. The video folder is an index and does not contain committed demonstration videos. We list these limits so readers can see what is actually available here.
 
-The documentation, Python source programs, EV3 block projects, diagrams, test code, engineering calculations, and available media indexes are organized in their respective project directories. The root README provides the entry point to the project portfolio and technical sections.
+The root README is the starting point for the portfolio. The other folders contain the software, diagrams, calculations, tests, and media indexes.
