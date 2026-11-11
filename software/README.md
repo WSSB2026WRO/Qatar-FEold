@@ -44,6 +44,10 @@ Two independent programs are maintained for the two WRO Future Engineers formats
 - Obstacle clearance tracking
 - Parking manoeuvre
 
+## Automated repository tests
+
+The repository includes unit tests for the analytical reference model and integrity checks for Markdown links, text encoding, and SVG XML structure. Run all tests from the repository root with `python -m unittest discover -s tests -v`.
+
 ## Development and regression
 
 Keep the two challenge programs independent. Preserve reference versions and isolate experimental changes. Every change to sensor processing, steering, navigation, or mission logic should be followed by syntax verification and the relevant hardware regression tests.
