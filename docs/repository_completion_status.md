@@ -15,12 +15,12 @@ This record summarizes the repository-level engineering review and distinguishes
 
 ## Automated verification
 
-The GitHub Actions run below completed successfully on 11 November 2026:
+The current-main GitHub Actions run below completed successfully on 11 November 2026:
 
-- [Python Validation — successful run](https://github.com/WSSB2026WRO/Qatar-FE/actions/runs/43074785869)
-- Commit: `98a2aee5129c5b08084cf398ad1aa8ddd29e177d`
+- [Python Validation — run #142, successful](https://github.com/WSSB2026WRO/Qatar-FE/actions/runs/43075587160)
+- Commit: `a5e2a380b8da2b0a1700babfeab7ea50adaab33c`
 - Challenge source syntax compilation: passed for Open Challenge and Obstacle Challenge.
-- Analytical model unit tests: passed.
+- Analytical model unit tests and documentation integrity tests (7 tests): passed.
 - Analytical parameter sweep: passed and generated the 30-case CSV artifact.
 
 These checks establish source syntax validity and repeatability of the repository's analytical calculation. They do not establish runtime behaviour on the EV3 or physical vehicle performance.
