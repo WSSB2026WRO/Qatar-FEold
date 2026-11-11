@@ -51,18 +51,11 @@ d=\frac{K}{v-v_0}
 
 with configured constants (K) and (v_0). The model should be fitted from a set of known distances rather than assumed universal.
 
-Recommended calibration:
-1. Fix the camera in its final mount.
-2. Place a pillar at a series of measured distances.
-3. Capture multiple frames at each distance.
-4. Record the same block feature (e.g. bottom edge or centre) consistently.
-5. Fit (K) and (v_0) by least squares.
-6. Plot residual error versus distance.
-7. Repeat under the competition lighting conditions.
+Calibration model context: the empirical constants (K) and (v_0) are configured model parameters. The repository's numerical table is calculated from those constants and rounded image coordinates; it is not a measured camera-calibration dataset.
 
 ## 6. Colour classification
 
-Signature IDs are camera configuration labels, not universal colour codes. Verify red and green signature IDs in the final PixyMon configuration. Record lighting, exposure, ambient illumination, and background conditions.
+Signature IDs are camera configuration labels, not universal colour codes. The documented project mapping assigns signature 1 to red and signature 2 to green. Lighting, exposure, ambient illumination, and background are environmental variables in the perception model.
 
 ## 7. Confidence and temporal filtering
 
