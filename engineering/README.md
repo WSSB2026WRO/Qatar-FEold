@@ -1,55 +1,53 @@
 # Engineering Overview
 
-This section documents the mechanical, electrical, software, and analytical engineering of the Qatar FE autonomous vehicle.
+This folder brings together the engineering work behind our Qatar FE autonomous vehicle. We have separated the notes by topic so it is easier to find the design details, calculations, and software decisions.
 
-## Engineering disciplines
+## Areas we worked on
 
-- Vehicle packaging and structural layout
-- Drive-train and steering architecture
-- Mass properties and vehicle dynamics
-- Sensor integration and perception geometry
-- Embedded control and navigation algorithms
-- Additive manufacturing and custom mechanical interfaces
-- Reliability analysis and verification planning
+- Chassis layout and component placement
+- Drive and steering mechanisms
+- Mass distribution and vehicle dynamics
+- Sensor mounting and camera geometry
+- Control and navigation software
+- 3D-printed parts and mechanical connections
+- Reliability and verification planning
 
 ## Mechanical design
 
-The mechanical design is organized around a compact chassis, independently documented drive and steering functions, protected sensor mounting, and serviceable electrical packaging.
+Our mechanical notes describe the chassis, drive system, steering, sensor mounts, and the way the electrical parts fit on the vehicle.
 
-Mass distribution is evaluated using a component-based model:
+For the centre of gravity, we use the component masses and their positions:
 
-\[
+[
 x_{CG}=\frac{\sum m_i x_i}{\sum m_i},\quad
 y_{CG}=\frac{\sum m_i y_i}{\sum m_i},\quad
 z_{CG}=\frac{\sum m_i z_i}{\sum m_i}
-\]
+]
 
-The equations define the calculation method. Numerical examples are provided in the reference design case.
+This gives the calculation method. The reference design case contains example inputs and calculated values; they are not measurements of the finished robot.
 
 ## Vehicle dynamics
 
-The engineering model considers longitudinal and lateral load transfer, traction limits, yaw inertia, steering geometry, and geometric rollover margin. These relationships support design comparison and control-system reasoning.
+We use the dynamics model to think about longitudinal and lateral load transfer, traction, yaw inertia, steering geometry, and the geometric rollover margin. These calculations help us compare design choices, but they do not replace physical testing.
 
-## Electrical and sensing architecture
+## Electrical and sensors
 
-The EV3 port map is documented in [Hardware Architecture](../hardware/README.md). The control programs use a gyro, two ultrasonic sensors, drive motors, and a steering motor. The Obstacle Challenge program additionally interfaces with Pixy2 over I²C.
+The EV3 port map is in [Hardware Architecture](../hardware/README.md). Our programs use a gyro, two ultrasonic sensors, two drive motors, and one steering motor. The Obstacle Challenge program also communicates with the Pixy2 over I²C.
 
-## Software architecture
+## Software
 
-The software is separated into two independent challenge programs. Each program has its own mission state sequence, sensor processing, steering control, corner handling, and logging structure.
+We keep separate programs for the Open Challenge and Obstacle Challenge. Each one has its own mission sequence, sensor processing, steering control, corner handling, and logging.
 
-## Analytical design basis
+## Reference calculations
 
-The reference vehicle design case provides a consistent numerical framework for evaluating mass properties and vehicle dynamics. All calculations are reproducible from the stated equations and input parameters.
+The reference vehicle design case gives us one consistent set of inputs for mass and vehicle-dynamics calculations. The equations and assumptions are written down so the results can be checked and calculated again.
 
-## Engineering terminology
+## Words we use in the documents
 
-| Term | Meaning |
+| Term | Meaning in our project |
 |---|---|
-| Configured | A value defined in the source program |
-| Assumed | A design input selected for analytical study |
-| Calculated | A value derived mathematically from stated inputs |
-| Measured | A value obtained from an instrumented physical observation |
+| Configured | A value set in the source program |
+| Assumed | An input we selected for a calculation |
+| Calculated | A result obtained from stated inputs and equations |
+| Measured | A value read from the physical vehicle using an instrument |
 | Validated | A result supported by repeatable tests and acceptance criteria |
-
-
