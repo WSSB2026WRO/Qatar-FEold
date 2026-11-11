@@ -6,7 +6,7 @@
 
 The vehicle dynamics and steering references are available in [DYN-001](../../docs/drawings/DYN-001_vehicle_dynamics.svg) and [STR-001](../../docs/drawings/STR-001_ackermann_steering.svg).
 
-The Open Challenge controller completes a twelve-corner route while maintaining corridor position, controlling heading, and returning to the start section.
+For the Open Challenge, our controller follows a route with twelve corners. It keeps the robot centred in the corridor, corrects its heading, and calculates the final approach back to the starting section.
 
 ## Hardware interfaces
 
@@ -54,11 +54,11 @@ The Open Challenge controller completes a twelve-corner route while maintaining 
 
 ## Corridor-centering control
 
-The controller uses both ultrasonic measurements to estimate the vehicle's lateral position relative to the corridor centre. A proportional lateral term is combined with a heading correction term. The resulting steering command is bounded by the configured straight-line steering limit.
+We use both ultrasonic readings to estimate the robot's lateral position in the corridor. A proportional lateral term is combined with a heading correction term. The resulting steering command is bounded by the configured straight-line steering limit.
 
 ## Corner detection and execution
 
-An opening is accepted only after the configured threshold is exceeded for consecutive samples. A distance lockout after each turn prevents the previous opening from being detected again. Gyro heading is used to track the turn target, while timeout and wrong-direction checks protect the manoeuvre.
+We confirm an opening only after the distance threshold has been exceeded for several consecutive readings. A distance lockout after each turn prevents the previous opening from being detected again. Gyro heading is used to track the turn target, while timeout and wrong-direction checks protect the manoeuvre.
 
 ## Return-to-start calculation
 
