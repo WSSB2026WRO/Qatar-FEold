@@ -11,12 +11,13 @@ The vehicle control platform is based on LEGO EV3 and the device interfaces decl
 | A | Medium motor | Propulsion |
 | B | Medium motor | Propulsion |
 | C | Medium motor | Steering |
+| D | No device assigned | Unused by both challenge programs |
 | S1 | Gyro sensor | Heading feedback |
 | S2 | Ultrasonic sensor | Left-side distance |
 | S3 | Ultrasonic sensor | Right-side distance |
-| S4 | Pixy2 camera | I²C vision interface in Obstacle Challenge |
+| S4 | Pixy2 camera with integrated illumination | I²C vision and camera illumination in Obstacle Challenge |
 
-**Port D status:** the drawing register identifies a front LED lamp on port D, but neither current challenge source program instantiates or controls a device on that port. Treat the lamp and its wiring as unverified until checked on the assembled vehicle.
+**Camera illumination:** the illumination belongs to the Pixy2 camera assembly connected to S4. It is not a separate EV3 motor-port device. Port D is unused by both challenge programs.
 
 ## Functional architecture
 
@@ -25,7 +26,7 @@ flowchart LR
   G[Gyro S1] --> C[EV3 Controller]
   U1[Ultrasonic S2] --> C
   U2[Ultrasonic S3] --> C
-  P[Pixy2 S4 — Obstacle Challenge] --> C
+  P[Pixy2 S4 — Obstacle Challenge, integrated illumination] --> C
   C --> A[Drive Motor A]
   C --> B[Drive Motor B]
   C --> S[Steering Motor C]
@@ -54,10 +55,4 @@ Maintain secure connectors, strain relief, and separation between wiring and mov
 
 ## Commissioning
 
-1. Confirm the port allocation.
-2. Verify drive motor direction with the vehicle safely supported.
-3. Verify steering zero and travel.
-4. Calibrate the gyro while stationary.
-5. Compare ultrasonic readings with known distances.
-6. Confirm Pixy2 communication and signature mapping.
-7. Run low-speed functional checks before autonomous operation.
+The documented interface map assigns propulsion to A/B, steering to C, no device to D, gyro feedback to S1, ultrasonic ranging to S2/S3, and the Pixy2 camera with integrated illumination to S4.
