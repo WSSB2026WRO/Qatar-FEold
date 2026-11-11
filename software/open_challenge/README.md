@@ -2,6 +2,10 @@
 
 ## Mission
 
+![SYS-001 — Autonomous vehicle system architecture](../../docs/drawings/SYS-001_autonomous_vehicle_architecture.svg)
+
+The vehicle dynamics and steering references are available in [DYN-001](../../docs/drawings/DYN-001_vehicle_dynamics.svg) and [STR-001](../../docs/drawings/STR-001_ackermann_steering.svg).
+
 The Open Challenge controller completes a twelve-corner route while maintaining corridor position, controlling heading, and returning to the start section.
 
 ## Hardware interfaces
