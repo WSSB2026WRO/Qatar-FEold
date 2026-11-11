@@ -5,7 +5,7 @@
 
 ## 1. Purpose
 
-The Obstacle Challenge program uses Pixy2 colour signatures to identify red and green pillars. The camera and its integrated illumination form one assembly connected through EV3 sensor port S4 using I²C. The camera does not directly measure range; range and lateral position are estimated from image geometry.
+In the Obstacle Challenge, we use Pixy2 colour signatures to identify the red and green pillars. The camera and its built-in illumination are one assembly, connected to EV3 sensor port S4 through I²C. The camera does not directly measure range; range and lateral position are estimated from image geometry.
 
 ## 2. Coordinate conventions
 
@@ -46,7 +46,7 @@ This model is sensitive to the exact pixel coordinate representing the pillar ba
 
 ## 5. Empirical calibration alternative
 
-The supplied program uses an empirical vertical-image model:
+In our current program, we use this empirical model based on the vertical image coordinate:
 
 \[
 d=\frac{K}{v-v_0}
@@ -54,7 +54,7 @@ d=\frac{K}{v-v_0}
 
 with configured constants (K) and (v_0). These constants define the empirical model used by the current program; they are configuration values, not universal camera parameters.
 
-Calibration model context: the empirical constants (K) and (v_0) are configured model parameters. The repository's numerical table is calculated from those constants and rounded image coordinates; it is not a measured camera-calibration dataset.
+Calibration model context: the empirical constants (K) and (v_0) are configured model parameters. We calculated the table from these constants and rounded image coordinates. It is not a set of camera measurements.
 
 ## 6. Colour classification
 
@@ -137,6 +137,6 @@ The model is most sensitive when the detected feature is close to the offset coo
 
 ### 8.6 Calibration record
 
-The table above is a **calculated reference dataset** generated from the configured model and rounded pixel coordinates. It provides a complete numerical example for checking the equation, error calculation, and reporting format. It is not a record of camera observations.
+We calculated the reference table above using the configured model and rounded pixel coordinates. It lets us check the equation and error calculations, but it does not contain observations from the camera.
 
-The table is a calculated reference dataset. No physical camera observations or measured calibration release are included in the repository snapshot.
+This is a calculated reference table. We have not yet added physical camera observations or a measured calibration report.
