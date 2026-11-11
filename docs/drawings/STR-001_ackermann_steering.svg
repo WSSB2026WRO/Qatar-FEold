@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#315b78"/></marker><style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#1f2933}.title{font-size:28px;font-weight:700}.sub{font-size:15px;fill:#536575}.h{font-size:17px;font-weight:700}.t{font-size:14px}.small{font-size:12px;fill:#536575}.box{fill:#f3f6f8;stroke:#526879;stroke-width:2}.blue{stroke:#315b78;stroke-width:3;fill:none}.red{stroke:#b24b48;stroke-width:3;fill:none}.dim{stroke:#7894a8;stroke-width:1.8;fill:none;stroke-dasharray:6 5}
+</style></defs>
+<rect x="18" y="18" width="1164" height="764" rx="8" fill="#fff" stroke="#263746" stroke-width="3"/>
+<text x="48" y="62" class="title">STR-001 — Ackermann steering geometry</text><text x="50" y="91" class="sub">Top view • inner and outer front-wheel steering angles</text>
+<line x1="48" y1="110" x2="1152" y2="110" stroke="#9aabb8" stroke-width="1.5"/>
+
+<text x="85" y="155" class="h">ACKERMANN PRINCIPLE</text><text x="85" y="190" class="t">Inner wheel angle δᵢ is greater than outer wheel angle δₒ</text>
+<rect x="390" y="225" width="260" height="360" rx="25" fill="#f7f9fa" stroke="#526879" stroke-width="3"/>
+<line x1="520" y1="220" x2="520" y2="600" class="dim"/><line x1="390" y1="290" x2="650" y2="290" stroke="#263746" stroke-width="6"/>
+<rect x="355" y="260" width="42" height="105" rx="8" fill="#dbe4ea" stroke="#263746" stroke-width="3"/><rect x="643" y="260" width="42" height="105" rx="8" fill="#dbe4ea" stroke="#263746" stroke-width="3"/>
+<rect x="355" y="490" width="42" height="105" rx="8" fill="#dbe4ea" stroke="#263746" stroke-width="3"/><rect x="643" y="490" width="42" height="105" rx="8" fill="#dbe4ea" stroke="#263746" stroke-width="3"/>
+<path class="blue" d="M390 290 L420 245 M650 290 L620 250"/><path class="red" d="M520 570 L160 570"/><circle cx="160" cy="570" r="9" fill="#b24b48"/><text x="95" y="600" class="t">ICR</text>
+<path class="dim" d="M160 570 L390 290 M160 570 L650 290"/><text x="700" y="270" class="h">GEOMETRY</text><text x="700" y="310" class="t">R = l / tan δ</text><text x="700" y="345" class="t">cot δₒ − cot δᵢ = t / l</text><text x="700" y="380" class="t">tan δᵢ = l / (R − t/2)</text><text x="700" y="415" class="t">tan δₒ = l / (R + t/2)</text>
+<rect class="box" x="700" y="465" width="420" height="150" rx="8"/><text x="725" y="500" class="h">MEASURE ON THE BUILT CHASSIS</text><text x="725" y="535" class="t">• Wheelbase l and track width t</text><text x="725" y="565" class="t">• Actual inner / outer wheel angles</text><text x="725" y="595" class="t">• Steering linkage backlash</text>
+<text x="390" y="650" class="t">Front axle</text><text x="390" y="675" class="t">Rear axle</text>
+<line x1="48" y1="720" x2="1152" y2="720" stroke="#9aabb8" stroke-width="1.5"/>
+<text x="50" y="750" class="small">CONCEPTUAL MECHANISM • VERIFY LINKAGE GEOMETRY ON THE BUILT CHASSIS</text><text x="1150" y="750" class="small" text-anchor="end">QATAR-FE • TEAM 6038 • REV A</text></svg>
