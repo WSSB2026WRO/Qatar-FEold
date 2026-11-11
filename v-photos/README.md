@@ -1,13 +1,13 @@
-# Qatar FE — Vehicle
+# Qatar FE — Our Vehicle
 
-The Qatar FE vehicle is developed for autonomous navigation in the WRO Future Engineers challenge.
+We are developing this vehicle for autonomous navigation in the WRO Future Engineers challenge.
 
 ## Main systems
 
-- EV3-based propulsion and steering
-- Gyroscopic heading measurement
-- Dual ultrasonic wall-distance sensing
-- Pixy2 visual perception for obstacle identification
-- Custom mechanical interfaces and 3D-printed components
+- EV3 drive and steering.
+- Gyro sensor for heading.
+- Two ultrasonic sensors for wall distances.
+- Pixy2 camera for identifying obstacles.
+- Custom mechanical connections and 3D-printed parts.
 
-The vehicle's mechanical and electronic systems are documented in the [Hardware Architecture](../hardware/README.md) and [Engineering Studies](../engineering/README.md) sections.
+More details about the parts and connections are in [Hardware Architecture](../hardware/README.md) and [Engineering Studies](../engineering/README.md).
