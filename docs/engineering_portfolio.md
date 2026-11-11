@@ -2,12 +2,13 @@
 ## Autonomous Robotics Engineering Portfolio
 
 **Repository:** [WSSB2026WRO/Qatar-FE](https://github.com/WSSB2026WRO/Qatar-FE)  
+**WRO team number:** **6038**  
 **Branch:** `main`  
 > **Evidence convention.** This portfolio separates measured observations, calculated values, simulations, configured software parameters, and provisional assumptions. No physical test is claimed unless a dated source log or measurement record exists.
 
 ## 1. Executive overview
 
-Qatar FE is a student engineering project developing an autonomous vehicle for the World Robot Olympiad (WRO) Future Engineers challenge. The repository documents two mission programs, an EV3-based hardware interface, a Pixy2 vision subsystem for obstacle handling, mechanical and electrical design references, analytical vehicle-dynamics calculations, and software validation procedures.
+Qatar FE is a student engineering project developing an autonomous vehicle for the World Robot Olympiad (WRO) Future Engineers challenge. The team number is **6038**. The repository documents two mission programs, each represented in two programming approaches: Python with Pybricks MicroPython and native LEGO EV3 block programming. It also includes an EV3-based hardware interface, a Pixy2 vision subsystem for obstacle handling, mechanical and electrical design references, analytical vehicle-dynamics calculations, and software validation procedures.
 
 ## 2. Team
 
@@ -17,20 +18,43 @@ Qatar FE is a student engineering project developing an autonomous vehicle for t
 | Team Leader / Chief of Team | Eissa | Team coordination, mission integration and project oversight |
 | Lead Designer | Mohammed | Mechanical layout, design communication and fabrication planning |
 
-## 3. Challenge programs
+## 3. Dual software implementation
 
-| Program | Mission functions | Implementation |
+Team 6038 deliberately implemented the robot using two programming approaches: Python/Pybricks MicroPython and LEGO EV3 graphical blocks. The purpose is to compare the approaches on the same EV3 platform and use engineering evidence to select the most suitable solution for the competition missions.
+
+| Challenge | Python implementation | LEGO EV3 block implementation |
 |---|---|---|
-| Open Challenge | Corridor following, wall-based centering, corner detection, heading control, lap tracking and return to the start section | LEGO EV3 with Pybricks MicroPython |
-| Obstacle Challenge | Pillar detection and classification, colour-dependent passing, lane repositioning, corner navigation and parking | LEGO EV3 with Pybricks MicroPython and Pixy2 camera over I²C |
+| Open Challenge | `software/open_challenge/open_challenge.py` | `ev3_blocks/OpenChallenge.ev3` |
+| Obstacle Challenge | `software/obstacle_challenge/obstacle_challenge.py` | `ev3_blocks/ObstacleChallenge.ev3` |
 
-### Obstacle Challenge perception
+The native `.ev3` projects are the graphical-program counterparts to the Python source files. The comparison is documented in [Dual-Implementation Technical Comparison](../software/implementation_comparison.md).
 
-The source maps Pixy2 signature 1 to red and signature 2 to green. Candidate blocks are filtered by signature and image geometry, then confirmed over consecutive observations before triggering avoidance. The configured empirical range model is:
+### 3.1 Comparison criteria
 
-`d = 20100 / (Y - 63)`
+| Dimension | Python / Pybricks MicroPython | LEGO EV3 blocks |
+|---|---|---|
+| Program representation | Textual source, functions, variables and explicit control flow | Visual blocks representing sequences, loops, conditions, motors and sensors |
+| Complex algorithms | Well suited to custom calculations, state machines, filtering and modular logic | Possible through nested blocks and data operations; visual complexity grows with algorithm size |
+| Editing and review | Efficient for structured changes, refactoring and text-based version control | Intuitive visual inspection of program flow |
+| Build and deployment | Python workflow involves source handling and deployment; the exact timed stage must be named (upload, bytecode preparation or startup) | EV3 environment prepares the graphical project for execution |
+| Runtime | MicroPython interpreter and Pybricks APIs | EV3 runtime executing the generated block program |
+| Debugging | Source inspection, logs, explicit variables and timestamps | Visual flow inspection and EV3 environment debugging |
+| Maintainability | Strong for modular and parameterized software | Strong for clear visual sequences and accessible program structure |
 
-where `Y` is the selected vertical image feature in pixels and `d` is estimated range in millimetres. This is a configured model, not a calibrated measurement unless supported by a physical calibration dataset.
+Neither approach is assumed to be faster by definition. The preferred implementation is determined by equivalent measurements on the same robot and mission conditions.
+
+### 3.2 Sub-second compilation and performance comparison
+
+A deliberate strength of Team 6038 is its focus on comparing the two implementations quantitatively, including **build/compilation duration and response timing measured in fractions of a second**. These timing categories are kept distinct:
+
+- **Build/compilation duration:** time required by the relevant programming environment to prepare a runnable program. For Python, the timed operation is identified precisely; upload or bytecode preparation is not mislabeled as native compilation.
+- **Startup latency:** time from the start command to the first confirmed program action.
+- **Control-cycle duration:** time for an equivalent sensing, decision and actuation cycle.
+- **Mission execution time:** time to complete the same defined mission.
+
+Sub-second measurements are expressed in milliseconds or at a stated decimal precision. The timing boundaries and test conditions must be equivalent before the results can support a comparison.
+
+The repository contains both implementations but does not currently contain a paired timing dataset or controlled side-by-side measurement log. Therefore, no numerical compilation-time or runtime winner is claimed. The team's deliberate emphasis on sub-second performance comparison is documented as an engineering strength, while measured results remain separate from the comparison methodology.
 
 ## 4. Hardware interface
 
@@ -45,10 +69,17 @@ where `Y` is the selected vertical image feature in pixels and `d` is estimated 
 | S3 | Ultrasonic sensor | Right-side distance |
 | S4 | Pixy2 camera with integrated illumination | I²C vision and camera illumination in Obstacle Challenge |
 
-
 The Pixy2 camera and its illumination form one assembly connected through S4. The illumination is not a separate motor-port device; port D is unused by both challenge programs.
 
-## 5. Reference vehicle design case
+## 5. Obstacle Challenge perception
+
+The Python source maps Pixy2 signature 1 to red and signature 2 to green. Candidate blocks are filtered by signature and image geometry, then confirmed over consecutive observations before triggering avoidance. The configured empirical range model is:
+
+`d = 20100 / (Y - 63)`
+
+where `Y` is the selected vertical image feature in pixels and `d` is estimated range in millimetres. This is a configured model, not a calibrated measurement unless supported by a physical calibration dataset.
+
+## 6. Reference vehicle design case
 
 The following values define an illustrative analytical model. They are not verified physical specifications of the competition robot.
 
@@ -78,7 +109,7 @@ The following values define an illustrative analytical model. They are not verif
 
 These are analytical estimates. They do not model full tyre dynamics, motor torque limits, compliance, floor variation, transient roll, or wheel slip.
 
-## 6. Engineering drawings
+## 7. Engineering drawings
 
 The repository includes system-level or conceptual SVG diagrams for system architecture, vehicle dynamics, Ackermann steering, obstacle state flow, camera geometry, chassis layout and EV3 port allocation.
 
@@ -95,27 +126,27 @@ The repository includes system-level or conceptual SVG diagrams for system archi
 
 The SVG files are system-level or conceptual engineering diagrams. They are not dimensioned manufacturing drawings.
 
-## 7. Software verification evidence
+## 8. Software verification evidence
 
 The repository records a successful GitHub Actions **Python Validation** run:
 
 - Run: [#216 — successful](https://github.com/WSSB2026WRO/Qatar-FE/actions/runs/43079056309)
 - Recorded date: 11 November 2026
 - Commit checked: `a9530e7c626da46464fa999080a308a67cd770dd`
-- Checks: compile both challenge programs, execute eight analytical/documentation integrity tests, run the analytical sweep, and upload its CSV artifact.
+- Checks: compile both Python challenge programs, execute eight analytical/documentation integrity tests, run the analytical sweep, and upload its CSV artifact.
 - Sweep coverage: 30 combinations (five longitudinal acceleration values from 0.2 to 1.0 m/s² and six lateral acceleration values from 0.2 to 1.2 m/s²).
 
-This proves the recorded source files passed the workflow's compilation checks and the analytical sweep completed. It does **not** prove execution on the EV3, sensor accuracy, steering accuracy, obstacle clearance, lap completion, parking accuracy or competition performance.
+This proves the recorded Python source files passed the workflow's compilation checks and the analytical sweep completed. It does **not** prove execution on the EV3, sensor accuracy, steering accuracy, obstacle clearance, lap completion, parking accuracy or competition performance. The block projects are native EV3 assets and are not covered by the Python syntax-compilation workflow.
 
-## 8. Evidence and validation scope
+## 9. Evidence and validation scope
 
-The repository contains automated source validation and analytical model results. It does not contain completed physical test reports or raw EV3 mission logs. Consequently, physical sensor accuracy, steering repeatability, obstacle clearance, lap performance and parking accuracy are not represented as measured results in this portfolio.
+The repository contains automated Python source validation and analytical model results. It does not contain completed physical test reports, raw EV3 mission logs or paired timing measurements comparing the Python and block implementations. Consequently, physical sensor accuracy, steering repeatability, obstacle clearance, lap performance, parking accuracy, sub-second compilation differences and relative runtime performance are not represented as measured results in this portfolio.
 
-## 9. Engineering design and verification criteria
+## 10. Engineering design and verification criteria
 
 The repository's engineering criteria cover mechanical alignment and retention, electrical interface integrity and power stability, software initialization and bounded control, mission-state handling, fault response, and traceable validation evidence. These criteria describe the engineering basis used throughout the project.
 
-## 10. Data classification
+## 11. Data classification
 
 Numerical values in this portfolio are classified as follows:
 
@@ -125,7 +156,7 @@ Numerical values in this portfolio are classified as follows:
 - **Configured:** a value used by source code or controller settings.
 - **Assumed:** a provisional design input awaiting confirmation.
 
-## 11. Repository structure
+## 12. Repository structure
 
 | Directory | Purpose |
 |---|---|
@@ -134,14 +165,15 @@ Numerical values in this portfolio are classified as follows:
 | `Power and Sense Management/` | Electrical interfaces, power and sensors |
 | `engineering/` | Mechanical, electrical, perception, control and simulation studies |
 | `hardware/` | Hardware architecture, calibration and custom printed-part records |
-| `software/` | Open Challenge and Obstacle Challenge source programs |
+| `software/` | Python challenge programs and comparative implementation analysis |
+| `ev3_blocks/` | Native LEGO EV3 graphical project archive |
 | `schemes/` | Drawing register and engineering diagram index |
-| `validation/` | Validation plan and test report template |
-| `docs/` | Repository guide, verification evidence and release checklist |
+| `validation/` | Validation framework and test-record format |
+| `docs/` | Repository guide, verification evidence and release criteria |
 | `t-photos/`, `v-photos/`, `video/` | Technical and vehicle media |
 
-## 12. Source references
+## 13. Source references
 
-Primary references are the repository README, verification evidence, engineering release checklist, reference vehicle design case, analytical simulation, challenge source programs, sensor calibration procedure and schemes register.
+Primary references are the repository README, verification evidence, engineering release criteria, reference vehicle design case, analytical simulation, Python challenge source programs, native EV3 block projects, sensor calibration procedure and schemes register.
 
 **Repository:** https://github.com/WSSB2026WRO/Qatar-FE
