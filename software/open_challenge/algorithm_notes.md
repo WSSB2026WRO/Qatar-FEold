@@ -30,8 +30,8 @@ An opening is accepted only after the threshold is exceeded for consecutive samp
 
 ## Parameter groups
 
-The Open Challenge source groups its main configuration around wheel and encoder geometry, gyro drift and heading direction, ultrasonic visibility thresholds, lateral and heading gains, corner steering and stopping logic, and the final return-distance estimate. These parameters define the configured control behaviour; no physical tuning log or before-and-after performance dataset is included in this repository snapshot.
+The Open Challenge source groups its main configuration around wheel and encoder geometry, gyro drift and heading direction, ultrasonic visibility thresholds, lateral and heading gains, corner steering and stopping logic, and the final return-distance estimate. These values define the current control settings. We have not yet added a physical tuning log or before-and-after test results to the repository.
 
 ## Evidence scope
 
-These notes describe the algorithm represented by the Python source. They are not a record of completed physical tuning sessions or measured track performance.
+These notes explain the algorithm used in our Python program. They do not report completed tuning sessions or measured performance on the track.
