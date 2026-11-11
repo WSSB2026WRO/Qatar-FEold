@@ -1,42 +1,42 @@
-# LEGO MINDSTORMS EV3 Blocks — Open Challenge
+# EV3 Blocks — Open Challenge
 
 **WRO Future Engineers team:** 6038  
-**Implementation:** Native LEGO MINDSTORMS EV3 graphical programming  
+**Programming format:** Native LEGO MINDSTORMS EV3 blocks  
 **Mission:** Open Challenge
 
 ## Project file
 
-- [OpenChallenge.ev3](OpenChallenge.ev3) — native EV3 project archive containing the graphical program and its project resources.
+- [OpenChallenge.ev3](OpenChallenge.ev3) — the native EV3 project archive with the graphical program and its project resources.
 
-The project archive includes the main Open Challenge program and the following named EV3 program modules:
+The archive contains the main Open Challenge program and these named EV3 program modules:
 
-| EV3 program module | Documented role in the project |
+| Module in the EV3 project | Role indicated by its name |
 |---|---|
-| `HEADING.ev3p` | Heading-related program component |
-| `DISTANCE.ev3p` | Distance-related program component |
-| `CENTERING.ev3p` | Corridor-centering program component |
-| `DRIVE_DD.ev3p` | Drive / differential-drive program component |
-| `CORNER.ev3p` | Corner-navigation program component |
+| `HEADING.ev3p` | Heading |
+| `DISTANCE.ev3p` | Distance |
+| `CENTERING.ev3p` | Corridor centering |
+| `DRIVE_DD.ev3p` | Drive / differential drive |
+| `CORNER.ev3p` | Corner navigation |
 
-The module names above are taken from the native project archive. They identify the components stored in the project; this README does not infer undocumented block-level details.
+These names come from the native project archive. They tell us which modules are included, but we do not add block-level details that are not shown in the archive.
 
-## Purpose in Team 6038's dual-implementation project
+## How this fits our two-program approach
 
-This is the graphical-block counterpart to the Python Open Challenge program:
+This is the EV3 block version that sits alongside our Python Open Challenge program:
 
 - Python: [`software/open_challenge/open_challenge.py`](../../open_challenge/open_challenge.py)
 - EV3 blocks: `software/ev3_blocks/open_challenge/OpenChallenge.ev3`
 
-Team 6038 developed both versions to compare two programming approaches on the same LEGO EV3 robot and to select the approach best suited to the mission.
+We kept both versions so we can compare text programming and visual programming on the same LEGO EV3 robot.
 
-## Comparative performance focus
+## What we want to compare
 
-The comparison covers program preparation/build time, startup latency, control-cycle timing, mission execution time, repeatability, debugging and maintainability. Particular attention is given to sub-second timing, expressed in milliseconds or at a stated decimal precision.
+We compare program preparation, startup delay, control-cycle time, mission time, repeatability, debugging, and maintenance. We are especially interested in sub-second timing, recorded in milliseconds or at a stated decimal precision.
 
-Python source upload or bytecode preparation is a distinct stage from compilation performed by the EV3 graphical environment. The timing comparison treats these stages according to their actual software workflows.
+Uploading Python source or preparing bytecode is a different step from the EV3 graphical environment preparing its project. We need to measure each workflow according to what it actually does.
 
-No paired timing results are included in this folder. The presence of both projects establishes the dual-implementation approach; it does not by itself establish that one implementation is faster.
+We do not have paired timing results in this folder. Having both projects available does not by itself show that one is faster.
 
 ## Project format
 
-`OpenChallenge.ev3` is retained in its native LEGO MINDSTORMS EV3 project format. The archive preserves the graphical program and associated project assets for inspection in compatible EV3 software.
+`OpenChallenge.ev3` is kept in its native LEGO MINDSTORMS EV3 format. The archive contains the graphical program and its project resources for opening in compatible EV3 software.
