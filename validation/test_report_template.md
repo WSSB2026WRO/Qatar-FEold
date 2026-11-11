@@ -1,23 +1,23 @@
-# Engineering Test Record Format
+# Engineering Test Record Template
 
-This document defines the structure and terminology of an engineering test record. It is a record format, not a completed test report; no physical result is implied by the presence of this file.
+We use this format when we carry out a test on the robot. This file is only a template. It is not a completed test report and does not mean that a physical test has taken place.
 
-## Identification fields
+## Test details
 
-A test record identifies the test ID, title, date and time, software version, hardware configuration, and test operator.
+Record the test ID, test name, date and time, software version, hardware setup, and the person carrying out the test.
 
-## Objective and conditions
+## Aim and test conditions
 
-The record states the engineering question, expected behaviour, test surface, battery condition, vehicle mass, sensor configuration, environmental conditions, and number of trials.
+Write down the question we want the test to answer and what we expect the robot to do. Also record the test surface, battery condition, vehicle mass, sensor setup, environmental conditions, and number of attempts.
 
-## Procedure and instrumentation
+## Steps and equipment
 
-The record describes the initial vehicle state, applied command or stimulus, measurement method, repetition count, instrumentation, and applicable safety conditions.
+Describe the robot's starting condition, the command or action being tested, how the measurement will be taken, how many times it will be repeated, which instruments will be used, and any safety steps.
 
 ## Results and analysis
 
-Raw trial observations are recorded alongside target values, error, and result classification. Analysis addresses repeatability, deviations, possible error sources, and the relationship between observations and acceptance criteria.
+Keep the raw readings with the target values, errors, and result labels. Explain whether the result was repeatable, what changed between attempts, possible sources of error, and whether the observations meet the acceptance criteria.
 
 ## Conclusion
 
-The conclusion identifies the result as Pass, Fail, or Inconclusive and summarizes the observations, any recorded corrective action, and the associated regression evidence.
+Choose **Pass**, **Fail**, or **Inconclusive**. Explain what the observations show, list any changes made after the test, and link to the evidence from any later check.
