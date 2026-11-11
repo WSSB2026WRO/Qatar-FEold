@@ -37,7 +37,7 @@ where:
 - Ultrasonic sensors: corridor-relative lateral position and wall-opening evidence.
 - Pixy2: pillar signature and image location in Obstacle Challenge.
 
-No single sensor should be treated as infallible. Measurements should be checked for range, continuity, and consistency with the current mission state.
+The control-system design treats sensor measurements as fallible inputs; range, continuity, and consistency with the current mission state are the stated plausibility dimensions.
 
 ## 4. Cascaded control concept
 
@@ -53,7 +53,7 @@ The heading controller produces a steering command:
 \delta_{cmd}=\operatorname{sat}(K_\psi(\psi-\psi_{ref}), -\delta_{max}, +\delta_{max})
 \]
 
-The sign convention must be calibrated so that the command reduces the measured error. A derivative or rate term may be introduced only after noise and sampling behaviour are understood.
+The steering sign convention is defined so that the commanded response reduces measured error. Derivative or rate terms are sensitive to measurement noise and sampling behaviour.
 
 ## 5. Mission state machine
 
@@ -101,7 +101,7 @@ On a critical fault, the supervisor stops propulsion and places the steering mec
 
 ## 7. Sampling and timing
 
-The control loop should have a measured execution-time budget. Sensor acquisition, filtering, control calculations, logging, and actuator commands must be profiled together. If camera communication increases execution time, the vision update can be scheduled separately from the fast steering loop, while retaining a timestamped latest valid detection.
+The control-loop timing model covers sensor acquisition, filtering, control calculations, logging, and actuator commands. Camera communication is a comparatively slower operation; the architecture allows vision updates to be scheduled separately from the faster steering loop while retaining a timestamped latest valid detection.
 
 ## 8. Software verification
 
