@@ -1,10 +1,10 @@
-# C3DP-02 — Modified Four-Section Link Component
+# C3DP-02 — Modified Four-Section Link
 
-## Component overview
+## What this part is
 
-This STL defines an elongated custom mechanical link with four separated mesh components. It is catalogued as a modified EV3-compatible linkage/connector element.
+This STL is listed as an elongated custom mechanical link with four separate mesh components. It is catalogued as a modified connector for the EV3 mechanical assembly.
 
-## Mesh characteristics
+## Recorded mesh information
 
 | Property | Inspection result |
 |---|---:|
@@ -16,21 +16,22 @@ This STL defines an elongated custom mechanical link with four separated mesh co
 | Bounding box Y | 32.97 native units |
 | Bounding box Z | 7.80 native units |
 
-## Geometric description
+## Shape
 
-The geometry is narrow and elongated, with four distinct mesh components distributed within a common bounding envelope. The components are retained exactly as represented in the supplied STL.
+The part is narrow and elongated. Its four separate mesh components sit inside one shared bounding envelope. The inspection record keeps the geometry as it appeared in the source STL.
 
-## Mechanical role
+## Intended mechanical use
 
-The part is catalogued as a multi-section custom link/connector for the modified EV3 mechanical assembly. Its geometry provides a compact arrangement of connection features.
+We have catalogued this part as a multi-section link or connector for the modified EV3 assembly. Its shape provides several connection features in a compact space.
 
 ## Design record
 
-The mesh contains four distinct connected components within one bounding envelope. Each component is individually watertight, while the complete mesh is not one watertight solid. This topology is part of the retained inspection record.
+The mesh has four connected components. Each component is watertight by itself, but the full mesh is not one watertight solid. This is an important detail from the original inspection.
 
-## File
+## Source file
 
-Original mesh referenced: `4 I modified lego.stl`  
-**Availability:** The STL file is not included in the current repository. This record is not a manufacturing source.
+Original mesh reference: `4 I modified lego.stl`
 
-STL coordinates do not carry unit metadata. Dimensions are expressed in native mesh units. The four-component topology is part of the source mesh and is preserved in this release.
+**Availability:** The STL file is not included here, so this page is not a manufacturing file.
+
+STL coordinates do not include unit information. The bounding-box values use native mesh units, and the four-component structure is kept in this record.
