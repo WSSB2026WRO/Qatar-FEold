@@ -110,3 +110,35 @@ Sub-second timing differences are expressed in milliseconds. A comparison of ave
 The loop periods configured in the Python programs provide a code-derived timing reference: 20 ms on straight/main control and 10 ms during corners or maneuvers. The EV3 block timing ranges are engineering estimates for comparison planning. Measured values determine the actual performance comparison.
 
 Mission duration, accuracy, preparation time, and startup latency are reported from paired trials rather than inferred from source code. This separates implementation timing from physical robot performance and supports a fair comparison between the two software approaches.
+
+## 8. Illustrative comparison layout
+
+The table below shows how a concise Python-versus-EV3 comparison can be presented once the team has a complete dataset. The figures are illustrative working values only; they are not physical test results and must not be reported as measured performance. Replace them with the team's paired trial results before drawing conclusions.
+
+| Challenge | Metric | Python example | EV3 blocks example | Unit |
+|---|---|---:|---:|---|
+| Open | Program preparation and transfer | 4.2 | 6.5 | s |
+| Open | Startup latency | 2.6 | 2.9 | s |
+| Open | Straight control-loop period | 20 | 28 | ms |
+| Open | Corner control-loop period | 10 | 18 | ms |
+| Open | Mission duration | 43.2 | 45.6 | s |
+| Open | Distance error | 2.8 | 3.2 | cm |
+| Open | Heading error | 2.4 | 3.1 | degrees |
+| Obstacle | Program preparation and transfer | 4.8 | 7.1 | s |
+| Obstacle | Startup latency | 2.8 | 3.1 | s |
+| Obstacle | Main control-loop period | 20 | 32 | ms |
+| Obstacle | Corner / maneuver loop period | 10 | 20 | ms |
+| Obstacle | Mission duration | 59.4 | 62.8 | s |
+| Obstacle | Distance error | 3.5 | 4.0 | cm |
+| Obstacle | Heading error | 3.2 | 3.8 | degrees |
+| Obstacle | Pillar avoidance success | 9/10 | 8/10 | successful runs |
+| Obstacle | Parking success | 9/10 | 8/10 | successful runs |
+
+### Example control-cycle samples
+
+| Implementation | Sample 1 | Sample 2 | Sample 3 | Sample 4 | Sample 5 | Mean |
+|---|---:|---:|---:|---:|---:|---:|
+| Python | 19.8 | 20.2 | 19.5 | 20.4 | 19.9 | 19.96 |
+| EV3 blocks | 28.4 | 27.9 | 29.1 | 28.7 | 27.8 | 28.38 |
+
+All values in this section are provided solely to demonstrate the presentation and calculation format. They must remain separate from the actual-measurement tables in Sections 2, 3, and 5 until verified by physical trials.
