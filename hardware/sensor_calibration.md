@@ -1,35 +1,35 @@
 # Sensor Calibration Procedures
 
-This document defines repeatable procedures for collecting calibration evidence. A procedure is not evidence that calibration has already been performed. Record actual observations in a dated test record and retain the original log.
+This page explains how we can collect calibration evidence. A procedure does not mean that we have already completed the calibration. When we carry out a check, we need to save the actual readings in a dated test record and keep the original log.
 
-## 1. Gyroscope calibration
+## 1. Gyro calibration
 
-The vehicle must remain stationary during gyro calibration.
+The robot must stay still while we calibrate the gyro.
 
-1. Place the vehicle on a level, vibration-free surface.
-2. Ensure the steering and drive motors are idle.
-3. Run the program's stationary drift measurement.
+1. Put the robot on a level surface where it will not vibrate.
+2. Make sure the drive and steering motors are not moving.
+3. Run the stationary drift measurement in the program.
 4. Complete the configured calibration sequence.
-5. Record the initial heading, final heading, elapsed time, and calculated drift rate.
-6. Confirm that the reported heading remains stable while the vehicle is stationary.
-7. Repeat the check after any sensor remount or chassis modification.
+5. Record the starting heading, ending heading, elapsed time, and calculated drift rate.
+6. Check that the heading stays stable while the robot remains still.
+7. Repeat the check after moving the sensor or changing the chassis.
 
-For a stationary interval, calculate the average drift rate as:
+For a stationary time interval, we calculate the average drift rate as:
 
 `drift rate = (final heading - initial heading) / elapsed time`
 
-State the angle and time units used (for example, degrees per second). Do not substitute a target or expected value for an observed result.
+Write down the angle and time units, for example degrees per second. Do not write an expected value as if it were an observed result.
 
 ## 2. Ultrasonic range calibration
 
-1. Align the sensor face perpendicular to a flat target.
-2. Place the target at independently measured reference distances across the intended operating range.
-3. Record the raw sensor reading at each position.
-4. Repeat each point at least five times where practical to evaluate repeatability.
+1. Point the sensor face directly at a flat target.
+2. Put the target at reference distances measured independently.
+3. Record the raw sensor reading at each distance.
+4. Repeat each point at least five times when practical.
 5. Calculate signed error (reading minus reference), absolute error, and mean error.
-6. Inspect mounting angle, target geometry, and nearby reflective surfaces if the error is inconsistent.
+6. If the readings vary, check the sensor angle, target shape, and nearby reflective surfaces.
 
-Keep the reference distance, instrument used, test surface, sensor mounting configuration, and raw readings with the results.
+Keep the reference distance, measuring instrument, test surface, sensor mounting setup, and raw readings with the results.
 
 ## 3. Encoder distance calibration
 
@@ -37,42 +37,42 @@ For wheel diameter `D` in millimetres, motor rotation `theta` in degrees, and `G
 
 `s = (theta / 360) × pi × D × G`
 
-The calculated distance `s` is in millimetres. If the drivetrain ratio is documented as motor revolutions per wheel revolution, convert it to the reciprocal before using this expression.
+The result `s` is in millimetres. If the drivetrain ratio is written as motor revolutions per wheel revolution, convert it to the reciprocal before using this formula.
 
-Measure a straight-line travel distance on the intended surface and compare it with the encoder-derived distance. Repeat in both directions and evaluate the influence of wheel slip, backlash, tyre deformation, and drivetrain compliance. Record the wheel diameter and gear ratio used in the calculation.
+Measure a straight-line distance on the surface used for the robot and compare it with the encoder estimate. Repeat in both directions. We should consider wheel slip, backlash, tyre deformation, and drivetrain flexibility. Record the wheel diameter and gear ratio used.
 
 ## 4. Pixy2 range calibration
 
-The Obstacle Challenge program uses the Pixy2 camera assembly, including its integrated illumination, through sensor port S4 and applies the configured empirical vertical-image model:
+In the Obstacle Challenge, the Pixy2 camera assembly, including its built-in illumination, is connected to sensor port S4. The program uses this empirical model based on the vertical image coordinate:
 
 `d = 20100 / (Y - 63)`
 
-where `Y` is the selected vertical image feature in pixels and `d` is the estimated range in millimetres. The constants 20100 and 63 are configured model parameters, not proof of a completed physical calibration.
+Here, `Y` is the selected vertical image feature in pixels and `d` is the estimated range in millimetres. The constants 20100 and 63 are configured model values. They do not prove that we have completed a physical camera calibration.
 
-The model-validation protocol consists of multiple observations at known target distances, retention of raw image coordinates, calculation of predicted range and residual, and evaluation of error across the intended operating range. Document target dimensions, camera mounting position, image resolution, lighting, and the method used to identify the image feature.
+To check the model, we need to record images at several known distances, save the raw image coordinates, calculate the predicted range and error, and review the error over the intended operating range. We should also record the pillar size, camera position, image resolution, lighting, and the method used to select the image feature.
 
-The model and its geometric limitations are discussed in [Pixy2 Calibration and Geometry](../engineering/perception/pixy2_calibration_and_geometry.md).
+The model and its limitations are explained in [Pixy2 Calibration and Geometry](../engineering/perception/pixy2_calibration_and_geometry.md).
 
-## 5. Calibration record format
+## 5. Calibration record table
 
-| Sensor | Reference condition | Observed value | Error / metric | Notes |
+| Sensor | Reference condition | What we record | Error or metric | Notes |
 |---|---|---|---|---|
-| Gyro | Stationary, timed interval | Initial/final heading | Drift rate | Record duration and repeat count |
-| Ultrasonic left | Known target distance | Raw sensor reading | Reading − reference | Record target and instrument |
-| Ultrasonic right | Known target distance | Raw sensor reading | Reading − reference | Record target and instrument |
-| Drive encoder | Known travel distance | Encoder-derived distance | Calculated − reference | Record wheel diameter and ratio |
-| Pixy2 | Known pillar range | Image coordinate and predicted range | Predicted − reference | Record camera and lighting setup |
+| Gyro | Stationary for a timed interval | Starting and ending heading | Drift rate | Record duration and repeat count |
+| Ultrasonic left | Target at known distance | Raw sensor reading | Reading − reference | Record target and instrument |
+| Ultrasonic right | Target at known distance | Raw sensor reading | Reading − reference | Record target and instrument |
+| Drive encoder | Known travel distance | Encoder distance estimate | Calculated − reference | Record wheel diameter and ratio |
+| Pixy2 | Pillar at known range | Image coordinate and predicted range | Predicted − reference | Record camera and lighting setup |
 
-## 6. Evidence and revision control
+## 6. Saving the evidence
 
-Each calibration session should include:
+For each calibration session, we should save:
 
 - Test ID, date, operator, and robot identifier.
-- Hardware configuration and mounting revision.
-- Software file name, version, and commit identifier.
+- Hardware setup and mounting revision.
+- Software file name, version, and commit.
 - Reference instrument and its resolution or stated accuracy.
-- Raw observations, units, repeat count, and environmental conditions.
+- Raw readings, units, number of repeats, and test conditions.
 - Calculation method, summary statistics, limitations, and reviewer.
-- Original unedited log or data file.
+- Original log or data file without edits.
 
-Classify every result as **measured**, **calculated**, **configured**, or **inconclusive**. Never describe an unperformed procedure as a completed calibration.
+Each result should be labelled **measured**, **calculated**, **configured**, or **inconclusive**. We should never describe a procedure as a completed calibration if we have not carried it out.
