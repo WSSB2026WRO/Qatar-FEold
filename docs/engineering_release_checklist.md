@@ -1,54 +1,25 @@
-# Engineering Release Standard
+# Engineering Release Criteria
 
-## Documentation standard
+## Documentation quality
 
-Every engineering document uses a descriptive title, consistent terminology, SI units, defined variables, and a clear revision history. Numerical values are accompanied by their units and calculation basis.
+Engineering records use descriptive titles, consistent terminology, SI units, defined variables, and revision context. Numerical values include units and a stated calculation or evidence basis.
 
-## Mechanical release
+## Mechanical design criteria
 
-A mechanical assembly is reviewed for:
-- chassis datum and wheel alignment;
-- drive motor mounting stiffness;
-- steering actuator support and linkage clearance;
-- battery retention and service access;
-- sensor bracket rigidity and field of view;
-- printed-part geometry, material, and manufacturing orientation;
-- fastener retention and inspection access.
+The mechanical design record covers chassis datums and wheel alignment, drive-motor mounting, steering-actuator support, linkage geometry, battery retention, sensor mounting, printed-part geometry, fastener retention, and service access.
 
-## Electrical release
+## Electrical design criteria
 
-The electrical architecture is reviewed for:
-- verified EV3 port allocation;
-- connector security and cable strain relief;
-- moving-part clearance;
-- battery and motor operating limits;
-- sensor communication integrity;
-- power stability during simultaneous drive and steering operation.
+The electrical record covers EV3 port allocation, connector interfaces, cable routing, moving-part clearance, component operating limits, sensor communication, and power integrity during drive and steering operation.
 
-## Software release
+## Software design criteria
 
-A software revision is reviewed for:
-- Python syntax and import integrity;
-- sensor initialization and calibration sequence;
-- steering sign conventions and mechanical limits;
-- bounded actuator commands;
-- mission-state transitions;
-- timeout and fault handling;
-- logging fields and event traceability;
-- regression comparison against the reference version.
+The software record covers Python syntax and imports, sensor initialization, calibration sequence, steering sign conventions and limits, bounded actuator commands, mission-state transitions, timeout handling, fault response, and event logging.
 
-## Validation release
+## Verification evidence structure
 
-A validation record contains:
-- test objective and identifier;
-- hardware and software revision;
-- operating conditions;
-- measurement method and instrument;
-- raw observations;
-- acceptance criteria;
-- pass, fail, or inconclusive result;
-- corrective actions and regression outcome.
+A physical test record is defined by its test identifier, hardware and software revision, operating conditions, measurement method, instrument, raw observations, acceptance criteria, result classification, and associated logs.
 
-## Verification evidence
+## Evidence interpretation
 
-See [Verification Evidence](verification_evidence.md) for the recorded automated validation run, reproducible analytical calculations, and the physical test records still required. Software checks and calculated results must not be presented as physical vehicle-test results.
+The [Verification Evidence](verification_evidence.md) document records the automated checks and analytical calculations. Automated software checks and calculated outputs are distinguished from measurements obtained from the physical vehicle. The repository's evidence classification is used consistently across the portfolio and engineering documents.
