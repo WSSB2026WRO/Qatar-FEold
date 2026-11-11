@@ -154,7 +154,7 @@ MIN_RATIO = 0.8             # height / width minimum (else floor line)
 CONFIRM_FRAMES = 3          # consecutive frames to confirm a pillar
 Y_TRIGGER = 85              # start avoiding when pillar Y >= this
 # Camera -> pillar distance from the vertical position Y in the image:
-#   distance_mm = Y_K / (Y - Y_0)   (measured: Y=130 at 30 cm, 83 at 1 m)
+#   distance_mm = Y_K / (Y - Y_0)   (nominal model anchors: Y=130 at 300 mm, Y=83 at 1000 mm; raw calibration observations are not stored in this repository)
 Y_0 = 63
 Y_K = 20100
 CAM_FOV = 60                # horizontal field of view of the Pixy2 (deg)
