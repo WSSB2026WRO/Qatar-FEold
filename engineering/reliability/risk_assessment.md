@@ -1,50 +1,48 @@
-# System Reliability and Failure Mode Analysis
+# Reliability and Failure-Mode Notes
 
-## 1. Rating method
+## 1. How we rate risks
 
-Use a 1–10 scale for severity (S), occurrence (O), and detectability (D). The risk priority number is:
+For a formal review, we can rate severity (S), occurrence (O), and detectability (D) from 1 to 10. The risk priority number is:
 
-\[
+[
 RPN=S\times O\times D
-\]
+]
 
-No numeric S/O/D ratings are assigned in this baseline register because physical occurrence and detectability evidence has not been recorded. Apply the scale during a documented risk review; RPN is a prioritization aid and does not replace severity-based safety controls.
+We have not assigned numerical ratings in this register because we do not yet have recorded physical evidence for occurrence and detectability. The scale should be applied during a documented team review. An RPN helps us sort risks, but it does not replace safety controls for a serious hazard.
 
-## 2. Failure mode and effects analysis
+## 2. Failure modes we have identified
 
-| Subsystem | Failure mode | Effect | Detection | Recommended mitigation |
+| Subsystem | Possible failure | Possible effect | How we can check it | Possible control |
 |---|---|---|---|---|
-| Drive | Wheel slip | Distance and turn error | Encoder/gyro disagreement | Tune acceleration and verify traction |
-| Drive | Motor stall | Vehicle stops or deviates | Not implemented as a dedicated source-level stall detector; verify with an encoder-progress test | Add a bounded progress timeout and safe-stop response after validating thresholds on hardware |
-| Steering | Linkage backlash | Heading oscillation | Angle repeatability test | Reduce clearance and inspect joints |
-| Steering | Mechanical binding | High load or incomplete turn | Existing manoeuvre timeout plus physical full-travel inspection | Verify clearance and actuator load across the complete steering range |
-| Gyro | Bias drift | Heading error | Stationary drift test | Recalibration and bounded correction |
-| Ultrasonic | Multipath echo | False wall position | Plausibility and continuity checks | Sensor alignment and filtering |
-| Pixy2 | Misclassification | Wrong passing side | Signature confidence and temporal confirmation | Re-train signatures and verify lighting |
-| Pixy2 | I²C communication loss | Missing obstacle data | Consecutive error counter | Safe stop and cable inspection |
-| Printed parts | Layer separation | Linkage failure | Visual inspection | Correct orientation and print parameters |
-| Battery | Voltage sag | Reduced speed or reset | Voltage observation | Battery health and load test |
-| Parking | Position estimate error | Misaligned final pose | Boundary and encoder cross-check | Recalibrate parking geometry |
+| Drive | Wheel slip | Distance and turning error | Compare encoder and gyro behaviour | Adjust acceleration and check grip |
+| Drive | Motor stall | Robot stops or leaves its path | No dedicated stall detector is implemented in the source; check encoder progress on the hardware | Add a progress timeout and safe stop after setting and testing its limits |
+| Steering | Linkage backlash | Unsteady heading | Repeat wheel-angle measurements | Reduce clearance and inspect joints |
+| Steering | Mechanical binding | High load or incomplete turn | Existing manoeuvre timeout and full-travel inspection | Check clearance and actuator load through the full range |
+| Gyro | Bias drift | Heading error | Stationary drift check | Calibrate again and limit corrections |
+| Ultrasonic | Multiple or false echo | Incorrect wall position | Check plausibility and continuity | Align sensors and filter readings |
+| Pixy2 | Wrong colour classification | Wrong side of pillar | Check signature and repeated detections | Recheck signatures and lighting |
+| Pixy2 | I²C communication loss | Missing obstacle information | Count consecutive communication errors | Stop safely and inspect the cable |
+| Printed parts | Layer separation | Linkage or sensor mount failure | Visual inspection | Review print direction and settings |
+| Battery | Voltage drop | Lower speed or controller reset | Observe battery voltage | Check battery condition under load |
+| Parking | Position estimate error | Robot stops in the wrong position | Compare boundary and encoder information | Recheck parking geometry |
 
-## 3. Critical risk controls
+## 3. Risks that need attention first
 
-Priority controls address uncontrolled motion, steering lock, loss of obstacle detection, and mechanical separation. Validation should progress from low-speed functional checks to complete mission trials.
+We should give special attention to uncontrolled movement, steering lock, loss of obstacle detection, and broken mechanical connections. Testing should start with simple low-speed checks and move on to full mission trials only when the earlier checks are satisfactory.
 
-## 4. Maintenance schedule
+## 4. Maintenance checks
 
 ### Before each run
-- inspect wheels and tire surfaces;
-- verify steering travel and fasteners;
-- inspect printed components;
-- verify sensor mounting and cables;
-- confirm battery condition;
-- verify the software version.
+- Check the wheels and tyre surfaces.
+- Check steering movement and fasteners.
+- Look for damage on printed parts.
+- Check sensor mounts and cables.
+- Check the battery.
+- Confirm which software version is loaded.
 
 ### After each test session
-- inspect for cracks and loosened joints;
-- archive run logs;
-- record anomalies and corrective actions;
-- review motor and sensor behaviour;
-- update the maintenance record.
-
-
+- Look for cracks and loose joints.
+- Save the run logs.
+- Write down unusual behaviour and any changes made.
+- Review motor and sensor behaviour.
+- Update the maintenance notes.
