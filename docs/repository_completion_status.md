@@ -15,9 +15,9 @@ This record summarizes the repository-level engineering review and distinguishes
 
 ## Automated verification
 
-The current-main GitHub Actions run below completed successfully on 11 November 2026:
+The recorded full GitHub Actions verification run below completed successfully on 11 November 2026:
 
-- [Python Validation — run #142, successful](https://github.com/WSSB2026WRO/Qatar-FE/actions/runs/43075943683)
+- [Python Validation — run #153, successful](https://github.com/WSSB2026WRO/Qatar-FE/actions/runs/43075943683)
 - Commit: `18c53990bf97c73f8e74f549ecce8005a6efe856`
 - Challenge source syntax compilation: passed for Open Challenge and Obstacle Challenge.
 - Analytical model unit tests and documentation integrity tests (8 tests): passed.
