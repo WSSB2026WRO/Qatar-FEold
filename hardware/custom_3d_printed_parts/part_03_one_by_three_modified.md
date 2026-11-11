@@ -34,6 +34,7 @@ The part is catalogued as a modified small connector/link element for the EV3 as
 
 ## File
 
-Original mesh: `1x3 modified.stl`
+Original mesh referenced: `1x3 modified.stl`  
+**Availability:** The STL file is not included in the current repository. This record is not a manufacturing source.
 
 STL coordinates do not carry unit metadata. The reported bounding box uses native mesh units.
