@@ -19,6 +19,7 @@ Qatar-FE/
 ├── software/
 │   ├── open_challenge/            Open Challenge source and notes
 │   └── obstacle_challenge/        Obstacle Challenge source and notes
+├── tests/                         Analytical and documentation integrity tests
 └── validation/                    Test plans and evidence requirements
 ```
 
