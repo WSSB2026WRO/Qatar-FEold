@@ -1,25 +1,39 @@
-# Engineering Release Criteria
+# Engineering Release Checklist
 
-## Documentation quality
+We use this checklist to review the project files before sharing a version of our work. It helps us check that the main design details are documented and that calculations are not confused with physical test results.
 
-Engineering records use descriptive titles, consistent terminology, SI units, defined variables, and revision context. Numerical values include units and a stated calculation or evidence basis.
+## Documentation
 
-## Mechanical design criteria
+- Use clear titles and the same names for parts throughout the repository.
+- Include units with numerical values.
+- Explain variables used in equations.
+- State where a value comes from, such as a program setting, calculation, datasheet, or physical measurement.
+- Include the relevant revision when a result depends on a particular version.
 
-The mechanical design record covers chassis datums and wheel alignment, drive-motor mounting, steering-actuator support, linkage geometry, battery retention, sensor mounting, printed-part geometry, fastener retention, and service access.
+## Mechanical design
 
-## Electrical design criteria
+Our mechanical notes should explain the chassis reference points, wheel alignment, drive motor mounting, steering support and linkage, battery mounting, sensor positions, printed-part geometry, fasteners, and access for maintenance.
 
-The electrical record covers EV3 port allocation, connector interfaces, cable routing, moving-part clearance, component operating limits, sensor communication, and power integrity during drive and steering operation.
+## Electrical design
 
-## Software design criteria
+Our electrical notes should show the EV3 port allocation, connectors, cable routing, clearance around moving parts, component operating limits, sensor communication, and power behaviour while the motors are running.
 
-The software record covers Python syntax and imports, sensor initialization, calibration sequence, steering sign conventions and limits, bounded actuator commands, mission-state transitions, timeout handling, fault response, and event logging.
+## Software
 
-## Verification evidence structure
+Before sharing the programs, we check Python syntax and imports, sensor startup, calibration, steering direction and limits, motor command limits, mission-state changes, timeout handling, fault handling, and event logging.
 
-A physical test record is defined by its test identifier, hardware and software revision, operating conditions, measurement method, instrument, raw observations, acceptance criteria, result classification, and associated logs.
+## Physical test records
 
-## Evidence interpretation
+For a physical test, we record:
+- Test ID and date.
+- Hardware and software versions.
+- Conditions during the test.
+- How the measurement was taken.
+- The instrument used.
+- Raw observations.
+- The acceptance criteria.
+- The result and related logs.
 
-The [Verification Evidence](verification_evidence.md) document records the automated checks and analytical calculations. Automated software checks and calculated outputs are distinguished from measurements obtained from the physical vehicle. The repository's evidence classification is used consistently across the portfolio and engineering documents.
+## How we describe evidence
+
+The [Verification Evidence](verification_evidence.md) page explains the automated checks and calculations in this repository. We keep these separate from measurements made on the physical robot. A calculation or software check should not be described as a successful physical test.
