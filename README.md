@@ -54,6 +54,15 @@ Both implementations target the LEGO EV3 platform. The Python Obstacle Challenge
 - [Reference vehicle design case](engineering/design_basis/reference_vehicle_design_case.md)
 - [Analytical simulation](engineering/simulation/README.md)
 
+## Professional engineering drawing set
+
+The repository includes an eight-sheet technical drawing set covering the complete EV3 vehicle: system architecture, vehicle dynamics, Ackermann steering, obstacle state machine, chassis layout, steering linkage, EV3 wiring and Pixy2 camera geometry.
+
+- [Open the engineering drawing register and gallery](docs/drawings/README.md)
+- [Download / view SYS-001 — system architecture](docs/drawings/SYS-001_autonomous_vehicle_architecture.svg)
+- [View MEC-001 — chassis layout](docs/drawings/MEC-001_chassis_layout.svg)
+- [View ELE-001 — EV3 wiring](docs/drawings/ELE-001_ev3_wiring.svg)
+
 ## Technical diagrams
 
 - [System architecture](engineering/diagrams/system_architecture.svg)
