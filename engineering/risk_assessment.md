@@ -1,6 +1,6 @@
 # Engineering Risk Assessment
 
-This is a preliminary design-level risk register. Ratings are qualitative and must be updated using actual test evidence.
+This is the project's qualitative design-level risk register. The entries identify failure modes, effects, detection mechanisms, and associated engineering controls; no numeric risk scores are assigned.
 
 | ID | Hazard / failure mode | Potential effect | Detection | Mitigation |
 |---|---|---|---|---|
@@ -17,6 +17,4 @@ This is a preliminary design-level risk register. Ratings are qualitative and mu
 
 For the expanded failure-mode register, scoring method, and maintenance schedule, see [System Reliability and Failure Mode Analysis](reliability/risk_assessment.md).
 
-## Risk review cycle
-
-Review risks after every mechanical revision, sensor remount, software parameter change, or unexplained run failure. Record the observed cause, corrective action, and retest result.
+The table is a qualitative engineering risk record. Its mitigations describe the controls associated with each identified failure mode.
