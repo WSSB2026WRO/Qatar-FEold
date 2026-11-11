@@ -1,82 +1,76 @@
-# Chassis Architecture and Packaging Study
+# Chassis and Component Layout
 
 ![MEC-001 — Chassis and component layout](../../docs/drawings/MEC-001_chassis_layout.svg)
 
 ![MEC-002 — Steering linkage](../../docs/drawings/MEC-002_steering_linkage.svg)
 
+## 1. What the chassis needs to do
 
-## 1. Design objectives
+Our chassis needs to hold the drive system, steering, sensors, and EV3 controller in place. It should stay stiff enough to keep the wheels and sensors aligned, while still leaving room to reach the battery and other parts when we need to work on the robot.
 
-The chassis must provide a stiff reference structure for the drive train, steering mechanism, sensors, and controller while maintaining a compact envelope and practical service access.
+The main things we consider are:
+- Keeping the wheels aligned while the robot is moving.
+- Limiting twisting and bending of the frame.
+- Protecting wires and sensor connectors.
+- Keeping the centre of gravity low.
+- Keeping the steering geometry consistent.
+- Making battery replacement and maintenance practical.
+- Leaving enough room for the wheels, steering links, and cables to move.
 
-Primary design objectives:
-- maintain wheel alignment under dynamic load;
-- minimize torsional and bending compliance;
-- protect wiring and sensor connectors;
-- keep the centre of gravity low;
-- provide repeatable steering geometry;
-- allow rapid battery replacement and maintenance;
-- avoid interference between wheels, steering links, and body structures.
+## 2. A possible two-level layout
 
-## 2. Conceptual structural architecture
+For the reference design, we consider a two-level arrangement.
 
-A modular two-level layout is recommended for the theoretical design case.
+**Lower mechanical level**
+- Drive motors and wheel connections.
+- Steering motor and linkage.
+- Battery mounted as low as possible.
+- Structural cross-members.
+- Lower protective frame.
 
-**Lower mechanical plane**
-- drive motors and wheel interfaces;
-- steering actuator and linkage;
-- battery pack mounted low;
-- structural cross-members;
-- protective lower perimeter.
+**Upper electronics level**
+- EV3 controller.
+- Sensor cables and connections.
+- Camera mount for the obstacle configuration.
+- Cable guides and strain relief.
 
-**Upper electronics plane**
-- EV3 controller;
-- sensor interface routing;
-- camera mounting structure for the obstacle configuration;
-- cable guides and strain relief.
+This arrangement keeps most mechanical loads in the lower structure and helps us route cables away from the steering parts.
 
-This arrangement separates mechanical loads from sensor mounting and reduces the need to route cables through moving steering components.
+## 3. Where the forces go
 
-## 3. Structural load paths
-
-Drive torque travels from each motor mounting interface into the chassis rails and then to the wheel contact patches. Steering reaction loads travel from the road wheels through steering arms and linkage into the steering actuator support. Impact loads should be carried by dedicated structural members rather than by sensor brackets or printed electronics mounts.
+Drive torque passes from the motor mounts into the chassis and then through the wheels to the floor. Steering forces travel from the front wheels through the steering arms and linkage to the steering motor support. If the robot hits something, the impact should be carried by the main frame, not by a sensor bracket or a printed electronics mount.
 
 ## 4. Chassis stiffness
 
-For a simplified beam segment, bending deflection scales with applied load and span and inversely with elastic modulus and second moment of area. A design comparison should therefore evaluate:
-- member span;
-- cross-section geometry;
-- material modulus;
-- joint stiffness;
-- load direction;
-- fastener spacing.
+For a simple beam, bending depends on the applied force, the span, the material stiffness, and the cross-section. When comparing frame designs, we should look at:
+- Length of unsupported sections.
+- Cross-section shape.
+- Material stiffness.
+- How stiff the joints are.
+- Direction of the load.
+- Distance between fasteners.
 
-A stiff chassis improves sensor alignment but excessive mass should be avoided. Reinforce high-load joints rather than increasing thickness uniformly.
+A stiffer frame can help keep the sensors aligned, but adding material everywhere also adds mass. It is better to reinforce the joints that carry the largest loads.
 
-## 5. Steering clearance envelope
+## 5. Space needed by the steering
 
-The full swept volume of the steering arm, tie rod, wheel, and cable loop must be checked at both steering limits. A clearance allowance should include:
-- manufacturing tolerance;
-- joint backlash;
-- frame deflection;
-- wheel runout;
-- cable movement.
+We need to check the full movement of the steering arm, tie rod, wheels, and cable loop at both steering limits. The clearance should allow for print tolerances, joint play, frame movement, wheel runout, and cable movement.
 
-No cable should cross a moving linkage path.
+No cable should pass through the path of a moving steering part.
 
-## 6. Serviceability
+## 6. Maintenance
 
-Use accessible fasteners, keyed connectors, labelled ports, and a repeatable assembly sequence. Critical components should be removable without dismantling the entire chassis.
+We should use fasteners that are easy to reach, connectors that cannot be mixed up, labelled ports, and an assembly order we can repeat. We should also be able to remove important parts without taking the whole chassis apart.
 
-## 7. Design review checklist
+## 7. Chassis check list
 
-- [ ] Wheel alignment is referenced to a common chassis datum.
-- [ ] Drive motor mounts resist torque reaction.
-- [ ] Steering actuator mount resists cyclic loads.
-- [ ] Full steering sweep has no mechanical interference.
-- [ ] Battery is mechanically retained.
-- [ ] Camera field of view is unobstructed.
-- [ ] Ultrasonic sensor faces are aligned with the intended corridor axes.
-- [ ] Cable strain relief is provided.
-- [ ] Printed components are inspected for cracks and layer separation.
-- [ ] Fasteners remain accessible for inspection.
+- [ ] Use one chassis reference line or datum for wheel alignment.
+- [ ] Check that the drive motor mounts resist motor torque.
+- [ ] Check that the steering motor mount can handle repeated loads.
+- [ ] Move the steering through its full range and look for contact.
+- [ ] Secure the battery so it cannot move during a run.
+- [ ] Make sure the camera can see the required area.
+- [ ] Align the ultrasonic sensors with the intended corridor directions.
+- [ ] Add strain relief to cables.
+- [ ] Inspect printed parts for cracks and layer separation.
+- [ ] Keep fasteners accessible for inspection.
