@@ -7,7 +7,7 @@
 
 **WRO team number: 6038**
 
-Qatar FE is a student engineering team developing an autonomous vehicle for the **World Robot Olympiad (WRO) Future Engineers** challenge. This repository presents the team's software, mechanical engineering, electronics, perception systems, analytical studies, and technical documentation.
+We are Team 6038, and we are developing an autonomous vehicle for the **World Robot Olympiad (WRO) Future Engineers** challenge. In this repository, we share our software, mechanical and electrical design work, perception system, calculations, and technical documentation.
 
 ## Team
 
@@ -19,7 +19,7 @@ Qatar FE is a student engineering team developing an autonomous vehicle for the 
 
 ## Challenge programs and software implementations
 
-The team developed two programming implementations for each challenge: Python using Pybricks MicroPython and graphical LEGO EV3 block programming. This dual implementation supports a direct comparison of development workflow, build/compilation time, startup latency, control-cycle timing, mission execution and reliability.
+For each challenge, we created two program versions: one in Python using Pybricks MicroPython and one using LEGO EV3 graphical blocks. This lets us compare the development process, preparation time, startup delay, control-cycle timing, mission time, and reliability.
 
 | Program | Mission | Python source | EV3 block project |
 |---|---|---|---|
@@ -100,4 +100,4 @@ We have prepared an eight-sheet technical drawing set covering the complete EV3 
 
 Software settings, theoretical design inputs, calculated outputs, simulations, and physical observations are treated as separate engineering data classes. Numerical examples are accompanied by their governing assumptions and equations. Physical performance claims are based on recorded test evidence.
 
-A key engineering characteristic of Team 6038 is its comparative approach to software: Python and EV3 block versions are maintained to evaluate their relative performance. Build/compilation duration, startup latency and control-cycle timing are treated as measurable quantities at sub-second resolution. Numerical performance conclusions are reported only when supported by paired measurements.
+One part of our work is comparing the Python and EV3 block versions on the same robot. We measure preparation time, startup delay, and control-cycle duration, including timings below one second. We only draw numerical conclusions when we have measurements from comparable tests.
