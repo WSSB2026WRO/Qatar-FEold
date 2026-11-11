@@ -121,7 +121,7 @@ During the final part of a turn, the camera may see the first pillar in the next
 
 The unparking manoeuvre is a sequence of recorded distance moves and gyro-referenced turns. The parking routine replays those moves in reverse order and opposite travel direction. The final parking approach uses the outer-wall distance and detects boundary-wall transitions to refine the estimated lot position.
 
-This is a trajectory-reversal strategy. Its accuracy depends on repeatable steering response, wheel traction, encoder distance, and gyro heading. It should be validated under the same floor and battery conditions used for competition.
+This is a trajectory-reversal strategy. Its repeatability depends on steering response, wheel traction, encoder distance, and gyro heading. No repeated physical parking-trial dataset is included in this repository.
 
 ## Key configured parameters
 
@@ -179,22 +179,13 @@ flowchart TD
 
 The log header includes time, phase, corner count, track position, raw and perpendicular wall readings, estimated vehicle lateral position, target position, pillar position, position error, relative heading, heading goal, steering command, actual steering angle, Pixy2 signature and image coordinates, and pillar state. Event records describe camera errors, pillar acquisition and passing, openings, corners, parking-wall detection, parking, and failures.
 
-## Calibration and validation priorities
+## Calibration and physical-evidence status
 
-1. Confirm Pixy2 firmware mode, I²C output mode, address, and signature mapping.
-2. Calibrate the image-distance model at several known pillar distances.
-3. Calibrate horizontal field of view and camera-to-vehicle offset.
-4. Verify the ultrasonic sensor span and corridor-width model.
-5. Verify the sign conventions for gyro, steering, inner wall, and route direction.
-6. Measure effective encoder distance and adjust `DIST_SCALE`.
-7. Test red and green passing independently at reduced speed.
-8. Test the camera hand-off from AVOID to PASS and return to CENTER.
-9. Test corner detection after straight, angled, and obstacle-avoidance approaches.
-10. Test unparking and reverse-replay parking as separate procedures before a full run.
+The source configuration records the Pixy2 I²C address, signature mapping, image-distance constants, camera field of view, and camera offset. The repository also records the ultrasonic geometry and encoder scale parameters. No physical calibration dataset or completed EV3 mission-test logs are stored in this repository snapshot.
 
 ## Review points
 
-- Camera range is inferred from image position using the configured empirical model; its accuracy must be established by a physical calibration dataset. It is not a direct range measurement.
+- Camera range is inferred from image position using the configured empirical model. It is not a direct range measurement, and no physical calibration dataset is included in this repository.
 - A missed or misclassified frame can delay obstacle tracking. Confirmation thresholds reduce, but do not eliminate, this risk.
 - Ultrasonic readings can be distorted by wall ends, oblique incidence, pillars, and nearby boundary structures.
 - Reverse replay assumes that the physical trajectory is sufficiently repeatable in both directions.
