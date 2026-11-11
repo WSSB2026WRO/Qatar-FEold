@@ -1,12 +1,12 @@
 # Reference Vehicle Design Case
 
-## Purpose and status
+## Why we made this model
 
-This document establishes a coherent **illustrative engineering design case** for calculations, diagrams, and software-in-the-loop studies. It is a theoretical reference model, not a measured specification of the competition robot.
+We use this example design case to keep the calculations, diagrams, and software-in-the-loop studies consistent. It is an illustrative model, not a measured specification of our competition robot.
 
-All numerical outputs in this design case are calculated from the assumptions below. They must not be represented as physical test results.
+Every result below is calculated from the assumptions in the table. We should not describe these numbers as physical test results.
 
-## Reference configuration
+## Values used in the reference case
 
 | Parameter | Design value | Unit | Classification |
 |---|---:|---|---|
@@ -29,85 +29,83 @@ All numerical outputs in this design case are calculated from the assumptions be
 
 ## Static load estimate
 
-Total weight:
+First, we calculate the vehicle weight:
 
-\[
+[
 W=mg=0.85(9.81)=8.3385\;N
-\]
+]
 
-With the longitudinal CG at half wheelbase:
+The longitudinal centre of gravity is halfway along the wheelbase in this example, so the front and rear axle loads are:
 
-\[
+[
 F_{front}=F_{rear}=W/2=4.1693\;N
-\]
+]
 
-For a symmetric lateral distribution, each wheel carries approximately:
+If the load is also shared equally from left to right, the load at each wheel is approximately:
 
-\[
+[
 F_{wheel}=W/4=2.0846\;N
-\]
+]
 
-These are idealized static reactions. Real four-wheel load distribution depends on chassis and support compliance.
+These are ideal static reactions. The real load at each wheel can change because of chassis flexibility and how the supports are assembled.
 
 ## Longitudinal load transfer
 
-\[
+[
 \Delta F_x=\frac{m a_x h_{CG}}{L}
 =\frac{0.85(0.80)(0.045)}{0.10}
 =0.306\;N
-\]
+]
 
-During acceleration, approximately 0.306 N transfers from the front axle to the rear axle in this simplified model. During braking, the direction reverses.
+In this simplified model, acceleration transfers about 0.306 N from the front axle to the rear axle. Under braking, the transfer is in the opposite direction.
 
 ## Lateral load transfer
 
-\[
+[
 \Delta F_y=\frac{m a_y h_{CG}}{T}
 =\frac{0.85(1.20)(0.045)}{0.10}
 =0.459\;N
-\]
+]
 
-This simplified result represents the load-transfer quantity under the adopted convention. Detailed wheel-by-wheel reactions require a defined chassis compliance model.
+This is the load-transfer quantity under the convention used in the model. To calculate each wheel reaction in more detail, we would also need a defined model for chassis and suspension compliance.
 
-## Idealized lateral tip threshold
+## Idealised lateral tip threshold
 
-\[
+[
 a_{y,tip}=g\frac{T}{2h_{CG}}
 =9.81\frac{0.10}{2(0.045)}
 =10.90\;m/s^2
-\]
+]
 
-This ideal geometric threshold is not a recommended operating limit. Tire sliding, transient roll, structural flexibility, and uneven surfaces may cause loss of control at lower acceleration.
+This is only a geometric estimate. It is not a safe operating limit. Tyre sliding, sudden movement, frame flexibility, and an uneven floor can cause the robot to lose control at a lower acceleration.
 
-## Drive speed reference
+## Drive speed example
 
-For a wheel radius of 0.028 m and a direct 1:1 wheel-to-motor ratio:
+For a wheel radius of 0.028 m and a direct 1:1 wheel-to-motor ratio, we use:
 
-\[
+[
 v=\omega r
-\]
+]
 
 At 250 deg/s:
 
-\[
+[
 v=250\frac{\pi}{180}(0.028)=0.1222\;m/s
-\]
+]
 
 At 300 deg/s:
 
-\[
+[
 v=300\frac{\pi}{180}(0.028)=0.1466\;m/s
-\]
+]
 
-These are ideal no-slip kinematic estimates. Actual speed depends on load, motor response, battery voltage, drivetrain losses, and tire slip.
+These are ideal speeds with no wheel slip. Actual speed also depends on the load, motor response, battery voltage, drivetrain losses, and tyre grip.
 
-## Design decisions
+## Design points we want to check
 
-1. Keep the heaviest energy-storage component low and near the longitudinal centre.
-2. Keep the camera and ranging sensors on rigid, short mounting structures.
-3. Keep left/right mass distribution as symmetric as packaging allows.
-4. Avoid placing heavy components at the extreme front or rear unless required by the task.
-5. Use mechanical steering stops and calibrate the actuator-to-wheel mapping.
-6. Validate every assumed parameter before using this model for a physical design decision.
-
-
+1. Keep the heaviest battery or energy-storage part low and near the middle of the vehicle.
+2. Mount the camera and distance sensors on supports that do not move easily.
+3. Keep the left and right mass distribution as balanced as the layout allows.
+4. Avoid putting heavy parts at the very front or rear unless the design needs it.
+5. Use steering stops and check the relationship between motor encoder position and wheel angle.
+6. Check the assumed values on the real vehicle before using this model to make a final design decision.
