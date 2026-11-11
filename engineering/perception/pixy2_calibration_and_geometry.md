@@ -33,7 +33,7 @@ f_x=\frac{N_u/2}{\tan(\phi_h/2)}
 
 ## 4. Ground-plane range model
 
-If a visible pillar base is assumed to lie on a known ground plane, a calibrated camera height and downward pitch can be used to estimate ground range. For a camera with height (h_c), downward pitch (	heta), and vertical ray angle (eta), a simplified planar model is:
+If a visible pillar base is assumed to lie on a known ground plane, a calibrated camera height and downward pitch can be used to estimate ground range. For a camera with height (h_c), downward pitch (\\theta), and vertical ray angle (eta), a simplified planar model is:
 
 [
 d=\frac{h_c}{\tan(\theta+\beta)}
