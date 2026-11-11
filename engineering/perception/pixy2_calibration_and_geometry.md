@@ -1,5 +1,8 @@
 # Pixy2 Vision Calibration and Geometric Reconstruction
 
+![CAM-001 — Pixy2 camera geometry](../../docs/drawings/CAM-001_pixy2_camera_geometry.svg)
+
+
 ## 1. Purpose
 
 The Obstacle Challenge program uses Pixy2 colour signatures to identify red and green pillars. The camera and its integrated illumination form one assembly connected through EV3 sensor port S4 using I²C. The camera does not directly measure range; range and lateral position are estimated from image geometry.
