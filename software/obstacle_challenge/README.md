@@ -70,7 +70,7 @@ The source estimates camera-to-pillar distance using the configured model:
 
 The horizontal image coordinate is converted to a bearing using the configured horizontal field of view. The calculation also accounts for the camera's forward offset and the vehicle's heading relative to the corridor.
 
-These equations are calibration models encoded in the program. Their accuracy depends on camera mounting, image geometry, field-of-view calibration, and the empirical constants `Y_0` and `Y_K`.
+These equations are configured estimation models encoded in the program. Their accuracy depends on camera mounting, image geometry, field-of-view calibration, and the empirical constants `Y_0` and `Y_K`; the repository does not contain a physical calibration dataset.
 
 ## Colour-dependent passing policy
 
@@ -194,7 +194,7 @@ The log header includes time, phase, corner count, track position, raw and perpe
 
 ## Review points
 
-- Camera range is inferred from image position using a calibrated empirical model; it is not a direct range measurement.
+- Camera range is inferred from image position using the configured empirical model; its accuracy must be established by a physical calibration dataset. It is not a direct range measurement.
 - A missed or misclassified frame can delay obstacle tracking. Confirmation thresholds reduce, but do not eliminate, this risk.
 - Ultrasonic readings can be distorted by wall ends, oblique incidence, pillars, and nearby boundary structures.
 - Reverse replay assumes that the physical trajectory is sufficiently repeatable in both directions.
