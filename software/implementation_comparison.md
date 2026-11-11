@@ -8,14 +8,14 @@ The team developed two software implementations for the LEGO MINDSTORMS EV3 robo
 
 ## Mission program archive
 
-The repository's block-program archive is organized by challenge:
+The native block projects are stored directly in the repository and organized by challenge:
 
 | Challenge | LEGO EV3 block project | Python implementation |
 |---|---|---|
-| Obstacle Challenge | `ObstacleChallenge.ev3` (native project file supplied with this delivery) | [obstacle_challenge.py](obstacle_challenge/obstacle_challenge.py) |
-| Open Challenge | `OpenChallenge.ev3` (native project file supplied with this delivery) | [open_challenge.py](open_challenge/open_challenge.py) |
+| Obstacle Challenge | [ObstacleChallenge.ev3](ev3_blocks/obstacle_challenge/ObstacleChallenge.ev3) | [obstacle_challenge.py](obstacle_challenge/obstacle_challenge.py) |
+| Open Challenge | [OpenChallenge.ev3](ev3_blocks/open_challenge/OpenChallenge.ev3) | [open_challenge.py](open_challenge/open_challenge.py) |
 
-The EV3 files are native LEGO MINDSTORMS project containers. They preserve the graphical program and its project assets; they are not screenshots or a textual reconstruction of the blocks.
+The EV3 files are native LEGO MINDSTORMS project containers. They preserve the graphical program and its project assets; they are not screenshots or a textual reconstruction of the blocks. Each native project has a folder-level README describing its contents.
 
 ## Why two implementations were developed
 
@@ -62,7 +62,7 @@ Sub-second results should be recorded in milliseconds or to a stated decimal pre
 
 ## Comparative measurement record
 
-The repository contains the two source-project formats, but no paired timing dataset or controlled side-by-side measurement log is currently included. Therefore, this portfolio does not assign numerical compilation or runtime advantages to either implementation. The team's focus on sub-second build and response measurement is documented as a deliberate engineering strength; quantitative winner selection is kept distinct from the existence of both implementations.
+The repository contains both native EV3 block projects and both Python source programs, but no paired timing dataset or controlled side-by-side measurement log is currently included. Therefore, this portfolio does not assign numerical compilation or runtime advantages to either implementation. The team's focus on sub-second build and response measurement is documented as a deliberate engineering strength; quantitative winner selection is kept distinct from the existence of both implementations.
 
 ## Hardware equivalence
 
