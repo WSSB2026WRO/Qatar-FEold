@@ -24,8 +24,8 @@ Team 6038 deliberately implemented the robot using two programming approaches: P
 
 | Challenge | Python implementation | LEGO EV3 block implementation |
 |---|---|---|
-| Open Challenge | `software/open_challenge/open_challenge.py` | `ev3_blocks/OpenChallenge.ev3` |
-| Obstacle Challenge | `software/obstacle_challenge/obstacle_challenge.py` | `ev3_blocks/ObstacleChallenge.ev3` |
+| Open Challenge | `software/open_challenge/open_challenge.py` | `OpenChallenge.ev3` (native project file supplied with this delivery) |
+| Obstacle Challenge | `software/obstacle_challenge/obstacle_challenge.py` | `ObstacleChallenge.ev3` (native project file supplied with this delivery) |
 
 The native `.ev3` projects are the graphical-program counterparts to the Python source files. The comparison is documented in [Dual-Implementation Technical Comparison](../software/implementation_comparison.md).
 
@@ -166,7 +166,7 @@ Numerical values in this portfolio are classified as follows:
 | `engineering/` | Mechanical, electrical, perception, control and simulation studies |
 | `hardware/` | Hardware architecture, calibration and custom printed-part records |
 | `software/` | Python challenge programs and comparative implementation analysis |
-| `ev3_blocks/` | Native LEGO EV3 graphical project archive |
+| Native LEGO EV3 graphical project files | Supplied as original `.ev3` files with this delivery |
 | `schemes/` | Drawing register and engineering diagram index |
 | `validation/` | Validation framework and test-record format |
 | `docs/` | Repository guide, verification evidence and release criteria |
