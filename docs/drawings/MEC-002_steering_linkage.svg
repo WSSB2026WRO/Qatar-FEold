@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#315b78"/></marker><style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#1f2933}.title{font-size:28px;font-weight:700}.sub{font-size:15px;fill:#536575}.h{font-size:17px;font-weight:700}.t{font-size:14px}.small{font-size:12px;fill:#536575}.box{fill:#f3f6f8;stroke:#526879;stroke-width:2}.blue{stroke:#315b78;stroke-width:3;fill:none}.red{stroke:#b24b48;stroke-width:3;fill:none}.dim{stroke:#7894a8;stroke-width:1.8;fill:none;stroke-dasharray:6 5}
+</style></defs>
+<rect x="18" y="18" width="1164" height="764" rx="8" fill="#fff" stroke="#263746" stroke-width="3"/>
+<text x="48" y="62" class="title">MEC-002 — Steering linkage</text><text x="50" y="91" class="sub">Motor C input translated through linkage / rack to front wheel angle</text>
+<line x1="48" y1="110" x2="1152" y2="110" stroke="#9aabb8" stroke-width="1.5"/>
+
+<text x="85" y="155" class="h">TOP VIEW • FRONT STEERING MODULE</text>
+<line x1="210" y1="280" x2="790" y2="280" stroke="#263746" stroke-width="8"/><rect x="175" y="235" width="60" height="115" rx="8" class="box"/><rect x="765" y="235" width="60" height="115" rx="8" class="box"/><text x="205" y="375" class="t" text-anchor="middle">Left wheel</text><text x="795" y="375" class="t" text-anchor="middle">Right wheel</text>
+<line x1="235" y1="310" x2="765" y2="310" stroke="#315b78" stroke-width="7"/><text x="500" y="340" class="t" text-anchor="middle">Tie rod / steering rack</text>
+<circle cx="500" cy="480" r="55" fill="#edf2f5" stroke="#526879" stroke-width="3"/><text x="500" y="475" class="h" text-anchor="middle">Motor C</text><text x="500" y="500" class="t" text-anchor="middle">EV3 medium</text><path class="blue" marker-end="url(#arr)" d="M500 425 V350"/>
+<rect class="box" x="870" y="190" width="260" height="370" rx="10"/><text x="895" y="230" class="h">TRANSMISSION CHECK</text><text x="895" y="275" class="t">Input: motor angle θC</text><text x="895" y="305" class="t">Output: wheel angle δ</text><text x="895" y="350" class="t">Ratio k = δ / θC</text><text x="895" y="405" class="t">Measure:</text><text x="895" y="435" class="t">1. Set wheels straight</text><text x="895" y="465" class="t">2. Command +90°</text><text x="895" y="495" class="t">3. Measure wheel angle</text><text x="895" y="525" class="t">4. Repeat at −90°</text>
+<rect class="box" x="100" y="590" width="700" height="85" rx="8"/><text x="125" y="625" class="h">Record on the actual assembly</text><text x="125" y="652" class="t">Transmission ratio • backlash • mechanical stop • left/right symmetry</text>
+<line x1="48" y1="720" x2="1152" y2="720" stroke="#9aabb8" stroke-width="1.5"/>
+<text x="50" y="750" class="small">MECHANISM REFERENCE • SET SOFTWARE LIMITS BELOW THE MECHANICAL STOP</text><text x="1150" y="750" class="small" text-anchor="end">QATAR-FE • TEAM 6038 • REV A</text></svg>
