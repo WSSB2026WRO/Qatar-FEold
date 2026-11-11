@@ -40,10 +40,10 @@ where `Y` is the selected vertical image feature in pixels and `d` is estimated 
 | B | Medium motor | Drive motor B |
 | C | Medium motor | Steering actuator |
 | D | No device assigned | Unused by both challenge programs |
-| S4 | Pixy2 camera with integrated illumination | I²C vision and camera illumination in Obstacle Challenge |
 | S1 | Gyro sensor | Heading measurement |
 | S2 | Ultrasonic sensor | Left-side distance |
 | S3 | Ultrasonic sensor | Right-side distance |
+| S4 | Pixy2 camera with integrated illumination | I²C vision and camera illumination in Obstacle Challenge |
 
 
 The Pixy2 camera and its illumination form one assembly connected through S4. The illumination is not a separate motor-port device; port D is unused by both challenge programs.
