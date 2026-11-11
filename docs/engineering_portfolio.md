@@ -8,7 +8,7 @@
 
 ## 1. Executive overview
 
-Qatar FE is a student engineering project developing an autonomous vehicle for the World Robot Olympiad (WRO) Future Engineers challenge. The team number is **6038**. The repository documents two mission programs, each represented in two programming approaches: Python with Pybricks MicroPython and native LEGO EV3 block programming. It also includes an EV3-based hardware interface, a Pixy2 vision subsystem for obstacle handling, mechanical and electrical design references, analytical vehicle-dynamics calculations, and software validation procedures.
+We are developing an autonomous vehicle for the World Robot Olympiad (WRO) Future Engineers challenge as Team **6038**. We have written both mission programs in Python with Pybricks MicroPython and in the native LEGO EV3 block environment. This portfolio brings together our program files, EV3 hardware connections, Pixy2 obstacle-detection setup, mechanical and electrical design work, vehicle-dynamics calculations, and software checks.
 
 ## 2. Team
 
@@ -20,7 +20,7 @@ Qatar FE is a student engineering project developing an autonomous vehicle for t
 
 ## 3. Dual software implementation
 
-Team 6038 deliberately implemented the robot using two programming approaches: Python/Pybricks MicroPython and LEGO EV3 graphical blocks. The purpose is to compare the approaches on the same EV3 platform and use engineering evidence to select the most suitable solution for the competition missions.
+We programmed the robot in two ways: Python/Pybricks MicroPython and LEGO EV3 graphical blocks. By running both approaches on the same EV3 platform, we can compare them and use test results to decide which is more suitable for each mission.
 
 | Challenge | Python implementation | LEGO EV3 block implementation |
 |---|---|---|
@@ -45,7 +45,7 @@ Neither approach is assumed to be faster by definition. The preferred implementa
 
 ### 3.2 Sub-second compilation and performance comparison
 
-A deliberate strength of Team 6038 is its focus on comparing the two implementations quantitatively, including **build/compilation duration and response timing measured in fractions of a second**. These timing categories are kept distinct:
+One part of our comparison focuses on timing. We want to measure how long each version takes to prepare and start, as well as how quickly it responds during a run. These timings can be below one second, so we record them in milliseconds where possible. These timing categories are kept distinct:
 
 - **Build/compilation duration:** time required by the relevant programming environment to prepare a runnable program. For Python, the timed operation is identified precisely; upload or bytecode preparation is not mislabeled as native compilation.
 - **Startup latency:** time from the start command to the first confirmed program action.
@@ -54,7 +54,7 @@ A deliberate strength of Team 6038 is its focus on comparing the two implementat
 
 Sub-second measurements are expressed in milliseconds or at a stated decimal precision. The timing boundaries and test conditions must be equivalent before the results can support a comparison.
 
-The repository contains both implementations but does not currently contain a paired timing dataset or controlled side-by-side measurement log. Therefore, no numerical compilation-time or runtime winner is claimed. The team's deliberate emphasis on sub-second performance comparison is documented as an engineering strength, while measured results remain separate from the comparison methodology.
+We have included both implementations, but we have not yet added paired timing results from controlled tests. We therefore do not claim that one version is faster. The comparison method is described here; measured results will be added when we have completed the tests.
 
 ## 4. Hardware interface
 
@@ -124,7 +124,7 @@ The repository includes system-level or conceptual SVG diagrams for system archi
 | ELE-001 | EV3 wiring and port allocation | Electrical interface map |
 | CAM-001 | Pixy2 camera geometry | Sensor geometry reference |
 
-The SVG files are system-level or conceptual engineering diagrams. They are not dimensioned manufacturing drawings.
+We use these SVG files to explain the system and its main design ideas. They are not dimensioned drawings for manufacturing parts.
 
 ## 8. Software verification evidence
 
@@ -136,11 +136,11 @@ The repository records a successful GitHub Actions **Python Validation** run:
 - Checks: compile both Python challenge programs, execute eight analytical/documentation integrity tests, run the analytical sweep, and upload its CSV artifact.
 - Sweep coverage: 30 combinations (five longitudinal acceleration values from 0.2 to 1.0 m/s² and six lateral acceleration values from 0.2 to 1.2 m/s²).
 
-This proves the recorded Python source files passed the workflow's compilation checks and the analytical sweep completed. It does **not** prove execution on the EV3, sensor accuracy, steering accuracy, obstacle clearance, lap completion, parking accuracy or competition performance. The block projects are native EV3 assets and are not covered by the Python syntax-compilation workflow.
+This confirms that the Python files passed the workflow's compilation checks and that the analytical sweep finished. It does **not** show that the programs have run successfully on the EV3, or verify sensor accuracy, steering, obstacle clearance, lap completion, parking, or competition performance. The block projects are native EV3 assets and are not covered by the Python syntax-compilation workflow.
 
 ## 9. Evidence and validation scope
 
-The repository contains automated Python source validation and analytical model results. It does not contain completed physical test reports, raw EV3 mission logs or paired timing measurements comparing the Python and block implementations. Consequently, physical sensor accuracy, steering repeatability, obstacle clearance, lap performance, parking accuracy, sub-second compilation differences and relative runtime performance are not represented as measured results in this portfolio.
+We have automated checks for the Python source and results from the analytical model. We have not yet included completed physical test reports, raw EV3 mission logs, or paired timing measurements comparing Python with EV3 blocks. Consequently, physical sensor accuracy, steering repeatability, obstacle clearance, lap performance, parking accuracy, sub-second compilation differences and relative runtime performance are not represented as measured results in this portfolio.
 
 ## 10. Engineering design and verification criteria
 
@@ -180,7 +180,7 @@ Primary references are the repository README, verification evidence, engineering
 
 ## Revision control
 
-Every significant engineering change should record:
+When we make an important engineering change, we record:
 
 - purpose of the change;
 - affected subsystem;
@@ -189,6 +189,6 @@ Every significant engineering change should record:
 - test evidence;
 - rollback path.
 
-Use the same record for software, mechanical, electrical, perception and validation changes. Distinguish source-derived, configured, assumed, calculated, simulated and measured values; a documentation or source review is not physical test evidence.
+We use this record for software, mechanical, electrical, vision, and validation changes. We also label information clearly as source-derived, configured, assumed, calculated, simulated, or measured. Reviewing code or documentation does not count as a physical test.
 
-A revision record should identify the changed files and the Git commit that contains the change. For a hardware or calibration change, record the robot configuration and test conditions so that the result can be reproduced. The rollback path should identify the previous known-good commit or released revision.
+For each revision, we list the files we changed and the Git commit containing those changes. If we change hardware or calibration, we also record the robot setup and test conditions so we can repeat the test. We keep the previous working commit or release as a rollback point.
