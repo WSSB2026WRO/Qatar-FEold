@@ -1,21 +1,21 @@
 # Physical Performance Comparison — Team 6038
 
-## 1. Comparison objective
+## 1. What we want to compare
 
-Team 6038 developed two implementations for each WRO Future Engineers challenge:
+We have two software implementations for each WRO Future Engineers challenge:
 
 - Python / Pybricks MicroPython.
 - Native LEGO EV3 graphical blocks.
 
-The comparison covers program preparation, startup, control-cycle timing, mission duration, distance accuracy, heading accuracy, and repeatability. Both implementations are compared on the same robot, mechanical configuration, battery condition, sensor placement, course, and test conditions.
+We want to compare program preparation, startup delay, control-cycle timing, mission duration, distance accuracy, heading accuracy, and repeatability. To make the comparison fair, both programs should use the same robot, mechanical setup, battery condition, sensor positions, course, and test conditions.
 
-## 2. Python / EV3 comparison values
+## 2. Example comparison values — not test results
 
-We filled the tables with example values to show how the comparison can be presented. These figures are not measurements from our robot. Before using them as test results, we must replace them with data from paired trials.
+The tables in this section contain example values to show how we could present the comparison. **They are not measurements from our robot and must not be presented as real test results.** We need to replace them with data from paired physical trials before drawing conclusions.
 
-### 2.1 Open Challenge
+### 2.1 Open Challenge example
 
-| Metric | Python value | EV3 blocks value | Unit |
+| Metric | Python example | EV3 blocks example | Unit |
 |---|---:|---:|---|
 | Program preparation and transfer | 4.2 | 6.5 | s |
 | Power-on to READY state | 2.6 | 2.9 | s |
@@ -25,103 +25,103 @@ We filled the tables with example values to show how the comparison can be prese
 | Mean absolute distance error | 2.8 | 3.2 | cm |
 | Mean absolute heading error | 2.4 | 3.1 | degrees |
 
-The Python program explicitly configures a 20 ms straight loop and a 10 ms corner loop. The other values are illustrative comparison figures and require physical verification.
+The Python program sets a 20 ms straight loop and a 10 ms corner loop. The other values are examples only and still need physical verification.
 
-### 2.2 Obstacle Challenge
+### 2.2 Obstacle Challenge example
 
-| Metric | Python value | EV3 blocks value | Unit |
+| Metric | Python example | EV3 blocks example | Unit |
 |---|---:|---:|---|
 | Program preparation and transfer | 4.8 | 7.1 | s |
 | Power-on to READY state | 2.8 | 3.1 | s |
 | Main control-loop period | 20 | 32 | ms |
-| Corner / maneuver loop period | 10 | 20 | ms |
+| Corner / manoeuvre loop period | 10 | 20 | ms |
 | Full mission duration | 59.4 | 62.8 | s |
 | Mean absolute distance error | 3.5 | 4.0 | cm |
 | Mean absolute heading error | 3.2 | 3.8 | degrees |
-| Pillar avoidance success | 9/10 | 8/10 | successful runs |
-| Parking success | 9/10 | 8/10 | successful runs |
+| Pillar avoidance success | 9/10 | 8/10 | example runs |
+| Parking success | 9/10 | 8/10 | example runs |
 
-The Python program explicitly configures a 20 ms main loop and a 10 ms corner/maneuver loop. The obstacle program also performs Pixy2 I²C communication, which can affect the duration of individual control cycles. The remaining values are illustrative and require physical verification.
+The Python program sets a 20 ms main loop and a 10 ms corner/manoeuvre loop. The Obstacle Challenge also communicates with the Pixy2 over I²C, which can change the duration of individual cycles. The other values are examples and need physical verification.
 
-## 3. Physical performance comparison
+## 3. Example physical-performance tables
 
-The tables below use the same example values as Section 2. They show the report layout only and are not physical test results.
+The values below repeat the examples from Section 2 so that the report layout is clear. They are **not physical test results**.
 
-### 3.1 Open Challenge
+### 3.1 Open Challenge example
 
 | Metric | Python example | EV3 blocks example | Unit |
 |---|---:|---:|---|
 | Mission duration | 43.2 | 45.6 | s |
 | Mean absolute distance error | 2.8 | 3.2 | cm |
 | Mean absolute heading error | 2.4 | 3.1 | degrees |
-| Successful runs / total runs | 5/5 | 5/5 | runs |
+| Successful runs / total runs | 5/5 | 5/5 | example runs |
 
-### 3.2 Obstacle Challenge
+### 3.2 Obstacle Challenge example
 
 | Metric | Python example | EV3 blocks example | Unit |
 |---|---:|---:|---|
 | Mission duration | 59.4 | 62.8 | s |
 | Mean absolute distance error | 3.5 | 4.0 | cm |
 | Mean absolute heading error | 3.2 | 3.8 | degrees |
-| Pillar avoidance success rate | 90 | 80 | % |
-| Successful parking runs / total runs | 9/10 | 8/10 | runs |
+| Pillar avoidance success rate | 90 | 80 | % in example data |
+| Successful parking runs / total runs | 9/10 | 8/10 | example runs |
 
-## 4. Measurement method
+## 4. How we should measure
 
-| Measurement | Definition | Method |
+| Measurement | What it means | Suggested method |
 |---|---|---|
-| Program preparation and transfer | From initiating the same preparation/transfer workflow to the program being available on the EV3 | Same computer, connection method, and timing boundaries |
-| Startup latency | From EV3 power-on to the READY state | Video with visible time reference |
-| Control-cycle duration | Time between successive executions of the same control-loop section | Timestamp instrumentation or high-frame-rate video |
-| Mission duration | From the agreed start signal to the defined finish condition | Video or stopwatch |
-| Distance error | Absolute difference between target and measured physical distance | Marked course and tape measure |
-| Heading error | Absolute difference between target and final heading | Angle reference or measured course geometry |
-| Repeatability | Consistency across repeated runs | At least five valid runs per implementation and challenge |
+| Program preparation and transfer | From starting the same preparation/transfer process until the program is ready on the EV3 | Use the same computer, connection, and timing points |
+| Startup latency | From EV3 power-on to READY | Video with a visible time reference |
+| Control-cycle duration | Time between repeated executions of the same control-loop section | Timestamp logging or high-frame-rate video |
+| Mission duration | From the agreed start signal to the defined finish | Video or stopwatch |
+| Distance error | Difference between target distance and measured travel | Marked course and tape measure |
+| Heading error | Difference between target and final heading | Angle reference or measured course geometry |
+| Repeatability | How consistent repeated runs are | At least five valid runs per implementation and challenge |
 
-Pybricks transfer/bytecode preparation and the EV3 graphical environment's project preparation are not necessarily equivalent compiler operations. The neutral term *program preparation and transfer* is used unless the same precisely defined compilation stage is timed in both environments.
+Pybricks transfer or bytecode preparation is not necessarily the same operation as preparing a project in the EV3 graphical environment. Unless we time equivalent compilation steps, we should use the neutral term *program preparation and transfer*.
 
-## 5. Raw trial record — illustrative dataset
+## 5. Example run-by-run table — invented sample entries
 
-The run-by-run values below are sample entries to show how we can record each trial. They are not logs from actual robot runs. The obstacle success percentages in Section 3 also come from an example set of ten attempts.
+The entries below are **made-up sample values used only to demonstrate the table format**. They are not logs from actual robot runs. The obstacle success percentages shown earlier are also example values, not results from ten completed attempts.
 
-| Challenge | Implementation | Run | Control cycle (ms) | Mission (s) | Distance error (cm) | Heading error (°) | Result / notes |
+| Challenge | Program | Example run | Cycle (ms) | Mission (s) | Distance error (cm) | Heading error (°) | Example note |
 |---|---|---:|---:|---:|---:|---:|---|
-| Open | Python | 1 | 19.8 | 42.8 | 2.6 | 2.2 | Completed |
-| Open | Python | 2 | 20.2 | 43.1 | 2.9 | 2.5 | Completed |
-| Open | Python | 3 | 19.5 | 43.5 | 2.7 | 2.3 | Completed |
-| Open | Python | 4 | 20.4 | 43.0 | 3.0 | 2.6 | Completed |
-| Open | Python | 5 | 19.9 | 43.6 | 2.8 | 2.4 | Completed |
-| Open | EV3 blocks | 1 | 28.4 | 45.1 | 3.0 | 2.9 | Completed |
-| Open | EV3 blocks | 2 | 27.9 | 45.8 | 3.3 | 3.2 | Completed |
-| Open | EV3 blocks | 3 | 29.1 | 45.4 | 3.1 | 3.0 | Completed |
-| Open | EV3 blocks | 4 | 28.7 | 46.0 | 3.4 | 3.3 | Completed |
-| Open | EV3 blocks | 5 | 27.8 | 45.7 | 3.2 | 3.1 | Completed |
-| Obstacle | Python | 1 | 19.8 | 59.0 | 3.3 | 3.0 | Completed |
-| Obstacle | Python | 2 | 20.2 | 59.5 | 3.6 | 3.3 | Completed |
-| Obstacle | Python | 3 | 19.5 | 59.2 | 3.4 | 3.1 | Completed |
-| Obstacle | Python | 4 | 20.4 | 59.8 | 3.7 | 3.4 | Completed |
-| Obstacle | Python | 5 | 19.9 | 59.5 | 3.5 | 3.2 | Completed |
-| Obstacle | EV3 blocks | 1 | 31.4 | 62.2 | 3.8 | 3.6 | Completed |
-| Obstacle | EV3 blocks | 2 | 32.1 | 62.6 | 4.1 | 3.9 | Completed |
-| Obstacle | EV3 blocks | 3 | 32.8 | 63.0 | 3.9 | 3.7 | Completed |
-| Obstacle | EV3 blocks | 4 | 31.7 | 62.8 | 4.2 | 4.0 | Completed |
-| Obstacle | EV3 blocks | 5 | 32.0 | 63.4 | 4.0 | 3.8 | Completed |
+| Open | Python | 1 | 19.8 | 42.8 | 2.6 | 2.2 | Example only |
+| Open | Python | 2 | 20.2 | 43.1 | 2.9 | 2.5 | Example only |
+| Open | Python | 3 | 19.5 | 43.5 | 2.7 | 2.3 | Example only |
+| Open | Python | 4 | 20.4 | 43.0 | 3.0 | 2.6 | Example only |
+| Open | Python | 5 | 19.9 | 43.6 | 2.8 | 2.4 | Example only |
+| Open | EV3 blocks | 1 | 28.4 | 45.1 | 3.0 | 2.9 | Example only |
+| Open | EV3 blocks | 2 | 27.9 | 45.8 | 3.3 | 3.2 | Example only |
+| Open | EV3 blocks | 3 | 29.1 | 45.4 | 3.1 | 3.0 | Example only |
+| Open | EV3 blocks | 4 | 28.7 | 46.0 | 3.4 | 3.3 | Example only |
+| Open | EV3 blocks | 5 | 27.8 | 45.7 | 3.2 | 3.1 | Example only |
+| Obstacle | Python | 1 | 19.8 | 59.0 | 3.3 | 3.0 | Example only |
+| Obstacle | Python | 2 | 20.2 | 59.5 | 3.6 | 3.3 | Example only |
+| Obstacle | Python | 3 | 19.5 | 59.2 | 3.4 | 3.1 | Example only |
+| Obstacle | Python | 4 | 20.4 | 59.8 | 3.7 | 3.4 | Example only |
+| Obstacle | Python | 5 | 19.9 | 59.5 | 3.5 | 3.2 | Example only |
+| Obstacle | EV3 blocks | 1 | 31.4 | 62.2 | 3.8 | 3.6 | Example only |
+| Obstacle | EV3 blocks | 2 | 32.1 | 62.6 | 4.1 | 3.9 | Example only |
+| Obstacle | EV3 blocks | 3 | 32.8 | 63.0 | 3.9 | 3.7 | Example only |
+| Obstacle | EV3 blocks | 4 | 31.7 | 62.8 | 4.2 | 4.0 | Example only |
+| Obstacle | EV3 blocks | 5 | 32.0 | 63.4 | 4.0 | 3.8 | Example only |
 
-## 6. Statistical analysis
+## 6. Analysing the measurements
 
-For each metric and implementation, the summary includes the arithmetic mean, minimum, maximum, standard deviation, and number of valid runs. Invalid runs are documented with their reason and excluded from the performance average.
+For each measurement and each program, we should calculate the mean, minimum, maximum, standard deviation, and number of valid runs. If a run is invalid, we should record why and keep it separate from the performance average.
 
-Sub-second timing differences are expressed in milliseconds. A comparison of average cycle duration is accompanied by the observed minimum and maximum so that occasional slow cycles are not hidden by the mean.
+For differences smaller than one second, we should use milliseconds. We should also show the minimum and maximum cycle times so that a few slow cycles are not hidden by the average.
 
-## 7. Interpretation
+## 7. What the current program settings tell us
 
-Our Python programs are configured for a 20 ms straight/main loop and a 10 ms loop during corners or manoeuvres. These are program settings, not measured cycle times. The EV3 block timing figures are estimates for planning the comparison; actual tests are needed to establish the results.
+Our Python programs are configured for a 20 ms straight or main loop and a 10 ms loop during corners or manoeuvres. These are settings in the source code, not measured cycle times. The EV3 block timing figures in the examples are planning values; physical tests are needed to find the actual timing.
 
-We will report mission time, accuracy, preparation time, and startup delay from paired trials rather than estimating them from the source code. This will help us keep software timing separate from the robot's physical performance.
+We should report mission time, accuracy, preparation time, and startup delay only after paired trials. That will help us separate software timing from the robot's physical performance.
 
-## 8. Illustrative comparison layout
+## 8. Example summary layout — not measured results
 
-The table below shows how a concise Python-versus-EV3 comparison can be presented once the team has a complete dataset. The figures are illustrative working values only; they are not physical test results and must not be reported as measured performance. Replace them with the team's paired trial results before drawing conclusions.
+This final table shows how we could present a short comparison after collecting a complete dataset. The figures are illustrative working values only. They are not physical results and must be replaced before we make a conclusion.
 
 | Challenge | Metric | Python example | EV3 blocks example | Unit |
 |---|---|---:|---:|---|
@@ -135,18 +135,18 @@ The table below shows how a concise Python-versus-EV3 comparison can be presente
 | Obstacle | Program preparation and transfer | 4.8 | 7.1 | s |
 | Obstacle | Startup latency | 2.8 | 3.1 | s |
 | Obstacle | Main control-loop period | 20 | 32 | ms |
-| Obstacle | Corner / maneuver loop period | 10 | 20 | ms |
+| Obstacle | Corner / manoeuvre loop period | 10 | 20 | ms |
 | Obstacle | Mission duration | 59.4 | 62.8 | s |
 | Obstacle | Distance error | 3.5 | 4.0 | cm |
 | Obstacle | Heading error | 3.2 | 3.8 | degrees |
-| Obstacle | Pillar avoidance success | 9/10 | 8/10 | successful runs |
-| Obstacle | Parking success | 9/10 | 8/10 | successful runs |
+| Obstacle | Pillar avoidance success | 9/10 | 8/10 | example runs |
+| Obstacle | Parking success | 9/10 | 8/10 | example runs |
 
 ### Example control-cycle samples
 
-| Implementation | Sample 1 | Sample 2 | Sample 3 | Sample 4 | Sample 5 | Mean |
+| Program | Sample 1 | Sample 2 | Sample 3 | Sample 4 | Sample 5 | Example mean |
 |---|---:|---:|---:|---:|---:|---:|
 | Python | 19.8 | 20.2 | 19.5 | 20.4 | 19.9 | 19.96 |
 | EV3 blocks | 28.4 | 27.9 | 29.1 | 28.7 | 27.8 | 28.38 |
 
-All values in this section are provided solely to demonstrate the presentation and calculation format. They must remain separate from the actual-measurement tables in Sections 2, 3, and 5 until verified by physical trials.
+Everything in this section is here to demonstrate the layout and calculations. It must remain separate from real measurement records until we have checked the robot and saved the actual trial data.
