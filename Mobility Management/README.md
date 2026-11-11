@@ -1,42 +1,44 @@
-# Mobility Management 
+# Mobility Management
 
-## System purpose
+## What we worked on
 
-Mobility Management covers vehicle propulsion, steering, corridor tracking, heading regulation, corner execution, lap counting, and the return-to-start manoeuvre.
+This section explains how our EV3 vehicle moves around the track. It covers the drive motors, steering, corridor following, corner turns, lap counting, and the return-to-start manoeuvre.
 
-Reference implementation:
-- [Open Challenge source](../software/open_challenge/open_challenge.py)
-- [Open Challenge technical documentation](../software/open_challenge/README.md)
+We use these files as the main references:
+- [Open Challenge program](../software/open_challenge/open_challenge.py)
+- [Open Challenge notes](../software/open_challenge/README.md)
 - [Control system design](../engineering/software/control_system_design.md)
 
-## Drive configuration
+## Motor and sensor setup
 
-| Interface | Configured device | Responsibility |
+| Port | Device | What we use it for |
 |---|---|---|
-| Motor A | EV3 Medium Motor | Propulsion |
-| Motor B | EV3 Medium Motor | Propulsion |
+| Motor A | EV3 Medium Motor | Driving |
+| Motor B | EV3 Medium Motor | Driving |
 | Motor C | EV3 Medium Motor | Steering |
-| Sensor S1 | Gyro | Heading feedback |
-| Sensor S2 | Ultrasonic | Left wall distance |
-| Sensor S3 | Ultrasonic | Right wall distance |
+| Sensor S1 | Gyro | Checking the heading |
+| Sensor S2 | Ultrasonic | Measuring the left wall distance |
+| Sensor S3 | Ultrasonic | Measuring the right wall distance |
 
-## Mobility functions
+## How the vehicle moves
 
-### Corridor following
-The Open Challenge controller uses left and right ultrasonic readings to estimate the vehicle's lateral position relative to the corridor centre. A heading correction term maintains alignment with the corridor axis.
+### Following the corridor
+We read the two ultrasonic sensors and use their distances to estimate whether the vehicle is closer to the left or right wall. The controller then adjusts the steering to keep the vehicle near the centre. The gyro reading is also used to help keep the vehicle pointed along the corridor.
 
-### Steering control
-The steering actuator is commanded through motor C. The source program uses a bounded steering command and a separate steering target for cornering. The actuator-to-road-wheel mapping defines the relationship between motor encoder position and physical wheel angle.
+### Steering
+Motor C moves the steering mechanism. In the program, we limit the steering command so it stays within the configured range. We use a separate target when the vehicle needs to turn at a corner. The link between the motor encoder and the actual wheel angle depends on the steering mechanism.
 
-### Corner navigation
-Wall-opening detection is combined with gyro heading change. The program confirms an opening before accepting a corner and uses an angular target to complete the turn.
+### Turning at corners
+We look for a wall opening and compare it with the change in heading from the gyro. The program checks that an opening is present before starting the turn. It then uses the gyro angle as the turn target.
 
-### Distance estimation
-Drive motor encoder angles are converted into travelled distance using the configured wheel diameter and gear ratio. Wheel slip and drivetrain compliance influence odometry accuracy.
+### Estimating distance
+We use the drive motor encoder angles, the configured wheel diameter, and the gear ratio to estimate how far the vehicle has travelled. This estimate can be affected by wheel slip and small movements in the drivetrain.
 
-## Open Challenge configuration
+## Current Open Challenge settings
 
-| Parameter | Value |
+These are the values configured in the program. They should not be read as a record of measured performance.
+
+| Parameter | Configured value |
 |---|---:|
 | Drive speed | 300 deg/s |
 | Wheel diameter | 56 mm |
@@ -47,13 +49,15 @@ Drive motor encoder angles are converted into travelled distance using the confi
 | Corner target | 90 deg |
 | Route count | 12 corners |
 
-## Mobility commissioning
+## Checks before running
 
-1. Verify drive motor polarity and encoder response.
-2. Set the steering encoder reference with the road wheels straight.
-3. Measure encoder distance over a known track length.
-4. Check left and right steering travel.
-5. Verify gyro sign convention and stationary drift.
-6. Evaluate corridor centering at reduced speed.
-7. Test left and right corner manoeuvres.
-8. Review encoder and gyro logs after each run.
+This is the checklist we use when setting up or checking the mobility system:
+
+1. Check that both drive motors turn in the correct direction and that their encoders respond.
+2. Set the steering encoder reference while the road wheels are straight.
+3. Measure encoder travel over a known distance.
+4. Check the steering movement to the left and right.
+5. Check the gyro direction and measure its drift while the vehicle is still.
+6. Try corridor centering at a lower speed first.
+7. Test both left and right corner turns.
+8. Review the encoder and gyro logs after each run.
