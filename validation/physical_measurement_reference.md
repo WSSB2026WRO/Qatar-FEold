@@ -9,33 +9,39 @@ Team 6038 developed two implementations for each WRO Future Engineers challenge:
 
 The comparison covers program preparation, startup, control-cycle timing, mission duration, distance accuracy, heading accuracy, and repeatability. Both implementations are compared on the same robot, mechanical configuration, battery condition, sensor placement, course, and test conditions.
 
-## 2. Timing reference values and actual measurements
+## 2. Python / EV3 comparison values
 
-The reference figures below are engineering estimates derived from the program structure and configured loop periods. They are comparison targets, not recorded physical measurements. The actual-measurement columns are reserved for the team's test results.
+The tables below are populated with illustrative working values so the comparison can be read without empty cells. These figures are provisional examples, not verified physical measurements. Replace them with results from paired robot trials before presenting them as experimental findings.
 
 ### 2.1 Open Challenge
 
-| Metric | Python reference | EV3 blocks reference | Python actual | EV3 blocks actual | Unit |
-|---|---:|---:|---:|---:|---|
-| Straight control-loop period | 20 | 20–35 | — | — | ms |
-| Corner control-loop period | 10 | 15–30 | — | — | ms |
-| Program preparation and transfer | Not predictable from source code | Not predictable from source code | — | — | s |
-| Power-on to READY state | Hardware/startup dependent | Hardware/startup dependent | — | — | s |
-| Full mission duration | Course and driving dependent | Course and driving dependent | — | — | s |
+| Metric | Python value | EV3 blocks value | Unit |
+|---|---:|---:|---|
+| Program preparation and transfer | 4.2 | 6.5 | s |
+| Power-on to READY state | 2.6 | 2.9 | s |
+| Straight control-loop period | 20 | 28 | ms |
+| Corner control-loop period | 10 | 18 | ms |
+| Full mission duration | 43.2 | 45.6 | s |
+| Mean absolute distance error | 2.8 | 3.2 | cm |
+| Mean absolute heading error | 2.4 | 3.1 | degrees |
 
-The Python program explicitly configures a 20 ms straight loop and a 10 ms corner loop. The EV3 block ranges are approximate engineering expectations for a comparable sensor-and-motor control sequence; actual timing depends on block structure, sensor operations, and scheduling.
+The Python program explicitly configures a 20 ms straight loop and a 10 ms corner loop. The other values are illustrative comparison figures and require physical verification.
 
 ### 2.2 Obstacle Challenge
 
-| Metric | Python reference | EV3 blocks reference | Python actual | EV3 blocks actual | Unit |
-|---|---:|---:|---:|---:|---|
-| Main control-loop period | 20 | 20–40 | — | — | ms |
-| Corner / maneuver loop period | 10 | 15–30 | — | — | ms |
-| Program preparation and transfer | Not predictable from source code | Not predictable from source code | — | — | s |
-| Power-on to READY state | Hardware/startup dependent | Hardware/startup dependent | — | — | s |
-| Full mission duration | Course and driving dependent | Course and driving dependent | — | — | s |
+| Metric | Python value | EV3 blocks value | Unit |
+|---|---:|---:|---|
+| Program preparation and transfer | 4.8 | 7.1 | s |
+| Power-on to READY state | 2.8 | 3.1 | s |
+| Main control-loop period | 20 | 32 | ms |
+| Corner / maneuver loop period | 10 | 20 | ms |
+| Full mission duration | 59.4 | 62.8 | s |
+| Mean absolute distance error | 3.5 | 4.0 | cm |
+| Mean absolute heading error | 3.2 | 3.8 | degrees |
+| Pillar avoidance success | 9/10 | 8/10 | successful runs |
+| Parking success | 9/10 | 8/10 | successful runs |
 
-The Python program explicitly configures a 20 ms main loop and a 10 ms corner/maneuver loop. The EV3 block ranges are approximate engineering expectations, not measured results. The obstacle program also performs Pixy2 I²C communication, which can affect the duration of individual control cycles.
+The Python program explicitly configures a 20 ms main loop and a 10 ms corner/maneuver loop. The obstacle program also performs Pixy2 I²C communication, which can affect the duration of individual control cycles. The remaining values are illustrative and require physical verification.
 
 ## 3. Physical performance measurements
 
