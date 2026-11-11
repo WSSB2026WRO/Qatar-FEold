@@ -5,6 +5,8 @@
   <em>Mechanical Design · Embedded Control · Perception · Vehicle Dynamics · Additive Manufacturing</em>
 </p>
 
+**WRO team number: 6038**
+
 Qatar FE is a student engineering team developing an autonomous vehicle for the **World Robot Olympiad (WRO) Future Engineers** challenge. This repository presents the team's software, mechanical engineering, electronics, perception systems, analytical studies, and technical documentation.
 
 ## Team
@@ -15,22 +17,26 @@ Qatar FE is a student engineering team developing an autonomous vehicle for the 
 | Eissa | Team Leader / Chief of Team |
 | Mohammed | Lead Designer |
 
-## Challenge programs
+## Challenge programs and software implementations
 
-| Program | Mission | Documentation |
-|---|---|---|
-| Open Challenge | Corridor following, wall-based centering, corner detection, heading control, lap tracking, and return to the start section | [Program and technical notes](software/open_challenge/README.md) |
-| Obstacle Challenge | Visual pillar classification, colour-dependent passing, lane repositioning, corner navigation, and parking | [Program and technical notes](software/obstacle_challenge/README.md) |
+The team developed two programming implementations for each challenge: Python using Pybricks MicroPython and graphical LEGO EV3 block programming. This dual implementation supports a direct comparison of development workflow, build/compilation time, startup latency, control-cycle timing, mission execution and reliability.
 
-Both programs target LEGO EV3 with Pybricks MicroPython. The Obstacle Challenge program additionally uses a Pixy2 camera over I²C.
+| Program | Mission | Python source | EV3 block project |
+|---|---|---|---|
+| Open Challenge | Corridor following, wall-based centering, corner detection, heading control, lap tracking, and return to the start section | [open_challenge.py](software/open_challenge/open_challenge.py) | [OpenChallenge.ev3](ev3_blocks/OpenChallenge.ev3) |
+| Obstacle Challenge | Visual pillar classification, colour-dependent passing, lane repositioning, corner navigation, and parking | [obstacle_challenge.py](software/obstacle_challenge/obstacle_challenge.py) | [ObstacleChallenge.ev3](ev3_blocks/ObstacleChallenge.ev3) |
+
+Both implementations target the LEGO EV3 platform. The Python Obstacle Challenge additionally uses a Pixy2 camera over I²C. The Pixy2's integrated illumination is part of the camera assembly and is connected with the camera through sensor port S4; motor port D is unused.
+
+- [Dual-implementation technical comparison](software/implementation_comparison.md)
 
 ## Engineering portfolio
 
 - [Consolidated engineering portfolio](docs/engineering_portfolio.md) — project overview, hardware interfaces, software architecture, reference calculations, drawing register, and verification evidence.
-- [Repository completion status and remaining release gates](docs/repository_completion_status.md)
+- [Repository completion status](docs/repository_completion_status.md)
 - [Verification evidence](docs/verification_evidence.md)
 - [Automated tests](tests/test_reference_model.py) and [documentation integrity tests](tests/test_documentation_integrity.py)
-- [Engineering release checklist](docs/engineering_release_checklist.md)
+- [Engineering release criteria](docs/engineering_release_checklist.md)
 - [Repository guide](docs/repository_guide.md)
 
 ## Engineering library
@@ -67,18 +73,19 @@ Both programs target LEGO EV3 with Pybricks MicroPython. The Obstacle Challenge 
 | [Obstacle Management](Obstacle%20Management/README.md) | Vision-based obstacle detection and avoidance |
 | [Power and Sense Management](Power%20and%20Sense%20Management/README.md) | Electrical interfaces, power, and sensors |
 | [src](src/README.md) | Software source index |
+| [ev3_blocks](ev3_blocks/README.md) | Native LEGO EV3 graphical project archive |
 | [t-photos](t-photos/README.md) | Team photographs |
 | [v-photos](v-photos/README.md) | Vehicle photographs |
 | [video](video/README.md) | Demonstration-video index; no videos currently committed |
 
 ## Verification
 
-- [Verification and validation plan](validation/README.md)
+- [Verification and validation framework](validation/README.md)
 - [Test report format](validation/test_report_template.md)
-- GitHub Actions compiles both challenge programs, runs eight analytical/documentation integrity tests, executes the 30-case analytical parameter sweep, and uploads its CSV output.
+- GitHub Actions compiles both Python challenge programs, runs analytical/documentation integrity tests, executes the analytical parameter sweep, and uploads its CSV output.
 
 ## Engineering data conventions
 
 Software settings, theoretical design inputs, calculated outputs, simulations, and physical observations are treated as separate engineering data classes. Numerical examples are accompanied by their governing assumptions and equations. Physical performance claims are based on recorded test evidence.
 
-The two challenge source programs are maintained as separate, independently documented reference implementations.
+A key engineering characteristic of Team 6038 is its comparative approach to software: Python and EV3 block versions are maintained to evaluate their relative performance. Build/compilation duration, startup latency and control-cycle timing are treated as measurable quantities at sub-second resolution. Numerical performance conclusions are reported only when supported by paired measurements.
