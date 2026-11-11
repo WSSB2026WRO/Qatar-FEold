@@ -26,6 +26,6 @@
 <line x1="250" y1="260" x2="250" y2="520" class="guide"/>
 <text x="235" y="390" text-anchor="middle" class="dim" transform="rotate(-90 235 390)">Steering arm reference length: 20 mm</text>
 <text x="600" y="650" text-anchor="middle" class="note">Project geometry record: wheelbase 100 mm; front track 100 mm; steering arm 20 mm.</text>
-<text x="600" y="678" text-anchor="middle" class="note">Pivot coordinates, tie-rod length, crank radius, and exact linkage topology require confirmation from the final CAD assembly.</text>
-<text x="600" y="710" text-anchor="middle" class="note">Do not use this schematic alone to manufacture or set mechanical steering stops.</text>
+<text x="600" y="678" text-anchor="middle" class="note">Conceptual linkage geometry; pivot coordinates, tie-rod length, crank radius, and joint topology are not dimensioned in this schematic.</text>
+<text x="600" y="710" text-anchor="middle" class="note">Conceptual mechanism reference — not a dimensioned manufacturing drawing.</text>
 </svg>
