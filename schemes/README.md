@@ -1,10 +1,10 @@
 # Engineering Drawings and Schemes
 
-## Drawing register
+## Drawing list
 
-This index identifies the technical diagrams included in the Qatar FE engineering repository. SVGs are functional, analytical, or conceptual illustrations. They communicate the documented system design and are not represented as dimensioned manufacturing drawings.
+We keep this page as an index of the technical diagrams in the Qatar FE repository. The SVG files explain the system, calculations, and mechanisms. They are not dimensioned manufacturing drawings.
 
-| Drawing ID | Title | Class | Repository file |
+| Drawing ID | Title | Type | File |
 |---|---|---|---|
 | SYS-001 | Autonomous vehicle system architecture | Functional block diagram | `engineering/diagrams/system_architecture.svg` |
 | DYN-001 | Vehicle dynamics free-body model | Analytical schematic | `engineering/diagrams/vehicle_dynamics_equations.svg` |
@@ -15,27 +15,33 @@ This index identifies the technical diagrams included in the Qatar FE engineerin
 | ELE-001 | EV3 port allocation | Electrical interface map | `engineering/diagrams/ev3_port_allocation.svg` |
 | CAM-001 | Pixy2 camera geometry | Sensor geometry reference | `engineering/diagrams/pixy2_camera_geometry.svg` |
 
-## EV3 interface allocation
+## EV3 connections shown in the diagrams
 
-| EV3 port | Device | Function |
+| EV3 port | Device | Purpose |
 |---|---|---|
 | A | Medium motor | Drive motor A |
 | B | Medium motor | Drive motor B |
-| C | Medium motor | Steering actuator |
-| D | No device assigned | Unused by both challenge programs |
+| C | Medium motor | Steering motor |
+| D | No device assigned | Not used by either challenge program |
 | S1 | Gyro sensor | Heading measurement |
-| S2 | Ultrasonic sensor | Left-side distance measurement |
-| S3 | Ultrasonic sensor | Right-side distance measurement |
-| S4 | Pixy2 camera with integrated illumination | I²C pillar detection and camera illumination in Obstacle Challenge |
+| S2 | Ultrasonic sensor | Left-side distance |
+| S3 | Ultrasonic sensor | Right-side distance |
+| S4 | Pixy2 camera with integrated illumination | I²C pillar detection and camera illumination in the Obstacle Challenge |
 
-The Pixy2 camera and its illumination are one camera assembly connected through sensor port S4. The illumination is not a separate EV3 motor-port device. Port D has no assigned device in either challenge program.
+The Pixy2 camera and its light are one assembly connected to S4. The illumination is not a separate motor-port device. Port D is not assigned to either challenge program.
 
-## Drawing conventions
+## How to read the drawings
 
-The drawing set uses millimetres for mechanical reference dimensions, degrees for angular values, and explicit symbols for analytical quantities. Drawing identifiers are stable references within the repository. Functional diagrams describe system relationships; analytical diagrams describe model variables; conceptual mechanism diagrams illustrate intended geometry; software flow diagrams describe mission-state logic.
+Mechanical reference dimensions are shown in millimetres, angular values in degrees, and analytical quantities use labelled symbols. We use the drawing IDs as stable references in the repository.
 
-The diagrams contain reference geometry and system relationships. They do not assert unrecorded dimensions, material specifications, tolerances, manufacturing approvals, or physical test results.
+The diagrams have different purposes:
+- Functional diagrams show how the system parts connect.
+- Analytical diagrams show the variables used in calculations.
+- Mechanism diagrams show the intended geometry.
+- Software flow diagrams show the mission-state sequence.
 
-## Evidence and revision context
+The drawings do not add unrecorded dimensions, material specifications, tolerances, manufacturing approvals, or physical test results.
 
-Numerical values shown in diagrams retain the same evidence classification as the associated engineering documents: configured, assumed, calculated, simulated, or measured. The source Python programs remain the executable reference for challenge logic. The SVG files are explanatory engineering records.
+## Evidence and revisions
+
+Numbers in the drawings use the same evidence labels as the related engineering notes: configured, assumed, calculated, simulated, or measured. The Python source files remain the executable reference for the challenge logic. The SVGs help explain the design and how the parts relate to each other.
