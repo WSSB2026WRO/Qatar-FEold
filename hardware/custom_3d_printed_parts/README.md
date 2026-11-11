@@ -1,23 +1,23 @@
-# Custom 3D-Printed Components
+# Custom 3D-Printed Parts
 
-## Component catalogue
+## Parts listed in this folder
 
-The engineering records describe three modified mechanical components associated with the EV3 linkage and connection-piece system.
+We have kept inspection notes for three modified mechanical parts related to our EV3 linkage and connector system.
 
-| Component ID | Record | Referenced source mesh | Inspection summary |
+| Part ID | Description | Source mesh name | Recorded inspection |
 |---|---|---|---|
-| C3DP-01 | [I-profile link component](part_01_i_lego.md) | `I lego.stl` | 1,518 vertices; 3,064 faces; two watertight shells |
-| C3DP-02 | [Four-I modified component](part_02_four_i_modified.md) | `4 I modified lego.stl` | 1,134 vertices; 2,628 faces; four connected shells; overall mesh not watertight |
-| C3DP-03 | [One-by-three modified component](part_03_one_by_three_modified.md) | `1x3 modified.stl` | 1,504 vertices; 3,024 faces; one watertight shell |
+| C3DP-01 | [I-profile link](part_01_i_lego.md) | `I lego.stl` | 1,518 vertices; 3,064 faces; two watertight shells |
+| C3DP-02 | [Modified four-I part](part_02_four_i_modified.md) | `4 I modified lego.stl` | 1,134 vertices; 2,628 faces; four connected shells; complete mesh is not watertight |
+| C3DP-03 | [Modified 1×3 connector](part_03_one_by_three_modified.md) | `1x3 modified.stl` | 1,504 vertices; 3,024 faces; one watertight shell |
 
-## Asset inventory
+## Which files are available
 
-The three STL filenames are retained as source references in the component records. The original STL files and native CAD models are not included in the current repository snapshot. The mesh measurements are retained inspection records associated with those referenced source files.
+The three STL names are kept in the part records as references. The original STL files and native CAD models are not included in the current repository snapshot. The mesh values are inspection records from those named source files.
 
 ## Geometry and units
 
-STL mesh coordinates do not contain physical unit metadata. The inspection report therefore records bounding-box extents in native mesh units. The available records describe mesh topology and proportions; they do not constitute controlled dimensioned manufacturing drawings.
+STL files do not store physical units. For that reason, the bounding-box values in the inspection notes are given in native mesh units. The records describe the mesh shape and topology; they are not dimensioned manufacturing drawings.
 
-## Inspection record
+## Inspection results
 
-See [Mesh Inspection Report](mesh_inspection_report.md) for the retained vertex, face, connected-component, watertightness, and topology results.
+See the [Mesh Inspection Report](mesh_inspection_report.md) for the recorded vertex counts, face counts, connected components, watertightness, and topology.
