@@ -2,7 +2,7 @@
 
 **WRO Future Engineers · Team 6038 · Revision A**
 
-This drawing set presents the robot's system architecture, vehicle dynamics, steering geometry, mission logic, mechanical packaging, electrical interfaces and camera geometry. The diagrams are intended for engineering communication and design review; they are not fabrication drawings.
+We prepared these drawings to explain the robot's system architecture, vehicle dynamics, steering, mission logic, mechanical layout, electrical connections, and camera geometry. They are intended for design discussions and reviews, not for manufacturing parts.
 
 ## Drawing register
 
@@ -45,7 +45,7 @@ This drawing set presents the robot's system architecture, vehicle dynamics, ste
 
 ## Revision control
 
-Every significant change to a drawing or its associated engineering definition should include:
+When we revise a drawing or its engineering details, we record:
 
 - purpose of the change;
 - affected subsystem;
@@ -54,7 +54,7 @@ Every significant change to a drawing or its associated engineering definition s
 - test evidence;
 - rollback path.
 
-Record the revision in the drawing title block and update the drawing register. Where a change affects physical dimensions, wiring, sensor placement, calibration or software interfaces, identify the affected drawing IDs and supporting source files. Do not describe analytical or illustrative values as measured test evidence.
+We update the revision in the drawing title block and in this register. If a change affects dimensions, wiring, sensor positions, calibration, or software interfaces, we list the related drawing IDs and source files. We do not label calculated or illustrative values as measured test results.
 
 ### Revision history
 
