@@ -1,25 +1,25 @@
-# Open Challenge — Technical Documentation
+# Open Challenge — How Our Program Works
 
 ## Mission
 
 ![SYS-001 — Autonomous vehicle system architecture](../../docs/drawings/SYS-001_autonomous_vehicle_architecture.svg)
 
-The vehicle dynamics and steering references are available in [DYN-001](../../docs/drawings/DYN-001_vehicle_dynamics.svg) and [STR-001](../../docs/drawings/STR-001_ackermann_steering.svg).
+The vehicle dynamics and steering drawings are available in [DYN-001](../../docs/drawings/DYN-001_vehicle_dynamics.svg) and [STR-001](../../docs/drawings/STR-001_ackermann_steering.svg).
 
-For the Open Challenge, our controller follows a route with twelve corners. It keeps the robot centred in the corridor, corrects its heading, and calculates the final approach back to the starting section.
+For the Open Challenge, our program follows a route with twelve corners. It tries to keep the robot near the centre of the corridor, corrects its heading, and works out the final approach back to the starting section.
 
-## Hardware interfaces
+## Hardware connections
 
-| Port | Device | Function |
+| Port | Device | Use |
 |---|---|---|
-| A | EV3 Medium Motor | Left/right drive channel as configured by the program |
+| A | EV3 Medium Motor | Drive channel as configured in the program |
 | B | EV3 Medium Motor | Drive channel |
 | C | EV3 Medium Motor | Steering |
 | S1 | Gyro | Heading measurement |
-| S2 | Ultrasonic | Left wall range |
-| S3 | Ultrasonic | Right wall range |
+| S2 | Ultrasonic | Left wall distance |
+| S3 | Ultrasonic | Right wall distance |
 
-## Program configuration
+## Settings in this program
 
 | Parameter | Value |
 |---|---:|
@@ -37,37 +37,39 @@ For the Open Challenge, our controller follows a route with twelve corners. It k
 | Corner target | 90 deg |
 | Route corner count | 12 |
 
-## Mission sequence
+These are the current program settings. They are not a record of measured performance.
 
-1. Initialize motors and sensors.
-2. Wait for the operator start command.
-3. Calibrate the gyro while stationary.
-4. Acquire left and right wall distances.
-5. Estimate corridor-centre error.
-6. Apply lateral and heading corrections.
-7. Confirm a corridor opening over consecutive samples.
-8. Determine route direction and execute the corner.
-9. Apply post-turn detection lockout.
-10. Track the twelve-corner route.
-11. Calculate and execute the final approach.
-12. Stop and write the run log.
+## Mission steps
 
-## Corridor-centering control
+1. Initialize the motors and sensors.
+2. Wait for the operator to start the program.
+3. Calibrate the gyro while the robot is still.
+4. Read the left and right wall distances.
+5. Estimate how far the robot is from the corridor centre.
+6. Correct the lateral position and heading.
+7. Confirm a corridor opening over several readings.
+8. Work out the route direction and turn at the corner.
+9. Ignore new opening detections for the configured distance after a turn.
+10. Continue until the twelve-corner route is complete.
+11. Calculate and drive the final approach.
+12. Stop and save the run log.
 
-We use both ultrasonic readings to estimate the robot's lateral position in the corridor. A proportional lateral term is combined with a heading correction term. The resulting steering command is bounded by the configured straight-line steering limit.
+## Keeping the robot near the corridor centre
 
-## Corner detection and execution
+We use both ultrasonic readings to estimate the robot's lateral position. The program combines a proportional correction for the sideways error with a heading correction. It limits the steering command to the configured straight-driving range.
 
-We confirm an opening only after the distance threshold has been exceeded for several consecutive readings. A distance lockout after each turn prevents the previous opening from being detected again. Gyro heading is used to track the turn target, while timeout and wrong-direction checks protect the manoeuvre.
+## Finding and turning at corners
 
-## Return-to-start calculation
+The program accepts an opening only after the distance threshold has been exceeded for several readings in a row. After a turn, it uses a distance lockout so that it does not detect the previous opening again. It estimates the route direction from the first opening and keeps that direction for the rest of the route.
 
-The final approach uses the initial opening distance and the measured route segments retained by the program. The final distance command is calculated from these route quantities and the configured offset. The final low-speed segment reduces approach speed near the stopping point.
+## Returning to the start
 
-## Logging
+The final approach uses the first opening distance and the route segments stored by the program. It calculates the remaining distance using these values and the configured offset. The last part of the approach uses a lower speed near the stopping point.
 
-The program writes `log_open.csv`. The log records phase, route progress, sensor observations, heading, steering, and event information for post-run analysis.
+## Run log
 
-## Software evidence scope
+The program writes `log_open.csv`. It records the phase, route progress, sensor readings, heading, steering, and event information so the run can be reviewed later.
 
-Here we describe the program settings and the control logic used in this version. Our automated checks verify Python syntax and documentation consistency. They do not replace a route test with the physical EV3 robot. No completed physical mission log is included in this repository snapshot.
+## What the software checks tell us
+
+This page describes the program settings and control logic. Our automated checks verify Python syntax and documentation consistency. They do not replace a route test with the physical EV3 robot. The current repository snapshot does not include a completed physical mission log.
