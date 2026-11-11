@@ -50,4 +50,4 @@ The repository includes unit tests for the analytical reference model and integr
 
 ## Development and regression
 
-Keep the two challenge programs independent. Preserve reference versions and isolate experimental changes. Every change to sensor processing, steering, navigation, or mission logic should be followed by syntax verification and the relevant hardware regression tests.
+Keep the two challenge programs independent. Preserve reference versions and isolate experimental changes. The documented software verification framework separates source-level checks from hardware regression evidence.
