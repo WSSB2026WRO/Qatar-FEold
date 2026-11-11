@@ -21,11 +21,11 @@ Camera geometry and the electrical interface are documented in [CAM-001](../../d
 | Main log | `log_obstacle.csv` |
 | Nominal loop period | 20 ms; 10 ms during maneuvers |
 
-The following sections describe the program as it is written in the current source file. Values are configured software parameters and must not be interpreted as independently measured performance.
+Here we explain how the current program is set up and how it handles the mission. Values are configured software parameters and must not be interpreted as independently measured performance.
 
 ## Mission and state sequence
 
-The program performs a multi-stage autonomous mission:
+We organized the autonomous mission into the following stages:
 
 1. Initialize EV3 motors and sensors and establish encoder zero references.
 2. Display READY and wait for the CENTER button.
@@ -57,7 +57,7 @@ The Pixy2 camera, including its integrated illumination, is connected through se
 
 ### Block acquisition
 
-The program requests blocks matching the red and green signatures. Consecutive I²C errors are counted. Isolated read errors are treated as a missing frame; after `PIXY_MAX_ERRORS` consecutive errors, the exception is allowed to terminate the normal run path.
+We request blocks matching the red and green signatures from the Pixy2. Consecutive I²C errors are counted. Isolated read errors are treated as a missing frame; after `PIXY_MAX_ERRORS` consecutive errors, the exception is allowed to terminate the normal run path.
 
 ### Pillar filtering
 
@@ -70,13 +70,13 @@ The nearest candidate is selected by its vertical image position. The candidate 
 
 ### Image-to-ground geometry
 
-The source estimates camera-to-pillar distance using the configured model:
+In the program, we estimate the camera-to-pillar distance with this configured model:
 
 `distance_mm = Y_K / (Y - Y_0)`
 
 The horizontal image coordinate is converted to a bearing using the configured horizontal field of view. The calculation also accounts for the camera's forward offset and the vehicle's heading relative to the corridor.
 
-These equations are configured estimation models encoded in the program. Their accuracy depends on camera mounting, image geometry, field-of-view calibration, and the empirical constants `Y_0` and `Y_K`; the repository does not contain a physical calibration dataset.
+We use these equations as estimation models in the program. Their accuracy depends on the camera mounting, image geometry, field-of-view calibration, and the values of `Y_0` and `Y_K`. We have not included physical camera-calibration measurements in this repository.
 
 ## Colour-dependent passing policy
 
@@ -87,7 +87,7 @@ These equations are configured estimation models encoded in the program. Their a
 
 The lane target is calculated to maintain `PILLAR_CLEARANCE` while respecting `WALL_MIN`. The target is not simply a fixed left or right lane: it is calculated from the estimated pillar lateral position and clamped to the available corridor space.
 
-The program retains the pillar's estimated track position while it leaves the camera view. It returns to the center state only after the vehicle has travelled beyond the stored pillar position by `PASS_MARGIN`.
+When a pillar leaves the camera view, we keep its last estimated track position. It returns to the center state only after the vehicle has travelled beyond the stored pillar position by `PASS_MARGIN`.
 
 ## Lateral localization and wall handling
 
@@ -187,7 +187,7 @@ The log header includes time, phase, corner count, track position, raw and perpe
 
 ## Calibration and physical-evidence status
 
-The source configuration records the Pixy2 I²C address, signature mapping, image-distance constants, camera field of view, and camera offset. The repository also records the ultrasonic geometry and encoder scale parameters. No physical calibration dataset or completed EV3 mission-test logs are stored in this repository snapshot.
+The current source file contains the Pixy2 I²C address, signature mapping, image-distance constants, camera field of view, and camera offset. We have also recorded the ultrasonic geometry and encoder scale parameters. We have not yet added a physical calibration dataset or completed EV3 mission logs to this repository.
 
 ## Review points
 
@@ -203,4 +203,4 @@ The supplied source is preserved as `obstacle_challenge.py`. SHA-256:
 
 `8e95b338db948a291cea3b166b8def8d28525c5e5ada0540324d954e4f12e952`
 
-Static Python parsing completed successfully before repository upload. This is not a Pybricks hardware execution test.
+We checked that the Python file parses successfully before uploading it. This check does not confirm that the program runs correctly on the EV3 hardware.
