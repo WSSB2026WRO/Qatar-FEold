@@ -11,11 +11,11 @@ This section defines the EV3 power, actuator, sensor, and communication architec
 | A | Medium motor | Drive | Drive |
 | B | Medium motor | Drive | Drive |
 | C | Medium motor | Steering | Steering |
-| D | Front LED lamp (drawing-register item) | Not configured in current source | Not configured in current source |
+| D | No device assigned | Unused | Unused |
 | S1 | Gyro sensor | Heading | Heading |
 | S2 | Ultrasonic sensor | Left range | Left range |
 | S3 | Ultrasonic sensor | Right range | Right range |
-| S4 | Pixy2 camera | Not used | I²C vision |
+| S4 | Pixy2 camera with integrated illumination | Not used | I²C vision and camera illumination |
 
 ## Power management
 
@@ -38,7 +38,7 @@ The Obstacle Challenge program communicates with Pixy2 over I²C at configured a
 
 ## Electrical integration record
 
-Port D is listed as a front LED lamp in the drawing register, but neither current challenge program configures it. Confirm the physical device and wiring before treating it as an active interface. The software interface allocation is defined above. Component-specific electrical ratings are governed by the manufacturer's datasheets. The EV3 program sources do not encode battery chemistry, current limits, fuse ratings, or external lamp specifications; these must not be inferred from software port assignments.
+The Pixy2 camera and its illumination are one camera assembly connected through sensor port S4. The illumination is integrated with the Pixy2 and is not a separate device on EV3 motor port D. Port D is unused by both challenge programs. Component-specific electrical ratings are governed by the manufacturer's datasheets; the EV3 program sources do not encode battery chemistry, current limits, or fuse ratings.
 
 ## Commissioning procedure
 
