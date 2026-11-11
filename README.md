@@ -23,8 +23,8 @@ The team developed two programming implementations for each challenge: Python us
 
 | Program | Mission | Python source | EV3 block project |
 |---|---|---|---|
-| Open Challenge | Corridor following, wall-based centering, corner detection, heading control, lap tracking, and return to the start section | [open_challenge.py](software/open_challenge/open_challenge.py) | [OpenChallenge.ev3](ev3_blocks/OpenChallenge.ev3) |
-| Obstacle Challenge | Visual pillar classification, colour-dependent passing, lane repositioning, corner navigation, and parking | [obstacle_challenge.py](software/obstacle_challenge/obstacle_challenge.py) | [ObstacleChallenge.ev3](ev3_blocks/ObstacleChallenge.ev3) |
+| Open Challenge | Corridor following, wall-based centering, corner detection, heading control, lap tracking, and return to the start section | [open_challenge.py](software/open_challenge/open_challenge.py) | OpenChallenge.ev3 (native LEGO EV3 block project supplied with this project delivery) |
+| Obstacle Challenge | Visual pillar classification, colour-dependent passing, lane repositioning, corner navigation, and parking | [obstacle_challenge.py](software/obstacle_challenge/obstacle_challenge.py) | ObstacleChallenge.ev3 (native LEGO EV3 block project supplied with this project delivery) |
 
 Both implementations target the LEGO EV3 platform. The Python Obstacle Challenge additionally uses a Pixy2 camera over I²C. The Pixy2's integrated illumination is part of the camera assembly and is connected with the camera through sensor port S4; motor port D is unused.
 
@@ -73,7 +73,7 @@ Both implementations target the LEGO EV3 platform. The Python Obstacle Challenge
 | [Obstacle Management](Obstacle%20Management/README.md) | Vision-based obstacle detection and avoidance |
 | [Power and Sense Management](Power%20and%20Sense%20Management/README.md) | Electrical interfaces, power, and sensors |
 | [src](src/README.md) | Software source index |
-| [ev3_blocks](ev3_blocks/README.md) | Native LEGO EV3 graphical project archive |
+| Native LEGO EV3 block-project counterparts (delivered as original .ev3 project files) | Native LEGO EV3 graphical project archive |
 | [t-photos](t-photos/README.md) | Team photographs |
 | [v-photos](v-photos/README.md) | Vehicle photographs |
 | [video](video/README.md) | Demonstration-video index; no videos currently committed |
