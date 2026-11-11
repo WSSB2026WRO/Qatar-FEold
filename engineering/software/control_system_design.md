@@ -1,63 +1,65 @@
 # Autonomous Control System Design
 
-## 1. Control objectives
+## 1. What the control system needs to do
 
-The control system must estimate vehicle state, select a navigation target, and command propulsion and steering while respecting the physical corridor and obstacle constraints.
+Our control system reads the sensors, estimates where the robot is, chooses what it should do next, and sends commands to the drive and steering motors. It also needs to respect the corridor, obstacle, and actuator limits.
 
-The architecture is divided into:
-1. sensing;
-2. filtering and plausibility checks;
-3. state estimation;
-4. mission-state management;
-5. path and lane target generation;
-6. heading and steering control;
-7. actuator execution;
-8. logging and fault handling.
+We split the design into these parts:
 
-## 2. State vector
+1. Sensor readings.
+2. Filtering and checks for unusual values.
+3. Estimating the robot's state.
+4. Managing the mission states.
+5. Choosing a path or lane target.
+6. Controlling heading and steering.
+7. Sending commands to the motors.
+8. Recording events and handling faults.
 
-A compact planar state estimate may be represented as:
+## 2. State estimate
 
-\[
+A simple planar state can be written as:
+
+[
 \mathbf{x}=[s, y, \psi, v, \delta, q]^T
-\]
+]
 
 where:
-- (s): longitudinal track coordinate;
-- (y): lateral displacement from corridor centre;
-- (psi): heading relative to corridor axis;
-- (v): forward speed;
-- (delta): steering angle estimate;
-- (q): discrete mission state.
+- (s): distance along the track.
+- (y): sideways distance from the corridor centre.
+- (psi): heading compared with the corridor direction.
+- (v): forward speed.
+- (delta): estimated steering angle.
+- (q): current mission state.
 
-## 3. Sensor roles
+## 3. What each sensor tells us
 
-- Gyro: short-term heading change and turn completion.
-- Drive encoders: travelled distance estimate.
-- Ultrasonic sensors: corridor-relative lateral position and wall-opening evidence.
-- Pixy2: pillar signature and image location in Obstacle Challenge.
+- **Gyro:** change in heading and whether a turn is complete.
+- **Drive encoders:** an estimate of distance travelled.
+- **Ultrasonic sensors:** distance to the corridor walls and evidence of wall openings.
+- **Pixy2:** pillar signature and image position in the Obstacle Challenge.
 
-The control-system design treats sensor measurements as fallible inputs; range, continuity, and consistency with the current mission state are the stated plausibility dimensions.
+We treat sensor readings as information that can sometimes be wrong. We check their range, continuity, and whether they make sense for the current mission state.
 
-## 4. Cascaded control concept
+## 4. Two-step steering control idea
 
-The lateral controller produces a desired heading from lateral error:
+The lateral controller can calculate a heading target from the sideways error:
 
-\[
+[
 \psi_{ref}=\operatorname{sat}(K_y e_y, -\psi_{max}, +\psi_{max})
-\]
+]
 
-The heading controller produces a steering command:
+The heading controller can then calculate the steering command:
 
-\[
+[
 \delta_{cmd}=\operatorname{sat}(K_\psi(\psi-\psi_{ref}), -\delta_{max}, +\delta_{max})
-\]
+]
 
-The steering sign convention is defined so that the commanded response reduces measured error. Derivative or rate terms are sensitive to measurement noise and sampling behaviour.
+We define the steering direction so that the command reduces the measured error. Derivative or rate terms need care because sensor noise and loop timing can affect them.
 
-## 5. Mission state machine
+## 5. Mission states
 
 ### Open Challenge
+
 - INITIALIZE
 - WAIT_FOR_START
 - CALIBRATE
@@ -71,6 +73,7 @@ The steering sign convention is defined so that the commanded response reduces m
 - FAULT
 
 ### Obstacle Challenge
+
 - INITIALIZE
 - WAIT_FOR_START
 - CALIBRATE
@@ -88,27 +91,28 @@ The steering sign convention is defined so that the commanded response reduces m
 
 ## 6. Safety supervisor
 
-The safety supervisor should have priority over nominal control. It monitors:
-- global timeout;
-- sensor communication errors;
-- implausible range values;
-- gyro angle beyond expected turn limits;
-- motor encoder progress;
-- steering actuator limits;
-- proximity to corridor boundaries.
+Safety checks should take priority over normal driving. The supervisor should monitor:
+- Overall mission timeout.
+- Sensor communication errors.
+- Distance readings that do not make sense.
+- Gyro angle outside the expected turn range.
+- Motor encoder progress.
+- Steering motor limits.
+- Distance from the corridor boundaries.
 
-On a critical fault, the supervisor stops propulsion and places the steering mechanism in a defined safe condition.
+If a critical fault occurs, the supervisor should stop the drive motors and put the steering mechanism in a defined safe condition.
 
-## 7. Sampling and timing
+## 7. Loop timing
 
-The control-loop timing model covers sensor acquisition, filtering, control calculations, logging, and actuator commands. Camera communication is a comparatively slower operation; the architecture allows vision updates to be scheduled separately from the faster steering loop while retaining a timestamped latest valid detection.
+The control loop has to read sensors, filter the values, calculate the next command, write logs, and send motor commands. Camera communication is slower than the steering loop, so vision updates can be handled separately. The controller should keep the latest valid camera detection with its timestamp.
 
-## 8. Software verification
+## 8. Ways to check the software design
 
-- unit tests for geometric transformations;
-- test vectors for sign conventions;
-- replay of logged sensor traces;
-- boundary tests for saturations and thresholds;
-- state-transition tests;
-- fault-injection tests for missing sensors;
-- regression comparison against the preserved source program.
+We can check the control system with:
+- Unit tests for geometry calculations.
+- Test examples for steering sign conventions.
+- Replaying saved sensor readings.
+- Boundary tests for limits and thresholds.
+- Tests of mission-state changes.
+- Fault tests with missing sensor readings.
+- Regression comparisons with the preserved program source.
