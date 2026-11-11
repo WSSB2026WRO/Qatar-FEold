@@ -18,9 +18,9 @@ The architecture is divided into:
 
 A compact planar state estimate may be represented as:
 
-[
+\[
 \mathbf{x}=[s, y, \psi, v, \delta, q]^T
-]
+\]
 
 where:
 - (s): longitudinal track coordinate;
@@ -43,15 +43,15 @@ No single sensor should be treated as infallible. Measurements should be checked
 
 The lateral controller produces a desired heading from lateral error:
 
-[
+\[
 \psi_{ref}=\operatorname{sat}(K_y e_y, -\psi_{max}, +\psi_{max})
-]
+\]
 
 The heading controller produces a steering command:
 
-[
+\[
 \delta_{cmd}=\operatorname{sat}(K_\psi(\psi-\psi_{ref}), -\delta_{max}, +\delta_{max})
-]
+\]
 
 The sign convention must be calibrated so that the command reduces the measured error. A derivative or rate term may be introduced only after noise and sampling behaviour are understood.
 
