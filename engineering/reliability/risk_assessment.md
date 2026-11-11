@@ -15,9 +15,9 @@ No numeric S/O/D ratings are assigned in this baseline register because physical
 | Subsystem | Failure mode | Effect | Detection | Recommended mitigation |
 |---|---|---|---|---|
 | Drive | Wheel slip | Distance and turn error | Encoder/gyro disagreement | Tune acceleration and verify traction |
-| Drive | Motor stall | Vehicle stops or deviates | Encoder progress timeout | Stop drive and inspect drivetrain |
+| Drive | Motor stall | Vehicle stops or deviates | Not implemented as a dedicated source-level stall detector; verify with an encoder-progress test | Add a bounded progress timeout and safe-stop response after validating thresholds on hardware |
 | Steering | Linkage backlash | Heading oscillation | Angle repeatability test | Reduce clearance and inspect joints |
-| Steering | Mechanical binding | High load or incomplete turn | Encoder timeout and travel inspection | Full-sweep clearance test |
+| Steering | Mechanical binding | High load or incomplete turn | Existing manoeuvre timeout plus physical full-travel inspection | Verify clearance and actuator load across the complete steering range |
 | Gyro | Bias drift | Heading error | Stationary drift test | Recalibration and bounded correction |
 | Ultrasonic | Multipath echo | False wall position | Plausibility and continuity checks | Sensor alignment and filtering |
 | Pixy2 | Misclassification | Wrong passing side | Signature confidence and temporal confirmation | Re-train signatures and verify lighting |
