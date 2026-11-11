@@ -30,6 +30,10 @@ software/
         └── ObstacleChallenge.ev3
 ```
 
+## Engineering diagrams
+
+The mission software is documented alongside its hardware and control context. See the [complete eight-sheet engineering drawing set](../docs/drawings/README.md), including the [system architecture](../docs/drawings/SYS-001_autonomous_vehicle_architecture.svg), [Obstacle Challenge state machine](../docs/drawings/OBS-001_obstacle_state_machine.svg), [EV3 wiring](../docs/drawings/ELE-001_ev3_wiring.svg) and [Pixy2 camera geometry](../docs/drawings/CAM-001_pixy2_camera_geometry.svg).
+
 ## Mission implementation files
 
 | Mission | Python / Pybricks MicroPython | Native EV3 block project |
