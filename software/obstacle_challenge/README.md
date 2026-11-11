@@ -43,9 +43,9 @@ The program performs a multi-stage autonomous mission:
 | S1 | Gyro sensor | Heading and drift compensation |
 | S2 | Ultrasonic sensor | Left wall distance |
 | S3 | Ultrasonic sensor | Right wall distance |
-| S4 | Pixy2 camera | Red/green pillar detection |
+| S4 | Pixy2 camera with integrated illumination | I²C red/green pillar detection and camera illumination |
 
-The camera is instantiated on port 4 with I²C address `0x54`. The program maps Pixy2 signature 1 to red and signature 2 to green.
+The Pixy2 camera, including its integrated illumination, is connected through sensor port S4 using I²C address `0x54`. The illumination is part of the camera assembly and is not a separate device on EV3 motor port D. The program maps Pixy2 signature 1 to red and signature 2 to green.
 
 ## Perception pipeline
 
