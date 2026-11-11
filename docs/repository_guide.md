@@ -34,7 +34,7 @@ Qatar-FE/
 
 ## Automated checks
 
-Run the repository checks from the root directory:
+To run the same checks on your computer, open a terminal in the repository's root directory and enter:
 
 ```bash
 python -m py_compile software/open_challenge/open_challenge.py
@@ -43,7 +43,7 @@ python -m unittest discover -s tests -v
 python engineering/simulation/parameter_sweep.py
 ```
 
-The same checks are run by GitHub Actions. They validate source syntax and analytical calculations, not physical robot performance.
+GitHub Actions runs these checks as well. They check the source syntax and analytical calculations; they do not measure the physical robot's performance.
 
 ## Evidence classification
 
@@ -58,7 +58,7 @@ Use the following labels consistently:
 
 ## Revision control
 
-Every significant change should include:
+When we make an important change, we record:
 - purpose of the change;
 - affected subsystem;
 - source version;
