@@ -12,6 +12,7 @@ This specification documents the functional electrical architecture implied by t
 | Drive actuator A | EV3 motor port A | Propulsion |
 | Drive actuator B | EV3 motor port B | Propulsion |
 | Steering actuator C | EV3 motor port C | Steering |
+| Front LED lamp (drawing-register item) | EV3 port D | Not configured or controlled by the current challenge source files; physical presence and wiring require confirmation |
 | Gyro S1 | EV3 sensor port S1 | Heading feedback |
 | Ultrasonic S2 | EV3 sensor port S2 | Left-side ranging |
 | Ultrasonic S3 | EV3 sensor port S3 | Right-side ranging |
