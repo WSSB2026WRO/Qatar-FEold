@@ -1,10 +1,10 @@
-# C3DP-01 — Custom I-Profile Link Component
+# C3DP-01 — I-Profile Link
 
-## Component overview
+## What this part is
 
-This STL defines a compact I-profile mechanical component intended for integration with the team's EV3-compatible custom linkage system.
+This STL is listed as a compact I-profile mechanical part for our EV3-compatible custom linkage system.
 
-## Mesh characteristics
+## Recorded mesh information
 
 | Property | Inspection result |
 |---|---:|
@@ -16,21 +16,22 @@ This STL defines a compact I-profile mechanical component intended for integrati
 | Bounding box Y | 24.33 native units |
 | Bounding box Z | 7.85 native units |
 
-## Geometric description
+## Shape
 
-The model has a low-profile, elongated geometry with intersecting beam-like features. Its two closed shells form the inspected mesh structure. The STL is retained in its original form.
+The mesh has a low and elongated shape with beam-like features crossing each other. The inspection record identifies two closed shells. The original STL geometry has been kept as the reference.
 
-## Mechanical role
+## Intended mechanical use
 
-The component is catalogued as a custom I-profile link/adapter for the EV3 mechanical assembly. Its function is associated with the team's modified linkage and connection-piece design.
+We have catalogued this part as an I-profile link or adapter for the modified EV3 mechanical assembly.
 
 ## Design record
 
-The component is catalogued as an I-profile linkage adapter with two closed mesh shells. The recorded bounding box is expressed in native STL units; the source mesh and native CAD model are not present in the current repository snapshot.
+The part is listed as a linkage adapter with two closed mesh shells. Its bounding-box values are in native STL units. The original mesh and native CAD model are not included in the current repository snapshot.
 
-## File
+## Source file
 
-Original mesh referenced: `I lego.stl`  
-**Availability:** The STL file is not included in the current repository. This record is not a manufacturing source.
+Original mesh reference: `I lego.stl`
 
-STL coordinates do not carry unit metadata. The bounding-box values are reported in native mesh units; the native-unit extents are the only dimensional values represented in this record.
+**Availability:** The STL file is not included here, so this page is not a manufacturing file.
+
+STL coordinates do not include unit information. The values above are only the recorded native-unit dimensions.
