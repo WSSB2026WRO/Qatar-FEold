@@ -28,7 +28,7 @@ Qatar-FE/
 ├── tests/                         Analytical and documentation integrity tests
 ├── t-photos/                      Team photographs
 ├── v-photos/                      Vehicle photographs
-├── validation/                    Physical test plan and report template
+├── validation/                    Verification framework and test-record format
 └── video/                         Demonstration-video index (no videos committed)
 ```
 
