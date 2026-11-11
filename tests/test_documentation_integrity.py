@@ -6,7 +6,7 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
-LINK_PATTERN = re.compile(r"!?[[^]]*](([^)]+))")
+LINK_PATTERN = re.compile(r"!?[\[][^\]]*[\]][\(]([^)]+)[\)]")
 
 
 class DocumentationIntegrityTests(unittest.TestCase):
