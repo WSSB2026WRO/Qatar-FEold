@@ -24,13 +24,9 @@ The component has a narrow rectangular envelope and a single connected, closed m
 
 The part is catalogued as a modified small connector/link element for the EV3 assembly. It provides a compact connection geometry within the custom mechanical interface set.
 
-## Manufacturing considerations
+## Design record
 
-- Preserve the orientation of the principal connection axis.
-- Inspect the mating-hole and pin geometry after printing.
-- Check fit against the corresponding EV3 connection elements.
-- Verify that the part does not interfere with adjacent moving components.
-- Inspect layer adhesion around narrow sections.
+The component is a single connected, watertight mesh with a narrow rectangular envelope. Its recorded proportions are consistent with a compact 1×3-style connector. The bounding-box values are expressed in native STL units.
 
 ## File
 
