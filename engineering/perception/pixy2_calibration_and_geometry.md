@@ -37,13 +37,13 @@ f_x=\frac{N_u/2}{\tan(\phi_h/2)}
 
 ## 4. Estimating range from the ground plane
 
-If the bottom of a visible pillar is on a known flat ground plane, camera height and downward angle can be used to estimate its distance. For camera height (h_c), downward pitch (	heta), and vertical ray angle (eta), a simplified model is:
+If the bottom of a visible pillar is on a known flat ground plane, camera height and downward angle can be used to estimate its distance. For camera height (h_c), downward pitch (	heta), and vertical ray angle (\\betaeta), a simplified model is:
 
 [
 d=\frac{h_c}{\tan(\theta+\beta)}
 ]
 
-The result depends on the exact image point chosen at the pillar base, the camera angle, and the mounting height. This is not the same method as estimating distance from the apparent height of a block. The angles (	heta) and (eta) are measured in the vertical camera plane.
+The result depends on the exact image point chosen at the pillar base, the camera angle, and the mounting height. This is not the same method as estimating distance from the apparent height of a block. The angles (	heta) and (\\betaeta) are measured in the vertical camera plane.
 
 ## 5. Empirical model used in our program
 
