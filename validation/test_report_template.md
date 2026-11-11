@@ -1,56 +1,23 @@
-# Engineering Test Report
+# Engineering Test Record Format
 
-## Test identification
+This document defines the structure and terminology of an engineering test record. It is a record format, not a completed test report; no physical result is implied by the presence of this file.
 
-| Field | Entry |
-|---|---|
-| Test ID | |
-| Test title | |
-| Date and time | |
-| Software version | |
-| Hardware configuration | |
-| Test operator | |
+## Identification fields
 
-## Objective
+A test record identifies the test ID, title, date and time, software version, hardware configuration, and test operator.
 
-Describe the engineering question being evaluated and the expected behaviour.
+## Objective and conditions
 
-## Test conditions
+The record states the engineering question, expected behaviour, test surface, battery condition, vehicle mass, sensor configuration, environmental conditions, and number of trials.
 
-| Parameter | Value |
-|---|---|
-| Test surface | |
-| Battery condition | |
-| Vehicle mass | |
-| Sensor configuration | |
-| Environmental conditions | |
-| Number of trials | |
+## Procedure and instrumentation
 
-## Procedure
+The record describes the initial vehicle state, applied command or stimulus, measurement method, repetition count, instrumentation, and applicable safety conditions.
 
-1. Describe the initial vehicle state.
-2. Identify the command or stimulus applied.
-3. Describe the measurement method.
-4. Define the number of repetitions.
-5. State the safety conditions.
+## Results and analysis
 
-## Results
-
-| Trial | Measured value | Target | Error | Result |
-|---|---:|---:|---:|---|
-| 1 | | | | |
-| 2 | | | | |
-| 3 | | | | |
-
-## Analysis
-
-Summarize repeatability, deviations, possible error sources, and the relationship between the results and the acceptance criteria.
+Raw trial observations are recorded alongside target values, error, and result classification. Analysis addresses repeatability, deviations, possible error sources, and the relationship between observations and acceptance criteria.
 
 ## Conclusion
 
-- Result: Pass / Fail / Inconclusive
-- Main observation:
-- Corrective action:
-- Regression test:
-
-
+The conclusion identifies the result as Pass, Fail, or Inconclusive and summarizes the observations, any recorded corrective action, and the associated regression evidence.
