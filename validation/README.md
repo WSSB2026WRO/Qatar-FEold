@@ -4,6 +4,8 @@
 
 This plan defines the verification activities for the Qatar FE autonomous vehicle and its two challenge programs.
 
+**Current evidence status:** This directory contains the validation plan and report template. No completed physical test reports or raw robot logs are currently stored here. Test rows below are planned verification activities, not claims of completed tests.
+
 ## Test matrix
 
 | ID | Subsystem | Verification method | Acceptance criterion |
