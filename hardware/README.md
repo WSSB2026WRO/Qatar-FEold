@@ -16,6 +16,8 @@ The vehicle control platform is based on LEGO EV3 and the device interfaces decl
 | S3 | Ultrasonic sensor | Right-side distance |
 | S4 | Pixy2 camera | I²C vision interface in Obstacle Challenge |
 
+**Port D status:** the drawing register identifies a front LED lamp on port D, but neither current challenge source program instantiates or controls a device on that port. Treat the lamp and its wiring as unverified until checked on the assembled vehicle.
+
 ## Functional architecture
 
 ```mermaid
