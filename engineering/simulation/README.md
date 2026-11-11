@@ -24,6 +24,16 @@ python parameter_sweep.py
 
 The script writes `reference_design_sweep.csv` with longitudinal and lateral load-transfer estimates over a parameter grid.
 
+## Automated unit tests
+
+The repository includes standard-library unit tests for the reference calculation in `tests/test_reference_model.py`. Run them from the repository root with:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+These tests check the documented baseline values, zero-acceleration behaviour, linear load-transfer scaling, and finite non-negative outputs. They validate the analytical model only; they do not test the physical vehicle.
+
 ## Model definition
 
 The current analytical model uses rigid-body equilibrium and a Coulomb friction bound. It does not include tire load sensitivity, suspension compliance, transient pitch and roll, motor torque-speed curves, battery voltage sag, wheel-slip dynamics, steering actuator dynamics, or sensor latency.
