@@ -64,11 +64,6 @@ The final approach uses the initial opening distance and the measured route segm
 
 The program writes `log_open.csv`. The log records phase, route progress, sensor observations, heading, steering, and event information for post-run analysis.
 
-## Engineering review
+## Software evidence scope
 
-- Confirm drive polarity and steering zero before autonomous operation.
-- Verify encoder distance against a known track length.
-- Check ultrasonic alignment and range consistency.
-- Verify gyro sign convention and stationary drift.
-- Test both corner directions at reduced speed.
-- Review the recorded log after each run.
+This document describes the supplied source configuration and control logic. The repository's automated source checks establish Python syntax and documentation integrity; they do not represent a physical EV3 route test. No completed physical mission log is included in this repository snapshot.
