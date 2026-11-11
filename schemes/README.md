@@ -112,6 +112,8 @@ The interface map should record the device, EV3 port, signal/interface type, and
 
 The Pixy2 interface is documented as I²C. The wiring drawing should show the actual cable/interface arrangement and should be checked against the assembled robot before release. Do not add connector pin numbers or electrical ratings unless they have been verified from the hardware documentation.
 
+**Port D verification note:** the drawing register identifies a front LED lamp on port D, but neither current challenge source program instantiates or controls a device on that port. Confirm whether the lamp is physically installed and document its actual wiring before treating it as an active system interface.
+
 ### CAM-001 — Pixy2 camera geometry
 
 The geometry reference should show:
