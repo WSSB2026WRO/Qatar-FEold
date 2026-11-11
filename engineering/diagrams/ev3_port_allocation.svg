@@ -19,13 +19,13 @@
 <rect x="65" y="265" width="270" height="60" rx="10" class="device"/><text x="200" y="302" text-anchor="middle" class="label">Medium motor — drive motor A</text>
 <rect x="865" y="265" width="270" height="60" rx="10" class="device"/><text x="1000" y="302" text-anchor="middle" class="label">Medium motor — drive motor B</text>
 <rect x="65" y="335" width="270" height="60" rx="10" class="device"/><text x="200" y="372" text-anchor="middle" class="label">Medium motor — steering</text>
-<rect x="865" y="335" width="270" height="60" rx="10" class="device"/><text x="1000" y="372" text-anchor="middle" class="label">Front LED lamp — verify on vehicle</text>
+<rect x="865" y="335" width="270" height="60" rx="10" class="device"/><text x="1000" y="372" text-anchor="middle" class="label">No device assigned</text>
 <rect x="65" y="450" width="270" height="60" rx="10" class="device"/><text x="200" y="487" text-anchor="middle" class="label">Gyro — heading</text>
 <rect x="865" y="450" width="270" height="60" rx="10" class="device"/><text x="1000" y="487" text-anchor="middle" class="label">Ultrasonic — left side</text>
 <rect x="65" y="520" width="270" height="60" rx="10" class="device"/><text x="200" y="557" text-anchor="middle" class="label">Ultrasonic — right side</text>
-<rect x="865" y="520" width="270" height="60" rx="10" class="device"/><text x="1000" y="557" text-anchor="middle" class="label">Pixy2 — I²C camera</text>
+<rect x="865" y="520" width="270" height="60" rx="10" class="device"/><text x="1000" y="557" text-anchor="middle" class="label">Pixy2 — I²C camera + integrated light</text>
 <path d="M335 295 H405 L475 294 M725 294 H795 L865 295 M335 365 H405 L475 364 M725 364 H795 L865 365 M335 480 H405 L475 479 M725 479 H795 L865 480 M335 550 H405 L475 549 M725 549 H865" class="line"/>
-<text x="600" y="690" text-anchor="middle" class="small">A/B: drive motors • C: steering • D: drawing-register lamp (not software-controlled)</text>
-<text x="600" y="718" text-anchor="middle" class="small">S1: gyro • S2: left ultrasonic • S3: right ultrasonic • S4: Pixy2 I²C</text>
-<text x="600" y="742" text-anchor="middle" class="small">Confirm the physical cable routing and connector condition on the assembled robot.</text>
+<text x="600" y="690" text-anchor="middle" class="small">A/B: drive motors • C: steering • D: unused</text>
+<text x="600" y="718" text-anchor="middle" class="small">S1: gyro • S2: left ultrasonic • S3: right ultrasonic • S4: Pixy2 I²C + integrated illumination</text>
+<text x="600" y="742" text-anchor="middle" class="small">Pixy2 illumination is part of the S4 camera assembly; no separate device is assigned to port D.</text>
 </svg>
