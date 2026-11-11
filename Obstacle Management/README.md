@@ -1,71 +1,65 @@
 # Obstacle Management
 
-## System purpose
+## What this section covers
 
-Obstacle Management documents the perception and manoeuvring functions used by the Obstacle Challenge program. The system identifies coloured pillars, estimates their position relative to the vehicle, selects a passing side, tracks clearance, and returns to corridor following.
+In the Obstacle Challenge, our robot has to detect coloured pillars, choose the correct side to pass, and then return to following the corridor. This page describes the camera setup and the steps used by our obstacle program.
 
-Reference material:
-- [Obstacle Challenge source](../software/obstacle_challenge/obstacle_challenge.py)
-- [Obstacle Challenge technical documentation](../software/obstacle_challenge/README.md)
+Main project files:
+- [Obstacle Challenge program](../software/obstacle_challenge/obstacle_challenge.py)
+- [Obstacle Challenge notes](../software/obstacle_challenge/README.md)
 - [Pixy2 calibration and geometry](../engineering/perception/pixy2_calibration_and_geometry.md)
-- [Obstacle state machine](../engineering/diagrams/obstacle_state_machine.svg)
+- [Obstacle state machine diagram](../engineering/diagrams/obstacle_state_machine.svg)
 
-## Perception hardware
+## Camera setup
 
-| Interface | Device | Role |
+| Interface | Device or setting | Purpose |
 |---|---|---|
-| Sensor S4 | Pixy2 camera | Colour-signature block detection |
+| Sensor S4 | Pixy2 camera | Detecting coloured blocks |
 | I²C address | 0x54 | Camera communication |
-| Signature 1 | Red | Red pillar class |
-| Signature 2 | Green | Green pillar class |
+| Signature 1 | Red | Red pillar |
+| Signature 2 | Green | Green pillar |
 
-## Passing policy
+## Which side do we pass?
 
-| Pillar class | Configured passing side |
+| Pillar colour | Configured passing side |
 |---|---|
 | Red | Right |
 | Green | Left |
 
-The program filters detections by signature, block height, and block aspect ratio. A candidate must persist for a configured number of frames before it is accepted.
+The program checks the detected signature, block height, and block shape. A detection must remain present for the configured number of frames before the program accepts it. This helps avoid reacting to a single incorrect camera reading.
 
-## Obstacle tracking sequence
+## Steps used by the program
 
-1. Acquire Pixy2 blocks.
-2. Reject blocks that do not meet the configured geometric filters.
-3. Select the nearest candidate using its image position.
-4. Confirm the candidate over consecutive frames.
-5. Estimate range and lateral position.
-6. Select the lane target required for the passing side.
-7. Retain the estimated pillar position if the pillar temporarily leaves the camera view.
-8. Confirm that the vehicle has cleared the pillar by the configured passing margin.
-9. Return to the centre-lane target.
+1. Read the blocks detected by the Pixy2.
+2. Ignore blocks that do not match the configured size and shape checks.
+3. Choose the closest suitable candidate using its image position.
+4. Check the candidate over several frames.
+5. Estimate its distance and position relative to the vehicle.
+6. Set the lane target for the required passing side.
+7. Keep the last estimated position for a short time if the pillar disappears from the camera view.
+8. Check that the vehicle has passed the pillar by the configured margin.
+9. Set the target back to the centre of the lane.
 
-## Image-based range model
+## Estimating distance from the image
 
-The supplied program uses:
+The program uses this empirical model:
 
-`distance_{mm}=\frac{20100}{Y-63}`
+`distance_mm = 20100 / (Y - 63)`
 
-where (Y) is the selected vertical image coordinate in pixels. This is an empirical model and depends on camera mounting and calibration. See the dedicated calibration document for the model, example calculations, and required measurement procedure.
+Here, `Y` is the selected vertical image coordinate in pixels. The result depends on the camera position and calibration. The equation is part of the configured model; it should not be treated as a new physical measurement. The calibration page explains the model and the measurements still needed to check it on the vehicle.
 
-## Safety and failure handling
+## Checks and failure handling
 
-- Consecutive camera communication errors are counted.
-- Candidate detections require temporal confirmation.
-- Wall-distance plausibility checks support lane positioning.
-- Steering is bounded by the configured actuator limit.
-- The global mission timeout remains active.
+The program counts repeated camera communication errors, confirms detections over time, checks whether wall readings are reasonable, and limits the steering command. The overall mission timeout also remains active.
 
-## Validation checklist
+Before relying on the obstacle behaviour, we still need to check the following on the assembled vehicle:
 
-- [ ] Verify Pixy2 firmware and I²C output mode.
-- [ ] Verify signature IDs in the final camera configuration.
-- [ ] Confirm camera mounting angle and field of view.
-- [ ] Calibrate range at multiple known distances.
-- [ ] Test red-pillar passing independently.
-- [ ] Test green-pillar passing independently.
-- [ ] Confirm transition from AVOID to PASS and back to CENTER.
-- [ ] Test obstacle detection near corridor openings.
+- [ ] Check the Pixy2 firmware and I²C output mode.
+- [ ] Check the signature IDs in the camera configuration.
+- [ ] Check the camera angle and field of view.
+- [ ] Compare the range estimate with several known distances.
+- [ ] Test passing a red pillar on its own.
+- [ ] Test passing a green pillar on its own.
+- [ ] Check the AVOID, PASS, and CENTER state changes.
+- [ ] Check detections near corridor openings.
 - [ ] Record missed detections and false detections.
-
-
