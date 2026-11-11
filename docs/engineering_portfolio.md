@@ -3,8 +3,6 @@
 
 **Repository:** [WSSB2026WRO/Qatar-FE](https://github.com/WSSB2026WRO/Qatar-FE)  
 **Branch:** `main`  
-**Issue:** Engineering portfolio reference issue — 11 November 2026
-
 > **Evidence convention.** This portfolio separates measured observations, calculated values, simulations, configured software parameters, and provisional assumptions. No physical test is claimed unless a dated source log or measurement record exists.
 
 ## 1. Executive overview
