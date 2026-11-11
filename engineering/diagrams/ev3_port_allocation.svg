@@ -23,7 +23,7 @@
 <rect x="65" y="450" width="270" height="60" rx="10" class="device"/><text x="200" y="487" text-anchor="middle" class="label">Gyro — heading</text>
 <rect x="865" y="450" width="270" height="60" rx="10" class="device"/><text x="1000" y="487" text-anchor="middle" class="label">Ultrasonic — left side</text>
 <rect x="65" y="520" width="270" height="60" rx="10" class="device"/><text x="200" y="557" text-anchor="middle" class="label">Ultrasonic — right side</text>
-<rect x="865" y="520" width="270" height="60" rx="10" class="device"/><text x="1000" y="557" text-anchor="middle" class="label">Pixy2 — I²C camera + integrated light</text>
+<rect x="865" y="520" width="270" height="60" rx="10" class="device"/><text x="1000" y="557" text-anchor="middle" class="label">Pixy2 camera + light</text>
 <path d="M335 295 H405 L475 294 M725 294 H795 L865 295 M335 365 H405 L475 364 M725 364 H795 L865 365 M335 480 H405 L475 479 M725 479 H795 L865 480 M335 550 H405 L475 549 M725 549 H865" class="line"/>
 <text x="600" y="690" text-anchor="middle" class="small">A/B: drive motors • C: steering • D: unused</text>
 <text x="600" y="718" text-anchor="middle" class="small">S1: gyro • S2: left ultrasonic • S3: right ultrasonic • S4: Pixy2 I²C + integrated illumination</text>
