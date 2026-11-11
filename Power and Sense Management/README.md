@@ -40,16 +40,9 @@ The Obstacle Challenge program communicates with Pixy2 over I²C at configured a
 
 The Pixy2 camera and its illumination are one camera assembly connected through sensor port S4. The illumination is integrated with the Pixy2 and is not a separate device on EV3 motor port D. Port D is unused by both challenge programs. Component-specific electrical ratings are governed by the manufacturer's datasheets; the EV3 program sources do not encode battery chemistry, current limits, or fuse ratings.
 
-## Commissioning procedure
+## Commissioning and fault context
 
-1. Inspect battery contacts, cables, and connectors.
-2. Confirm motor and sensor ports against the device map.
-3. Verify drive motor polarity with the wheels safely raised.
-4. Confirm steering zero with the road wheels straight.
-5. Run stationary gyro calibration.
-6. Compare ultrasonic readings against known reference distances.
-7. Confirm Pixy2 communication and signature mapping before obstacle operation.
-8. Record abnormal readings, resets, or communication errors in the test log.
+The commissioning architecture covers battery and connector condition, motor polarity, steering reference, stationary gyro calibration, ultrasonic ranging, Pixy2 I²C communication, and signature mapping. The documented fault response terminates autonomous operation when sensor data become invalid, camera communication repeatedly fails, or the controller resets.
 
 ## Fault response
 
