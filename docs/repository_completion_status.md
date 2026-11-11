@@ -33,10 +33,11 @@ These checks establish source syntax validity and repeatability of the repositor
 | CAL-01 | Calibrate the Pixy2 range model in its final mount | Raw image coordinates at independently measured target distances, fitted constants, residuals, and dated test record |
 | CAL-02 | Calibrate gyro, ultrasonic sensors, drive distance scale, and steering mapping | Raw observations, instrument details, repeatability results, and accepted tolerances |
 | VAL-01–10 | Execute the subsystem and mission validation matrix | Completed test reports and original logs for each executed test |
-| CAD-01 | Confirm STL unit convention and original CAD geometry | Native CAD source, unit declaration, dimensions, and mating-interface review |
+| CAD-01 | Add the three referenced STL files and confirm their unit convention and original CAD geometry | Original mesh files, native CAD source, unit declaration, dimensions, and mating-interface review |
 | CAD-02 | Resolve the four-component topology of C3DP-02 | CAD inspection and a manufacturing-intent revision if the design requires a single solid |
 | CAD-03 | Release fabrication drawings | Controlled CAD-derived drawings with datums, dimensions, tolerances, material, revision, and approval |
 | SYS-01 | Complete full-vehicle regression on the competition hardware | Repeated mission logs, obstacle-clearance evidence, corner/lap counts, and parking results |
+| MEDIA-01 | Add demonstration videos if recordings are available | Committed video files with challenge, date, software revision, and context |
 
 ## Evidence rules
 
@@ -50,4 +51,4 @@ Do not mark an open physical or manufacturing gate as complete using an analytic
 
 ## Release statement
 
-The repository's documentation corrections, analytical unit tests, and automated software checks are complete for the recorded revision. Physical validation, final CAD confirmation, and manufacturing release remain open until the evidence listed above is collected from the actual vehicle and its controlled design files.
+The repository's documentation corrections, analytical unit tests, and automated software checks are complete for the recorded revision. Physical validation, original STL/CAD asset availability, final CAD confirmation, demonstration media, and manufacturing release remain open until the evidence listed above is collected from the actual vehicle and its controlled design files.
