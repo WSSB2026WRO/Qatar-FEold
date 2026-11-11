@@ -31,12 +31,12 @@ Team 6038 developed both versions to compare two programming approaches on the s
 
 ## Comparative performance focus
 
-The comparison covers program preparation/build time, startup latency, control-cycle timing, mission execution time, repeatability, debugging and maintainability. Particular attention is given to sub-second timing: measurements are expressed in milliseconds or with a clearly stated decimal precision.
+The comparison covers program preparation/build time, startup latency, control-cycle timing, mission execution time, repeatability, debugging and maintainability. Particular attention is given to sub-second timing, expressed in milliseconds or at a stated decimal precision.
 
-For technical accuracy, Python source upload or bytecode preparation is distinguished from compilation performed by the EV3 graphical environment. These are compared only when the measured timing boundaries are clearly defined.
+Python source upload or bytecode preparation is a distinct stage from compilation performed by the EV3 graphical environment. The timing comparison treats these stages according to their actual software workflows.
 
 No paired timing results are included in this folder. The presence of both projects establishes the dual-implementation approach; it does not by itself establish that one implementation is faster.
 
-## Opening the project
+## Project format
 
-Open `OpenChallenge.ev3` with compatible LEGO MINDSTORMS EV3 software. The file is retained in its native project format so the graphical program and associated assets remain available for inspection.
+`OpenChallenge.ev3` is retained in its native LEGO MINDSTORMS EV3 project format. The archive preserves the graphical program and associated project assets for inspection in compatible EV3 software.
