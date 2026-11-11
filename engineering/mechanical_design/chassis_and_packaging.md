@@ -1,5 +1,10 @@
 # Chassis Architecture and Packaging Study
 
+![MEC-001 — Chassis and component layout](../../docs/drawings/MEC-001_chassis_layout.svg)
+
+![MEC-002 — Steering linkage](../../docs/drawings/MEC-002_steering_linkage.svg)
+
+
 ## 1. Design objectives
 
 The chassis must provide a stiff reference structure for the drive train, steering mechanism, sensors, and controller while maintaining a compact envelope and practical service access.
