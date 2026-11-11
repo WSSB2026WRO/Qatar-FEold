@@ -1,160 +1,160 @@
-# Obstacle Challenge — Visual Perception and Autonomous Navigation
+# Obstacle Challenge — Camera Detection and Autonomous Navigation
 
-## Engineering drawings
+## Drawings
 
 ![OBS-001 — Obstacle Challenge state machine](../../docs/drawings/OBS-001_obstacle_state_machine.svg)
 
-Camera geometry and the electrical interface are documented in [CAM-001](../../docs/drawings/CAM-001_pixy2_camera_geometry.svg) and [ELE-001](../../docs/drawings/ELE-001_ev3_wiring.svg).
+The camera view and electrical connection are also shown in [CAM-001](../../docs/drawings/CAM-001_pixy2_camera_geometry.svg) and [ELE-001](../../docs/drawings/ELE-001_ev3_wiring.svg).
 
-## Program identity
+## Program information
 
-| Field | Source value |
+| Item | Value in the source |
 |---|---|
 | Program file | `obstacle_challenge.py` |
 | Version constant | `OBST-1` |
-| Runtime target | Pybricks MicroPython |
+| Runtime | Pybricks MicroPython |
 | Controller | LEGO EV3 |
-| Vision sensor | Pixy2 camera |
+| Camera | Pixy2 |
 | Camera library | `pixycamev3` |
-| Camera interface | I²C, address `0x54` |
+| Camera connection | I²C, address `0x54` |
 | Route target | 3 laps / 12 corners |
 | Main log | `log_obstacle.csv` |
-| Nominal loop period | 20 ms; 10 ms during maneuvers |
+| Configured loop period | 20 ms; 10 ms during manoeuvres |
 
-Here we explain how the current program is set up and how it handles the mission. Values are configured software parameters and must not be interpreted as independently measured performance.
+This page explains the settings and logic in the current source file. The values are program settings, not measurements of the robot's performance.
 
-## Mission and state sequence
+## How the mission is organized
 
-We organized the autonomous mission into the following stages:
+The program is arranged into these stages:
 
-1. Initialize EV3 motors and sensors and establish encoder zero references.
-2. Display READY and wait for the CENTER button.
-3. Calibrate gyro drift while stationary.
-4. Determine the inner and outer wall from the parking position.
-5. Execute a multi-step unparking manoeuvre.
-6. Follow the corridor while estimating lateral position and heading.
-7. Detect, classify, track, and pass pillars.
-8. Detect corridor openings and execute twelve gyro-controlled corners.
-9. Estimate the parking-lot location from track position and boundary-wall observations.
-10. Approach the lot, align, replay the recorded unparking manoeuvre in reverse, and finish parallel inside the lot.
-11. Write the measurement and event log.
+1. Start the EV3 motors and sensors and set the encoder reference positions.
+2. Show READY and wait for the CENTER button.
+3. Calibrate gyro drift while the robot is still.
+4. Work out which wall is on the inside and which is on the outside from the parking position.
+5. Move out of the parking area using a sequence of manoeuvres.
+6. Follow the corridor and estimate the robot's sideways position and heading.
+7. Detect the pillars, identify their colours, track them, and pass on the required side.
+8. Detect corridor openings and carry out twelve gyro-controlled corners.
+9. Estimate the parking area using track position and wall readings.
+10. Approach and align with the parking area, reverse the recorded unparking sequence, and finish parallel inside the area.
+11. Save the measurement and event log.
 
-## Hardware interface
+## Hardware connections
 
-| Port | Device | Role |
+| Port | Device | Use |
 |---|---|---|
 | A | Medium motor | Drive motor A |
 | B | Medium motor | Drive motor B |
-| C | Medium motor | Steering actuator |
-| S1 | Gyro sensor | Heading and drift compensation |
+| C | Medium motor | Steering |
+| S1 | Gyro sensor | Heading and drift correction |
 | S2 | Ultrasonic sensor | Left wall distance |
 | S3 | Ultrasonic sensor | Right wall distance |
-| S4 | Pixy2 camera with integrated illumination | I²C red/green pillar detection and camera illumination |
+| S4 | Pixy2 camera with integrated illumination | Red and green pillar detection over I²C |
 
-The Pixy2 camera, including its integrated illumination, is connected through sensor port S4 using I²C address `0x54`. The illumination is part of the camera assembly and is not a separate device on EV3 motor port D. The program maps Pixy2 signature 1 to red and signature 2 to green.
+The Pixy2 and its illumination are one assembly on sensor port S4, using I²C address `0x54`. The illumination is not a separate device on motor port D. The program uses signature 1 for red and signature 2 for green.
 
-## Perception pipeline
+## How we detect a pillar
 
-### Block acquisition
+### Reading camera blocks
 
-We request blocks matching the red and green signatures from the Pixy2. Consecutive I²C errors are counted. Isolated read errors are treated as a missing frame; after `PIXY_MAX_ERRORS` consecutive errors, the exception is allowed to terminate the normal run path.
+The program asks the Pixy2 for blocks matching the red and green signatures. It counts consecutive I²C errors. A single read error is treated as a missing frame. If the number of consecutive errors reaches `PIXY_MAX_ERRORS`, the normal run path is interrupted by the exception.
 
-### Pillar filtering
+### Filtering possible pillars
 
-A candidate block is retained only when:
-- its signature is one of the configured pillar signatures;
-- its height is at least `MIN_HEIGHT`;
-- its height-to-width ratio is at least `MIN_RATIO`.
+A block is kept as a candidate only if:
+- Its signature is one of the configured pillar signatures.
+- Its height is at least `MIN_HEIGHT`.
+- Its height-to-width ratio is at least `MIN_RATIO`.
 
-The nearest candidate is selected by its vertical image position. The candidate must be confirmed over `CONFIRM_FRAMES` observations before it can trigger avoidance.
+The program chooses the nearest candidate using its vertical image position. The candidate must remain detected for `CONFIRM_FRAMES` observations before it can start an avoidance action.
 
-### Image-to-ground geometry
+### Estimating position from the image
 
-In the program, we estimate the camera-to-pillar distance with this configured model:
+The program estimates camera-to-pillar distance using:
 
 `distance_mm = Y_K / (Y - Y_0)`
 
-The horizontal image coordinate is converted to a bearing using the configured horizontal field of view. The calculation also accounts for the camera's forward offset and the vehicle's heading relative to the corridor.
+It also uses the horizontal image coordinate and configured horizontal field of view to estimate the bearing. The calculation accounts for the camera's forward offset and the robot's heading relative to the corridor.
 
-We use these equations as estimation models in the program. Their accuracy depends on the camera mounting, image geometry, field-of-view calibration, and the values of `Y_0` and `Y_K`. We have not included physical camera-calibration measurements in this repository.
+These are estimation equations. Their accuracy depends on camera mounting, image geometry, field-of-view calibration, and the values of `Y_0` and `Y_K`. This repository does not contain physical camera-calibration measurements.
 
-## Colour-dependent passing policy
+## Passing the pillars
 
-| Detected signature | Configured meaning | Passing side |
+| Camera signature | Colour in our setup | Side to pass |
 |---|---|---|
 | 1 | Red | Right |
 | 2 | Green | Left |
 
-The lane target is calculated to maintain `PILLAR_CLEARANCE` while respecting `WALL_MIN`. The target is not simply a fixed left or right lane: it is calculated from the estimated pillar lateral position and clamped to the available corridor space.
+The program calculates a lane target that should keep the configured `PILLAR_CLEARANCE` while respecting `WALL_MIN`. It uses the estimated pillar position and available corridor space rather than always choosing one fixed lane position.
 
-When a pillar leaves the camera view, we keep its last estimated track position. It returns to the center state only after the vehicle has travelled beyond the stored pillar position by `PASS_MARGIN`.
+If the pillar disappears from the camera view, the program keeps its last estimated position. It returns to the centre state only after the robot has travelled beyond that position by the configured `PASS_MARGIN`.
 
-## Lateral localization and wall handling
+## Estimating position between the walls
 
-The left and right ultrasonic readings are projected perpendicular to the corridor using the relative heading. The expected sum of the readings is based on the configured corridor width and sensor span.
+The program uses the two ultrasonic readings and the robot's heading to estimate the distances perpendicular to the corridor. It checks whether their sum is close to the configured corridor width and sensor spacing.
 
-When both readings are plausible, the program estimates lateral position from both walls. When the sum is inconsistent, it rejects the likely corrupted side and uses the other wall. If the vehicle heading is outside `WALL_ANGLE_MAX`, or the inferred position is outside the corridor, the lateral estimate is discarded.
+If both readings look reasonable, the program uses both to estimate the robot's lateral position. If the sum does not make sense, it rejects the reading that is more likely to be wrong and uses the other wall. If the heading is outside `WALL_ANGLE_MAX`, or the estimated position is outside the corridor, it discards the lateral estimate.
 
-This rejection logic is important near wall ends, pillars, and corners, where a wide ultrasonic beam may return a misleading echo.
+This matters near wall ends, pillars, and corners because the wide ultrasonic beam can return an echo from an unexpected surface.
 
-## Control architecture
+## Steering states
 
-The lateral target is selected from three operating states:
+The lane target is selected from three states:
 
-- **CENTER** — target the corridor center.
-- **AVOID** — shift laterally to pass the currently tracked pillar.
-- **PASS** — the pillar is temporarily out of view; retain the last estimated position until the rear-clearance condition is met.
+- **CENTER** — aim for the middle of the corridor.
+- **AVOID** — move sideways to pass the pillar being tracked.
+- **PASS** — the pillar is temporarily out of view, so keep its last estimated position until the rear-clearance condition is reached.
 
-The position error is converted into a desired heading:
+The position error is converted into a heading target:
 
 `head_goal = clamp(K_LANE × position_error, ±LANE_ANGLE_MAX)`
 
-The steering command then corrects the difference between measured heading and desired heading:
+The steering command then corrects the difference between the measured heading and the target:
 
 `steer = clamp(KG × (heading - head_goal), ±MAX_STEERING)`
 
-A close-wall override takes priority over the normal command.
+A close-wall override has priority over the normal steering command.
 
-## Corner detection and corner execution
+## Finding and turning at corners
 
-The program requires the inner wall to have been seen repeatedly while the vehicle is approximately aligned with the corridor. It then detects a sustained opening after a lockout distance. This reduces false corner detections caused by looking diagonally into the previous corridor immediately after a turn.
+The program first needs to see the inner wall repeatedly while the robot is approximately aligned with the corridor. It then looks for a sustained opening after a lockout distance. This helps prevent the previous corridor opening from being detected again just after a turn.
 
-If an opening is confirmed while the vehicle is still angled, the program first straightens the vehicle, subject to the configured alignment distance. It then updates the absolute heading target and executes the corner.
+If the opening is confirmed while the robot is still angled, the program first tries to straighten it, within the configured alignment distance. It then updates the absolute heading target and carries out the corner.
 
-During the final part of a turn, the camera may see the first pillar in the next corridor. The program adjusts the steering command according to whether the next pillar should be passed on the inner or outer side.
+Near the end of a turn, the camera may already see the first pillar in the next corridor. The program adjusts the steering command depending on whether that pillar should be passed on the inside or outside.
 
-## Unparking and parking
+## Leaving and returning to the parking area
 
-The unparking manoeuvre is a sequence of recorded distance moves and gyro-referenced turns. The parking routine replays those moves in reverse order and opposite travel direction. The final parking approach uses the outer-wall distance and detects boundary-wall transitions to refine the estimated lot position.
+The unparking manoeuvre is made from recorded distance moves and gyro-referenced turns. For parking, the program replays these moves in reverse order and in the opposite travel direction. It also uses the outer-wall distance and changes in the boundary-wall readings to improve its estimate of the parking position.
 
-This is a trajectory-reversal strategy. Its repeatability depends on steering response, wheel traction, encoder distance, and gyro heading. No repeated physical parking-trial dataset is included in this repository.
+This method depends on the robot following a similar path in both directions. Steering, wheel grip, encoder distance, and gyro heading can all affect the result. This repository does not include repeated physical parking-test logs.
 
-## Key configured parameters
+## Main configured values
 
 | Parameter | Value | Unit | Purpose |
 |---|---:|---|---|
-| `DRIVE_SPEED` | 250 | deg/s | Nominal drive speed |
-| `WHEEL_DIAMETER` | 56 | mm | Encoder distance conversion |
-| `DIST_SCALE` | 1.0 | ratio | Distance correction factor |
+| `DRIVE_SPEED` | 250 | deg/s | Normal drive speed |
+| `WHEEL_DIAMETER` | 56 | mm | Encoder distance calculation |
+| `DIST_SCALE` | 1.0 | ratio | Distance correction |
 | `MAX_STEERING` | 30 | deg | Driving steering limit |
 | `K_LANE` | 0.30 | deg/mm | Lateral-to-heading gain |
-| `LANE_ANGLE_MAX` | 45 | deg | Desired heading limit |
+| `LANE_ANGLE_MAX` | 45 | deg | Heading target limit |
 | `KG` | 0.8 | deg/deg | Heading correction gain |
 | `CORRIDOR_WIDTH` | 1000 | mm | Configured corridor width |
-| `SENSOR_SPAN` | 160 | mm | Separation of sonar faces |
+| `SENSOR_SPAN` | 160 | mm | Distance between sonar faces |
 | `OPEN_DISTANCE` | 1200 | mm | Inner-wall opening threshold |
-| `TOTAL_CORNERS` | 12 | corners | Three-lap route count |
+| `TOTAL_CORNERS` | 12 | corners | Three-lap route |
 | `SIG_RED` / `SIG_GREEN` | 1 / 2 | signature | Pixy2 colour mapping |
 | `CONFIRM_FRAMES` | 3 | frames | Pillar confirmation |
-| `Y_0` | 63 | px | Image-distance model offset |
-| `Y_K` | 20100 | px·mm | Image-distance model scale |
+| `Y_0` | 63 | px | Image-distance offset |
+| `Y_K` | 20100 | px·mm | Image-distance scale |
 | `CAM_FOV` | 60 | deg | Horizontal camera field of view |
 | `CAM_OFFSET` | 100 | mm | Camera forward offset |
 | `PILLAR_CLEARANCE` | 150 | mm | Minimum centre-to-pillar target |
-| `PASS_MARGIN` | 200 | mm | Rear-clearance travel margin |
-| `MAX_RUN_TIME` | 180000 | ms | Global time limit |
+| `PASS_MARGIN` | 200 | mm | Travel after estimated pillar position |
+| `MAX_RUN_TIME` | 180000 | ms | Overall time limit |
 
-## Software flow
+## Program flow
 
 ```mermaid
 flowchart TD
@@ -181,26 +181,28 @@ flowchart TD
     R --> S[Write CSV log]
 ```
 
-## Logging and diagnostics
+## What the program records
 
-The log header includes time, phase, corner count, track position, raw and perpendicular wall readings, estimated vehicle lateral position, target position, pillar position, position error, relative heading, heading goal, steering command, actual steering angle, Pixy2 signature and image coordinates, and pillar state. Event records describe camera errors, pillar acquisition and passing, openings, corners, parking-wall detection, parking, and failures.
+The CSV log includes time, phase, corner count, track position, raw and perpendicular wall readings, estimated lateral position, target position, pillar position, position error, relative heading, heading target, steering command, actual steering angle, Pixy2 signature and image coordinates, and pillar state.
 
-## Calibration and physical-evidence status
+Event records can describe camera errors, pillar detection and passing, corridor openings, corners, parking-wall detection, parking, and failures.
 
-The current source file contains the Pixy2 I²C address, signature mapping, image-distance constants, camera field of view, and camera offset. We have also recorded the ultrasonic geometry and encoder scale parameters. We have not yet added a physical calibration dataset or completed EV3 mission logs to this repository.
+## Calibration and physical evidence
 
-## Review points
+The source file contains the Pixy2 I²C address, signature mapping, image-distance constants, camera field of view, and camera offset. It also contains ultrasonic geometry and encoder scale settings. We have not added a physical calibration dataset or completed EV3 mission logs to this repository.
 
-- Camera range is inferred from image position using the configured empirical model. It is not a direct range measurement, and no physical calibration dataset is included in this repository.
-- A missed or misclassified frame can delay obstacle tracking. Confirmation thresholds reduce, but do not eliminate, this risk.
-- Ultrasonic readings can be distorted by wall ends, oblique incidence, pillars, and nearby boundary structures.
-- Reverse replay assumes that the physical trajectory is sufficiently repeatable in both directions.
-- A timeout or fallback estimate protects program flow but does not prove successful navigation or parking.
+## Points we still need to check
 
-## Source integrity
+- The camera range is estimated from image position. It is not a direct distance reading, and the repository does not include a physical calibration dataset.
+- A missed or incorrectly classified frame can delay obstacle tracking. Confirmation frames help, but cannot remove this risk.
+- Ultrasonic readings can be affected by wall ends, angled surfaces, pillars, and nearby structures.
+- Reversing the unparking sequence assumes the robot can repeat the same path in the opposite direction.
+- A timeout or fallback estimate helps control the program, but does not prove that navigation or parking succeeded.
 
-The supplied source is preserved as `obstacle_challenge.py`. SHA-256:
+## Source file
 
-`8e95b338db948a291cea3b166b8def8d28525c5e5ada0540324d954e4f12e952`
+The supplied program is kept as `obstacle_challenge.py`.
 
-We checked that the Python file parses successfully before uploading it. This check does not confirm that the program runs correctly on the EV3 hardware.
+SHA-256: `8e95b338db948a291cea3b166b8def8d28525c5e5ada0540324d954e4f12e952`
+
+We checked that the Python file parses before uploading it. This syntax check does not confirm that the program runs correctly on the EV3 robot.
