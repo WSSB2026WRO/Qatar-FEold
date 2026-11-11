@@ -1,25 +1,25 @@
 # Hardware Architecture
 
-## System overview
+## Our EV3 setup
 
-The vehicle control platform is based on LEGO EV3 and the device interfaces declared by the two challenge programs.
+Our robot uses a LEGO EV3 controller. This page lists the motors and sensors used by the two challenge programs so the port map can be checked against the wiring and source code.
 
 ## Port allocation
 
-| EV3 port | Device | Function |
+| EV3 port | Device | What it does |
 |---|---|---|
-| A | Medium motor | Propulsion |
-| B | Medium motor | Propulsion |
-| C | Medium motor | Steering |
-| D | No device assigned | Unused by both challenge programs |
-| S1 | Gyro sensor | Heading feedback |
-| S2 | Ultrasonic sensor | Left-side distance |
-| S3 | Ultrasonic sensor | Right-side distance |
-| S4 | Pixy2 camera with integrated illumination | I²C vision and camera illumination in Obstacle Challenge |
+| A | Medium motor | Drives the vehicle |
+| B | Medium motor | Drives the vehicle |
+| C | Medium motor | Steers the vehicle |
+| D | No device assigned | Not used by either challenge program |
+| S1 | Gyro sensor | Gives heading feedback |
+| S2 | Ultrasonic sensor | Measures the left-side distance |
+| S3 | Ultrasonic sensor | Measures the right-side distance |
+| S4 | Pixy2 camera with integrated illumination | Camera and illumination over I²C in the Obstacle Challenge |
 
-**Camera illumination:** the illumination belongs to the Pixy2 camera assembly connected to S4. It is not a separate EV3 motor-port device. Port D is unused by both challenge programs.
+**Camera illumination:** The light is part of the Pixy2 assembly connected to S4. It is not a separate device on an EV3 motor port. Port D is unused by both challenge programs.
 
-## Functional architecture
+## How the parts work together
 
 ```mermaid
 flowchart LR
@@ -32,27 +32,27 @@ flowchart LR
   C --> S[Steering Motor C]
 ```
 
-## Actuation
+## Motors
 
-- Drive motors A and B provide propulsion through encoder-controlled movement.
-- Steering motor C positions the steering mechanism using target-angle commands.
-- The software applies bounded drive and steering commands and uses encoder feedback for distance estimation.
+- Motors A and B move the robot. The programs use encoder-controlled movement.
+- Motor C moves the steering mechanism using target-angle commands.
+- The software limits the drive and steering commands and uses encoder feedback to estimate distance.
 
-## Sensor integration
+## Sensors
 
-### Gyroscope
-The gyro provides heading feedback. Both programs perform a stationary drift check and calibration before autonomous movement.
+### Gyro
+The gyro gives us heading information. Both programs check drift and calibrate the sensor while the robot is stationary before autonomous movement.
 
 ### Ultrasonic sensors
-The left and right ultrasonic sensors provide wall-distance observations used for corridor centering, wall-opening detection, and obstacle manoeuvre positioning.
+The left and right ultrasonic sensors measure the corridor walls. The programs use these readings for centering, detecting wall openings, and positioning during obstacle manoeuvres.
 
-### Pixy2 camera
-The Obstacle Challenge program uses Pixy2 over I²C at configured address 0x54. Signature 1 is assigned to red and signature 2 to green.
+### Pixy2
+The Obstacle Challenge program uses the Pixy2 over I²C at address 0x54. In our documented setup, signature 1 is red and signature 2 is green.
 
-## Electrical integration principles
+## Wiring points
 
-Maintain secure connectors, strain relief, and separation between wiring and moving steering components. Battery, motor, and auxiliary-load ratings are governed by the relevant component specifications and the EV3 operating limits.
+We should keep connectors secure, add strain relief, and route cables away from the steering parts. Battery, motor, and other electrical ratings must be checked against the component specifications and EV3 operating limits.
 
-## Commissioning
+## Before running
 
-The documented interface map assigns propulsion to A/B, steering to C, no device to D, gyro feedback to S1, ultrasonic ranging to S2/S3, and the Pixy2 camera with integrated illumination to S4.
+Our port map assigns drive to A and B, steering to C, no device to D, the gyro to S1, the two ultrasonic sensors to S2 and S3, and the Pixy2 camera with its integrated illumination to S4.
