@@ -5,7 +5,7 @@
 
 ## 1. Design objective
 
-Steering geometry determines the relationship between actuator rotation and road-wheel angle. It influences turning radius, tire scrub, corner tracking, actuator load, and repeatability.
+We use steering geometry to relate the steering motor's rotation to the angle of the wheels. This affects the turning radius, tyre scrub, cornering path, motor load, and how consistently the robot turns.
 
 ## 2. Ideal low-speed geometry
 
@@ -37,9 +37,9 @@ Equivalent Ackermann relation:
 
 ## 4. Actuator-to-wheel mapping
 
-A control system should map steering motor encoder angle \(\theta_m\) to road-wheel angle \(\delta_w\). For a nonlinear linkage, a lookup table or fitted polynomial can represent the actuator relationship more accurately than a constant ratio.
+Our control program needs to map the steering motor encoder angle \(\theta_m\) to road-wheel angle \(\delta_w\). For a nonlinear linkage, a lookup table or fitted polynomial can represent the actuator relationship more accurately than a constant ratio.
 
-Calibration procedure:
+We can check this mapping as follows:
 1. Place the vehicle on a level surface.
 2. Measure road-wheel angle at multiple encoder positions on both sides.
 3. Repeat while approaching each point from both directions to estimate backlash.
@@ -58,4 +58,4 @@ Calibration procedure:
 
 ## 6. Drawing definition
 
-A steering assembly drawing should show the top-view geometry, pivot coordinates, tie-rod length, steering arm dimensions, actuator travel, left/right road-wheel angle relationship, and mechanical stop positions.
+For our steering assembly drawing, we should show the top view, pivot positions, tie-rod length, steering-arm dimensions, actuator travel, left/right wheel angles, and mechanical stops.
