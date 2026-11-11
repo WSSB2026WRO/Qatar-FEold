@@ -12,8 +12,8 @@ The repository's block-program archive is organized by challenge:
 
 | Challenge | LEGO EV3 block project | Python implementation |
 |---|---|---|
-| Obstacle Challenge | [ObstacleChallenge.ev3](../ev3_blocks/ObstacleChallenge.ev3) | [obstacle_challenge.py](obstacle_challenge/obstacle_challenge.py) |
-| Open Challenge | [OpenChallenge.ev3](../ev3_blocks/OpenChallenge.ev3) | [open_challenge.py](open_challenge/open_challenge.py) |
+| Obstacle Challenge | `ObstacleChallenge.ev3` (native project file supplied with this delivery) | [obstacle_challenge.py](obstacle_challenge/obstacle_challenge.py) |
+| Open Challenge | `OpenChallenge.ev3` (native project file supplied with this delivery) | [open_challenge.py](open_challenge/open_challenge.py) |
 
 The EV3 files are native LEGO MINDSTORMS project containers. They preserve the graphical program and its project assets; they are not screenshots or a textual reconstruction of the blocks.
 
