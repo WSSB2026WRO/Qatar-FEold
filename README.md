@@ -54,9 +54,9 @@ Both implementations target the LEGO EV3 platform. The Python Obstacle Challenge
 - [Reference vehicle design case](engineering/design_basis/reference_vehicle_design_case.md)
 - [Analytical simulation](engineering/simulation/README.md)
 
-## Professional engineering drawing set
+## Engineering drawings
 
-We have prepared an eight-sheet technical drawing set covering the complete EV3 vehicle: system architecture, vehicle dynamics, Ackermann steering, obstacle state machine, chassis layout, steering linkage, EV3 wiring and Pixy2 camera geometry.
+We prepared eight SVG drawings to explain the EV3 system, vehicle dynamics, Ackermann steering, obstacle state machine, chassis layout, steering linkage, wiring, and Pixy2 camera geometry. They are reference diagrams, not manufacturing drawings.
 
 - [Open the engineering drawing register and gallery](docs/drawings/README.md)
 - [Download / view SYS-001 — system architecture](docs/drawings/SYS-001_autonomous_vehicle_architecture.svg)
@@ -100,4 +100,4 @@ We have prepared an eight-sheet technical drawing set covering the complete EV3 
 
 Software settings, theoretical design inputs, calculated outputs, simulations, and physical observations are treated as separate engineering data classes. Numerical examples are accompanied by their governing assumptions and equations. Physical performance claims are based on recorded test evidence.
 
-One part of our work is comparing the Python and EV3 block versions on the same robot. We measure preparation time, startup delay, and control-cycle duration, including timings below one second. We only draw numerical conclusions when we have measurements from comparable tests.
+We also want to compare the Python and EV3 block versions on the same robot. We plan to record preparation time, startup delay, and control-cycle duration, including timings below one second. We will only draw numerical conclusions after collecting measurements under comparable test conditions.
