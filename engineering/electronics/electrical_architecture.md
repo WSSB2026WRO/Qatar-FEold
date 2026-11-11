@@ -5,7 +5,7 @@
 
 ## 1. Scope
 
-This specification documents the functional electrical architecture implied by the software device map and defines a professional integration framework. It does not assign unverified voltage, current, or connector ratings to individual components.
+We use this document to describe the electrical connections shown in the software device map and to set out how we check the hardware integration. It does not assign unverified voltage, current, or connector ratings to individual components.
 
 ## 2. Functional blocks
 
