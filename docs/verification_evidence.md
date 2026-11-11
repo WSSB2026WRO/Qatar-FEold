@@ -7,7 +7,7 @@ This page records checks that can be reproduced from the repository. It separate
 The repository's GitHub Actions workflow, **Python Validation**, completed successfully on 11 November 2026.
 
 - Recorded full verification: [Run #165 — successful](https://github.com/WSSB2026WRO/Qatar-FE/actions/runs/43076407683)
-- Commit checked: `e8df0173e62e590f069ea6b69e32df2440a67bd40`
+- Commit checked: `e8df0173e62e590f069ea6b69e32df2440a67bd4`
 - Result: **success**
 - Checks executed by the workflow:
   1. Compile `software/open_challenge/open_challenge.py`.
@@ -40,18 +40,9 @@ The following values are calculated by the reference-design model in `engineerin
 
 These are analytical estimates, not measurements. They depend on the stated reference inputs and simplifying assumptions. In particular, the friction estimate does not model motor torque, tyre behaviour, floor condition, or wheel slip.
 
-## 3. Evidence still required from the physical vehicle
+## 3. Physical evidence scope
 
-The repository does not treat software compilation or analytical calculations as proof of physical performance. The following evidence must come from actual vehicle sessions before any physical-test claim is made:
-
-- Original EV3 logs from Open Challenge and Obstacle Challenge runs.
-- Sensor calibration records, including gyro drift and ultrasonic checks.
-- Measured distance against a known reference distance for drive-scale calibration.
-- Steering and cornering observations, including any wall contact or recovery.
-- Pixy2 detection records for red and green pillars, with pass-side observations.
-- Parking position measurements and repeatability across runs.
-
-For each physical run, retain the unedited source log and record the date, robot configuration, software version, test conditions, measurement method, and outcome. Keep processed plots and calculations as separate files linked to that source log.
+The repository snapshot contains no completed physical test reports or raw EV3 mission logs. Physical sensor accuracy, steering repeatability, obstacle clearance, corner execution, lap completion, and parking accuracy are therefore not reported as measured outcomes. The software validation and analytical results in this document remain separate evidence categories.
 
 ## 4. Reproduction
 
