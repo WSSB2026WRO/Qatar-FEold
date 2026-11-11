@@ -1,5 +1,9 @@
 # Team 6038 — Dual EV3 Software Implementations
 
+## Engineering drawing references
+
+The implementation comparison is supported by the [system architecture](../docs/drawings/SYS-001_autonomous_vehicle_architecture.svg), [Obstacle Challenge state machine](../docs/drawings/OBS-001_obstacle_state_machine.svg), [EV3 wiring](../docs/drawings/ELE-001_ev3_wiring.svg) and the [complete drawing register](../docs/drawings/README.md).
+
 ## Team identity
 
 **WRO Future Engineers team number: 6038**
