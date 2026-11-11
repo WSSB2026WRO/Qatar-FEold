@@ -39,6 +39,7 @@ where `Y` is the selected vertical image feature in pixels and `d` is estimated 
 | A | Medium motor | Drive motor A |
 | B | Medium motor | Drive motor B |
 | C | Medium motor | Steering actuator |
+| D | Front LED lamp (drawing-register item) | Not configured in current source; physical installation and wiring require confirmation |
 | D | Front LED lamp | Camera illumination |
 | S1 | Gyro sensor | Heading measurement |
 | S2 | Ultrasonic sensor | Left-side distance |
