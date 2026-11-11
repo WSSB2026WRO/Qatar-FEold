@@ -1,6 +1,6 @@
-# Qatar FE — Team
+# Qatar FE — Our Team
 
-The Qatar FE team brings together programming, mechanical design, and project leadership for the WRO Future Engineers challenge.
+We are Team 6038, working together on programming, mechanical design, and project coordination for the WRO Future Engineers challenge.
 
 | Team member | Role |
 |---|---|
@@ -8,4 +8,4 @@ The Qatar FE team brings together programming, mechanical design, and project le
 | Eissa | Team Leader / Chief of Team |
 | Mohammed | Lead Designer |
 
-The team develops autonomous navigation software, vehicle mechanisms, sensor integration, and engineering documentation as a coordinated project.
+We work together on autonomous navigation, the vehicle mechanisms, sensor integration, and the engineering notes in this repository.
