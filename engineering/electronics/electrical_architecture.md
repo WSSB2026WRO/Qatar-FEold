@@ -1,5 +1,8 @@
 # Electrical Architecture and Integration Specification
 
+![ELE-001 — EV3 wiring and port allocation](../../docs/drawings/ELE-001_ev3_wiring.svg)
+
+
 ## 1. Scope
 
 This specification documents the functional electrical architecture implied by the software device map and defines a professional integration framework. It does not assign unverified voltage, current, or connector ratings to individual components.
