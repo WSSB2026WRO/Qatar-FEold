@@ -11,6 +11,7 @@ This section defines the EV3 power, actuator, sensor, and communication architec
 | A | Medium motor | Drive | Drive |
 | B | Medium motor | Drive | Drive |
 | C | Medium motor | Steering | Steering |
+| D | Front LED lamp (drawing-register item) | Not configured in current source | Not configured in current source |
 | S1 | Gyro sensor | Heading | Heading |
 | S2 | Ultrasonic sensor | Left range | Left range |
 | S3 | Ultrasonic sensor | Right range | Right range |
@@ -37,7 +38,7 @@ The Obstacle Challenge program communicates with Pixy2 over I²C at configured a
 
 ## Electrical integration record
 
-The software interface allocation is defined above. Component-specific electrical ratings are governed by the manufacturer's datasheets. The EV3 program sources do not encode battery chemistry, current limits, fuse ratings, or external lamp specifications; these must not be inferred from software port assignments.
+Port D is listed as a front LED lamp in the drawing register, but neither current challenge program configures it. Confirm the physical device and wiring before treating it as an active interface. The software interface allocation is defined above. Component-specific electrical ratings are governed by the manufacturer's datasheets. The EV3 program sources do not encode battery chemistry, current limits, fuse ratings, or external lamp specifications; these must not be inferred from software port assignments.
 
 ## Commissioning procedure
 
