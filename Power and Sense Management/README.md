@@ -1,10 +1,10 @@
 # Power and Sense Management
 
-## System overview
+## How we connected the EV3 system
 
-This section defines the EV3 power, actuator, sensor, and communication architecture used by the two challenge programs.
+This page describes the power, motors, sensors, and communication used by our two challenge programs. We have listed the port assignments so it is easier to check the wiring against the code.
 
-## Device and port allocation
+## EV3 port allocation
 
 | EV3 port | Device | Open Challenge | Obstacle Challenge |
 |---|---|---|---|
@@ -13,37 +13,38 @@ This section defines the EV3 power, actuator, sensor, and communication architec
 | C | Medium motor | Steering | Steering |
 | D | No device assigned | Unused | Unused |
 | S1 | Gyro sensor | Heading | Heading |
-| S2 | Ultrasonic sensor | Left range | Left range |
-| S3 | Ultrasonic sensor | Right range | Right range |
-| S4 | Pixy2 camera with integrated illumination | Not used | I²C vision and camera illumination |
+| S2 | Ultrasonic sensor | Left distance | Left distance |
+| S3 | Ultrasonic sensor | Right distance | Right distance |
+| S4 | Pixy2 camera with integrated illumination | Not used | Camera and illumination over I²C |
 
-## Power management
+## Power checks
 
-- Use the EV3-approved battery system and inspect contacts before operation.
-- Keep motor and sensor wiring secured and clear of moving linkages.
-- Check battery condition when comparing runs.
-- Do not connect an external load to an EV3 motor output without verifying electrical compatibility.
-- Stop operation if the controller resets or sensor communication becomes unstable.
+Before a run, we should:
+- Use the EV3-approved battery system and check that the contacts are clean and secure.
+- Keep motor and sensor cables away from moving parts.
+- Check the battery condition when comparing runs.
+- Check electrical compatibility before connecting anything to an EV3 motor output.
+- Stop the run if the EV3 resets or sensor communication becomes unstable.
 
-## Sensor management
+## Sensors
 
 ### Gyro
-Both programs perform stationary drift measurement and calibration. The vehicle must remain motionless during this process.
+Both programs measure stationary drift and calibrate the gyro during startup. The vehicle must not move while this is happening.
 
 ### Ultrasonic sensors
-S2 and S3 provide left and right wall-distance observations. Sensor alignment and mounting geometry affect lateral-position estimates.
+S2 and S3 measure the distances to the left and right walls. Their alignment and mounting position affect the distance readings and the centre estimate.
 
 ### Pixy2
-The Obstacle Challenge program communicates with Pixy2 over I²C at configured address 0x54. Signature 1 is mapped to red and signature 2 to green.
+The Obstacle Challenge program communicates with the Pixy2 over I²C at address 0x54. Signature 1 is used for red and signature 2 for green.
 
-## Electrical integration record
+## Camera and electrical integration
 
-The Pixy2 camera and its illumination are one camera assembly connected through sensor port S4. The illumination is integrated with the Pixy2 and is not a separate device on EV3 motor port D. Port D is unused by both challenge programs. Component-specific electrical ratings are governed by the manufacturer's datasheets; the EV3 program sources do not encode battery chemistry, current limits, or fuse ratings.
+The Pixy2 and its illumination are one camera assembly connected to sensor port S4. The illumination is built into the Pixy2; it is not a separate device connected to motor port D. Port D is not used by either challenge program.
 
-## Commissioning and fault context
+The program files do not contain all electrical ratings for the hardware. For battery chemistry, current limits, and fuse ratings, we need to use the component manufacturer's datasheets rather than guess values.
 
-The commissioning architecture covers battery and connector condition, motor polarity, steering reference, stationary gyro calibration, ultrasonic ranging, Pixy2 I²C communication, and signature mapping. The documented fault response terminates autonomous operation when sensor data become invalid, camera communication repeatedly fails, or the controller resets.
+## Setup and fault checks
 
-## Fault response
+When we prepare the robot, we check the battery and connectors, motor directions, steering reference, gyro calibration, ultrasonic readings, Pixy2 communication, and camera signature mapping.
 
-If sensor data become invalid, camera communication fails repeatedly, or the controller resets, terminate the autonomous run and inspect the power and signal connections before restarting.
+If sensor readings become invalid, camera communication keeps failing, or the controller resets, we should stop the autonomous run. We then inspect the power and signal connections before trying again.
