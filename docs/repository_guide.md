@@ -22,6 +22,19 @@ Qatar-FE/
 └── validation/                    Test plans and evidence requirements
 ```
 
+## Automated checks
+
+Run the repository checks from the root directory:
+
+```bash
+python -m py_compile software/open_challenge/open_challenge.py
+python -m py_compile software/obstacle_challenge/obstacle_challenge.py
+python -m unittest discover -s tests -v
+python engineering/simulation/parameter_sweep.py
+```
+
+The same checks are run by GitHub Actions. They validate source syntax and analytical calculations, not physical robot performance.
+
 ## Evidence classification
 
 Use the following labels consistently:
