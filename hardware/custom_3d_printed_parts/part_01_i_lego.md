@@ -34,6 +34,7 @@ The component is catalogued as a custom I-profile link/adapter for the EV3 mecha
 
 ## File
 
-Original mesh: `I lego.stl`
+Original mesh referenced: `I lego.stl`  
+**Availability:** The STL file is not included in the current repository. This record is not a manufacturing source.
 
 STL coordinates do not carry unit metadata. The bounding-box values are reported in native mesh units; manufacturing dimensions should be taken from the source CAD model.
