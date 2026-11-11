@@ -49,7 +49,7 @@ The supplied program uses an empirical vertical-image model:
 d=\frac{K}{v-v_0}
 \]
 
-with configured constants (K) and (v_0). The model should be fitted from a set of known distances rather than assumed universal.
+with configured constants (K) and (v_0). These constants define the empirical model used by the current program; they are configuration values, not universal camera parameters.
 
 Calibration model context: the empirical constants (K) and (v_0) are configured model parameters. The repository's numerical table is calculated from those constants and rounded image coordinates; it is not a measured camera-calibration dataset.
 
@@ -59,14 +59,7 @@ Signature IDs are camera configuration labels, not universal colour codes. The d
 
 ## 7. Confidence and temporal filtering
 
-A detection should be accepted only when:
-- signature is permitted;
-- block dimensions exceed minimum thresholds;
-- aspect ratio is plausible;
-- block location is within the expected image region;
-- detection persists across a defined number of frames.
-
-A median or trimmed-mean filter can reduce single-frame jitter. Do not average detections across different pillar identities.
+The implemented detection pipeline applies signature filtering, minimum block dimensions, aspect-ratio limits, image-region constraints, and multi-frame temporal confirmation. Median or trimmed-mean filtering is a general method for reducing single-frame jitter; detections from different pillar identities are treated as separate objects.
 
 ## 8. Calibration report
 
@@ -143,4 +136,4 @@ The model is most sensitive when the detected feature is close to the offset coo
 
 The table above is a **calculated reference dataset** generated from the configured model and rounded pixel coordinates. It provides a complete numerical example for checking the equation, error calculation, and reporting format. It is not a record of camera observations.
 
-For a measured calibration release, capture the same pillar feature at each known distance, enter the observed pixel coordinate in the second column, and recalculate the estimated range and error. The model constants should then be fitted to those observations and the statistics recalculated.
+The table is a calculated reference dataset. No physical camera observations or measured calibration release are included in the repository snapshot.
