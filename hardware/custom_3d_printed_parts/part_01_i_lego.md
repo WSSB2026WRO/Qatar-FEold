@@ -24,17 +24,13 @@ The model has a low-profile, elongated geometry with intersecting beam-like feat
 
 The component is catalogued as a custom I-profile link/adapter for the EV3 mechanical assembly. Its function is associated with the team's modified linkage and connection-piece design.
 
-## Engineering considerations
+## Design record
 
-- Check pin and axle interface dimensions in the mating CAD assembly.
-- Verify clearance through the complete steering and drive travel.
-- Inspect the two-shell structure in the slicer before manufacture.
-- Orient the print to support the principal in-plane linkage loads.
-- Inspect layer adhesion and hole geometry after printing.
+The component is catalogued as an I-profile linkage adapter with two closed mesh shells. The recorded bounding box is expressed in native STL units; the source mesh and native CAD model are not present in the current repository snapshot.
 
 ## File
 
 Original mesh referenced: `I lego.stl`  
 **Availability:** The STL file is not included in the current repository. This record is not a manufacturing source.
 
-STL coordinates do not carry unit metadata. The bounding-box values are reported in native mesh units; manufacturing dimensions should be taken from the source CAD model.
+STL coordinates do not carry unit metadata. The bounding-box values are reported in native mesh units; the native-unit extents are the only dimensional values represented in this record.
