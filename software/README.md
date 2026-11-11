@@ -6,8 +6,8 @@ Team **6038** maintains two independent mission programs and two programming imp
 
 | Challenge | Python source | LEGO EV3 block project | Main sensing |
 |---|---|---|---|
-| Open Challenge | [open_challenge.py](open_challenge/open_challenge.py) | [OpenChallenge.ev3](../ev3_blocks/OpenChallenge.ev3) | Gyro and dual ultrasonic |
-| Obstacle Challenge | [obstacle_challenge.py](obstacle_challenge/obstacle_challenge.py) | [ObstacleChallenge.ev3](../ev3_blocks/ObstacleChallenge.ev3) | Gyro, dual ultrasonic, Pixy2 |
+| Open Challenge | [open_challenge.py](open_challenge/open_challenge.py) | `OpenChallenge.ev3` (native LEGO EV3 block project supplied with this delivery) | Gyro and dual ultrasonic |
+| Obstacle Challenge | [obstacle_challenge.py](obstacle_challenge/obstacle_challenge.py) | `ObstacleChallenge.ev3` (native LEGO EV3 block project supplied with this delivery) | Gyro, dual ultrasonic, Pixy2 |
 
 ## Comparative engineering objective
 
