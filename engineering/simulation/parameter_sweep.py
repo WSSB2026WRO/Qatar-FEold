@@ -1,7 +1,8 @@
-"""Reproducible conceptual parameter sweep for the Qatar FE reference design case.
+"""Reproducible analytical parameter sweep for the Qatar FE reference design case.
 
-This script computes analytical estimates only. It does not simulate a physical
-robot, tire dynamics, motor saturation, or competition performance.
+This script computes load-transfer, idealised stability/traction, and theoretical
+wheel-speed estimates only. It does not simulate a physical robot, tire dynamics,
+motor saturation, or competition performance.
 Run with: python parameter_sweep.py
 """
 import csv
