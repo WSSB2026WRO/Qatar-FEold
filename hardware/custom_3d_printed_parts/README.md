@@ -1,32 +1,23 @@
-# Custom 3D-Printed EV3 Components
+# Custom 3D-Printed Components
 
-The project records describe three STL mesh files as modified components for the EV3 mechanical system. **The STL files themselves are not present in the current repository tree.** The catalogue below preserves the available inspection metadata and technical descriptions, but it is not a substitute for the source meshes or native CAD models and cannot be used alone to reproduce or release the parts for manufacture.
+## Component catalogue
 
-## Part catalogue
+The engineering records describe three modified mechanical components associated with the EV3 linkage and connection-piece system.
 
-| Part ID | Source file | Mesh profile | Mesh condition |
+| Component ID | Record | Referenced source mesh | Inspection summary |
 |---|---|---|---|
-| C3DP-01 | `I lego.stl` | I-profile / linkage-like geometry | Two watertight connected shells |
-| C3DP-02 | `4 I modified lego.stl` | Elongated multi-feature geometry | Four connected components; complete mesh is not watertight |
-| C3DP-03 | `1x3 modified.stl` | Narrow 1×3-style connector geometry | One watertight connected component |
+| C3DP-01 | [I-profile link component](part_01_i_lego.md) | `I lego.stl` | 1,518 vertices; 3,064 faces; two watertight shells |
+| C3DP-02 | [Four-I modified component](part_02_four_i_modified.md) | `4 I modified lego.stl` | 1,134 vertices; 2,628 faces; four connected shells; overall mesh not watertight |
+| C3DP-03 | [One-by-three modified component](part_03_one_by_three_modified.md) | `1x3 modified.stl` | 1,504 vertices; 3,024 faces; one watertight shell |
 
-## Technical records
+## Asset inventory
 
-- [Mesh inspection report](mesh_inspection_report.md)
-- [C3DP-01 — I-profile component](part_01_i_lego.md)
-- [C3DP-02 — Four-section modified component](part_02_four_i_modified.md)
-- [C3DP-03 — Modified 1×3 component](part_03_one_by_three_modified.md)
+The three STL filenames are retained as source references in the component records. The original STL files and native CAD models are not included in the current repository snapshot. The mesh measurements are retained inspection records associated with those referenced source files.
 
-## Source asset availability
+## Geometry and units
 
-The referenced filenames are `I lego.stl`, `4 I modified lego.stl`, and `1x3 modified.stl`. None is currently committed in this directory. Add the original files and, preferably, their native CAD sources in a controlled revision before attempting a fresh mesh inspection or manufacturing release.
+STL mesh coordinates do not contain physical unit metadata. The inspection report therefore records bounding-box extents in native mesh units. The available records describe mesh topology and proportions; they do not constitute controlled dimensioned manufacturing drawings.
 
-## Dimensional interpretation
+## Inspection record
 
-STL files do not store unit metadata. The inspected bounding-box proportions are consistent with centimetre-scale source coordinates for LEGO-compatible geometry, but the export unit convention must be confirmed in the originating CAD environment before manufacturing dimensions are released.
-
-## Manufacturing and inspection
-
-Preserve the supplied STL geometry as the source revision. Inspect mesh scale, connected components, normals, wall thickness, pin-hole geometry, and mating fit before printing. Record material, nozzle diameter, layer height, infill, print orientation, and post-processing for each production revision.
-
-The exact installed position and mechanical load path of each component are defined by its mating assembly, not by the STL filename alone.
+See [Mesh Inspection Report](mesh_inspection_report.md) for the retained vertex, face, connected-component, watertightness, and topology results.
