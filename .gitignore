@@ -7,3 +7,6 @@ Thumbs.db
 .vscode/
 .idea/
 .env
+
+# Generated analytical output (recreated by the validation workflow)
+engineering/simulation/reference_design_sweep.csv
