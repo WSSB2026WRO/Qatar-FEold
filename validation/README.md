@@ -1,34 +1,36 @@
-# Verification and Validation Framework
+# Verification and Validation
 
-## Purpose
+## Why we keep these records
 
-This document defines the verification framework associated with the Qatar FE autonomous vehicle and its Open Challenge and Obstacle Challenge programs.
+We use this folder to plan checks for our EV3 robot and its Open Challenge and Obstacle Challenge programs. It helps us decide what to measure and what evidence to save.
 
-## Verification coverage
+## Checks we have planned
 
-| ID | Subsystem | Defined evidence type |
+| ID | Part of the robot | Evidence to collect |
 |---|---|---|
-| V-01 | Drive | Encoder distance compared with measured travel |
-| V-02 | Steering | Commanded wheel angle, observed angle, repeatability and backlash |
-| V-03 | Gyro | Stationary drift and calibration observations |
-| V-04 | Ultrasonic sensors | Readings compared with known target distances |
-| V-05 | Corridor control | Vehicle path relative to the corridor envelope |
-| V-06 | Corner control | Heading response and corner execution |
-| V-07 | Pixy2 | Red/green signature classification and detection records |
-| V-08 | Obstacle avoidance | Passing-side decision and clearance observations |
-| V-09 | Parking | Final vehicle position and orientation |
-| V-10 | Logging | CSV fields and mission event records |
+| V-01 | Drive | Compare encoder distance with measured travel |
+| V-02 | Steering | Commanded and observed wheel angle, repeatability, and backlash |
+| V-03 | Gyro | Stationary drift and calibration readings |
+| V-04 | Ultrasonic sensors | Compare readings with known target distances |
+| V-05 | Corridor control | Compare the robot path with the corridor boundaries |
+| V-06 | Corner control | Record heading response and corner movement |
+| V-07 | Pixy2 | Save red/green signature detections |
+| V-08 | Obstacle avoidance | Record passing-side decisions and clearance |
+| V-09 | Parking | Measure final robot position and direction |
+| V-10 | Logging | Check CSV fields and mission event records |
 
-## Evidence status
+## Evidence currently in the repository
 
-The repository includes the verification framework and the engineering test-record format. No completed physical test reports or raw EV3 mission logs are stored in this repository snapshot. The automated GitHub Actions results and analytical model outputs are recorded separately in [Verification Evidence](../docs/verification_evidence.md).
+We have included the verification plan and a test-record format. The current repository snapshot does not contain completed physical test reports or raw EV3 mission logs.
 
-## Safety context
+The GitHub Actions results and analytical model calculations are recorded separately in [Verification Evidence](../docs/verification_evidence.md).
 
-The validation framework accounts for rotating wheels, steering linkages, moving mechanisms, electrical connections, sensor faults, and abnormal vehicle behaviour. Safety controls are part of the test context and are distinct from performance results.
+## Safety during checks
 
-## Result terminology
+When we test the robot, we need to consider the rotating wheels, steering links, moving parts, electrical connections, sensor faults, and unexpected movement. Safety checks are part of the test setup; they are not performance results.
 
-- **Pass:** the recorded observations satisfy the stated acceptance criteria.
-- **Fail:** one or more acceptance criteria are not satisfied.
-- **Inconclusive:** the recorded conditions or observations do not support a decision.
+## How we label a result
+
+- **Pass:** the recorded observations meet the acceptance criteria written before the test.
+- **Fail:** at least one acceptance criterion is not met.
+- **Inconclusive:** the observations or test conditions are not enough to make a decision.
