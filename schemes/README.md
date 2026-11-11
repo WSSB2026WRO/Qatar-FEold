@@ -104,7 +104,7 @@ The interface map should record the device, EV3 port, signal/interface type, and
 | A | Medium motor | Drive motor A (physical side to be verified) |
 | B | Medium motor | Drive motor B (physical side to be verified) |
 | C | Medium motor | Steering actuator |
-| D | Front LED lamp | Camera illumination |
+| D | Front LED lamp (drawing-register item) | Camera illumination; not configured by current challenge source |
 | S1 | Gyro sensor | Heading measurement |
 | S2 | Ultrasonic sensor | Left-side distance measurement |
 | S3 | Ultrasonic sensor | Right-side distance measurement |
