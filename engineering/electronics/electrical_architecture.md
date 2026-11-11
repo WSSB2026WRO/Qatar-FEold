@@ -12,11 +12,11 @@ This specification documents the functional electrical architecture implied by t
 | Drive actuator A | EV3 motor port A | Propulsion |
 | Drive actuator B | EV3 motor port B | Propulsion |
 | Steering actuator C | EV3 motor port C | Steering |
-| Front LED lamp (drawing-register item) | EV3 port D | Not configured or controlled by the current challenge source files; physical presence and wiring require confirmation |
+| No device assigned | EV3 motor port D | Unused by both challenge programs |
 | Gyro S1 | EV3 sensor port S1 | Heading feedback |
 | Ultrasonic S2 | EV3 sensor port S2 | Left-side ranging |
 | Ultrasonic S3 | EV3 sensor port S3 | Right-side ranging |
-| Pixy2 S4 | I²C on EV3 sensor port S4 | Colour-signature perception in Obstacle Challenge |
+| Pixy2 camera with integrated illumination | I²C on EV3 sensor port S4 | Colour-signature perception and camera illumination in Obstacle Challenge |
 
 ## 3. Power integrity
 
@@ -28,7 +28,7 @@ The controller supply must remain within the manufacturer's operating limits dur
 - controller brownout or reset events;
 - battery temperature after repeated runs.
 
-Do not connect an auxiliary lamp, servo, or external load to an EV3 motor output unless the load's electrical requirements and the port's permitted operating envelope have been verified.
+The Pixy2 illumination is integrated with the camera assembly on S4; it is not a separate auxiliary lamp connected to motor port D.
 
 ## 4. Signal integrity
 
