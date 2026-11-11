@@ -43,6 +43,25 @@ This drawing set presents the robot's system architecture, vehicle dynamics, ste
 ### CAM-001 — Pixy2 camera geometry
 ![CAM-001 Pixy2 camera geometry](CAM-001_pixy2_camera_geometry.svg)
 
+## Revision control
+
+Every significant change to a drawing or its associated engineering definition should include:
+
+- purpose of the change;
+- affected subsystem;
+- source version;
+- parameter changes;
+- test evidence;
+- rollback path.
+
+Record the revision in the drawing title block and update the drawing register. Where a change affects physical dimensions, wiring, sensor placement, calibration or software interfaces, identify the affected drawing IDs and supporting source files. Do not describe analytical or illustrative values as measured test evidence.
+
+### Revision history
+
+| Revision | Date | Drawing / subsystem | Change purpose | Source version | Parameter changes | Test evidence | Rollback path |
+|---|---|---|---|---|---|---|---|
+| A | 2026-11-11 | Initial drawing set | Initial engineering reference diagrams | Repository source snapshot | No physical dimensions asserted; confirm on robot | Drawing files checked into GitHub; physical verification pending | Revert the drawing-set commit or restore the previous SVG revision |
+
 ## Engineering control notes
 
 - Dimensions marked as measured or requiring measurement must be confirmed on the assembled robot.
