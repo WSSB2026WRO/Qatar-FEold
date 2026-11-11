@@ -22,7 +22,7 @@ The complete design basis and governing equations are documented in [Reference V
 python parameter_sweep.py
 ```
 
-The script writes `reference_design_sweep.csv` with longitudinal and lateral load-transfer estimates over a parameter grid.
+The script writes `reference_design_sweep.csv` with longitudinal and lateral load-transfer estimates over a parameter grid, plus theoretical ground-speed estimates at 250 and 300 deg/s. The speed estimates use the 28 mm reference wheel radius, a 1:1 motor-to-wheel ratio, and a no-slip assumption.
 
 ## Automated unit tests
 
