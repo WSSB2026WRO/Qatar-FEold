@@ -22,6 +22,8 @@ def calculate(ax, ay):
     lateral_transfer = MASS_KG * ay * CG_HEIGHT_M / TRACK_M
     tip_acceleration = GRAVITY * TRACK_M / (2 * CG_HEIGHT_M)
     friction_bound = FRICTION_COEFFICIENT * weight
+    ideal_speed_250 = math.radians(250) * WHEEL_RADIUS_M
+    ideal_speed_300 = math.radians(300) * WHEEL_RADIUS_M
     return {
         "ax_m_s2": ax,
         "ay_m_s2": ay,
@@ -30,6 +32,8 @@ def calculate(ax, ay):
         "lateral_transfer_N": lateral_transfer,
         "ideal_tip_acceleration_m_s2": tip_acceleration,
         "friction_bound_N": friction_bound,
+        "ideal_speed_250_deg_s_m_s": ideal_speed_250,
+        "ideal_speed_300_deg_s_m_s": ideal_speed_300,
     }
 
 def main():
