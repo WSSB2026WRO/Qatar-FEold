@@ -224,7 +224,7 @@ The battery is often one of the heaviest movable components. A conceptual packag
 - access for replacement;
 - protection from impact and cable strain.
 
-The reference model treats mass placement as a vehicle-dynamics variable; the illustrative centre-of-gravity assumptions are not represented as measured mass properties.
+In our reference model, mass placement is one of the vehicle-dynamics inputs. The centre-of-gravity values used here are assumptions, not measurements from our robot.
 
 ## 14. Measurement and validation protocol
 
@@ -256,7 +256,7 @@ Perform low-speed acceleration, braking, and constant-radius turning tests. Reco
 
 ## 16. Conclusion
 
-Mass distribution is a first-order design variable for a compact autonomous vehicle. A robust engineering decision requires a component mass register, coordinate-based centre-of-gravity calculation, static wheel-load measurements, and dynamic validation. The equations in this document provide a theoretical framework; they do not constitute measured properties or validated performance of a physical robot.
+For our compact autonomous vehicle, the way we distribute mass has a direct effect on handling and stability. A robust engineering decision requires a component mass register, coordinate-based centre-of-gravity calculation, static wheel-load measurements, and dynamic validation. The equations give us a theoretical starting point. They do not represent measured properties or confirmed performance of our physical robot.
 
 ## 17. Required data to turn this study into a numerical design report
 
