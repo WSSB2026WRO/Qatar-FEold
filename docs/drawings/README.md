@@ -2,20 +2,20 @@
 
 **WRO Future Engineers · Team 6038 · Revision A**
 
-We prepared these drawings to explain the robot's system architecture, vehicle dynamics, steering, mission logic, mechanical layout, electrical connections, and camera geometry. They are intended for design discussions and reviews, not for manufacturing parts.
+We made these drawings to help explain our robot's system layout, vehicle dynamics, steering, mission logic, chassis, electrical connections, and camera geometry. They are useful for design discussions and reviews, but they are not manufacturing drawings.
 
-## Drawing register
+## Drawing list
 
-| Drawing | Subject | Primary use |
+| Drawing | What it shows | Main use |
 |---|---|---|
-| [SYS-001 — Autonomous vehicle system architecture](SYS-001_autonomous_vehicle_architecture.svg) | Sensor-to-controller-to-actuator signal flow | System overview |
-| [DYN-001 — Vehicle dynamics](DYN-001_vehicle_dynamics.svg) | Longitudinal forces and cornering model | Dynamics analysis |
-| [STR-001 — Ackermann steering geometry](STR-001_ackermann_steering.svg) | Inner/outer wheel angles and turning centre | Steering analysis |
+| [SYS-001 — Autonomous vehicle system architecture](SYS-001_autonomous_vehicle_architecture.svg) | How sensors, controller, and motors connect | System overview |
+| [DYN-001 — Vehicle dynamics](DYN-001_vehicle_dynamics.svg) | Longitudinal forces and cornering model | Dynamics study |
+| [STR-001 — Ackermann steering geometry](STR-001_ackermann_steering.svg) | Inner and outer wheel angles and turning centre | Steering study |
 | [OBS-001 — Obstacle Challenge state machine](OBS-001_obstacle_state_machine.svg) | Mission states and safety stop | Software design |
-| [MEC-001 — Chassis layout](MEC-001_chassis_layout.svg) | Indicative top and side component placement | Mechanical design |
-| [MEC-002 — Steering linkage](MEC-002_steering_linkage.svg) | Motor C, rack and tie-rod arrangement | Mechanism definition |
-| [ELE-001 — EV3 wiring](ELE-001_ev3_wiring.svg) | Motor and sensor port allocation | Electrical integration |
-| [CAM-001 — Pixy2 camera geometry](CAM-001_pixy2_camera_geometry.svg) | Field of view and image-coordinate model | Vision calibration |
+| [MEC-001 — Chassis layout](MEC-001_chassis_layout.svg) | Example top and side component positions | Mechanical layout |
+| [MEC-002 — Steering linkage](MEC-002_steering_linkage.svg) | Motor C, rack, and tie-rod arrangement | Steering mechanism |
+| [ELE-001 — EV3 wiring](ELE-001_ev3_wiring.svg) | Motor and sensor port allocation | Electrical setup |
+| [CAM-001 — Pixy2 camera geometry](CAM-001_pixy2_camera_geometry.svg) | Camera field of view and image coordinates | Vision model |
 
 ## Drawing previews
 
@@ -43,31 +43,31 @@ We prepared these drawings to explain the robot's system architecture, vehicle d
 ### CAM-001 — Pixy2 camera geometry
 ![CAM-001 Pixy2 camera geometry](CAM-001_pixy2_camera_geometry.svg)
 
-## Revision control
+## How we keep drawings updated
 
-When we revise a drawing or its engineering details, we record:
+When we change a drawing or the engineering details behind it, we record:
 
-- purpose of the change;
-- affected subsystem;
-- source version;
-- parameter changes;
-- test evidence;
-- rollback path.
+- Why we made the change.
+- Which part of the robot is affected.
+- Which source version we used.
+- Any parameter changes.
+- Related test evidence.
+- How to return to the previous version if needed.
 
-We update the revision in the drawing title block and in this register. If a change affects dimensions, wiring, sensor positions, calibration, or software interfaces, we list the related drawing IDs and source files. We do not label calculated or illustrative values as measured test results.
+We update the revision in the drawing title block and in this list. If a change affects dimensions, wiring, sensor positions, calibration, or software interfaces, we also list the related drawings and source files. We do not label calculated or example values as measured test results.
 
 ### Revision history
 
-| Revision | Date | Drawing / subsystem | Change purpose | Source version | Parameter changes | Test evidence | Rollback path |
+| Revision | Date | Drawing or subsystem | Why it changed | Source version | Parameter changes | Test evidence | Rollback |
 |---|---|---|---|---|---|---|---|
-| A | 2026-11-11 | Initial drawing set | Initial engineering reference diagrams | Repository source snapshot | No physical dimensions asserted; confirm on robot | Drawing files checked into GitHub; physical verification pending | Revert the drawing-set commit or restore the previous SVG revision |
+| A | 2026-11-11 | Initial drawing set | First engineering reference diagrams | Repository source snapshot | No physical dimensions claimed; check on robot | SVG files added to GitHub; physical checks still needed | Revert the drawing-set commit or restore the previous SVG version |
 
-## Engineering control notes
+## Checks before using a drawing
 
-- Dimensions marked as measured or requiring measurement must be confirmed on the assembled robot.
-- Camera calibration depends on the actual Pixy2 mounting height, tilt and image geometry.
-- Steering ratio, backlash and mechanical stops must be measured before setting final software limits.
-- Verify sensor and motor ports against the physical wiring before each competition configuration.
-- Update the revision and drawing register when the robot hardware or software interfaces change.
+- Check dimensions marked as measured against the assembled robot.
+- Check the Pixy2 mounting height, tilt, and image geometry before using camera calibration values.
+- Measure the steering ratio, backlash, and mechanical stops before setting final software limits.
+- Check motor and sensor ports against the real wiring before each competition setup.
+- Update the drawing revision and list when the hardware or software interfaces change.
 
-**Document status:** Engineering reference diagrams. Confirm dimensions, calibration constants and hardware details against the current robot before using them for fabrication, inspection or performance claims.
+**Status:** These are engineering reference drawings. Check dimensions, calibration values, and hardware details against the current robot before using them for fabrication, inspection, or performance claims.
