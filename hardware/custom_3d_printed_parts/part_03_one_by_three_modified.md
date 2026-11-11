@@ -1,10 +1,10 @@
 # C3DP-03 — Modified 1×3 Connector
 
-## Component overview
+## What this part is
 
-This STL defines a compact, narrow 1×3-style connector element designed for the team's modified EV3 mechanical system.
+This STL is listed as a small 1×3-style connector for our modified EV3 mechanical system.
 
-## Mesh characteristics
+## Recorded mesh information
 
 | Property | Inspection result |
 |---|---:|
@@ -16,21 +16,22 @@ This STL defines a compact, narrow 1×3-style connector element designed for the
 | Bounding box Y | 7.20 native units |
 | Bounding box Z | 8.00 native units |
 
-## Geometric description
+## Shape
 
-The component has a narrow rectangular envelope and a single connected, closed mesh. Its proportions are consistent with a compact 1×3-style mechanical connector.
+The part has a narrow rectangular outline and one connected, closed mesh. Its proportions are consistent with a compact 1×3-style connector.
 
-## Mechanical role
+## Intended mechanical use
 
-The part is catalogued as a modified small connector/link element for the EV3 assembly. It provides a compact connection geometry within the custom mechanical interface set.
+We have listed it as a modified small connector or link for the EV3 assembly. It gives us a compact connection shape within the custom mechanical parts set.
 
 ## Design record
 
-The component is a single connected, watertight mesh with a narrow rectangular envelope. Its recorded proportions are consistent with a compact 1×3-style connector. The bounding-box values are expressed in native STL units.
+The inspection record describes one connected watertight mesh with a narrow rectangular shape. The bounding-box values are in native STL units.
 
-## File
+## Source file
 
-Original mesh referenced: `1x3 modified.stl`  
-**Availability:** The STL file is not included in the current repository. This record is not a manufacturing source.
+Original mesh reference: `1x3 modified.stl`
 
-STL coordinates do not carry unit metadata. The reported bounding box uses native mesh units.
+**Availability:** The STL file is not included in this repository snapshot, so this page is not a manufacturing file.
+
+STL coordinates do not include unit information. The values above are the recorded native-unit bounding box.
