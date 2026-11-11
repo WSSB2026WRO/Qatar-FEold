@@ -49,6 +49,7 @@ class ReferenceVehicleModelTests(unittest.TestCase):
 
     def test_parameter_sweep_writes_thirty_cases_and_speed_columns(self):
         output = SIMULATION_DIR / 'reference_design_sweep.csv'
+        previous = output.read_bytes() if output.exists() else None
         try:
             parameter_sweep.main()
             with output.open(newline='', encoding='utf-8') as handle:
@@ -57,8 +58,11 @@ class ReferenceVehicleModelTests(unittest.TestCase):
             self.assertIn('ideal_speed_250_deg_s_m_s', rows[0])
             self.assertIn('ideal_speed_300_deg_s_m_s', rows[0])
         finally:
-            if output.exists():
-                output.unlink()
+            if previous is None:
+                if output.exists():
+                    output.unlink()
+            else:
+                output.write_bytes(previous)
 
     def test_reference_outputs_are_finite_and_nonnegative(self):
         result = parameter_sweep.calculate(0.8, 1.2)
