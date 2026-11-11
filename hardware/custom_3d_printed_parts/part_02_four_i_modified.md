@@ -34,6 +34,7 @@ The part is catalogued as a multi-section custom link/connector for the modified
 
 ## File
 
-Original mesh: `4 I modified lego.stl`
+Original mesh referenced: `4 I modified lego.stl`  
+**Availability:** The STL file is not included in the current repository. This record is not a manufacturing source.
 
 STL coordinates do not carry unit metadata. Dimensions are expressed in native mesh units. The four-component topology is part of the source mesh and is preserved in this release.
