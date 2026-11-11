@@ -1,10 +1,12 @@
 # STL Mesh Inspection Report
 
-**Asset availability:** The three source STL files referenced by this report are not present in the current repository tree. The values below are retained inspection records and cannot be independently reproduced from the current checkout until the original meshes are added.
+## Inspection record scope
+
+This report preserves the inspection results recorded for three source STL meshes. The referenced STL files are not included in the current repository snapshot, so the measurements below are retained inspection records rather than a fresh inspection of files in the current checkout.
 
 ## Method
 
-The three supplied STL files were loaded as triangle meshes and checked for vertex count, face count, bounding-box extents, connected components, watertightness, winding consistency, and mesh volume. No geometry was overwritten.
+The original triangle meshes were inspected for vertex count, face count, bounding-box extents, connected components, watertightness, winding consistency, and mesh volume. The source geometry was not overwritten.
 
 ## Summary
 
@@ -16,14 +18,12 @@ The three supplied STL files were loaded as triangle meshes and checked for vert
 
 ## Units
 
-STL does not encode physical units. The coordinate extents are therefore recorded in native STL units. The proportions of the 1×3-style model are suggestive of a centimetre-scale export, but that inference is not sufficient to declare the units. Confirm the CAD export convention before converting the values to millimetres or creating dimensioned manufacturing drawings.
+STL does not encode physical units. The coordinate extents are recorded in native STL units. The proportions of the 1×3-style model are consistent with a centimetre-scale export, but the originating CAD export convention is not recorded in this repository.
 
 ## Topology findings
 
 - `I lego.stl`: two watertight shells.
-- `4 I modified lego.stl`: four connected shells; each shell is individually watertight, but the overall mesh is not one watertight solid.
+- `4 I modified lego.stl`: four connected shells; each shell is individually watertight, while the complete mesh is not one watertight solid.
 - `1x3 modified.stl`: one watertight shell.
 
-## Recommended next action
-
-Open each mesh in its originating CAD application, confirm body structure and units, then export a revision with documented units and a matching native CAD source. Keep original exports unchanged for traceability.
+The measurements in this report are historical mesh-inspection records associated with the three named source files.
