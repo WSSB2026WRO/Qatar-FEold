@@ -1,271 +1,258 @@
-# Conceptual Study — Mass Distribution and Vehicle Dynamics
+# Mass Distribution and Vehicle Dynamics — Concept Study
 
 ![DYN-001 — Vehicle dynamics model](../../docs/drawings/DYN-001_vehicle_dynamics.svg)
 
+> **Study type:** This is a conceptual engineering study. It explains a theoretical vehicle layout. It does not claim that the layout has been built, measured, or tested on our current robot.
 
-> **Study classification:** Conceptual engineering analysis. This document explores a theoretical vehicle architecture and does not assert that the described configuration has been manufactured, measured, or validated on the team's current robot.
+## 1. Why we are studying mass distribution
 
-## 1. Objectives
+Where we place the parts changes the load on each wheel. This can affect grip, braking, steering, cornering, vibration, and the stability of our sensor readings. We use this study to understand the main relationships and to plan what we would need to measure on a real vehicle.
 
-Mass distribution affects tire normal forces, traction, braking response, steering authority, cornering stability, vibration transmission, and the repeatability of sensor measurements. The purpose of this study is to establish a quantitative method for evaluating these effects and to define a design process for a compact autonomous vehicle.
+The questions we want to answer are:
 
-The study is organized around five questions:
-
-1. Where should the mass be located?
-2. How does mass location change static wheel loads?
+1. Where should the heavy parts be placed?
+2. How does their position change the static load on each wheel?
 3. How does centre-of-gravity height affect load transfer?
-4. How should the steering geometry interact with tire forces?
-5. How can the theoretical model be verified experimentally?
+4. How do steering geometry and tyre forces work together?
+5. What measurements would we need to check the model?
 
-## 2. Coordinate system and reference frame
+## 2. Coordinates and reference point
 
-Define a right-handed vehicle coordinate system:
+We define a right-handed coordinate system:
 
-- (x): forward, along the longitudinal centreline.
-- (y): left, across the vehicle.
-- (z): upward, normal to the ground plane.
+- (x): forward along the vehicle centreline.
+- (y): left across the vehicle.
+- (z): upward from the ground.
 
-Use the midpoint of the rear axle at ground level as the reference origin. The front axle is at (x=L), the rear axle at (x=0), and the lateral centreline is (y=0).
+The origin is at the centre of the rear axle, at ground level. The front axle is at (x=L), the rear axle is at (x=0), and the centreline is (y=0).
 
-The reference geometry is represented by:
+The main dimensions are:
 - (L): wheelbase.
 - (T_f): front track width.
 - (T_r): rear track width.
 - (h_{CG}): centre-of-gravity height.
 - (x_{CG}, y_{CG}, z_{CG}): centre-of-gravity coordinates.
 
-No numerical geometry is assumed in this conceptual model unless an explicit design case is introduced.
+We do not assume numerical dimensions in this concept study unless a separate design case is stated.
 
-## 3. Component mass model
+## 3. Listing the component masses
 
-Represent the vehicle as a collection of rigid components. For each component (i), record:
+We can treat the vehicle as a group of separate components. For each component (i), we should record:
 
-| Variable | Description |
+| Variable | Meaning |
 |---|---|
 | (m_i) | Component mass |
 | (x_i,y_i,z_i) | Component centre coordinates |
 | (I_{xx,i},I_{yy,i},I_{zz,i}) | Principal moments of inertia |
-| (R_i) | Component envelope and clearance volume |
-| (S_i) | Structural mounting interface |
+| (R_i) | Component size and clearance envelope |
+| (S_i) | Mounting interface |
 
-The component register should include the chassis, drive motors, steering actuator, wheels, battery, controller, sensors, camera, wiring, printed adapters, fasteners, and protective structures.
+The list should include the chassis, drive motors, steering motor, wheels, battery, controller, sensors, camera, wires, printed adapters, fasteners, and protective parts.
 
 ### 3.1 Centre of gravity
 
-For discrete component masses:
+For separate component masses:
 
-\[
-M=sum_{i=1}^{n}m_i
-\]
+[
+M=\sum_{i=1}^{n}m_i
+]
 
-\[
-x_{CG}=\frac{\sum_{i=1}^{n}m_i x_i}{M},\quad
-y_{CG}=\frac{\sum_{i=1}^{n}m_i y_i}{M},\quad
-z_{CG}=\frac{\sum_{i=1}^{n}m_i z_i}{M}
-\]
+[
+x_{CG}=\frac{\sum m_i x_i}{M},\quad
+y_{CG}=\frac{\sum m_i y_i}{M},\quad
+z_{CG}=\frac{\sum m_i z_i}{M}
+]
 
-The centre of gravity is therefore a mass-weighted position, not the geometric centre of the chassis.
+The centre of gravity is a mass-weighted position. It is not necessarily at the geometric centre of the chassis.
 
-### 3.2 Design implications
+### 3.2 What the positions mean for the design
 
-- A low battery location generally reduces centre-of-gravity height.
-- Heavy components placed near the longitudinal centre reduce polar moment of inertia compared with the same components placed at the extreme ends.
-- A lateral mass offset creates unequal static left/right wheel loads.
-- A high-mounted camera or sensor assembly can increase roll sensitivity and structural vibration.
-- Cable loops and movable components should be included when their mass is not negligible.
+- A low battery position can reduce the centre-of-gravity height.
+- Heavy parts near the centre can reduce yaw inertia compared with putting the same parts at the ends.
+- A left/right mass offset gives unequal static wheel loads.
+- A high camera or sensor mount can increase roll sensitivity and vibration.
+- We should include cable loops and moving parts if their mass is significant.
 
-## 4. Static axle load distribution
+## 4. Static load on the front and rear axles
 
-For a vehicle on level ground with total weight (W=Mg), wheelbase (L), and longitudinal centre-of-gravity coordinate (x_{CG}):
+For a vehicle on level ground, with total weight (W=Mg), wheelbase (L), and longitudinal centre-of-gravity coordinate (x_{CG}):
 
-\[
+[
 F_{z,front}=W\frac{x_{CG}}{L}
-\]
+]
 
-\[
+[
 F_{z,rear}=W\left(1-\frac{x_{CG}}{L}\right)
-\]
+]
 
-These equations assume static equilibrium, a rigid support plane, and no external longitudinal force.
+These equations assume static balance, a rigid support plane, and no external force in the forward direction.
 
-A forward centre of gravity increases front axle load and reduces rear axle load. A rearward centre of gravity does the opposite. The correct balance depends on which axle provides propulsion and steering, tire characteristics, and the desired dynamic response.
+If the centre of gravity moves forward, the front axle carries more load and the rear carries less. Moving it backward has the opposite effect. The best balance also depends on which wheels drive and steer the vehicle, as well as the tyre characteristics.
 
-## 5. Static left/right load distribution
+## 5. Static left/right load
 
-For equal front and rear track (T), a simplified lateral equilibrium gives:
+For equal front and rear track (T), a simplified lateral balance gives:
 
-\[
+[
 F_{z,left}=W\left(\frac{1}{2}+\frac{y_{CG}}{T}\right)
-\]
+]
 
-\[
+[
 F_{z,right}=W\left(\frac{1}{2}-\frac{y_{CG}}{T}\right)
-\]
+]
 
-This simplified expression assumes a symmetric support geometry and a centred longitudinal distribution. For unequal tracks, four separate wheel reactions should be solved using force and moment equilibrium.
+This is a simplified expression for a symmetric layout. If the front and rear tracks are different, we need to solve the four wheel reactions using force and moment balance.
 
-## 6. Four-wheel reaction model
+## 6. Four-wheel reactions
 
-Let the four tire contact points be at:
+The four contact points are:
+
 - Front-left: ((L,+T_f/2))
 - Front-right: ((L,-T_f/2))
 - Rear-left: ((0,+T_r/2))
 - Rear-right: ((0,-T_r/2))
 
-The vertical reactions (N_{FL},N_{FR},N_{RL},N_{RR}) must satisfy:
+The vertical wheel reactions (N_{FL},N_{FR},N_{RL},N_{RR}) must satisfy:
 
-\[
+[
 N_{FL}+N_{FR}+N_{RL}+N_{RR}=W
-\]
+]
 
-\[
+[
 \sum M_y=0,\qquad \sum M_x=0
-\]
+]
 
-A unique four-contact solution requires additional assumptions about chassis rigidity, suspension compliance, or measured support deflection. For a rigid four-wheel chassis on an imperfect surface, the load distribution can be statically indeterminate.
+To find one unique answer for all four wheels, we also need an assumption about frame stiffness, suspension compliance, or measured support deflection. With a rigid four-wheel frame on an uneven surface, the load distribution may not be determined by statics alone.
 
 ## 7. Longitudinal load transfer
 
-Under longitudinal acceleration (a_x), a simplified quasi-static load-transfer magnitude is:
+When the vehicle accelerates at (a_x), a simplified load-transfer magnitude is:
 
-\[
-Delta F_x=\frac{M a_x h_{CG}}{L}
-\]
+[
+\Delta F_x=\frac{M a_x h_{CG}}{L}
+]
 
-During acceleration, normal load transfers toward the rear. During braking, it transfers toward the front.
+During acceleration, load moves toward the rear axle. During braking, it moves toward the front.
 
-The expression assumes a rigid body, level ground, negligible aerodynamic forces, and quasi-static pitch equilibrium. It is not a complete transient model.
+This equation assumes a rigid body, level ground, no important aerodynamic forces, and a quasi-static pitch balance. It does not describe every part of a real transient movement.
 
-## 8. Lateral load transfer and rollover margin
+## 8. Lateral load transfer and rollover
 
 For lateral acceleration (a_y), a simplified total lateral load-transfer magnitude is:
 
-\[
-Delta F_y=\frac{M a_y h_{CG}}{T}
-\]
+[
+\Delta F_y=\frac{M a_y h_{CG}}{T}
+]
 
-Increasing track width reduces the load-transfer magnitude for the same mass, acceleration, and centre-of-gravity height. Reducing centre-of-gravity height has the same qualitative effect.
+A wider track reduces this load-transfer estimate. A lower centre of gravity also reduces it.
 
-For an ideal rigid vehicle with symmetric track, a geometric static tip threshold is:
+For an ideal rigid vehicle with a symmetric track, the geometric static tip threshold is:
 
-\[
+[
 a_{y,tip}\approx g\frac{T}{2h_{CG}}
-\]
+]
 
-This is a theoretical threshold, not a safe operating limit. Tire grip, transient motion, structural flexibility, floor friction, and wheel lift dynamics can cause loss of control before this idealized condition.
+This is a theoretical threshold, not a safe speed or acceleration limit. Tyre sliding, sudden movement, frame flexibility, floor friction, and wheel lift can cause loss of control earlier.
 
-## 9. Yaw inertia and manoeuvrability
+## 9. Yaw inertia and turning
 
 The yaw moment of inertia about the vertical axis is:
 
-\[
+[
 I_z=\sum_i\left(I_{z,i}+m_i[(x_i-x_{CG})^2+(y_i-y_{CG})^2]\right)
-\]
+]
 
-Mass placed far from the centre of gravity increases yaw inertia. A compact central arrangement can improve rotational response, but component placement must also respect cooling, wiring, sensor field of view, and mechanical access.
+A component placed far from the centre of gravity adds more yaw inertia. A compact layout can make the robot respond to turning more easily, but we still need to leave room for cooling, cables, camera visibility, and maintenance.
 
 ## 10. Steering geometry and Ackermann condition
 
-For a low-speed vehicle following a circular path, ideal Ackermann geometry requires the inner wheel to steer more sharply than the outer wheel.
+At low speed, ideal Ackermann steering makes the inner wheel turn more sharply than the outer wheel.
 
-\[
+[
 \cot(\delta_o)-\cot(\delta_i)=\frac{T}{L}
-\]
+]
 
-where (delta_i) and (delta_o) are the inner and outer wheel angles.
+Here, (delta_i) and (delta_o) are the inner and outer wheel angles.
 
-The relation assumes pure rolling and a common instantaneous centre of rotation. Practical linkages approximate this condition within packaging and compliance constraints.
+This relationship assumes pure rolling and a shared turning centre. A real linkage can only approximate it within the limits of its dimensions, clearances, and flexibility.
 
-A complete steering study should include:
-- steering pivot coordinates;
-- tie-rod attachment points;
-- steering arm lengths;
-- actuator travel;
-- mechanical stops;
-- backlash and elastic deflection;
-- wheel-angle measurements across the full steering range.
+For a more complete steering study, we should record the pivot positions, tie-rod connection points, steering-arm lengths, actuator travel, mechanical stops, joint play, and measured wheel angles across the steering range.
 
-## 11. Traction and drive-force limits
+## 11. Traction and drive force
 
-A simplified tire friction bound is:
+A simple tyre friction limit is:
 
-\[
+[
 |F_x|\leq \mu N
-\]
+]
 
-where (mu) is the effective tire-floor friction coefficient and (N) is the wheel normal load.
+Here, (mu) is the effective friction coefficient between the tyre and floor, and (N) is the normal load on the wheel.
 
-For driven wheels, the maximum theoretical tractive force is limited by both motor torque and available tire friction:
+For driven wheels, the theoretical drive force is limited by both motor torque and available grip:
 
-\[
+[
 F_{drive}\leq \min\left(\frac{\tau_{wheel}}{r},\mu N_{driven}\right)
-\]
+]
 
-This equation highlights why motor torque alone does not determine acceleration. If the driven axle is lightly loaded, additional motor torque can cause wheel slip rather than useful acceleration.
+This shows why motor torque alone does not tell us how quickly the robot will accelerate. If the driven wheels do not have enough load, more torque can make them slip instead of moving the robot forward.
 
-## 12. Sensor stability and vibration
+## 12. Sensor movement and vibration
 
-A sensor's measured motion includes both vehicle motion and mounting vibration. A high centre of gravity, flexible chassis, loose sensor bracket, and long unsupported camera mount can increase image jitter and gyro disturbance.
+A sensor can detect both the vehicle's movement and vibration from its mounting. A high centre of gravity, flexible frame, loose bracket, or long camera support can increase image movement and gyro disturbance.
 
-Design controls include:
-- mounting the gyro close to the rigid chassis reference;
-- minimizing sensor bracket cantilever length;
-- adding mechanical support without introducing excessive compliance;
-- routing cables to avoid pulling on sensors;
-- isolating high-frequency motor vibration only when the isolation does not compromise sensor alignment.
+Some design points we should consider:
+- Mount the gyro close to a rigid part of the chassis.
+- Keep sensor brackets short where possible.
+- Add support without making the mount too flexible.
+- Route cables so they do not pull on the sensors.
+- Use vibration isolation only if it does not affect sensor alignment.
 
-## 13. Battery and packaging strategy
+## 13. Battery placement
 
-The battery is often one of the heaviest movable components. A conceptual packaging strategy should evaluate:
-- low vertical placement;
-- central longitudinal placement;
-- minimal lateral offset;
-- secure retention under acceleration and cornering;
-- access for replacement;
-- protection from impact and cable strain.
+The battery can be one of the heaviest parts we can move. In the design, we should consider its height, distance from the vehicle centre, left/right position, retention during turns, access for replacement, and protection from impacts and cable strain.
 
-In our reference model, mass placement is one of the vehicle-dynamics inputs. The centre-of-gravity values used here are assumptions, not measurements from our robot.
+The centre-of-gravity values in the reference model are assumptions. They have not been measured on our robot.
 
-## 14. Measurement and validation protocol
+## 14. How we could check the model
 
-### 14.1 Mass inventory
-Weigh each removable component separately using a calibrated scale. Record the measurement resolution and repeat each reading.
+### 14.1 Weigh the components
+Weigh each removable component with a calibrated scale. Record the scale resolution and repeat the readings.
 
-### 14.2 Component coordinates
-Measure each component centre relative to the defined vehicle origin. For irregular components, estimate the centre of mass using a CAD mass-properties model or a suspension/balance method.
+### 14.2 Measure component positions
+Measure each component centre from the coordinate origin. For irregular parts, use CAD mass properties or a suitable balancing method to estimate the centre of mass.
 
-### 14.3 Four-wheel loads
-Place each wheel on an independent scale at equal height. Record all four reactions simultaneously. Repeat after moving the battery or other heavy components.
+### 14.3 Measure the four wheel loads
+Place each wheel on a separate scale at the same height. Record the four readings at the same time. Repeat after moving the battery or another heavy component.
 
-### 14.4 Centre-of-gravity height
-Use a controlled tilt-table method or a validated suspension method. Secure the vehicle and prevent it from sliding or falling. Do not infer CG height from photographs.
+### 14.4 Estimate centre-of-gravity height
+Use a controlled tilt-table or validated suspension method. Secure the robot so it cannot slide or fall. We should not estimate this value from a photograph.
 
-### 14.5 Dynamic tests
-Perform low-speed acceleration, braking, and constant-radius turning tests. Record speed, heading, wheel slip, and any wheel unloading. Increase test severity gradually.
+### 14.5 Run dynamic tests
+Start with low-speed acceleration, braking, and constant-radius turns. Record speed, heading, wheel slip, and any wheel unloading. Increase the test level gradually.
 
-## 15. Engineering decision matrix
+## 15. Design choices and trade-offs
 
-| Design choice | Potential benefit | Trade-off |
+| Design choice | Possible benefit | Possible trade-off |
 |---|---|---|
-| Lower battery | Lower CG and reduced load transfer | Reduced ground clearance or service access |
-| Central battery | Lower yaw inertia | Packaging conflicts |
-| Wider track | Higher geometric roll threshold | Larger vehicle envelope |
-| Longer wheelbase | Reduced pitch sensitivity for a given CG height | Larger turning footprint |
-| Stiffer steering linkage | Better angle repeatability | Higher load on joints and actuator |
-| Shorter sensor mounts | Reduced vibration leverage | Possible field-of-view constraints |
+| Lower battery | Lower centre of gravity and less load transfer | Less ground clearance or harder access |
+| Central battery | Lower yaw inertia | More difficult packaging |
+| Wider track | Higher geometric roll threshold | Wider robot |
+| Longer wheelbase | Less pitch sensitivity for the same CG height | Larger turning space |
+| Stiffer steering linkage | More repeatable wheel angle | Higher load on joints and motor |
+| Shorter sensor mounts | Less vibration leverage | Possible field-of-view limits |
 
-## 16. Conclusion
+## 16. What we take from this study
 
-For our compact autonomous vehicle, the way we distribute mass has a direct effect on handling and stability. A robust engineering decision requires a component mass register, coordinate-based centre-of-gravity calculation, static wheel-load measurements, and dynamic validation. The equations give us a theoretical starting point. They do not represent measured properties or confirmed performance of our physical robot.
+For a small autonomous robot, mass placement can change how it grips, turns, and stays stable. To make a real design decision, we need a component mass list, measured positions, centre-of-gravity calculations, static wheel-load readings, and dynamic tests. The equations give us a starting point, but they do not describe measured performance of our physical robot.
 
-## 17. Required data to turn this study into a numerical design report
+## 17. Data still needed for a numerical report
 
-- Total vehicle mass and component masses
-- Wheelbase and front/rear track measurements
-- Component centre coordinates
-- Tire radius and friction estimate
-- Motor torque-speed data and gear ratio
-- Steering pivot and tie-rod coordinates
-- Measured acceleration and turning radius
-- Four-wheel static load measurements
-- Sensor mounting coordinates and vibration observations
+- Total vehicle mass and individual component masses.
+- Wheelbase and front/rear track measurements.
+- Component centre coordinates.
+- Tyre radius and an estimate of floor friction.
+- Motor torque-speed data and gear ratio.
+- Steering pivot and tie-rod coordinates.
+- Measured acceleration and turning radius.
+- Four-wheel static load readings.
+- Sensor positions and vibration observations.
