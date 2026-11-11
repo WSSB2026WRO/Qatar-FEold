@@ -39,14 +39,14 @@ where `Y` is the selected vertical image feature in pixels and `d` is estimated 
 | A | Medium motor | Drive motor A |
 | B | Medium motor | Drive motor B |
 | C | Medium motor | Steering actuator |
-| D | Front LED lamp (drawing-register item) | Not configured in current source; physical installation and wiring require confirmation |
-| D | Front LED lamp | Camera illumination |
+| D | No device assigned | Unused by both challenge programs |
+| S4 | Pixy2 camera with integrated illumination | I²C vision and camera illumination in Obstacle Challenge |
 | S1 | Gyro sensor | Heading measurement |
 | S2 | Ultrasonic sensor | Left-side distance |
 | S3 | Ultrasonic sensor | Right-side distance |
-| S4 | Pixy2 camera | I²C pillar detection; address 0x54 |
 
-This is the port allocation documented by the current source and project records. Verify it against the assembled robot after any wiring change.
+
+The Pixy2 camera and its illumination form one assembly connected through S4. The illumination is not a separate motor-port device; port D is unused by both challenge programs.
 
 ## 5. Reference vehicle design case
 
@@ -93,47 +93,31 @@ The repository includes system-level or conceptual SVG diagrams for system archi
 | ELE-001 | EV3 wiring and port allocation | Electrical interface map |
 | CAM-001 | Pixy2 camera geometry | Sensor geometry reference |
 
-The diagrams are not automatically manufacturing drawings. Fabrication release requires a controlled CAD-derived drawing with units, datums, dimensions, critical tolerances, material, process, revision and review status.
+The SVG files are system-level or conceptual engineering diagrams. They are not dimensioned manufacturing drawings.
 
 ## 7. Software verification evidence
 
 The repository records a successful GitHub Actions **Python Validation** run:
 
-- Run: [#77 — successful](https://github.com/WSSB2026WRO/Qatar-FE/actions/runs/42708351971)
-- Recorded date: 9 November 2026
-- Commit checked: `cae0fa6eda6c39e48a51990fe60056934c4980a0`
-- Checks: compile Open Challenge, Obstacle Challenge and analytical parameter sweep; execute the sweep; upload its CSV artifact.
+- Run: [#165 — successful](https://github.com/WSSB2026WRO/Qatar-FE/actions/runs/43076407683)
+- Recorded date: 11 November 2026
+- Commit checked: `e8df0173e62e590f069ea6b69e32df2440a67bd4`
+- Checks: compile both challenge programs, execute eight analytical/documentation integrity tests, run the analytical sweep, and upload its CSV artifact.
 - Sweep coverage: 30 combinations (five longitudinal acceleration values from 0.2 to 1.0 m/s² and six lateral acceleration values from 0.2 to 1.2 m/s²).
 
 This proves the recorded source files passed the workflow's compilation checks and the analytical sweep completed. It does **not** prove execution on the EV3, sensor accuracy, steering accuracy, obstacle clearance, lap completion, parking accuracy or competition performance.
 
-## 8. Physical validation programme
+## 8. Evidence and validation scope
 
-The following tests are required before physical-performance claims are made.
+The repository contains automated source validation and analytical model results. It does not contain completed physical test reports or raw EV3 mission logs. Consequently, physical sensor accuracy, steering repeatability, obstacle clearance, lap performance and parking accuracy are not represented as measured results in this portfolio.
 
-| Test ID | Objective | Evidence required |
-|---|---|---|
-| VAL-01 | Gyro stability | Stationary heading log, drift rate and repeat runs |
-| VAL-02 | Ultrasonic accuracy | Known target distances, raw readings and absolute error |
-| VAL-03 | Drive distance scale | Known travel distance versus encoder-derived distance |
-| VAL-04 | Steering response | Commanded versus observed wheel angle, repeatability and backlash |
-| VAL-05 | Pillar detection | Red/green detection logs, missed/false detections and measured range |
-| VAL-06 | Obstacle passing | Passing-side decision and minimum-clearance observations |
-| VAL-07 | Cornering and lap tracking | Corner count, heading trace and recovery notes |
-| VAL-08 | Parking repeatability | Final position and orientation across repeated runs |
+## 9. Engineering design and verification criteria
 
-For every physical run, retain the unedited source log and record date, robot configuration, software revision, conditions, instrument, method, raw observations, acceptance criteria and outcome. A result may be pass, fail or inconclusive.
-
-## 9. Engineering release checklist
-
-- **Mechanical:** wheel alignment, motor mounting, steering-linkage clearance, battery retention, sensor-bracket rigidity, fastener retention and service access.
-- **Electrical:** verified port allocation, secure connectors, cable strain relief, operating limits, sensor communication and power stability.
-- **Software:** syntax/import integrity, sensor initialisation, calibration, steering sign conventions and limits, bounded actuator commands, mission transitions, timeout/fault handling and logs.
-- **Validation:** test objective, hardware/software revision, operating conditions, measurement method, raw observations, acceptance criteria, outcome and corrective action.
+The repository's engineering criteria cover mechanical alignment and retention, electrical interface integrity and power stability, software initialization and bounded control, mission-state handling, fault response, and traceable validation evidence. These criteria describe the engineering basis used throughout the project.
 
 ## 10. Data classification
 
-Every numerical item must be identified as one of the following:
+Numerical values in this portfolio are classified as follows:
 
 - **Measured:** obtained from a physical instrument or recorded robot log, with date and method.
 - **Calculated:** derived from stated equations and input values.
