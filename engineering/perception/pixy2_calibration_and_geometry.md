@@ -21,33 +21,33 @@ Define vehicle coordinates:
 
 For horizontal pixel coordinate (u):
 
-[
+\[
 \alpha=\tan^{-1}\left(\frac{u-u_c}{f_x}\right)
-]
+\]
 
 The effective focal length may be estimated from the horizontal field of view (phi_h) and image width (N_u):
 
-[
+\[
 f_x=\frac{N_u/2}{\tan(\phi_h/2)}
-]
+\]
 
 ## 4. Ground-plane range model
 
-If a visible pillar base is assumed to lie on a known ground plane, a calibrated camera height and downward pitch can be used to estimate ground range. For a camera with height (h_c), downward pitch (\\theta), and vertical ray angle (eta), a simplified planar model is:
+If a visible pillar base is assumed to lie on a known ground plane, a calibrated camera height and downward pitch can be used to estimate ground range. For a camera with height (h_c), downward pitch (\theta), and vertical ray angle (\eta), a simplified planar model is:
 
-[
+\[
 d=\frac{h_c}{\tan(\theta+\beta)}
-]
+\]
 
-This model is sensitive to the exact pixel coordinate representing the pillar base, camera pitch, and mounting height. It is not interchangeable with a top-edge image-height model. The symbols \\(\\theta\\) and \\(\\beta\\) denote angles in the camera's vertical plane.
+This model is sensitive to the exact pixel coordinate representing the pillar base, camera pitch, and mounting height. It is not interchangeable with a top-edge image-height model. The symbols \\(\theta\\) and \\(\beta\\) denote angles in the camera's vertical plane.
 
 ## 5. Empirical calibration alternative
 
 The supplied program uses an empirical vertical-image model:
 
-[
+\[
 d=\frac{K}{v-v_0}
-]
+\]
 
 with configured constants (K) and (v_0). The model should be fitted from a set of known distances rather than assumed universal.
 
