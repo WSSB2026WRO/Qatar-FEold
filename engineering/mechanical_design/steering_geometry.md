@@ -1,5 +1,8 @@
 # Steering Geometry and Linkage Design
 
+![STR-001 — Ackermann steering geometry](../../docs/drawings/STR-001_ackermann_steering.svg)
+
+
 ## 1. Design objective
 
 Steering geometry determines the relationship between actuator rotation and road-wheel angle. It influences turning radius, tire scrub, corner tracking, actuator load, and repeatability.
