@@ -21,7 +21,7 @@ Camera geometry and the electrical interface are documented in [CAM-001](../../d
 | Main log | `log_obstacle.csv` |
 | Nominal loop period | 20 ms; 10 ms during maneuvers |
 
-This is a source-level description of the supplied program. Values are configured software parameters and must not be interpreted as independently measured performance.
+The following sections describe the program as it is written in the current source file. Values are configured software parameters and must not be interpreted as independently measured performance.
 
 ## Mission and state sequence
 
