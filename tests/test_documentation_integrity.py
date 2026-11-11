@@ -1,6 +1,7 @@
 """Repository documentation integrity checks for local Markdown links and text."""
 import re
 import unittest
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
@@ -22,6 +23,13 @@ class DocumentationIntegrityTests(unittest.TestCase):
                     if code < 32 and character not in "\t":
                         unexpected.append(f"{path.relative_to(ROOT)}:{line_number} U+{code:04X}")
         self.assertEqual(unexpected, [], "Unexpected control characters: " + ", ".join(unexpected))
+
+    def test_svg_diagrams_are_well_formed_xml(self):
+        svg_files = sorted(ROOT.rglob('*.svg'))
+        self.assertTrue(svg_files, 'Expected engineering SVG diagrams')
+        for path in svg_files:
+            root = ET.parse(path).getroot()
+            self.assertTrue(root.tag.endswith('svg'), str(path))
 
     def test_relative_markdown_links_resolve_inside_repository(self):
         missing = []
