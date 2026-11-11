@@ -43,28 +43,28 @@ The Python program explicitly configures a 20 ms straight loop and a 10 ms corne
 
 The Python program explicitly configures a 20 ms main loop and a 10 ms corner/maneuver loop. The obstacle program also performs Pixy2 I²C communication, which can affect the duration of individual control cycles. The remaining values are illustrative and require physical verification.
 
-## 3. Physical performance measurements
+## 3. Physical performance comparison
 
-These metrics require physical trials. No numerical prediction is assigned where the result depends strongly on the actual chassis, tires, battery, sensor calibration, course geometry, or driving behaviour.
+The following tables use the same illustrative working dataset as Section 2. Values are examples for completing the report layout; they are not verified physical test results.
 
 ### 3.1 Open Challenge
 
-| Metric | Python actual | EV3 blocks actual | Unit |
+| Metric | Python example | EV3 blocks example | Unit |
 |---|---:|---:|---|
-| Mission duration | — | — | s |
-| Mean absolute distance error | — | — | cm |
-| Mean absolute heading error | — | — | degrees |
-| Successful runs / total runs | — | — | runs |
+| Mission duration | 43.2 | 45.6 | s |
+| Mean absolute distance error | 2.8 | 3.2 | cm |
+| Mean absolute heading error | 2.4 | 3.1 | degrees |
+| Successful runs / total runs | 5/5 | 5/5 | runs |
 
 ### 3.2 Obstacle Challenge
 
-| Metric | Python actual | EV3 blocks actual | Unit |
+| Metric | Python example | EV3 blocks example | Unit |
 |---|---:|---:|---|
-| Mission duration | — | — | s |
-| Mean absolute distance error | — | — | cm |
-| Mean absolute heading error | — | — | degrees |
-| Pillar avoidance success rate | — | — | % |
-| Successful parking runs / total runs | — | — | runs |
+| Mission duration | 59.4 | 62.8 | s |
+| Mean absolute distance error | 3.5 | 4.0 | cm |
+| Mean absolute heading error | 3.2 | 3.8 | degrees |
+| Pillar avoidance success rate | 90 | 80 | % |
+| Successful parking runs / total runs | 9/10 | 8/10 | runs |
 
 ## 4. Measurement method
 
@@ -80,30 +80,32 @@ These metrics require physical trials. No numerical prediction is assigned where
 
 Pybricks transfer/bytecode preparation and the EV3 graphical environment's project preparation are not necessarily equivalent compiler operations. The neutral term *program preparation and transfer* is used unless the same precisely defined compilation stage is timed in both environments.
 
-## 5. Raw trial record
+## 5. Raw trial record — illustrative dataset
+
+The run-by-run values below are example entries designed to demonstrate a fully populated results table. They are not actual robot test logs. The obstacle success percentages in Section 3 are based on a separate illustrative set of ten attempts.
 
 | Challenge | Implementation | Run | Control cycle (ms) | Mission (s) | Distance error (cm) | Heading error (°) | Result / notes |
 |---|---|---:|---:|---:|---:|---:|---|
-| Open | Python | 1 | — | — | — | — | |
-| Open | Python | 2 | — | — | — | — | |
-| Open | Python | 3 | — | — | — | — | |
-| Open | Python | 4 | — | — | — | — | |
-| Open | Python | 5 | — | — | — | — | |
-| Open | EV3 blocks | 1 | — | — | — | — | |
-| Open | EV3 blocks | 2 | — | — | — | — | |
-| Open | EV3 blocks | 3 | — | — | — | — | |
-| Open | EV3 blocks | 4 | — | — | — | — | |
-| Open | EV3 blocks | 5 | — | — | — | — | |
-| Obstacle | Python | 1 | — | — | — | — | |
-| Obstacle | Python | 2 | — | — | — | — | |
-| Obstacle | Python | 3 | — | — | — | — | |
-| Obstacle | Python | 4 | — | — | — | — | |
-| Obstacle | Python | 5 | — | — | — | — | |
-| Obstacle | EV3 blocks | 1 | — | — | — | — | |
-| Obstacle | EV3 blocks | 2 | — | — | — | — | |
-| Obstacle | EV3 blocks | 3 | — | — | — | — | |
-| Obstacle | EV3 blocks | 4 | — | — | — | — | |
-| Obstacle | EV3 blocks | 5 | — | — | — | — | |
+| Open | Python | 1 | 19.8 | 42.8 | 2.6 | 2.2 | Completed |
+| Open | Python | 2 | 20.2 | 43.1 | 2.9 | 2.5 | Completed |
+| Open | Python | 3 | 19.5 | 43.5 | 2.7 | 2.3 | Completed |
+| Open | Python | 4 | 20.4 | 43.0 | 3.0 | 2.6 | Completed |
+| Open | Python | 5 | 19.9 | 43.6 | 2.8 | 2.4 | Completed |
+| Open | EV3 blocks | 1 | 28.4 | 45.1 | 3.0 | 2.9 | Completed |
+| Open | EV3 blocks | 2 | 27.9 | 45.8 | 3.3 | 3.2 | Completed |
+| Open | EV3 blocks | 3 | 29.1 | 45.4 | 3.1 | 3.0 | Completed |
+| Open | EV3 blocks | 4 | 28.7 | 46.0 | 3.4 | 3.3 | Completed |
+| Open | EV3 blocks | 5 | 27.8 | 45.7 | 3.2 | 3.1 | Completed |
+| Obstacle | Python | 1 | 19.8 | 59.0 | 3.3 | 3.0 | Completed |
+| Obstacle | Python | 2 | 20.2 | 59.5 | 3.6 | 3.3 | Completed |
+| Obstacle | Python | 3 | 19.5 | 59.2 | 3.4 | 3.1 | Completed |
+| Obstacle | Python | 4 | 20.4 | 59.8 | 3.7 | 3.4 | Completed |
+| Obstacle | Python | 5 | 19.9 | 59.5 | 3.5 | 3.2 | Completed |
+| Obstacle | EV3 blocks | 1 | 31.4 | 62.2 | 3.8 | 3.6 | Completed |
+| Obstacle | EV3 blocks | 2 | 32.1 | 62.6 | 4.1 | 3.9 | Completed |
+| Obstacle | EV3 blocks | 3 | 32.8 | 63.0 | 3.9 | 3.7 | Completed |
+| Obstacle | EV3 blocks | 4 | 31.7 | 62.8 | 4.2 | 4.0 | Completed |
+| Obstacle | EV3 blocks | 5 | 32.0 | 63.4 | 4.0 | 3.8 | Completed |
 
 ## 6. Statistical analysis
 
