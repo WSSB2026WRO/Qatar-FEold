@@ -18,8 +18,8 @@ The front illumination is integrated with the Pixy2 camera assembly. The camera 
 
 The repository records a successful GitHub Actions validation run on 11 November 2026:
 
-- [Python Validation — run #165, successful](https://github.com/WSSB2026WRO/Qatar-FE/actions/runs/43078618856)
-- Verified commit: `954f7bf68b2b02cbedfae32a0c560d145f190b35`
+- [Python Validation — run #211, successful](https://github.com/WSSB2026WRO/Qatar-FE/actions/runs/43078776576)
+- Verified commit: `3fce95041a13015a0f0d024d1efed700e865ebb7`
 - Both challenge programs and the analytical script passed Python compilation.
 - Eight analytical and documentation-integrity tests passed.
 - The 30-case analytical parameter sweep completed and generated its CSV artifact.
