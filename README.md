@@ -24,6 +24,13 @@ Qatar FE is a student engineering team developing an autonomous vehicle for the 
 
 Both programs target LEGO EV3 with Pybricks MicroPython. The Obstacle Challenge program additionally uses a Pixy2 camera over I²C.
 
+## Engineering portfolio
+
+- [Consolidated engineering portfolio](docs/engineering_portfolio.md) — project overview, hardware interfaces, software architecture, reference calculations, drawing register, verification evidence, and physical validation plan.
+- [Verification evidence](docs/verification_evidence.md)
+- [Engineering release checklist](docs/engineering_release_checklist.md)
+- [Repository guide](docs/repository_guide.md)
+
 ## Engineering library
 
 - [Mechanical design — chassis and packaging](engineering/mechanical_design/chassis_and_packaging.md)
@@ -63,13 +70,10 @@ Both programs target LEGO EV3 with Pybricks MicroPython. The Obstacle Challenge 
 
 - [Verification and validation plan](validation/README.md)
 - [Test report format](validation/test_report_template.md)
-- [Engineering release checklist](docs/engineering_release_checklist.md)
-- [Repository guide](docs/repository_guide.md)
-
-GitHub Actions checks Python syntax and executes the analytical parameter-sweep script on repository updates.
+- GitHub Actions checks Python syntax and executes the analytical parameter-sweep script on repository updates.
 
 ## Engineering data conventions
 
-Software settings, theoretical design inputs, calculated outputs, and physical observations are treated as separate engineering data classes. Numerical examples are accompanied by their governing assumptions and equations. Physical performance claims are based on recorded test evidence.
+Software settings, theoretical design inputs, calculated outputs, simulations, and physical observations are treated as separate engineering data classes. Numerical examples are accompanied by their governing assumptions and equations. Physical performance claims are based on recorded test evidence.
 
 The two challenge source programs are maintained as separate reference implementations. Experimental revisions should be versioned independently.
