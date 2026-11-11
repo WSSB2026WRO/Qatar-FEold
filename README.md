@@ -67,12 +67,15 @@ Both programs target LEGO EV3 with Pybricks MicroPython. The Obstacle Challenge 
 | [Obstacle Management](Obstacle%20Management/README.md) | Vision-based obstacle detection and avoidance |
 | [Power and Sense Management](Power%20and%20Sense%20Management/README.md) | Electrical interfaces, power, and sensors |
 | [src](src/README.md) | Software source index |
+| [t-photos](t-photos/README.md) | Team photographs |
+| [v-photos](v-photos/README.md) | Vehicle photographs |
+| [video](video/README.md) | Demonstration-video index; no videos currently committed |
 
 ## Verification
 
 - [Verification and validation plan](validation/README.md)
 - [Test report format](validation/test_report_template.md)
-- GitHub Actions checks Python syntax and executes the analytical parameter-sweep script on repository updates.
+- GitHub Actions compiles both challenge programs, runs eight analytical/documentation integrity tests, executes the 30-case analytical parameter sweep, and uploads its CSV output.
 
 ## Engineering data conventions
 
