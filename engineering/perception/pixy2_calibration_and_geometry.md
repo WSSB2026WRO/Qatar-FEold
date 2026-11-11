@@ -2,7 +2,7 @@
 
 ## 1. Purpose
 
-The Obstacle Challenge program uses Pixy2 colour signatures to identify red and green pillars. The camera does not directly measure range. Range and lateral position must be estimated from calibrated image geometry.
+The Obstacle Challenge program uses Pixy2 colour signatures to identify red and green pillars. The camera and its integrated illumination form one assembly connected through EV3 sensor port S4 using I²C. The camera does not directly measure range; range and lateral position are estimated from image geometry.
 
 ## 2. Coordinate conventions
 
@@ -130,7 +130,7 @@ e=609.09-600=+9.09\;\text{mm}
 
 The error increases toward the far end of the range because the distance model becomes increasingly sensitive to pixel quantization as (v) approaches (v_0). This behaviour is expected from the inverse relationship between image position and estimated range.
 
-The model is most sensitive when the detected feature is close to the offset coordinate. The useful operating range should therefore be selected from the acceptable error bound, not from the camera's maximum visible distance alone.
+The model is most sensitive when the detected feature is close to the offset coordinate. The model's useful operating range is bounded by the accepted error as (v) approaches (v_0), rather than by the camera's maximum visible distance alone.
 
 ### 8.6 Calibration record
 
