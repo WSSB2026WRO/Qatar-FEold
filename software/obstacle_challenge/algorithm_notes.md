@@ -1,33 +1,37 @@
-# Obstacle Challenge — Perception and Control Notes
+# Obstacle Challenge — How the Detection and Control Work
 
-## Perception state pipeline
+## From camera reading to passing a pillar
 
-| Stage | Input | Decision |
+| Step | What goes in | What the program does |
 |---|---|---|
-| Acquisition | Pixy2 blocks | Read signature and bounding box |
-| Geometric filter | Width, height, ratio | Reject weak candidates |
-| Temporal confirmation | Repeated frames | Confirm stable detection |
-| Classification | Signature ID | Red or green |
-| Ground projection | Image x/y, calibration constants | Estimate bearing and range |
-| Track update | Vehicle odometry and heading | Estimate pillar position relative to route |
-| Avoidance state | Pillar colour and position | Select passing side and lane target |
-| Clearance check | Travel since estimated pillar position | Return to centre state |
+| Read camera | Pixy2 blocks | Reads the signature and bounding box |
+| Check shape | Width, height, and ratio | Removes candidates that do not fit the filters |
+| Confirm over time | Repeated frames | Checks that the detection stays stable |
+| Identify colour | Signature ID | Selects red or green |
+| Estimate position | Image x/y and calibration constants | Estimates bearing and range |
+| Update pillar position | Robot distance and heading | Estimates where the pillar is relative to the route |
+| Choose passing action | Pillar colour and position | Selects the passing side and lane target |
+| Check clearance | Travel since estimated pillar position | Returns to the centre state when clear |
 
-## Pillar passing policy
+## Which side we pass
 
 - Red signature 1: pass on the right.
 - Green signature 2: pass on the left.
 
-The lane controller computes a lateral target while respecting corridor boundaries. The controller retains a pillar estimate when the object temporarily leaves the camera field of view and waits for a configured clearance margin before returning to the centre state.
+The lane controller calculates a target while staying within the corridor boundaries. If the pillar disappears from the camera for a short time, the program keeps its last estimated position. It waits for the configured clearance margin before returning to the centre state.
 
-## Image range model
+## Image range equation
 
-The source uses `d = Y_K / (y - Y_0)`, where `y` is the vertical image coordinate and `Y_0` and `Y_K` are configured model constants. The repository's numerical example is a calculated reference dataset; it is not a record of physical camera observations.
+The source uses:
 
-## Parking strategy
+`d = Y_K / (y - Y_0)`
 
-The program records the unparking movements and later executes a reverse sequence. The parking-lot estimate is refined using detected wall transitions. The strategy depends on repeatability of encoder distance, steering geometry, traction, and gyro heading.
+Here, `y` is the vertical image coordinate, while `Y_0` and `Y_K` are configured model constants. The numerical example in the repository is a calculated reference table, not a set of real camera observations.
 
-## Evidence status
+## Parking
 
-The notes describe the configured perception and control logic. The repository does not contain physical Pixy2 calibration observations or completed mission logs, so camera accuracy and full-mission performance are not stated as measured results.
+The program saves the movements used to leave the parking area and later runs them in reverse order. It also uses changes in wall readings to improve the parking-area estimate. This depends on encoder distance, steering geometry, grip, and gyro heading being repeatable.
+
+## What evidence is available
+
+These notes describe the settings and logic in our Python program. The repository does not contain physical Pixy2 calibration readings or completed mission logs, so we do not report camera accuracy or full-mission performance as measured results.
