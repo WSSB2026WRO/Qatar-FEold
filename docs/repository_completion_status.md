@@ -1,54 +1,45 @@
-# Repository Engineering Status — 11 November 2026
+# Qatar FE — Engineering Repository Status
 
-## Scope
+**Repository:** [WSSB2026WRO/Qatar-FE](https://github.com/WSSB2026WRO/Qatar-FE)  
+**Branch:** `main`  
+**Portfolio date:** 11 November 2026
 
-This record summarizes the repository-level engineering review and distinguishes completed software/documentation work from tasks that require the assembled vehicle, instruments, or original CAD models.
+## Project record
 
-## Completed repository work
+The repository contains the two EV3/Pybricks challenge programs, hardware interface records, mechanical and electrical engineering studies, Pixy2 perception documentation, vehicle-dynamics calculations, SVG engineering diagrams, reliability records, validation framework, and automated software checks.
 
-- Corrected malformed mathematical notation and Markdown equation delimiters in the vehicle-dynamics, reference-design, control-system, and Pixy2 geometry documents.
-- Clarified that the Pixy2 range table is a calculated reference dataset, not a physical camera calibration log.
-- Aligned port-D documentation with the source files: the drawing register lists a front LED lamp, but neither current challenge program configures or controls a device on port D.
-- Updated the Obstacle Challenge source comment so its two range-model anchors are not presented as a complete physical calibration record.
-- Added standard-library unit tests for the analytical reference-vehicle calculation.
-- Extended GitHub Actions to run the unit tests before generating the analytical parameter-sweep artifact.
+The project portfolio records the team roles, challenge architecture, sensor and actuator allocation, reference vehicle assumptions, calculated engineering results, and the scope of the available verification evidence.
 
-## Automated verification
+## Corrected camera illumination definition
 
-The recorded full GitHub Actions verification run below completed successfully on 11 November 2026:
+The front illumination is integrated with the Pixy2 camera assembly. The camera is connected to EV3 sensor port S4 through I²C. The illumination is part of that camera assembly and is not a separate device connected to motor port D. Port D is unused by both challenge programs.
 
-- [Python Validation — run #153, successful](https://github.com/WSSB2026WRO/Qatar-FE/actions/runs/43076407683)
-- Commit: `e8df0173e62e590f069ea6b69e32df2440a67bd4`
-- Challenge source syntax compilation: passed for Open Challenge and Obstacle Challenge.
-- Analytical model unit tests and documentation integrity tests (8 tests): passed.
-- Analytical parameter sweep: passed and generated the 30-case CSV artifact.
+## Automated verification record
 
-These checks establish source syntax validity and repeatability of the repository's analytical calculation. They do not establish runtime behaviour on the EV3 or physical vehicle performance.
+The repository records a successful GitHub Actions validation run on 11 November 2026:
 
-## Open physical and manufacturing release gates
+- [Python Validation — run #165, successful](https://github.com/WSSB2026WRO/Qatar-FE/actions/runs/43076407683)
+- Verified commit: `e8df0173e62e590f069ea6b69e32df2440a67bd4`
+- Both challenge programs and the analytical script passed Python compilation.
+- Eight analytical and documentation-integrity tests passed.
+- The 30-case analytical parameter sweep completed and generated its CSV artifact.
 
-| ID | Required work | Evidence required before closure |
-|---|---|---|
-| HW-01 | Confirm whether the front LED lamp is physically installed and connected to port D | Inspection of the assembled robot and an updated verified wiring record |
-| CAL-01 | Calibrate the Pixy2 range model in its final mount | Raw image coordinates at independently measured target distances, fitted constants, residuals, and dated test record |
-| CAL-02 | Calibrate gyro, ultrasonic sensors, drive distance scale, and steering mapping | Raw observations, instrument details, repeatability results, and accepted tolerances |
-| VAL-01–10 | Execute the subsystem and mission validation matrix | Completed test reports and original logs for each executed test |
-| CAD-01 | Add the three referenced STL files and confirm their unit convention and original CAD geometry | Original mesh files, native CAD source, unit declaration, dimensions, and mating-interface review |
-| CAD-02 | Resolve the four-component topology of C3DP-02 | CAD inspection and a manufacturing-intent revision if the design requires a single solid |
-| CAD-03 | Release fabrication drawings | Controlled CAD-derived drawings with datums, dimensions, tolerances, material, revision, and approval |
-| SYS-01 | Complete full-vehicle regression on the competition hardware | Repeated mission logs, obstacle-clearance evidence, corner/lap counts, and parking results |
-| MEDIA-01 | Add demonstration videos if recordings are available | Committed video files with challenge, date, software revision, and context |
+These results describe automated source and analytical verification. They are not physical robot test results.
 
-## Evidence rules
+## Engineering evidence represented in the repository
 
-- **Measured** means obtained from a physical instrument or robot log, with date, method, and configuration.
-- **Calculated** means derived from stated equations and inputs.
-- **Simulated** means produced by an explicit computational model.
-- **Configured** means read from the current source or controller settings.
-- **Assumed** means provisional and awaiting confirmation.
+- **Configured:** software constants and declared device interfaces.
+- **Assumed:** provisional inputs used in the reference design case.
+- **Calculated:** outputs derived from the documented equations and inputs.
+- **Simulated:** results generated by the analytical parameter sweep.
+- **Measured:** physical observations supported by dated measurement records.
 
-Do not mark an open physical or manufacturing gate as complete using an analytical estimate, a source-code constant, a drawing, or a generated example dataset.
+The vehicle-dynamics results are analytical reference calculations. The Pixy2 range relationship is a configured empirical model; the repository does not contain a physical camera-calibration dataset. The validation directory contains the test framework and record format; it does not contain completed physical mission logs.
 
-## Release statement
+## Engineering asset inventory
 
-The repository's documentation corrections, analytical unit tests, and automated software checks are complete for the recorded revision. Physical validation, original STL/CAD asset availability, final CAD confirmation, demonstration media, and manufacturing release remain open until the evidence listed above is collected from the actual vehicle and its controlled design files.
+The custom-part directory contains inspection records for three named STL models. The original STL files and native CAD models are not included in the current repository snapshot. The video directory is an index and contains no committed demonstration video files. These are repository inventory facts, not statements that unrecorded assets or tests exist.
+
+## Repository organization
+
+The documentation, source programs, diagrams, test code, engineering calculations, and available media indexes are organized in their respective project directories. The root README provides the entry point to the project portfolio and technical sections.
