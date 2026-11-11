@@ -1,5 +1,7 @@
 # STL Mesh Inspection Report
 
+**Asset availability:** The three source STL files referenced by this report are not present in the current repository tree. The values below are retained inspection records and cannot be independently reproduced from the current checkout until the original meshes are added.
+
 ## Method
 
 The three supplied STL files were loaded as triangle meshes and checked for vertex count, face count, bounding-box extents, connected components, watertightness, winding consistency, and mesh volume. No geometry was overwritten.
