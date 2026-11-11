@@ -4,23 +4,32 @@
 
 ```text
 Qatar-FE/
-├── .github/workflows/           Automated Python validation
-├── docs/                        Project and release documentation
+├── .github/workflows/            GitHub Actions validation
+├── docs/                         Portfolio, verification, release and repository records
 ├── engineering/
-│   ├── design_basis/             Reference design assumptions
-│   ├── mechanical_design/        Chassis, mass properties, steering
+│   ├── design_basis/             Reference vehicle assumptions
+│   ├── diagrams/                 SVG engineering diagrams
 │   ├── electronics/              Electrical integration
-│   ├── software/                 Control architecture
-│   ├── perception/               Camera geometry and calibration
-│   ├── reliability/               Risk and failure analysis
-│   ├── simulation/                Analytical models and parameter sweeps
-│   └── diagrams/                  Original engineering diagrams
-├── hardware/                     Hardware and custom-part documentation
+│   ├── mechanical_design/        Chassis, steering and additive manufacturing
+│   ├── perception/               Pixy2 geometry and calibration
+│   ├── reliability/              FMEA and maintenance
+│   ├── simulation/               Analytical model and parameter sweep
+│   └── software/                 Control-system design
+├── hardware/
+│   └── custom_3d_printed_parts/  Part records and mesh inspection notes
+├── Mobility Management/          Propulsion, steering and navigation records
+├── Obstacle Management/           Vision-based obstacle records
+├── Power and Sense Management/    EV3 power, sensors and interfaces
+├── schemes/                       Drawing register and release conventions
 ├── software/
-│   ├── open_challenge/            Open Challenge source and notes
-│   └── obstacle_challenge/        Obstacle Challenge source and notes
+│   ├── open_challenge/            Open Challenge source and documentation
+│   └── obstacle_challenge/        Obstacle Challenge source and documentation
+├── src/                           Source-code index
 ├── tests/                         Analytical and documentation integrity tests
-└── validation/                    Test plans and evidence requirements
+├── t-photos/                      Team photographs
+├── v-photos/                      Vehicle photographs
+├── validation/                    Physical test plan and report template
+└── video/                         Demonstration-video index (no videos committed)
 ```
 
 ## Automated checks
