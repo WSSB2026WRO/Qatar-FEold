@@ -28,13 +28,10 @@
 
 An opening is accepted only after the threshold is exceeded for consecutive samples. A lockout distance after each turn prevents the previous opening from being detected again. The route direction is inferred from the first opening and then retained.
 
-## Parameter tuning sequence
+## Parameter groups
 
-1. Wheel diameter and encoder distance scale.
-2. Gyro drift and heading sign.
-3. Ultrasonic sensor alignment and visibility thresholds.
-4. Lateral gain and heading gain.
-5. Corner steering command and stopping logic.
-6. Start-return estimate and final slow approach.
+The Open Challenge source groups its main configuration around wheel and encoder geometry, gyro drift and heading direction, ultrasonic visibility thresholds, lateral and heading gains, corner steering and stopping logic, and the final return-distance estimate. These parameters define the configured control behaviour; no physical tuning log or before-and-after performance dataset is included in this repository snapshot.
 
-Tune at low speed and preserve a baseline log before changing values.
+## Evidence scope
+
+These notes describe the algorithm represented by the Python source. They are not a record of completed physical tuning sessions or measured track performance.
