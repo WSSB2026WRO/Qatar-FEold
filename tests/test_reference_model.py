@@ -23,6 +23,8 @@ class ReferenceVehicleModelTests(unittest.TestCase):
         self.assertAlmostEqual(result["lateral_transfer_N"], 0.459, places=6)
         self.assertAlmostEqual(result["ideal_tip_acceleration_m_s2"], 10.9, places=6)
         self.assertAlmostEqual(result["friction_bound_N"], 5.420025, places=6)
+        self.assertAlmostEqual(result["ideal_speed_250_deg_s_m_s"], 0.122173, places=6)
+        self.assertAlmostEqual(result["ideal_speed_300_deg_s_m_s"], 0.146608, places=6)
 
     def test_zero_acceleration_has_zero_load_transfer(self):
         result = parameter_sweep.calculate(0.0, 0.0)
