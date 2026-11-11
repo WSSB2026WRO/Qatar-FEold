@@ -1,55 +1,53 @@
-# Electrical Architecture and Integration Specification
+# Electrical Architecture and Integration
 
 ![ELE-001 — EV3 wiring and port allocation](../../docs/drawings/ELE-001_ev3_wiring.svg)
 
+## 1. What this page explains
 
-## 1. Scope
+We use this page to describe the electrical connections shown in our software device map and to list the checks we need when assembling the robot. We have not added voltage, current, or connector ratings that are not confirmed by the component documentation.
 
-We use this document to describe the electrical connections shown in the software device map and to set out how we check the hardware integration. It does not assign unverified voltage, current, or connector ratings to individual components.
+## 2. Main electrical parts
 
-## 2. Functional blocks
-
-| Block | Interface | Function |
+| Part | Connection | What it does |
 |---|---|---|
-| EV3 controller | Motor and sensor ports | Executes control program |
-| Drive actuator A | EV3 motor port A | Propulsion |
-| Drive actuator B | EV3 motor port B | Propulsion |
-| Steering actuator C | EV3 motor port C | Steering |
-| No device assigned | EV3 motor port D | Unused by both challenge programs |
-| Gyro S1 | EV3 sensor port S1 | Heading feedback |
-| Ultrasonic S2 | EV3 sensor port S2 | Left-side ranging |
-| Ultrasonic S3 | EV3 sensor port S3 | Right-side ranging |
-| Pixy2 camera with integrated illumination | I²C on EV3 sensor port S4 | Colour-signature perception and camera illumination in Obstacle Challenge |
+| EV3 controller | Motor and sensor ports | Runs the control program |
+| Drive motor A | EV3 motor port A | Drives the vehicle |
+| Drive motor B | EV3 motor port B | Drives the vehicle |
+| Steering motor C | EV3 motor port C | Turns the front wheels |
+| No device | EV3 motor port D | Not used by either challenge program |
+| Gyro S1 | EV3 sensor port S1 | Gives heading feedback |
+| Ultrasonic S2 | EV3 sensor port S2 | Measures the left-side distance |
+| Ultrasonic S3 | EV3 sensor port S3 | Measures the right-side distance |
+| Pixy2 camera with integrated illumination | I²C on EV3 sensor port S4 | Detects colour signatures in the Obstacle Challenge |
 
-## 3. Power integrity
+## 3. Power checks
 
-The controller supply must remain within the manufacturer's operating limits during simultaneous drive and steering loads. A power-integrity review should record:
-- battery type and manufacturer;
-- nominal and measured voltage;
-- connector and cable ratings;
-- peak current under representative load;
-- controller brownout or reset events;
-- battery temperature after repeated runs.
+The EV3 supply must stay within the manufacturer's operating limits when the drive and steering motors are working. When we carry out a power check, the record should include:
 
-The Pixy2 illumination is integrated with the camera assembly on S4; it is not a separate auxiliary lamp connected to motor port D.
+- Battery type and manufacturer.
+- Nominal voltage and measured voltage.
+- Connector and cable ratings.
+- Peak current under a representative load.
+- Any controller reset or brownout.
+- Battery temperature after repeated runs.
 
-## 4. Signal integrity
+The illumination is built into the Pixy2 camera assembly connected to S4. It is not a separate lamp connected to motor port D.
 
-- Keep sensor cables away from moving linkages.
-- Avoid tight bends and repeated flexing at connector exits.
-- Secure the Pixy2 cable to prevent I²C connector movement.
-- Confirm I²C address and output mode before running vision control.
-- Verify that all sensor ports are initialized before autonomous movement.
+## 4. Keeping the signals reliable
 
-## 5. Protection and failure handling
+- Route sensor cables away from moving steering and drive parts.
+- Avoid sharp bends and repeated movement near the connectors.
+- Secure the Pixy2 cable so the I²C connection does not move during a run.
+- Check the I²C address and output mode before using the camera program.
+- Make sure the sensors are initialized before the robot starts moving.
 
-| Fault | Detection | Recommended response |
+## 5. Faults and what we should do
+
+| Possible fault | How we may notice it | Response |
 |---|---|---|
-| Gyro drift | Startup drift measurement | Recalibrate or inhibit start |
-| Ultrasonic invalid echo | Range plausibility checks | Reject sample and use bounded fallback |
-| Pixy2 I²C fault | Consecutive communication error counter | Stop or enter defined safe state |
-| Motor stall | Encoder progress timeout | Stop drive and report fault |
-| Low battery | Voltage observation | Abort run below validated threshold |
-| Loose sensor cable | Missing or implausible data | Stop autonomous operation |
-
-
+| Gyro drift | Drift check at startup | Calibrate again or do not start |
+| Invalid ultrasonic echo | Distance reading is outside the plausible range | Reject the reading and use only a defined fallback |
+| Pixy2 I²C problem | Repeated communication errors | Stop or enter the defined safe state |
+| Motor stall | Encoder does not show expected movement before timeout | Stop the drive and report the fault |
+| Low battery | Voltage check | Stop below a threshold confirmed by testing |
+| Loose sensor cable | Missing or unreasonable readings | Stop autonomous operation |
