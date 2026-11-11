@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#315b78"/></marker><style>
+text{font-family:Arial,Helvetica,sans-serif;fill:#1f2933}.title{font-size:28px;font-weight:700}.sub{font-size:15px;fill:#536575}.h{font-size:17px;font-weight:700}.t{font-size:14px}.small{font-size:12px;fill:#536575}.box{fill:#f3f6f8;stroke:#526879;stroke-width:2}.blue{stroke:#315b78;stroke-width:3;fill:none}.red{stroke:#b24b48;stroke-width:3;fill:none}.dim{stroke:#7894a8;stroke-width:1.8;fill:none;stroke-dasharray:6 5}
+</style></defs>
+<rect x="18" y="18" width="1164" height="764" rx="8" fill="#fff" stroke="#263746" stroke-width="3"/>
+<text x="48" y="62" class="title">MEC-001 — Chassis and component layout</text><text x="50" y="91" class="sub">Indicative top and side views • update dimensions from the physical robot</text>
+<line x1="48" y1="110" x2="1152" y2="110" stroke="#9aabb8" stroke-width="1.5"/>
+
+<text x="95" y="155" class="h">VIEW A • TOP</text><text x="665" y="155" class="h">VIEW B • LEFT SIDE</text>
+<rect x="170" y="225" width="250" height="360" rx="24" fill="#f4f7f9" stroke="#526879" stroke-width="3"/><rect class="box" x="235" y="345" width="120" height="150" rx="8"/><text x="295" y="425" class="h" text-anchor="middle">EV3</text>
+<rect x="250" y="185" width="90" height="55" rx="8" fill="#e3edf3" stroke="#315b78" stroke-width="2"/><text x="295" y="218" class="h" text-anchor="middle">S4</text>
+<rect x="115" y="325" width="48" height="80" rx="6" class="box"/><text x="139" y="370" class="t" text-anchor="middle">S2</text><rect x="427" y="325" width="48" height="80" rx="6" class="box"/><text x="451" y="370" class="t" text-anchor="middle">S3</text>
+<rect x="185" y="535" width="75" height="55" rx="6" class="box"/><text x="222" y="570" class="h" text-anchor="middle">A</text><rect x="330" y="535" width="75" height="55" rx="6" class="box"/><text x="367" y="570" class="h" text-anchor="middle">B</text><rect x="260" y="265" width="75" height="55" rx="6" class="box"/><text x="297" y="300" class="h" text-anchor="middle">C</text>
+<path class="dim" d="M170 615 H420 M170 605 V625 M420 605 V625"/><text x="295" y="642" class="t" text-anchor="middle">Track width t — measure</text><path class="dim" d="M455 225 V585 M445 225 H465 M445 585 H465"/><text x="475" y="410" class="t">Wheelbase l</text>
+<rect x="700" y="350" width="400" height="75" rx="18" fill="#edf2f5" stroke="#526879" stroke-width="3"/><circle cx="780" cy="470" r="48" fill="#fff" stroke="#263746" stroke-width="5"/><circle cx="1015" cy="470" r="48" fill="#fff" stroke="#263746" stroke-width="5"/><rect class="box" x="820" y="275" width="180" height="70" rx="8"/><text x="910" y="315" class="h" text-anchor="middle">EV3 BRICK</text><rect class="box" x="680" y="315" width="55" height="45" rx="6"/><text x="707" y="343" class="t" text-anchor="middle">S4</text><text x="700" y="560" class="t">Measure camera height, ultrasonic height and tilt angle.</text>
+<rect class="box" x="700" y="610" width="420" height="55" rx="8"/><text x="720" y="644" class="t">Rule envelope: verify current WRO dimensions before inspection.</text>
+<line x1="48" y1="720" x2="1152" y2="720" stroke="#9aabb8" stroke-width="1.5"/>
+<text x="50" y="750" class="small">MECHANICAL LAYOUT REFERENCE • NOT A MANUFACTURING DRAWING</text><text x="1150" y="750" class="small" text-anchor="end">QATAR-FE • TEAM 6038 • REV A</text></svg>
