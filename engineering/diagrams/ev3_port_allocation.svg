@@ -16,8 +16,8 @@
 <rect x="630" y="455" width="95" height="48" rx="8" class="port"/><text x="677" y="486" text-anchor="middle" class="label">S2</text>
 <rect x="475" y="525" width="95" height="48" rx="8" class="port"/><text x="522" y="556" text-anchor="middle" class="label">S3</text>
 <rect x="630" y="525" width="95" height="48" rx="8" class="port"/><text x="677" y="556" text-anchor="middle" class="label">S4</text>
-<rect x="65" y="265" width="270" height="60" rx="10" class="device"/><text x="200" y="302" text-anchor="middle" class="label">Medium motor — left drive</text>
-<rect x="865" y="265" width="270" height="60" rx="10" class="device"/><text x="1000" y="302" text-anchor="middle" class="label">Medium motor — right drive</text>
+<rect x="65" y="265" width="270" height="60" rx="10" class="device"/><text x="200" y="302" text-anchor="middle" class="label">Medium motor — drive motor A</text>
+<rect x="865" y="265" width="270" height="60" rx="10" class="device"/><text x="1000" y="302" text-anchor="middle" class="label">Medium motor — drive motor B</text>
 <rect x="65" y="335" width="270" height="60" rx="10" class="device"/><text x="200" y="372" text-anchor="middle" class="label">Medium motor — steering</text>
 <rect x="865" y="335" width="270" height="60" rx="10" class="device"/><text x="1000" y="372" text-anchor="middle" class="label">Front LED lamp — verify on vehicle</text>
 <rect x="65" y="450" width="270" height="60" rx="10" class="device"/><text x="200" y="487" text-anchor="middle" class="label">Gyro — heading</text>
