@@ -1,51 +1,51 @@
-# LEGO MINDSTORMS EV3 Blocks — Obstacle Challenge
+# EV3 Blocks — Obstacle Challenge
 
 **WRO Future Engineers team:** 6038  
-**Implementation:** Native LEGO MINDSTORMS EV3 graphical programming  
+**Programming format:** Native LEGO MINDSTORMS EV3 blocks  
 **Mission:** Obstacle Challenge
 
 ## Project file
 
-- [ObstacleChallenge.ev3](ObstacleChallenge.ev3) — native EV3 project archive containing the graphical program and its project resources.
+- [ObstacleChallenge.ev3](ObstacleChallenge.ev3) — the native EV3 project archive with the graphical program and its project resources.
 
-The project archive includes the main Obstacle Challenge program and the following named EV3 program modules:
+The archive contains the main Obstacle Challenge program and these named EV3 program modules:
 
-| EV3 program module | Documented role in the project |
+| Module in the EV3 project | Role indicated by its name |
 |---|---|
-| `HEADING.ev3p` | Heading-related program component |
-| `DISTANCE.ev3p` | Distance-related program component |
-| `CENTERING.ev3p` | Corridor-centering program component |
-| `RACE_STEP.ev3p` | Race-step program component |
-| `WALL_FOLLOW.ev3p` | Wall-following program component |
-| `MANEUVER.ev3p` | Manoeuvre program component |
-| `STRAIGHT.ev3p` | Straight-driving program component |
-| `CORNER.ev3p` | Corner-navigation program component |
+| `HEADING.ev3p` | Heading |
+| `DISTANCE.ev3p` | Distance |
+| `CENTERING.ev3p` | Corridor centering |
+| `RACE_STEP.ev3p` | Race step |
+| `WALL_FOLLOW.ev3p` | Wall following |
+| `MANEUVER.ev3p` | Manoeuvre |
+| `STRAIGHT.ev3p` | Straight driving |
+| `CORNER.ev3p` | Corner navigation |
 
-The module names above are taken from the native project archive. They identify the components stored in the project; this README does not infer undocumented block-level details.
+These names come from the native project archive. They tell us which modules are stored in the project, but we do not add block-level details that are not shown in the archive.
 
-## Purpose in Team 6038's dual-implementation project
+## How this fits our two-program approach
 
-This is the graphical-block counterpart to the Python Obstacle Challenge program:
+This is the EV3 block version that sits alongside our Python Obstacle Challenge program:
 
 - Python: [`software/obstacle_challenge/obstacle_challenge.py`](../../obstacle_challenge/obstacle_challenge.py)
 - EV3 blocks: `software/ev3_blocks/obstacle_challenge/ObstacleChallenge.ev3`
 
-Team 6038 developed both versions to compare two programming approaches on the same LEGO EV3 robot and to select the approach best suited to the mission.
+We kept both versions so we can compare text programming and visual programming on the same LEGO EV3 robot.
 
-## Hardware context
+## Hardware note
 
-The Python Obstacle Challenge documentation identifies the Pixy2 camera assembly, including its integrated illumination, on EV3 sensor port S4 using I²C. The illumination is integrated into the camera assembly; it is not a separate lamp connected to motor port D. Port D has no device assigned.
+The Python Obstacle Challenge documentation lists the Pixy2 camera assembly, including its integrated illumination, on EV3 sensor port S4 over I²C. The light is part of the camera assembly; it is not a separate lamp on motor port D. Port D has no assigned device.
 
-This README describes the native EV3 block project archive. It does not assume that every Python-specific library, camera interface, or source-code feature has an identical block-program implementation unless that equivalence is established by the graphical project itself.
+This page describes the native EV3 block archive. We do not assume that every Python library, camera interface, or source-code feature has an identical block implementation unless the graphical project shows it.
 
-## Comparative performance focus
+## What we want to compare
 
-The comparison covers program preparation/build time, startup latency, control-cycle timing, mission execution time, repeatability, debugging and maintainability. Particular attention is given to sub-second timing, expressed in milliseconds or at a stated decimal precision.
+We compare program preparation, startup delay, control-cycle time, mission time, repeatability, debugging, and maintenance. We are especially interested in sub-second timing, recorded in milliseconds or at a stated decimal precision.
 
-Python source upload or bytecode preparation is a distinct stage from compilation performed by the EV3 graphical environment. The timing comparison treats these stages according to their actual software workflows.
+Uploading Python source or preparing bytecode is a different step from the EV3 graphical environment preparing its project. We need to measure each workflow according to what it actually does.
 
-No paired timing results are included in this folder. The presence of both projects establishes the dual-implementation approach; it does not by itself establish that one implementation is faster.
+We do not have paired timing results in this folder. Having both projects available does not by itself show that one is faster.
 
 ## Project format
 
-`ObstacleChallenge.ev3` is retained in its native LEGO MINDSTORMS EV3 project format. The archive preserves the graphical program and associated project assets for inspection in compatible EV3 software.
+`ObstacleChallenge.ev3` is kept in its native LEGO MINDSTORMS EV3 format. The archive contains the graphical program and its project resources for opening in compatible EV3 software.
