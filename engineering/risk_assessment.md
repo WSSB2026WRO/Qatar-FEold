@@ -15,6 +15,8 @@ This is a preliminary design-level risk register. Ratings are qualitative and mu
 | R-09 | Parking estimate error | Incorrect final pose | Repeated parking measurements | Improve boundary detection and final alignment |
 | R-10 | Battery voltage variation | Speed and response variation | Log battery state | Controlled charging and repeatable test conditions |
 
+For the expanded failure-mode register, scoring method, and maintenance schedule, see [System Reliability and Failure Mode Analysis](reliability/risk_assessment.md).
+
 ## Risk review cycle
 
 Review risks after every mechanical revision, sensor remount, software parameter change, or unexplained run failure. Record the observed cause, corrective action, and retest result.
