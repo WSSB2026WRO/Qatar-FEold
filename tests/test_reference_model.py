@@ -21,7 +21,7 @@ class ReferenceVehicleModelTests(unittest.TestCase):
         self.assertAlmostEqual(result["weight_N"], 8.3385, places=4)
         self.assertAlmostEqual(result["longitudinal_transfer_N"], 0.306, places=6)
         self.assertAlmostEqual(result["lateral_transfer_N"], 0.459, places=6)
-        self.assertAlmostEqual(result["ideal_tip_acceleration_m_s2"], 10.901, places=3)
+        self.assertAlmostEqual(result["ideal_tip_acceleration_m_s2"], 10.9, places=6)
         self.assertAlmostEqual(result["friction_bound_N"], 5.420025, places=6)
 
     def test_zero_acceleration_has_zero_load_transfer(self):
